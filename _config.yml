@@ -1,3 +1,4 @@
 name: epu baal, harmcorp org.
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+highlighter: rouge
