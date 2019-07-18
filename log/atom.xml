@@ -4,11 +4,11 @@ layout: feed
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-	<title>Hamhuman's Blog</title>
+	<title>herdin's log</title>
 	<link href="http://herdin.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://herdin.github.io/blog"/>
 	<updated>{{ site.time | date_to_xmlschema }}</updated>
-	<id>http://herdin.github.io/blog</id>
+	<id>http://herdin.github.io/log</id>
 	<author>
 		<name>epu baal</name>
 		<email>herdin86@gmail.com</email>
