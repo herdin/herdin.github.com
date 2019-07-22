@@ -3,8 +3,7 @@ layout: post
 title: "Hamhuman code"
 date: 2019-07-08
 ---
-```Java
-//github way with Github Flavored Markdown parser Kramdown::GFM (the default one).
+```java
 public static void main(String[] args) {
     System.out.println("Hello, reckt github pages");
 }
