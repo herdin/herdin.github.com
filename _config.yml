@@ -6,14 +6,15 @@
 name: Epu Baal
 
 # Short bio or description (displayed in the header)
-description: Web Developer from Somewhere
+description: Web Developer from Pamukkale
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://avatars3.githubusercontent.com/u/1744571?s=400&v=4
+avatar: https://scontent-gmp1-1.cdninstagram.com/vp/a880cdd91396514b9f38dd7557a91abb/5DCF8F00/t51.2885-19/s320x320/15625473_1799036933646483_957812268609830912_a.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com
+
+#https://avatars3.githubusercontent.com/u/1744571?s=400&v=4
 
 #
 # Flags below are optional
-#
 
 # Includes an icon in the footer for each username you enter
 footer-links:
@@ -26,7 +27,7 @@ footer-links:
   linkedin:
   pinterest:
   rss: # just type anything here for a working RSS icon
-  twitter: jekyllrb
+  twitter:
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
@@ -84,3 +85,16 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+
+# Collect file list in _tag directory to service /tags/...
+collections:
+  tags:
+    output: true
+    permalink: /tags/:path/
+
+defaults:
+  - scope:
+      path: ''
+      type: tags
+    values:
+      layout: tag
