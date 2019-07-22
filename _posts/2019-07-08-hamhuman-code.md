@@ -2,7 +2,8 @@
 layout: post
 title: "Hamhuman code"
 date: 2019-07-08
-tag: hamhuman
+tags:
+  - hamhuman
 ---
 ```java
 public static void main(String[] args) {
