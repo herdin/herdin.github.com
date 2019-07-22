@@ -86,7 +86,7 @@ exclude:
   - README.md
   - CNAME
 
-# Collect file list in _tag directory to service /tags/...
+# Collect file list in _tags directory to service /tags/...
 collections:
   tags:
     output: true
