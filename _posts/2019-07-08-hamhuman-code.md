@@ -12,7 +12,7 @@ public static void main(String[] args) {
 ```
 
 belows are highlight java
-{% highlight java %}
+{% highlight java linenos %}
 public static void main(String[] args) {
     System.out.println("Hello, reckt github pages");
 }
