@@ -10,13 +10,48 @@ date: 2019-07-23
 `Middle-endian` 이라는 둘다 되는 애도 있다고 한다.
 `0x12345678` 이란 데이터와 `0x48656C6C6F` (Hello) 이런 데이터를 테이블로 예시를 들어보면..
 
----
-|memory address>>> | 0x0100 | 0x0101 | 0x0102 | 0x0103 | 0x0104 |
-|----|----|----|----|----|----|
-|Little-endian 0x12345678|0x78|0x56|0x34|0x12| - |
-|Big-endian 0x12345678|0x12|0x34|0x56|0x78| - |
-|Little-endian 0x48656C6C6F|0x48|0x65|0x6C|0x6C|0x6F|
-|Big-endian 0x48656C6C6F|0x6F|0x6C|0x6C|0x65|0x48|
+<table>
+  <tr>
+    <th>memory address>>></th>
+    <th>0x0100</th>
+    <th>0x0101</th>
+    <th>0x0102</th>
+    <th>0x0103</th>
+    <th>0x0104</th>
+  </tr>
+  <tr>
+    <td>Little-endian 0x12345678</td>
+    <td>0x78</td>
+    <td>0x56</td>
+    <td>0x34</td>
+    <td>0x12</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>Big-endian 0x12345678</td>
+    <td>0x12</td>
+    <td>0x34</td>
+    <td>0x56</td>
+    <td>0x78</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>Little-endian 0x48656C6C6F</td>
+    <td>0x48</td>
+    <td>0x65</td>
+    <td>0x6C</td>
+    <td>0x6C</td>
+    <td>0x6F</td>
+  </tr>
+  <tr>
+    <td>Big-endian 0x48656C6C6F</td>
+    <td>0x6F</td>
+    <td>0x6C</td>
+    <td>0x6C</td>
+    <td>0x65</td>
+    <td>0x48</td>
+  </tr>
+</table>
 
 `Little-endian` 은 메모리의 낮은 주소에 값의 작은 자리 수 부터 적고,
 > 위의 표를 참고하면,
