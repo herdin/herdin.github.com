@@ -98,3 +98,5 @@ defaults:
       type: tags
     values:
       layout: tag
+
+timezone: KR
