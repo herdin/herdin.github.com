@@ -4,7 +4,7 @@ title: "Whiteship Spring MVC 10 Component"
 date: 2019-07-23
 tags: spring
 ---
-#Spring with Whiteship
+# Spring with Whiteship
 `gitbook` 이랑 `gitpage` 랑 뭘 해야될지 모르겠다.
 `gitbook` 이 좀 더 편하긴한데...
 `gitpage` 는 뭔가 내맘대로 만들 수 있어서..

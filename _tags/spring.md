@@ -1,5 +1,4 @@
 ---
 name: spring
-title: spring
-image: /images/jekyll-logo.png
+title: 스프링
 ---
