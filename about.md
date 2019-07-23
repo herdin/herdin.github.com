@@ -13,8 +13,3 @@ This Page is compiled at {{ site.time }}.
 - 2012.01.01. - 2014.01.01. MILES firmware development.
 - 2012.01.01. join LG CNS.
 - 2012.01.01. Hongik University, Bachelor of Computer Engineering.
-
-
-### Contact me
-
-[herdin86@gmail.com](mailto:herdin86@gmail.com)
