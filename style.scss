@@ -256,11 +256,12 @@ nav {
 
 .post {
   blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 22px;
+    margin: 0px 0px 24px;
+    border-left: 4px solid $gitbookLightGray;
+    padding: 0px 0px 0px 12px;
+    color: $gitbookGray;
+    font-size: 16px;
+    font-weight: 400;
     font-style: italic;
   }
 
