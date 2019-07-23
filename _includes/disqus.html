@@ -3,8 +3,8 @@
 	<div id="disqus_thread"></div>
 	<script type="text/javascript">
 		var disqus_config = function () {
-			this.page.url = '{{ site.url }}';  // Replace PAGE_URL with your page's canonical URL variable
-			this.page.identifier = '{{ page.name }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+			this.page.url = '{{ site.url }}' + '{{ page.url }}';  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = '{{ page.title }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 		};
     var disqus_shortname = '{{ site.disqus }}';
 
