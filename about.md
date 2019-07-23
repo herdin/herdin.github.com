@@ -4,11 +4,16 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+This Page is compiled at {{ site.time }}.
 
-### More Information
+### History
 
-A place to include any other types of information that you'd like to include about yourself.
+- 2016.07.25. - ... Tmoney. SM.
+...
+- 2012.01.01. - 2014.01.01. MILES firmware development
+- 2012.01.01. join LG CNS
+- 2012.01.01. Hongik University, Bechelor of Computer Engineering
+
 
 ### Contact me
 
