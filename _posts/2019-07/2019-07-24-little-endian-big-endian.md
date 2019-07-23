@@ -10,6 +10,13 @@ date: 2019-07-23
 `Middle-endian` 이라는 둘다 되는 애도 있다고 한다.
 `0x12345678` 이란 데이터와 `0x48656C6C6F` (Hello) 이런 데이터를 테이블로 예시를 들어보면..
 
+<style>
+table, td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+
 <table>
   <tr>
     <th>memory address>>></th>
