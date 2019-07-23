@@ -2,7 +2,7 @@
 layout: post
 title: "Jekyll theme candidates."
 date: 2019-07-24
-tags: jekyll
+tags: web jekyll
 ---
 - [튜토리얼에서 알게된 나우마스터](https://github.com/barryclark/jekyll-now)
   - [튜토리얼](https://thdev.net/653)
