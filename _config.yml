@@ -99,4 +99,4 @@ defaults:
     values:
       layout: tag
 
-timezone: KR
+timezone: Asia/Seoul
