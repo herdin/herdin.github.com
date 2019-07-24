@@ -16,8 +16,14 @@ avatar: /assets/images/epubaal.jpg
 #github
 #https://avatars3.githubusercontent.com/u/1744571?s=400&v=4
 
-#
-# Flags below are optional
+navigation:
+  - name: Log
+    url: /
+  - name: About
+    url: /about
+  - name: Tags
+    url: /tags
+
 
 # Includes an icon in the footer for each username you enter
 footer-links:
@@ -90,16 +96,16 @@ exclude:
   - CNAME
 
 # Collect file list in _tags directory to service /tags/...
-collections:
-  tags:
-    output: true
-    permalink: /tags/:path/
-
-defaults:
-  - scope:
-      path: ''
-      type: tags
-    values:
-      layout: tag
+# collections:
+#   tags:
+#     output: true
+#     permalink: /tags/:path/
+#
+# defaults:
+#   - scope:
+#       path: ''
+#       type: tags
+#     values:
+#       layout: tag
 
 timezone: Asia/Seoul
