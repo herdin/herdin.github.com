@@ -22,7 +22,7 @@ permalink: /tags/
   {% for post in site.posts %}
     <li style="display:none;" class="{{ post.tags | join  " " }}">
       <span>
-        {{ post.date | date_to_string }}
+        {{ post.date | date: "%Y-%m-%d" }}
       </span>
       »
       <a href="{{ post.url }}" title="{{ post.title }}">
