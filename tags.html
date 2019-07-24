@@ -7,27 +7,22 @@ permalink: /tags/
 {% assign tags = site.tags | sort %}
 <div class="site-tags">
   {% for tag in tags %}
-  <li>
-    <a
-      id="#{{ tag[0] }}"
-      href="/tag/{{ tag | first | slugify }}/"
-      style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+  <li class="site-tag">
+    <a id="{{ tag[0] }}"
+        href="#"
+        style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+      <!-- tag name -->
       <span>{{ tag[0] }}</span>
+      <!-- tag count -->
       <span class="count">{{ tag | last | size }}</span>
     </a>
   </li>
   {% endfor %}
 </div>
 
-<div class="test">
-  {% for post in site.posts %}
-  <li>{{ post.tags | join  " "}} - {{ post.tags | size }}</li>
-  {% endfor %}
-</div>
-
 <div class="site-tagged-posts">
   {% for post in site.posts %}
-    <li style="display:none;" class="{{ post.tags }}">
+    <li style="display:none;" class="{{ post.tags | join  " " }}">
       <span>
         {{ post.date | date_to_string }}
       </span>
@@ -38,3 +33,18 @@ permalink: /tags/
     </li>
   {% endfor %}
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('.site-tag').click(function(){
+      var delay = 3000;
+      var tag = $(this).attr('id');
+      var visibility = $($('.' + tag).get(0)).is(':visible');
+      if(visibility) {
+        $('.' + tag).hide(delay);
+      } else {
+        $('.' + tag).show(delay);
+      }
+    });
+  });
+</script>
