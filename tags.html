@@ -14,11 +14,23 @@ permalink: /tags/
     </li>
     {% endfor %}
   </ul>
-  <ul class="test">
-    {% for tag in site.tags %}
-      {% for t in tag %}
-        <li>{{ t }}</li>
+  {% for tag in site.tags %}
+    <h2 id="{{ tag[0] }}">
+      {{ tag[0] }}
+    </h2>
+    <ul class="tag">
+      {% for post in tag[1] %}
+        <li>
+          {% if post.link %}
+            <a href="{{ post.link }}">
+          {% else %}
+            <a href="{{ site.baseurl }}{{ post.url }}">
+          {% endif %}
+              {{ post.title }}
+            </a>
+            <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+        </li>
       {% endfor %}
-    {% endfor %}
-  </ul>
+    </ul>
+  {% endfor %}
 </div>
