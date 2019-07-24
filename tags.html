@@ -17,6 +17,7 @@ permalink: /tags/
   <ul class="test">
     {% for tag in site.tags %}
       {% for t in tag %}
+        <li>{{ t }}</li>
       {% endfor %}
     {% endfor %}
   </ul>
