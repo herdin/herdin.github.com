@@ -19,6 +19,12 @@ permalink: /tags/
   {% endfor %}
 </div>
 
+<div class="test">
+  {% for post in site.posts %}
+  <li>{{ post.tags }}</li>
+  {% endfor %}
+</div>
+
 <div class="site-tagged-posts">
   {% for post in site.posts %}
     <li style="display:none;" class="{{ post.tags }}">
