@@ -35,13 +35,13 @@ permalink: /tags/
 <script>
   $(document).ready(function(){
     $('.site-tag').click(function(){
-      var delay = 3000;
+        var delay = 3000;
       var tag = $(this).attr('id');
       var visibility = $($('.' + tag).get(0)).is(':visible');
       if(visibility) {
-        $('.' + tag).hide(delay);
+        $('.' + tag).fadeOut(delay);
       } else {
-        $('.' + tag).show(delay);
+        $('.' + tag).fadeIn(delay);
       }
     });
   });
