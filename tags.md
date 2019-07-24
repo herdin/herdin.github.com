@@ -1,6 +1,8 @@
 ---
 layout: default
+permalink: /tags/
 ---
+
 <div class="tag">
   <ul id="post-list">
     {% for tag in site.tags %}
