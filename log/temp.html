@@ -1,0 +1,31 @@
+<!-- 여블로그에서 훔쳐온것 -->
+<div class="tags">
+  <ul class="label">
+    {% assign tags = site.tags | sort %}
+    {% for tag in tags %}
+    <li>
+      <a href="#{{ tag[0] }}">
+        <span>{{ tag[0] }}</span>
+        <span class="count">{{ tag[1] | size }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% for tag in site.tags %}
+    <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
+    <ul class="tag">
+      {% for post in tag[1] %}
+        <li>
+          {% if post.link %}
+            <a href="{{ post.link }}">
+          {% else %}
+            <a href="{{ site.baseurl }}{{ post.url }}">
+          {% endif %}
+              {{ post.title }}
+            </a>
+            <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</div>

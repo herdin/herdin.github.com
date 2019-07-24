@@ -2,35 +2,13 @@
 layout: default
 permalink: /tags/
 ---
-
-<div class="tags">
-  <ul class="label">
-    {% for tag in site.tags %}
-    <li>
-      <a href="#{{ tag[0] }}">
-        <span>{{ tag[0] }}</span>
-        <span class="count">{{ tag[1] | size }}</span>
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
-  {% for tag in site.tags %}
-    <h2 id="{{ tag[0] }}">
-      {{ tag[0] }}
-    </h2>
-    <ul class="tag">
-      {% for post in tag[1] %}
-        <li>
-          {% if post.link %}
-            <a href="{{ post.link }}">
-          {% else %}
-            <a href="{{ site.baseurl }}{{ post.url }}">
-          {% endif %}
-              {{ post.title }}
-            </a>
-            <time>{{ post.date | date: "%Y-%m-%d" }}</time>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endfor %}
-</div>
+{% assign tags = site.tags | sort %}
+{% for tag in tags %}
+ <span class="site-tag">
+    <a
+      href="/tag/{{ tag | first | slugify }}/"
+      style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+      {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
+    </a>
+</span>
+{% endfor %}

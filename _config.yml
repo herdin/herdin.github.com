@@ -16,15 +16,6 @@ avatar: /assets/images/epubaal.jpg
 #github
 #https://avatars3.githubusercontent.com/u/1744571?s=400&v=4
 
-navigation:
-  - name: Log
-    url: /
-  - name: About
-    url: /about
-  - name: Tags
-    url: /tags
-
-
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
@@ -58,6 +49,33 @@ url: https://herdin.github.io
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
 baseurl: ""
+
+#
+# !! herdin add configuration below !!
+#
+
+navigation:
+  - name: Log
+    url: /
+  - name: About
+    url: /about
+  - name: Tags
+    url: /tags
+
+# Collect file list in _tags directory to service /tags/...
+# collections:
+#   tags:
+#     output: true
+#     permalink: /tags/:path/
+#
+# defaults:
+#   - scope:
+#       path: ''
+#       type: tags
+#     values:
+#       layout: tag
+
+timezone: Asia/Seoul
 
 #
 # !! You don't need to change any of the configuration flags below !!
@@ -94,18 +112,3 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
-
-# Collect file list in _tags directory to service /tags/...
-# collections:
-#   tags:
-#     output: true
-#     permalink: /tags/:path/
-#
-# defaults:
-#   - scope:
-#       path: ''
-#       type: tags
-#     values:
-#       layout: tag
-
-timezone: Asia/Seoul
