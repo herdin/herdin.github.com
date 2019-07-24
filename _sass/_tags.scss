@@ -1,4 +1,22 @@
-.site-tag a {
-    display: inline-block;
-    margin-right: 12px;
+.site-tag {
+  li {
+    display: inline;
+    margin: 0px;
+    font-weight: 300;
+    a {
+      display: inline-block;
+      margin: 1px;
+      color: #343a40;
+      background-color: #e9ecef;
+      border-radius: 3px 0px 0px 3px;
+      span {
+        float: left;
+        padding: .5px 5px;
+      }
+      span.count {
+        background-color: #dee2e6;
+        border-radius: 0px 3px 3px 0px;
+      }
+    }
+  }
 }
