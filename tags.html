@@ -35,7 +35,8 @@ permalink: /tags/
 <script>
   $(document).ready(function(){
     $('.site-tag').click(function(){
-        var delay = 1000;
+      $('.site-tagged-posts > li').hide();
+      var delay = 100;
       var tag = $(this).attr('id');
       var visibility = $($('.' + tag).get(0)).is(':visible');
       if(visibility) {
