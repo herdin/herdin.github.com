@@ -2,17 +2,33 @@
 layout: default
 permalink: /tags/
 ---
+<script src="/assets/js/jquery-3.4.1.min.js"></script>
+
 {% assign tags = site.tags | sort %}
-{% for tag in tags %}
- <span class="site-tag">
-   <li>
-     <a
-        id="#{{ tag[0] }}"
-        href="/tag/{{ tag | first | slugify }}/"
-        style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
-        <span>{{ tag[0] }}</span>
-        <span class="count">{{ tag | last | size }}</span>
-     </a>
-   </li>
-</span>
-{% endfor %}
+<div class="site-tags">
+  {% for tag in tags %}
+  <li>
+    <a
+      id="#{{ tag[0] }}"
+      href="/tag/{{ tag | first | slugify }}/"
+      style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+      <span>{{ tag[0] }}</span>
+      <span class="count">{{ tag | last | size }}</span>
+    </a>
+  </li>
+  {% endfor %}
+</div>
+
+<div class="site-tagged-posts">
+  {% for post in site.posts %}
+    <li style="display:none;" class="{{ post.tags }}">
+      <span>
+        {{ post.date | date_to_string }}
+      </span>
+      »
+      <a href="{{ post.url }}" title="{{ post.title }}">
+        {{ post.title }}
+      </a>
+    </li>
+  {% endfor %}
+</div>
