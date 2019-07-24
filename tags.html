@@ -21,7 +21,7 @@ permalink: /tags/
 
 <div class="test">
   {% for post in site.posts %}
-  <li>{{ post.tags | size }} - {{ post.tags | size }}</li>
+  <li>{{ post.tags | join  " "}} - {{ post.tags | size }}</li>
   {% endfor %}
 </div>
 
