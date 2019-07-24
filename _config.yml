@@ -54,6 +54,11 @@ baseurl: ""
 # !! herdin add configuration below !!
 #
 
+#
+# !! cf home page !!
+#
+# https://shopify.github.io/liquid/
+# https://jekyllrb-ko.github.io/
 navigation:
   - name: Log
     url: /
