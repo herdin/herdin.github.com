@@ -279,6 +279,9 @@ nav {
 }
 
 .post {
+  .posthead {
+    border-bottom: 1px solid #eee;
+  }
   blockquote {
     margin: 0px 0px 24px;
     border-left: 4px solid $gitbookLightGray;
