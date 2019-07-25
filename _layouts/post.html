@@ -8,7 +8,7 @@ layout: default
     <span class="date">
       Written on {{ page.date | date: "%Y-%m-%d" }}
     </span>
-    {% assign tags = post.tags | sort %}
+    {% assign tags = page.tags | sort %}
     <span class="site-tags">
       {% for tag in tags %}
       <li id="{{ tag[0] }}" class="site-tag">
