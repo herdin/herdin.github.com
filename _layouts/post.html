@@ -11,10 +11,10 @@ layout: default
     {% assign tags = page.tags | sort %}
     <span class="site-tags">
       {% for tag in tags %}
-      <li id="{{ tag[0] }}" class="site-tag">
+      <li class="site-tag">
         <a href="#">
           <!-- tag name -->
-          <span>{{ tag[0] }}</span>
+          <span>{{ tag }}</span>
         </a>
       </li>
       {% endfor %}
