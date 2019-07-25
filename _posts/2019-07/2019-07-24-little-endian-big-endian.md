@@ -18,46 +18,50 @@ date: 2019-07-23
 </style>
 
 <table class="pure-table">
-  <tr>
-    <th>memory address>>></th>
-    <th>0x0100</th>
-    <th>0x0101</th>
-    <th>0x0102</th>
-    <th>0x0103</th>
-    <th>0x0104</th>
-  </tr>
-  <tr>
-    <td>Little-endian 0x12345678</td>
-    <td>0x78</td>
-    <td>0x56</td>
-    <td>0x34</td>
-    <td>0x12</td>
-    <td> - </td>
-  </tr>
-  <tr>
-    <td>Big-endian 0x12345678</td>
-    <td>0x12</td>
-    <td>0x34</td>
-    <td>0x56</td>
-    <td>0x78</td>
-    <td> - </td>
-  </tr>
-  <tr>
-    <td>Little-endian 0x48656C6C6F</td>
-    <td>0x48</td>
-    <td>0x65</td>
-    <td>0x6C</td>
-    <td>0x6C</td>
-    <td>0x6F</td>
-  </tr>
-  <tr>
-    <td>Big-endian 0x48656C6C6F</td>
-    <td>0x6F</td>
-    <td>0x6C</td>
-    <td>0x6C</td>
-    <td>0x65</td>
-    <td>0x48</td>
-  </tr>
+  <thead>
+    <tr>
+      <th>memory address>>></th>
+      <th>0x0100</th>
+      <th>0x0101</th>
+      <th>0x0102</th>
+      <th>0x0103</th>
+      <th>0x0104</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Little-endian 0x12345678</td>
+      <td>0x78</td>
+      <td>0x56</td>
+      <td>0x34</td>
+      <td>0x12</td>
+      <td> - </td>
+    </tr>
+    <tr>
+      <td>Big-endian 0x12345678</td>
+      <td>0x12</td>
+      <td>0x34</td>
+      <td>0x56</td>
+      <td>0x78</td>
+      <td> - </td>
+    </tr>
+    <tr>
+      <td>Little-endian 0x48656C6C6F</td>
+      <td>0x48</td>
+      <td>0x65</td>
+      <td>0x6C</td>
+      <td>0x6C</td>
+      <td>0x6F</td>
+    </tr>
+    <tr>
+      <td>Big-endian 0x48656C6C6F</td>
+      <td>0x6F</td>
+      <td>0x6C</td>
+      <td>0x6C</td>
+      <td>0x65</td>
+      <td>0x48</td>
+    </tr>
+  </tbody>
 </table>
 
 `Little-endian` 은 메모리의 낮은 주소에 값의 작은 자리 수 부터 적고,
