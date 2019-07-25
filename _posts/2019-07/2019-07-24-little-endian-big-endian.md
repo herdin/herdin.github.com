@@ -11,13 +11,13 @@ date: 2019-07-23
 `0x12345678` 이란 데이터와 `0x48656C6C6F` (Hello) 이런 데이터를 테이블로 예시를 들어보면..
 
 <style>
-table, td, th {
+/*table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
-}
+}*/
 </style>
 
-<table>
+<table class="pure-table">
   <tr>
     <th>memory address>>></th>
     <th>0x0100</th>

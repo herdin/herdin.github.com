@@ -113,6 +113,30 @@ img {
   max-width: 100%;
 }
 
+//copy from pure css - https://purecss.io/
+.pure-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
+  thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+  }
+  th {
+    padding: 0.5em 1em;
+    border-left: 1px solid #cbcbcb;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    td {
+      background-color: transparent;
+    }
+  }
+}
+
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
   max-width: none;
