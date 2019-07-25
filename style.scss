@@ -125,15 +125,15 @@ img {
     text-align: left;
     vertical-align: bottom;
   }
-  th {
+  th, td {
     padding: 0.5em 1em;
     border-left: 1px solid #cbcbcb;
     font-size: inherit;
     margin: 0;
     overflow: visible;
-    td {
-      background-color: transparent;
-    }
+  }
+  td {
+    background-color: transparent;
   }
 }
 
