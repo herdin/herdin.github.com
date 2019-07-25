@@ -2,6 +2,7 @@
 layout: post
 title: "Little-endian, Big-endian"
 date: 2019-07-23
+tags: binary
 ---
 
 `Little-endian` , `Big-endian` 은 여러 바이트를 메모리에 순차적으로 배치할 때, 어떤 순서로 배치할 지에 대한 `byte order` 를 뜻한다. 여러 바이트를 배치할 때의 순서기 때문에 한바이트 안에서는 의미가 없다. `byte` 나 `char` 같은 `1 byte` 자료형은 상관이 없음. `2 byte` 이상의 `int`, `short`, `float`, `double`, `string` 등이 연관이 생긴다.
