@@ -17,6 +17,8 @@ avatar: /assets/images/epubaal.jpg
 #https://avatars3.githubusercontent.com/u/1744571?s=400&v=4
 
 # Includes an icon in the footer for each username you enter
+# image circle-crop : http://crop-circle.imageonline.co/#circlecropresult
+# base63 encode/decode : http://freeonlinetools24.com/base64-image
 footer-links:
   dribbble:
   email: herdin86@gmail.com

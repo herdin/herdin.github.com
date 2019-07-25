@@ -4,13 +4,25 @@ layout: default
 
 <article class="post">
   <h1>{{ page.title }}</h1>
+  <div>
+    <span class="date">
+      Written on {{ page.date | date: "%Y-%m-%d" }}
+    </span>
+    {% assign tags = post.tags | sort %}
+    <span class="site-tags">
+      {% for tag in tags %}
+      <li id="{{ tag[0] }}" class="site-tag">
+        <a href="#">
+          <!-- tag name -->
+          <span>{{ tag[0] }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </span>
+  </div>
 
   <div class="entry">
     {{ content }}
-  </div>
-
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
 
   {% include disqus.html %}
