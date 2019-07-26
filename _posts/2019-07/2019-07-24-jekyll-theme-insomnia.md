@@ -34,7 +34,7 @@ tags: web githubpage jekyll
 `repository` 최상위 폴더에 `tags.html` 파일을 만든다.
 [최혜선](https://hyesun03.github.io/2016/12/05/jekyllTag/) 님은 `tags/index.html` 로 만드셨다. 이거나 저거나 `https://myGithubID.github.io/tags` 로 연결이 된다.
 
-{% highlight liquid %}
+{% highlight html %}
   {% raw %}
   ---
   layout: default
@@ -126,11 +126,25 @@ tags: web githubpage jekyll
 포스트에 사용할 `layout` 파일에 원하는 위치에 `Tag cloud` 만든 방식으로 `tag` 들을 넣어주면 된다.
 ## 댓글 (Disqus) 추가
 [Disqus](https://disqus.com/) 에 가서 `Site` 하나 만들고 `isntallation` 에서  `Universal Code` 에서 준걸 `layout` 파일에 복붙해주면 되는데, 본인 스타일에 따라서 포스트 별 댓글을 넣고 싶으면 주석에서 시키는대로 하면되고, 홈페이지 도메인을 넣어 버리면 댓글이 어느 포스트에 가도 공유되게 할 수도 있다.
-{% highlight javascript %}
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
+{% highlight html %}
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+		var disqus_config = function () {
+			this.page.url = '{{ site.url }}' + '{{ page.url }}';  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = '{{ page.title }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+    var disqus_shortname = '{{ site.disqus | replace: "'", "\'"}}';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
 {% endhighlight %}
 ## 구글 아날리틱스(Google Analytics) 추가
 위와 비슷함. 아날리틱스 계정 만들고 나오는 `tracking id` 를 아래 `UA-XXXXX-Y` 에다가 대신 넣어주고 `layout` 파일 같은데다가 복붙하면 끝.
@@ -148,9 +162,10 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 {% endhighlight %}
 
-## 메뉴를 설정파일(_config.xml)로 관리하기
+## 메뉴를 설정파일 `_config.xml` 로 관리하기
+
 [최혜선](https://hyesun03.github.io/2016/12/05/jekyllTag/) 님 `Github` 구경하다가 `_config.xml` 에 메뉴 관리를 우아하게 하시는 것 같아서 훔쳐왔다.
-{% highlight xml %}
+{% highlight yaml %}
 ...
 navigation:
   - name: Log
@@ -169,4 +184,7 @@ navigation:
 {% endfor %}
 {% endraw %}
 {% endhighlight %}
+
 ## 네이버 검색엔진 최적화
+
+[네이버 웹마스터도구](https://webmastertool.naver.com/) 에 로그인해서 도메인 등록하고 다운로드한 파일을 루트에 넣어준다. 끝.
