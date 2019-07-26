@@ -7,9 +7,9 @@ layout: null
 	<title>log of epu baal</title>
 	<link href="{{ site.url }}" rel="self"/>
 	<updated>{{ site.time | date_to_xmlschema }}</updated>
-	<id>http://herdin.github.io</id>
+	<id>{{ site.url }}</id>
 	<author>
-		<name>epu baal</name>
+		<name>{{ site.name }}</name>
 		<email>herdin86@gmail.com</email>
 	</author>
 
