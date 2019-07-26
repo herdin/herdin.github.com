@@ -24,9 +24,60 @@ tags: web githubpage jekyll
 처음에는 저 방법을 따라했으나, 해당 포스트에도 말했듯이 저 방법은 새로운 `tag` 가 만들어 질 때마다 `_tags` 폴더 안에 `tag` 의 정보를 가진 파일들을 직접 만들어줘야 한다.
 
 ## Tag Cloud 만들기
-{% highlight javascript %}
+`repository` 최상위 폴더에 `tags.html` 파일을 만든다.
+
+{% highlight html %}
   {% raw %}
-    {% assign tags = site.tags | sort %}
+  ---
+  layout: default
+  permalink: /tags/
+  ---
+  <script src="/assets/js/jquery-3.4.1.min.js"></script>
+
+  {% assign tags = site.tags | sort %}
+  <div class="site-tags">
+    {% for tag in tags %}
+    <li id="{{ tag[0] }}" class="site-tag">
+      <a href="#" style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+        <!-- tag name -->
+        <span>{{ tag[0] }}</span>
+        <!-- tag count -->
+        <span class="count">{{ tag | last | size }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </div>
+
+  <div class="site-tagged-posts">
+    {% for post in site.posts %}
+      <li style="display:none;" class="{{ post.tags | join  " " }}">
+        <span>
+          {{ post.date | date: "%Y-%m-%d" }}
+        </span>
+        »
+        <a href="{{ post.url }}" title="{{ post.title }}">
+          {{ post.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $('.site-tag').click(function(){
+        $('.site-tagged-posts > li').hide();
+        var delay = 100;
+        var tag = $(this).attr('id');
+        var visibility = $($('.' + tag).get(0)).is(':visible');
+        if(visibility) {
+          $('.' + tag).fadeOut(delay);
+        } else {
+          $('.' + tag).fadeIn(delay);
+        }
+      });
+    });
+  </script>
+
   {% endraw %}
 {% endhighlight %}
 ## 포스트에 Tag 노출
