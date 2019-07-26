@@ -132,6 +132,7 @@ tags: web githubpage jekyll
 
 [Disqus](https://disqus.com/) 에 가서 `Site` 하나 만들고 `isntallation` 에서  `Universal Code` 에서 준걸 `layout` 파일에 복붙해주면 되는데, 본인 스타일에 따라서 포스트 별 댓글을 넣고 싶으면 주석에서 시키는대로 하면되고, 홈페이지 도메인을 넣어 버리면 댓글이 어느 포스트에 가도 공유되게 할 수도 있다.
 {% highlight html %}
+{% raw %}
 <div class="comments">
 	<div id="disqus_thread"></div>
 	<script type="text/javascript">
@@ -150,6 +151,7 @@ tags: web githubpage jekyll
 	</script>
 	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+{% endraw %}
 {% endhighlight %}
 
 ## 구글 아날리틱스(Google Analytics) 추가
