@@ -94,7 +94,9 @@ tags: web githubpage jekyll
   {% endraw %}
 {% endhighlight %}
 
-`_sass\_tags.scss` 파일을 만들었다. 특별한건 없고 여기저기에서 `F12` 개발자도구로 까서 보고 훔쳐왔다.
+`_sass\_tags.scss` 파일을 만들었다.
+
+특별한건 없고 여기저기에서 `F12` 개발자도구로 까서 보고 훔쳐왔다.
 
 {% highlight scss %}
 .site-tags {
@@ -123,8 +125,11 @@ tags: web githubpage jekyll
 {% endhighlight %}
 
 ## 포스트에 Tag 노출
+
 포스트에 사용할 `layout` 파일에 원하는 위치에 `Tag cloud` 만든 방식으로 `tag` 들을 넣어주면 된다.
+
 ## 댓글 (Disqus) 추가
+
 [Disqus](https://disqus.com/) 에 가서 `Site` 하나 만들고 `isntallation` 에서  `Universal Code` 에서 준걸 `layout` 파일에 복붙해주면 되는데, 본인 스타일에 따라서 포스트 별 댓글을 넣고 싶으면 주석에서 시키는대로 하면되고, 홈페이지 도메인을 넣어 버리면 댓글이 어느 포스트에 가도 공유되게 할 수도 있다.
 {% highlight html %}
 <div class="comments">
@@ -146,7 +151,9 @@ tags: web githubpage jekyll
 	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 {% endhighlight %}
+
 ## 구글 아날리틱스(Google Analytics) 추가
+
 위와 비슷함. 아날리틱스 계정 만들고 나오는 `tracking id` 를 아래 `UA-XXXXX-Y` 에다가 대신 넣어주고 `layout` 파일 같은데다가 복붙하면 끝.
 {% highlight javascript %}
 <!-- Google Analytics -->
