@@ -91,13 +91,12 @@ tags: web githubpage jekyll
       });
     });
   </script>
-
   {% endraw %}
 {% endhighlight %}
 
 `_sass\_tags.scss` 파일을 만들었다. 특별한건 없고 여기저기에서 `F12` 개발자도구로 까서 보고 훔쳐왔다.
 
-{% hightlight scss %}
+{% highlight scss %}
 .site-tags {
   li {
     display: inline;
