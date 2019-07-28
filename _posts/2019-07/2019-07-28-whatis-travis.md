@@ -2,7 +2,7 @@
 layout: post
 title: "Travis 가 뭐지"
 date: 2019-07-28
-tags:
+tags: ci travis opensource
 ---
 - [공식페이지](https://travis-ci.com/)
 - [공식문서](https://docs.travis-ci.com/user/tutorial/)
