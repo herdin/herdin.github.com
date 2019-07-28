@@ -2,18 +2,12 @@
 layout: post
 title: "IntelliJ tomcat console decode"
 date: 2019-07-28 19:17:00
-tags: ide intelli-j decode
+tags: ide intelli-j decode jekyll
 ---
 그냥 생각없이 tomcat 돌리면 콘솔로그가 깨져서 나온다.
 idea64.exe.vmoptions 파일 마지막에 -Dfile.encoding=UTF-8 를 추가하고
-intelliJ run configuration 에도  같은걸 넣어주자. 그러면..
+intelliJ run configuration 에도  같은걸 넣어주자.
 
-{% highlight %}
-30-Jun-2019 14:10:47.596 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전:        Apache Tomcat/9.0.14
-30-Jun-2019 14:10:47.599 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:          Dec 6 2018 21:13:53 UTC
-30-Jun-2019 14:10:47.599 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:         9.0.14.0
-30-Jun-2019 14:10:47.599 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
-30-Jun-2019 14:10:47.599 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:            10.0
-{% endhighlight %}
-
-암이 나았습니다.
+> jekyll 는 깨진 텍스트가 들어가면 그냥 오류가 나나보다...
+> 로그를 올릴 수가 없네..
+> 그리고 오류가 나면 디버깅할 수 없는게 큰 단점 같다..
