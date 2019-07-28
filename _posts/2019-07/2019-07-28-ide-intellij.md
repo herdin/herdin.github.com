@@ -7,11 +7,13 @@ tags: ide intelli-j decode
 그냥 생각없이 tomcat 돌리면 아래처럼 꼹쟆이 난다.
 
 {% highlight %}
+{% raw %}
 30-Jun-2019 13:41:25.517 �젙蹂� [main] org.apache.catalina.startup.VersionLoggerListener.log �꽌踰� 踰꾩쟾:        Apache Tomcat/9.0.14
 30-Jun-2019 13:41:25.522 �젙蹂� [main] org.apache.catalina.startup.VersionLoggerListener.log Server 鍮뚮뱶 �떆媛�:          Dec 6 2018 21:13:53 UTC
 30-Jun-2019 13:41:25.522 �젙蹂� [main] org.apache.catalina.startup.VersionLoggerListener.log Server 踰꾩쟾 踰덊샇:         9.0.14.0
 30-Jun-2019 13:41:25.522 �젙蹂� [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
 30-Jun-2019 13:41:25.522 �젙蹂� [main] org.apache.catalina.startup.VersionLoggerListener.log �슫�쁺泥댁젣 踰꾩쟾:            10.0
+{% endraw %}
 {% endhighlight %}
 
 idea64.exe.vmoptions 파일 마지막에 -Dfile.encoding=UTF-8 를 추가하고
