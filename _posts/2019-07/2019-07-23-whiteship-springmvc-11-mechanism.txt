@@ -7,7 +7,7 @@ tags: web spring spring-boot writing
 jsp 로 시작해서 Servlet, DispatcherServlet 그리고 마지막엔
 Spring Boot 로 구동하는 것을 보고 어떻게 구동되는지 설명하는 강좌.
 
-기억나는 방법들은 
+기억나는 방법들은
 1. `javax.servlet.http.HttpServlet` 상속받아 `web.xml` 에 등록하는 방법.
 2. `org.springframework.web.servlet.DispatcherServlet` 을 `web.xml` 에 등록하고 `Handler` 를 등록하는 방법.
   - `DispatcherServlet` 은 특정 타입에 해당하는 빈을 찾는다.
