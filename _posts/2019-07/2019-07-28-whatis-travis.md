@@ -15,3 +15,8 @@ tags: ci travis opensource
 > 2018년 이후로는 .com 만 사용한다더라
 
 [.com 과 .org 의 차이점](https://devops.stackexchange.com/questions/1201/whats-the-difference-between-travis-ci-org-and-travis-ci-com)
+
+그냥 오픈소스 자동 빌드툴로만 사용하고있어서 아직 딱히 적을 것도 없다.
+`.travis.yml` 설정파일을 `repository` 최상단에 추가하고 [공식페이지](https://travis-ci.com/) 에 가서 연결해주는 것만 하면 `Github` 에 `push` 할 때마다 설정에 적힌대로 `build` 를 한다.
+
+배포도 할 수 있는 것 같은데 딱히 아직 배포할 일이 없어서..

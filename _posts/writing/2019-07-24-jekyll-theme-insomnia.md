@@ -2,7 +2,7 @@
 layout: post
 title: "Github page + Jekyll 사용하기."
 date: 2019-07-24
-tags: web githubpage jekyll
+tags: web githubpage jekyll writing
 ---
 - Jekyll theme candidates
   - [사용중 - 튜토리얼에서 알게된 나우마스터](https://github.com/barryclark/jekyll-now)

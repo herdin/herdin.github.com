@@ -2,7 +2,7 @@
 layout: post
 title: "Whiteship Spring MVC 10 Component"
 date: 2019-07-23
-tags: web spring
+tags: web spring writing
 ---
 # Spring with Whiteship
 `gitbook` 이랑 `gitpage` 랑 뭘 해야될지 모르겠다.
