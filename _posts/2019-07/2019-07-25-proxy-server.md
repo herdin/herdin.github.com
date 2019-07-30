@@ -5,7 +5,6 @@ date: 2019-07-25
 tags: web proxy-server
 ---
 # 포워드 프록시와 리버스 프록시의 차이
-- [보고 배운 링크](https://juyoung-1008.tistory.com/10?category=682608)
 
 보통 프록시 서버라고 하면 포워드 프록시를 말하는 것이다.
 사용자가 www.something.com 요청을 하면, 프록시 서버를 거쳐서 대상 서버로 가게되는 것이 포워드 프록시 이다.
@@ -19,3 +18,5 @@ tags: web proxy-server
 요청하는 주소가 실제 응답을 처리하는 서버일 경우에는 포워드 프록시
 요청하는 주소가 실제 응답을 처리하는 서버가 아닐 경우에는 리버스 프록시
 이렇게 이해를 했다.
+
+- [참고자료](https://juyoung-1008.tistory.com/10?category=682608)

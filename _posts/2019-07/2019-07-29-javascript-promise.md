@@ -4,8 +4,6 @@ title: "Promise 가 뭐지"
 date: 2019-07-29
 tags: javascript promise
 ---
-[일단 보고 배운 링크](https://joshua1988.github.io/web-development/javascript/promise-for-beginners/)
-
 `ECMA Script 6` 부터 `native Promise` 를 지원한다.
 
 `callback hell` 을 타파하기 위한 패턴, 클래스로 우아하고 가독성 좋은 코드를 만들도록 한다.
@@ -84,3 +82,5 @@ for(i=0; i<10; i++) {
   })
 }
 {% endhighlight %}
+
+- [참고자료1](https://joshua1988.github.io/web-development/javascript/promise-for-beginners/)
