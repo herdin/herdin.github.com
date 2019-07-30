@@ -209,6 +209,7 @@ navigation:
 
 {% highlight liquid %}
 {% raw %}
+
 ---
 layout: null
 ---
@@ -217,12 +218,13 @@ layout: null
 	{% for post in site.posts %}
 		<url>
        <loc>{{ site.url }}{{ post.url }}</loc>
-       <lastmod>{{ post.date }}</lastmod>
+       <lastmod>{{ post.date | date: "%Y-%m-%d" }}</lastmod>
        <changefreq>monthly</changefreq>
        <priority>0.8</priority>
     </url>
 	{% endfor %}
 </urlset>
+
 
 {% endraw %}
 {% endhighlight %}
