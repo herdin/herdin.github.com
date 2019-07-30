@@ -18,14 +18,15 @@ permalink: /tags/
 </div>
 
 <div class="site-tagged-posts">
-  {% assign prefix = " site-tag-" %}
+  {% assign prefix = "site-tag-" %}
   {% for post in site.posts %}
 
-    {% capture classTags %}
-    this-is-test-tag
-    {% endcapture %}
+    {% assign classValue = "" %}
+    {% for postTag in post.tags %}
+      {% assign classValue = classValue | append: " " | append: prefix | append: postTag %}
+    {% endfor %}
 
-    <li style="display:none;" class="{{ classTags }}">
+    <li style="display:none;" class="{{ classValue }}">
       <span>
         {{ post.date | date: "%Y-%m-%d" }}
       </span>
