@@ -22,9 +22,7 @@ permalink: /tags/
   {% for post in site.posts %}
 
     {% capture classTags %}
-    {% for tag in post.tags | sort %}
-      {% tag | prepend: prefix %}
-    {% endfor %}
+    this-is-test-tag
     {% endcapture %}
 
     <li style="display:none;" class="{{ classTags }}">
