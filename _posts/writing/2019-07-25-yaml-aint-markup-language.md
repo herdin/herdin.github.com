@@ -4,7 +4,6 @@ title: "YAML"
 date: 2019-07-25
 tags: yaml file-format writing
 ---
-# YAML
 
 - 공백문자를 이용하여 구조체를 구분한다. 하이픈은 사용하지 않는다.
 - 리스트는 하이픈 `-`  또는 괄호안에 배열형태로 적는다. `[a, b, c]`
