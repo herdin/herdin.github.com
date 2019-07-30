@@ -18,7 +18,7 @@ permalink: /tags/
 </div>
 
 <div class="site-tagged-posts">
-  {% assign prefix = "site-tag-" %}
+  {% assign prefix = "post-tag-" %}
   {% for post in site.posts %}
 
     {% assign classValue = "" %}
@@ -45,7 +45,7 @@ permalink: /tags/
       var prefix = '{{ prefix }}';
       var delay = 100;
       var tag = $(this).attr('id');
-      $('.' + prefix.trim() + tag).fadeIn(delay);
+      $('.' + prefix + tag).fadeIn(delay);
 
     });
   });
