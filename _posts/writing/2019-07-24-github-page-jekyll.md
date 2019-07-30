@@ -199,3 +199,34 @@ navigation:
 [네이버 웹마스터도구](https://webmastertool.naver.com/) 에 로그인해서 도메인 등록하고 다운로드한 파일을 루트에 넣어준다. 끝.
 
 > 이렇게 하니까 마음에 쏙 들진 않지만 좀 쓸만해 진 것 같다.
+
+## 구글 검색엔진 최적화
+
+구글은 검색을 위한 크롤링을 `sitemap.xml` 을 통해서 한다고 한다.
+아마 루트에 두면 알아서 크롤링해가는 것 같은데, `sitemap.xml` 의 [형식](https://www.sitemaps.org/protocol.html) 은 이렇다.
+
+참고하여 `sitemap.xml` 을 만들어 보았다.
+
+{% highlight liquid %}
+{% raw %}
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	{% for post in site.posts %}
+		<url>
+       <loc>{{ site.url }}{{ post.url }}</loc>
+       <lastmod>{{ post.date }}</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.8</priority>
+    </url>
+	{% endfor %}
+</urlset>
+
+{% endraw %}
+{% endhighlight %}
+
+이렇게하고 네이버처럼 [구글 서치콘솔](https://search.google.com/search-console/about?hl=ko) 에 가서 잘 등록되었는지 확인하고 잘안되었으면 `sitemap.xml` 위치를 제출하면된다.
+
+> 되는..건가..?
