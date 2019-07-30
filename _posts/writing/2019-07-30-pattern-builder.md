@@ -70,11 +70,11 @@ public class SchemaObject003001 {
 {% highlight java %}
 
 SchemaObject003001 so = new SchemaObject003001
-						.Builder()
-						.innerId("inner-id1")
-						.innerName("inner-name1")
-						.innerAlias("inner-alias1")
-						.build();
+  .Builder()
+  .innerId("inner-id1")
+  .innerName("inner-name1")
+  .innerAlias("inner-alias1")
+  .build();
 
 {% endhighlight %}
 - [참고자료1](https://johngrib.github.io/wiki/builder-pattern/)
