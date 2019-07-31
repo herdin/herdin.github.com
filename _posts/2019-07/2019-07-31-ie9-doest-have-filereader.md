@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "javascript 에서 local file 읽기"
-date: YYYY-MM-DD
+date: 2019-07-31
 tags: javascript api
 ---
 
