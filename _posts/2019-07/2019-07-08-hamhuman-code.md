@@ -20,7 +20,7 @@ public static void main(String[] args) {
 ```
 
 belows are highlight java
-
+{% highlight %}
 {% raw %}
 {% highlight java linenos %}
 public static void main(String[] args) {
@@ -28,7 +28,7 @@ public static void main(String[] args) {
 }
 {% endhighlight %}
 {% endraw %}
-
+{% endhighlight %}
 
 {% highlight java linenos %}
 public static void main(String[] args) {
