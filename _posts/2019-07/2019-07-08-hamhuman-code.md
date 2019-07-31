@@ -5,7 +5,6 @@ date: 2019-07-08
 tags: hamhuman
 ---
 belows are \`\`\`java
-{% highlight %}
 {% raw %}
 ```java
 public static void main(String[] args) {
@@ -13,7 +12,6 @@ public static void main(String[] args) {
 }
 ```
 {% endraw %}
-{% highlight %}
 
 ```java
 public static void main(String[] args) {
@@ -22,7 +20,7 @@ public static void main(String[] args) {
 ```
 
 belows are highlight java
-{% highlight %}
+
 {% raw %}
 {% highlight java linenos %}
 public static void main(String[] args) {
@@ -30,7 +28,7 @@ public static void main(String[] args) {
 }
 {% endhighlight %}
 {% endraw %}
-{% endhighlight %}
+
 
 {% highlight java linenos %}
 public static void main(String[] args) {
