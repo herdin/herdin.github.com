@@ -101,9 +101,9 @@ kramdown:
   # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
   # https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
   syntax_highlighter: rouge
-  syntax_highlighter_opts:
+  # syntax_highlighter_opts:
     # Use existing pygments syntax highlighting css
-    css_class: 'highlight'
+    # css_class: 'highlight'
 
 # Set the Sass partials directory, as we're using @imports
 sass:
