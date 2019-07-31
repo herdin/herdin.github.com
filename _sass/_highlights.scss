@@ -7,7 +7,7 @@ figure.highlight {
   -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
   box-shadow: 3px 3px rgba(0,0,0,0.1);
   margin: 20px 0 20px 0;
-  overflow: scroll;
+  overflow: auto;
 }
 
 code {
@@ -19,6 +19,7 @@ code {
   font-size: 85%;
   background-color: rgba(27, 31, 35, 0.05);
   border-radius: 3px;
+  overflow: auto;
 }
 .highlight .c { color: #586E75 } /* Comment */
 .highlight .err { color: #93A1A1 } /* Error */
