@@ -19,16 +19,7 @@ public static void main(String[] args) {
 }
 ```
 
-belows are highlight java
-{% highlight %}
-{% raw %}
-{% highlight java linenos %}
-public static void main(String[] args) {
-    System.out.println("Hello, reckt github pages");
-}
-{% endhighlight %}
-{% endraw %}
-{% endhighlight %}
+belows are use {% raw %} {% highlight %} {% endraw %} java
 
 {% highlight java linenos %}
 public static void main(String[] args) {
