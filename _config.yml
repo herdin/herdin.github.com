@@ -95,15 +95,18 @@ permalink: /:title/
 version: v1.2.0
 
 # Jekyll 3 now only supports Kramdown for Markdown
-kramdown:
+#kramdown:
   # Use GitHub flavored markdown, including triple backtick fenced code blocks
-  input: GFM
+  #input: GFM
   # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
   # https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
-  syntax_highlighter: rouge
-  # syntax_highlighter_opts:
+  #syntax_highlighter: rouge
+  #syntax_highlighter_opts:
     # Use existing pygments syntax highlighting css
-    # css_class: 'highlight'
+    #css_class: 'highlight'
+
+markdown: kramdown
+highlighter: rouge
 
 # Set the Sass partials directory, as we're using @imports
 sass:
