@@ -95,6 +95,7 @@ permalink: /:title/
 version: v1.2.0
 
 # Jekyll 3 now only supports Kramdown for Markdown
+# 기본설정인데 잘모르겠어서 아래로 대체
 #kramdown:
   # Use GitHub flavored markdown, including triple backtick fenced code blocks
   #input: GFM
