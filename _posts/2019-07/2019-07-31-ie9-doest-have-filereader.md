@@ -2,7 +2,7 @@
 layout: post
 title: "javascript 에서 local file 읽기"
 date: 2019-07-31
-tags: javascript api shovel-knight enctype
+tags: web javascript api shovel-knight enctype
 ---
 
 다른 파트에서 문의가 들어왔다.
