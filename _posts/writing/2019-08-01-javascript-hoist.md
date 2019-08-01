@@ -24,3 +24,12 @@ function whatIsHoist() {
   console.log(x); //100
 }
 ```
+
+> `ECMAScript6` 에서 포함된 `let` 키워드로 만든 변수는 `hoist` 을 불허한다고 한다.
+
+```javascript
+console.log(a);
+var a;
+console.log(b); //VM383:3 Uncaught ReferenceError: Cannot access 'b' before initialization
+let b;
+```

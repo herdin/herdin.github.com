@@ -83,4 +83,7 @@ for(i=0; i<10; i++) {
 }
 {% endhighlight %}
 
+> `Promise` 는 `native javascript` 같은데..
+> `jQuery` 에는 비슷한 역할을 하는 `Deffered` 객체가 있다.
+
 - [참고자료1](https://joshua1988.github.io/web-development/javascript/promise-for-beginners/)
