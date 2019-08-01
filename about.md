@@ -10,18 +10,22 @@ This Page is compiled at {{ site.time }}.
 
 ``` shell
 * ...
-* 2016.07.25. TMONEY 2nd. SM.
-* 2016.07.10.
-* 2015.07.13. Korea Customs Service. SI.
-* 2015.06.30.
-* 2014.01.01. AFC Solution development.
-* 2014.12.31.
-* 2013.11.07. TMONEY 2nd. SI.
-* 2013.10.31.
-* 2012.01.01. MILES firmware development. SI.
-* 2012.02.22. graduate Hongik University, Bachelor of Computer Engineering.
+* 2016.07.25. --ENTER TMONEY 2nd. SM.
+|
+* 2016.07.10. --LEAVE Korea Customs Service. SI.
+* 2015.07.13. --ENTER Korea Customs Service. SI.
+|
+* 2015.06.30. --LEAVE AFC Solution development.
+* 2014.01.01. --ENTER AFC Solution development.
+|
+* 2014.12.31. --LEAVE TMONEY 2nd. SI.
+* 2013.11.07. --ENTER TMONEY 2nd. SI.
+|
+* 2013.10.31. --LEAVE MILES firmware development. SI.
+* 2012.02.22. --GRADUATE Hongik University, Bachelor of Computer Engineering.
 |\
-| * 2012.01.01. join `LG CNS`.
+| * 2012.01.01. --ENTER MILES firmware development. SI.
+| * 2012.01.01. --JOIN LG CNS.
 |/
-* 2005.03.01. enter Hongik University
+* 2005.03.01. --ENTER Hongik University
 ```
