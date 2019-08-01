@@ -4,7 +4,18 @@ title: About
 permalink: /about/
 ---
 
-This Page is compiled at {{ site.time }}.
+``` javascript
+class Page {
+  constructor() {
+    this.compiledTime = "{{ site.time }}";
+    this.getCompiledTime = function() {
+      return this.compiledTime;
+    }
+  }
+}
+
+console.log(new Page().getCompileTime());
+```
 
 ### History
 
