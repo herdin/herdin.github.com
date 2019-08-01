@@ -47,10 +47,16 @@ permalink: /tags/
       var tag = $(this).attr('id');
       $('.' + prefix + tag).fadeIn(delay);
     });
-    
+
     var paramId = window.location.hash.replace('#', '');
     if(paramId != null && paramId.length > 0) {
       $('#' + paramId).click();
     }
   });
 </script>
+
+<div class="test">
+  {{% for nav in site.navigation %}}
+    <li><span>{{ nav.name }}</span><span>{{ nav.url }}</span> </li>
+  {{% endfor %}}
+<div>
