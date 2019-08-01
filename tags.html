@@ -40,6 +40,10 @@ permalink: /tags/
 
 <script>
   $(document).ready(function(){
+    var paramId = window.location.hash.replace('#', '');
+    if(paramId != null && paramId.length > 0) {
+      $('#' + paramId).click();
+    }
     $('.site-tag').click(function(){
       $('.site-tagged-posts > li').hide();
       var prefix = '{{ prefix }}';
