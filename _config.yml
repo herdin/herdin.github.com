@@ -16,6 +16,19 @@ avatar: /assets/images/epubaal.jpg
 #github
 #https://avatars3.githubusercontent.com/u/1744571?s=400&v=4
 
+#
+# !! cf home page !!
+#
+# https://shopify.github.io/liquid/
+# https://jekyllrb-ko.github.io/
+navigation:
+  - name: Log
+    url: /
+  - name: About
+    url: /about
+  - name: Tags
+    url: /tags
+    
 # Includes an icon in the footer for each username you enter
 # image circle-crop : http://crop-circle.imageonline.co/#circlecropresult
 # base63 encode/decode : http://freeonlinetools24.com/base64-image
@@ -52,23 +65,6 @@ url: https://herdin.github.io
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
 baseurl: ""
-
-#
-# !! herdin add configuration below !!
-#
-
-#
-# !! cf home page !!
-#
-# https://shopify.github.io/liquid/
-# https://jekyllrb-ko.github.io/
-navigation:
-  - name: Log
-    url: /
-  - name: About
-    url: /about
-  - name: Tags
-    url: /tags
 
 # Collect file list in _tags directory to service /tags/...
 # collections:
