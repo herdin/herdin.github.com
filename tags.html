@@ -40,17 +40,17 @@ permalink: /tags/
 
 <script>
   $(document).ready(function(){
-    var paramId = window.location.hash.replace('#', '');
-    if(paramId != null && paramId.length > 0) {
-      $('#' + paramId).click();
-    }
     $('.site-tag').click(function(){
       $('.site-tagged-posts > li').hide();
       var prefix = '{{ prefix }}';
       var delay = 100;
       var tag = $(this).attr('id');
       $('.' + prefix + tag).fadeIn(delay);
-
     });
+    
+    var paramId = window.location.hash.replace('#', '');
+    if(paramId != null && paramId.length > 0) {
+      $('#' + paramId).click();
+    }
   });
 </script>
