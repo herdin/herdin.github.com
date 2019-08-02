@@ -7,7 +7,7 @@ tags:
 
 > `VSCode` 는 쓰다가 관둬서 정보가 별로 없다.
 
-### CODE REL.
+### CODE DEVELOP REL.
 > intelliJ - extends selection
 > - `Ctrl+W` 인데, 다른 툴에서 해당 단축키는 창닫기로 쓰고 있기 때문에 일관성을 위해 `Alt+W` 로 변경했다.
 
@@ -23,18 +23,11 @@ tags:
 </thead>
 <tbody>
   <tr>
-    <td>auto import</td>
-    <td>Ctrl+Shift+O</td>
-    <td>Ctrl+Alt+O</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>extends selection</td>
-    <td></td>
-    <td>Ctrl+W >> Alt+W</td>
-    <td></td>
-    <td></td>
+    <td>delete line</td>
+    <td>Ctrl+D</td>
+    <td>Ctrl+Y</td>
+    <td>Ctr+Shift+K</td>
+    <td>Ctrl+D</td>
   </tr>
   <tr>
     <td>jump to declaration</td>
@@ -58,11 +51,39 @@ tags:
     <td></td>
   </tr>
   <tr>
-    <td>delete line</td>
-    <td>Ctrl+D</td>
-    <td>Ctrl+Y</td>
-    <td>Ctr+Shift+K</td>
-    <td>Ctrl+D</td>
+    <td>next method</td>
+    <td>Ctrl+Shift+Up</td>
+    <td>Alt+Up</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>previous method</td>
+    <td>Ctrl+Shift+Down</td>
+    <td>Alt+Down</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>auto correction</td>
+    <td>Ctrl+Shift</td>
+    <td>Alt+Enter</td>
+    <td></td>
+    <td></td>
+  </tr>  
+  <tr>
+    <td>auto import</td>
+    <td>Ctrl+Shift+O</td>
+    <td>Ctrl+Alt+O</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>extends selection</td>
+    <td></td>
+    <td>Ctrl+W >> Alt+W</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>next highlighted error</td>
@@ -75,20 +96,6 @@ tags:
     <td>previous highlighted error</td>
     <td>Ctrl+, (comma)</td>
     <td>Shift+F2</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>next method</td>
-    <td>Ctrl+Shift+Up</td>
-    <td>Alt+Up</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>previous method</td>
-    <td>Ctrl+Shift+Down</td>
-    <td>Alt+Down</td>
     <td></td>
     <td></td>
   </tr>
