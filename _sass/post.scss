@@ -1,0 +1,43 @@
+.posts > .post {
+  padding-bottom: 2em;
+  border-bottom: 1px solid $lightGray;
+}
+
+.posts > .post:last-child {
+  padding-bottom: 1em;
+  border-bottom: none;
+}
+
+.post {
+  .posthead {
+    border-bottom: 1px solid #eee;
+  }
+  blockquote {
+    margin: 0px 0px 24px;
+    border-left: 4px solid $gitbookLightGray;
+    padding: 0px 0px 0px 12px;
+    color: $gitbookGray;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .comments {
+    margin-top: 10px;
+  }
+
+  .read-more {
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+  a[href*="//"]:after {
+    content: "";
+    background-image: url(/assets/images/external_link.svg);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: .3em;
+    background-size: 14px;
+    margin-right: 5px;
+    padding-right: 18px;
+  }
+}
