@@ -14,7 +14,7 @@ class Page {
   }
 }
 
-console.log(new Page().getCompileTime());
+console.log(new Page().getCompiledTime());
 ```
 
 ### History
