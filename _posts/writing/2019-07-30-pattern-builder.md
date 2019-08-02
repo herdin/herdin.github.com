@@ -2,7 +2,7 @@
 layout: post
 title: "Builder Pattern"
 date: 2019-07-30
-tags: design-pattern
+tags: design-pattern writing
 ---
 
 - 객체를 생성 시, 초기화 할 변수가 많으면..
