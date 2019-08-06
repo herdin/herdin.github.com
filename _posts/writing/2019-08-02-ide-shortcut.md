@@ -8,8 +8,11 @@ tags: ide shortcut eclipse intellij atom vscode writing
 > `VSCode` 는 쓰다가 관둬서 정보가 별로 없다.
 
 ### CODE DEVELOP REL.
-> intelliJ - extends selection
-> - `Ctrl+W` 인데, 다른 툴에서 해당 단축키는 창닫기로 쓰고 있기 때문에 일관성을 위해 `Alt+W` 로 변경했다.
+> intelliJ
+> - extends selection
+>   - `Ctrl+W` 인데, 다른 툴에서 해당 단축키는 창닫기로 쓰고 있기 때문에 일관성을 위해 `Alt+W` 로 변경했다.
+> - delete line
+>   - `Ctrl+Y` 인데, 마찬가지 이유로 `Ctrl+D` 로 변경하고, `Ctrl+D` 의 line copy 는 그냥 안쓰기로했다.
 
 <table class="pure-table">
 <thead>
@@ -25,7 +28,7 @@ tags: ide shortcut eclipse intellij atom vscode writing
   <tr>
     <td>delete line</td>
     <td>Ctrl+D</td>
-    <td>Ctrl+Y</td>
+    <td>Ctrl+Y >> Ctrl+D</td>
     <td>Ctr+Shift+K</td>
     <td>Ctrl+D</td>
   </tr>
