@@ -7,6 +7,7 @@ tags: design-pattern writing
 Proxy 대상이 되는 class 를 그대로 둔 채로 dynamic 하게 Proxy 가 적용된 instance 를 받아서 사용하는 방식. Java Reflection 을 사용한다.  
 > `Java Relection` 이란, 구체적인 class type 을 모르더라도 해당 class 의 metohd/type/variable 등에 접근할 수 있게 해주는 api.  
 > ex) 구체적인 class type 을 모르는데 접근하는 경우
+
 ```java
 Object obj = new Event();
 obj.getId(); // compile error
@@ -17,6 +18,7 @@ obj.getId(); // compile error
 
 
 > 프록시 타겟 인터페이스
+
 ```java
 package com.harm.unit.proxy;
 
@@ -26,6 +28,7 @@ public interface ProxyTarget {
 ```
 
 > 실제 프록시의 타겟이 될 구현체
+
 ```java
 package com.harm.unit.proxy;
 
@@ -52,6 +55,7 @@ public class ProxyTargetImpl implements ProxyTarget {
 ```
 
 > 실제 프록시
+
 ```java
 package com.harm.unit.proxy;
 
@@ -86,6 +90,7 @@ public class LoggingHandler implements InvocationHandler {
 ```
 
 > 메인에서 사용하는 방법
+
 ```java
 LoggingHandler lh = new LoggingHandler(new ProxyTargetImpl());
 ProxyTarget pt = (ProxyTarget) Proxy.newProxyInstance(lh.getClass().getClassLoader(), new Class[] { ProxyTarget.class}, lh);
