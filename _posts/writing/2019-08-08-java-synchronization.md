@@ -2,7 +2,7 @@
 layout: post
 title: "java Synchronization"
 date: 2019-08-08
-tags: java synchronization writing
+tags: java writing
 ---
 
 ### mutual exclusion (상호배제)
