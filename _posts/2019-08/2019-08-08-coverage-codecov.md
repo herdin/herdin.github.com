@@ -87,3 +87,71 @@ Invoke-RestMethod : 요청이 중단되었습니다. SSL/TLS 보안 채널을 �
 > Powershell 의 TLS 버전과 서버의 TLS 버전이 다른다는데 TLS 가 뭔지는.. [따로 공부하도록 하자](https://soul0.tistory.com/510)
 
 아무튼 위의 설정파일 양식설정을 이리저리 만지다보면 아래와 같은 설정으로 조정할 수 있다.
+
+```yaml
+coverage:
+  notify:
+    slack:
+      default:
+        url: "https://hooks.slack.com/your/webhook/url"
+        threshold: 1%
+        only_pulls: false
+        branches: master
+        flags: null
+        paths: null
+```
+
+위의 설정파일은 아래와 같은 성공 메세지를 주지만..
+
+```shell
+Invoke-RestMethod -Uri https://codecov.io/validate -Body (G
+et-Content -Raw -LiteralPath .\.codecov.yml) -Method post
+Valid!
+
+{
+  "coverage": {
+    "notify": {
+      "slack": {
+        "default": {
+          "paths": null,
+          "branches": [
+            "^master$"
+          ],
+          "url": "https://hooks.slack.com/your/webhook/url",
+          "only_pulls": false,
+          "threshold": 1.0,
+          "flags": null
+        }
+      }
+    }
+  }
+}
+```
+
+문제는 `Codecov` 가 웹훅메세지를 안쏜다....................................................  
+내심 별 문제가 아니길 빈다.  
+
+`Codecov` 에 메일로 물어봤더니 오픈소스는 포럼에다물어보라길래  
+포럼을 뒤적거렸더니 누군가 나와같은 바보짓을 하고있었고  
+답변은 threshold 보다 코드커버리지가 변동이 없어서 그렇다라는것을 보고  
+물론 물어본자식은 0.0으로 해도 안되고 없애도 안된다고 징징대긴 했다만..  
+테스트케이스를 추가해서 코드커버리지를 늘렸더니
+
+![yes](/assets/images/posts/2019-08-08-coverage-codecov.PNG)
+
+> `threshold` 를 없애면 변동이 없어도 알람이 온다.
+
+### token 이 들어가있는 webhook url 를 그냥 사용하지 말자
+
+`Codecov` 의 repository 의 setting 의 yaml 쪽 메뉴를 보면 `Secret string` 을 생성하는 기능이 있다.  
+
+```shell
+this_is_secret!
+```
+위의 데이터를 해당 기능으로 암호화하면
+
+``` shell
+secret:7OiGq3efZNP1c75xP85gj7twlp8xTnbhmB0TgQ+3EGgyulX1Q5OST73yMET+jsom8j8SSUVN6bEB4c+5UtGRQQ==
+```
+
+위와 같은 텍스트를 주는데 이걸 `.codecov.yml` 파일에서 사용하면 된다.
