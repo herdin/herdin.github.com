@@ -2,7 +2,7 @@
 layout: post
 title: "GCP tomcat to AWS rds"
 date: 2019-08-09
-tags: cloud shovel-knight
+tags: cloud gcp aws shovel-knight
 ---
 
 ``` shell
