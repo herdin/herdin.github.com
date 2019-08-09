@@ -11,17 +11,21 @@ tags: web githubpage jekyll
 근데 `pygments` 는 업데이트가 된지 엄청 오래된 놈이고 업데이트가 되더라도 그걸 `Github` 에서 받아줄지도 모른다고 한다.  
 
 `pygments` 는 이런 문법을 사용한다.
+```
 {% raw %}
 {% highlight javascript %}
 console.log('hello?');
 {% endhighlight %}
 {% endraw %}
+```
 
 `jekyll` 에서 사용할 수 있는 다른 선택지는 `rouge` 인데
 
+```
 \`\`\`javascript
 console.log('hello?');
 \`\`\`
+```
 
 요렇게 쓰면 되나보다..
 
