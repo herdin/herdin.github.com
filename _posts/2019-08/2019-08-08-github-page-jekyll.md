@@ -22,9 +22,11 @@ console.log('hello?');
 `jekyll` 에서 사용할 수 있는 다른 선택지는 `rouge` 인데
 
 ```
-\`\`\`javascript
+{% raw %}
+``` javascript
 console.log('hello?');
-\`\`\`
+```
+{% endraw %}
 ```
 
 요렇게 쓰면 되나보다..
