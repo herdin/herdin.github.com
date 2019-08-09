@@ -46,6 +46,7 @@ grant codeBase "jar:file:${catalina.base}/webapps/SimpleSpring/WEB-INF/lib/maria
      permission java.net.SocketPermission "{aws_mariadb_endpoint}:{port}", "connect";
 };
 #but fail..
+
 ```
 
 > 생각 없이 yum install tomcat 해서 깔린 tomcat 을 사용하니까 자꾸  
