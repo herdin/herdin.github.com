@@ -2,7 +2,7 @@
 layout: post
 title: "Alpine linux commands"
 date: 2019-08-01
-tags: linux alpine writing
+tags: linux writing
 ---
 
 `Docker Base image` 로 사용되는 작은 리눅스다.  

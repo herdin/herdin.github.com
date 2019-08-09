@@ -2,7 +2,7 @@
 layout: post
 title: "IntelliJ 가 좋은 이유"
 date: 2019-08-02
-tags: ide intelliJ writing
+tags: ide writing
 ---
 
 `IntelliJ` 가 좋다고 다들 칭찬만하고 뭐가 좋은지 안알려줘서 약간 맥 빠는 것 처럼 갬성 드립치는게 아닌가 싶어서 근거 없는 약간의 반감을 갖고 있었다.

@@ -2,7 +2,7 @@
 layout: post
 title: "Eclipse intelliJ Atom 단축키"
 date: 2019-08-02
-tags: ide shortcut eclipse intellij atom vscode writing
+tags: ide writing
 ---
 
 > `VSCode` 는 쓰다가 관둬서 정보가 별로 없다.
