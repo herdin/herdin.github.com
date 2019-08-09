@@ -5,7 +5,8 @@ permalink: /tags/
 <script src="/assets/js/jquery-3.4.1.min.js"></script>
 
 <div class="site-tags">
-  {% for tag in (site.tags | sort:0) %}
+  {% assign sorted_tags = (site.tags | sort:0) %}
+  {% for tag in sorted_tags %}
   <li id="{{ tag[0] }}" class="site-tag">
     <a href="#" style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
       <!-- tag name -->
