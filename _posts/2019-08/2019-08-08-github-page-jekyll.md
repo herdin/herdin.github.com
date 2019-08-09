@@ -38,7 +38,8 @@ console.log('hello?');
 
 ![rouge rocks](/assets/images/posts/2019-08-08-github-page-jekyll.PNG)
 
-**Pygments Compatible**
-Rouge themes are 100% compatible with **Pygments**' stylesheets. No need to remake your theme, and no need to spawn a Python process either. Rouge is made in Ruby.
+> **Pygments Compatible**
+> Rouge themes are 100% compatible with **Pygments**' stylesheets.  
+> No need to remake your theme, and no need to spawn a Python process either. Rouge is made in Ruby.
 
 야호! 그냥 갖다 쓰면되나보다
