@@ -2,7 +2,7 @@
 layout: post
 title: "Foward Proxy 와 Reverse Proxy 의 차이"
 date: 2019-07-25
-tags: web proxy-server
+tags: web
 ---
 
 보통 프록시 서버라고 하면 포워드 프록시를 말하는 것이다.
