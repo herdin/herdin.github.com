@@ -6,7 +6,6 @@ tags: cloud gcp aws shovel-knight
 ---
 
 ``` shell
-```
 #aws rds : mariadb
 #error log
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Could not connect to {aws_mariadb_ip_number}:{port} : Permission denied (connect failed))
@@ -47,7 +46,7 @@ grant codeBase "jar:file:${catalina.base}/webapps/SimpleSpring/WEB-INF/lib/maria
      permission java.net.SocketPermission "{aws_mariadb_endpoint}:{port}", "connect";
 };
 #but fail..
-
+```
 
 > 생각 없이 yum install tomcat 해서 깔린 tomcat 을 사용하니까 자꾸  
 > java.net.SocketException: Permission denied 에러가 나서  
