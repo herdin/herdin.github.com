@@ -4,6 +4,7 @@ title: "알코올 함량 계산기"
 date: 2019-08-13
 tags: calc
 ---
+<script src="/assets/js/jquery-3.4.1.min.js"></script>
 <input id="abv" type="text" placeholder="ABC"> % <input id="cc" type="text" placeholder="CC"> cc
 <input id="gram" type="text" placeholder=""> g
 
