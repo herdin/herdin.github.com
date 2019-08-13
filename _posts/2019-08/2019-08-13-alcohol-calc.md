@@ -13,7 +13,7 @@ tags: calc
     var calc = function() {
       var abv = $("#abv").val();
       var cc =  $("#cc").val();
-      $("#gram").val(abv*cc/100*0.8);
+      $("#gram").val((abv*cc/100*0.8).toFixed(2));
     }
     $("#abv").on("keyup", calc);
     $("#cc").on("keyup", calc);
