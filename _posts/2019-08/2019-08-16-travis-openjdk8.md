@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Travis CI 에서 java 8 사용"
-date: 2019-08-14
+date: 2019-08-16
 tags: ci opensource shovel-knight
 ---
 
