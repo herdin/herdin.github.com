@@ -28,13 +28,14 @@ Facade 의 사전적 의미
 
 코드로 보면..
 
+먼저 변기 클래스
+
 ``` java
 package com.harm.unit.pattern.facade;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** 변기 */
 public class Toilet {
     private Logger logger = LoggerFactory.getLogger(Toilet.class);
     public int openCover(int sequence) throws Exception {
@@ -48,6 +49,7 @@ public class Toilet {
 }
 ```
 
+바지 클래스
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -55,7 +57,6 @@ package com.harm.unit.pattern.facade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** 바지 */
 public class Pants {
     private Logger logger = LoggerFactory.getLogger(Pants.class);
     public int lower(int sequence) throws Exception {
@@ -69,6 +70,7 @@ public class Pants {
 }
 ```
 
+팬티 클래스
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -76,7 +78,6 @@ package com.harm.unit.pattern.facade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** 팬티 */
 public class Underwear {
     private Logger logger = LoggerFactory.getLogger(Underwear.class);
     public int lower(int sequence) throws Exception {
@@ -90,6 +91,7 @@ public class Underwear {
 }
 ```
 
+궁둥이 클래스
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -97,7 +99,6 @@ package com.harm.unit.pattern.facade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** 궁둥이 */
 public class Ass {
     private Logger logger = LoggerFactory.getLogger(Ass.class);
     public int bigShoot(int sequence) throws Exception {
@@ -111,10 +112,8 @@ public class Ass {
 }
 ```
 
-
 위의 `Toilet`, `Pants`, `Underwear`, `Ass` class 들은 논리적으로 긴밀하게 연결되어 있다.  
 순서가 잘못되면 오류가 난다. 위의 4개의 class 를 이용해서 똥을 싸려면.
-
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -138,15 +137,12 @@ public class FacadeStudy001 implements Unit {
 }
 ```
 
-
 위와 같은 과정을 거쳐야 하지만...  
 `Facade` pattern 을 적용한 `DoNumberTwo` class 를 설계한다면..
-
 
 ``` java
 package com.harm.unit.pattern.facade;
 
-/** 한방에 빅샷 */
 public class DoNumberTwo {
     private Toilet toilet;
     private Pants pants;
@@ -167,9 +163,7 @@ public class DoNumberTwo {
 }
 ```
 
-
 아래와 같이 코드가 줄어듬과 동시에 가독성이 좋아지게 된다.
-
 
 ``` java
 package com.harm.unit.pattern.facade;
