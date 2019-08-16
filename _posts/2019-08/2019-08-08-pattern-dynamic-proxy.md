@@ -2,7 +2,7 @@
 layout: post
 title: "java Dynamic Proxy"
 date: 2019-08-08
-tags: design-pattern writing
+tags: design-pattern
 ---
 Proxy 대상이 되는 class 를 그대로 둔 채로 dynamic 하게 Proxy 가 적용된 instance 를 받아서 사용하는 방식. Java Reflection 을 사용한다.  
 > `Java Relection` 이란, 구체적인 class type 을 모르더라도 해당 class 의 metohd/type/variable 등에 접근할 수 있게 해주는 api.  
