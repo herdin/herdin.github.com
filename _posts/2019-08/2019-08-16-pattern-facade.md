@@ -46,8 +46,8 @@ public class Toilet {
         return ++sequence;
     }
 }
-
 ```
+
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -67,8 +67,8 @@ public class Pants {
         return ++sequence;
     }
 }
-
 ```
+
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -88,8 +88,8 @@ public class Underwear {
         return ++sequence;
     }
 }
-
 ```
+
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -109,11 +109,12 @@ public class Ass {
         return ++sequence;
     }
 }
-
 ```
+
 
 위의 `Toilet`, `Pants`, `Underwear`, `Ass` class 들은 논리적으로 긴밀하게 연결되어 있다.  
 순서가 잘못되면 오류가 난다. 위의 4개의 class 를 이용해서 똥을 싸려면.
+
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -135,11 +136,12 @@ public class FacadeStudy001 implements Unit {
         return null;
     }
 }
-
 ```
+
 
 위와 같은 과정을 거쳐야 하지만...  
 `Facade` pattern 을 적용한 `DoNumberTwo` class 를 설계한다면..
+
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -163,10 +165,11 @@ public class DoNumberTwo {
         sequence = this.ass.bigShot(sequence);
     }
 }
-
 ```
 
+
 아래와 같이 코드가 줄어듬과 동시에 가독성이 좋아지게 된다.
+
 
 ``` java
 package com.harm.unit.pattern.facade;
@@ -185,5 +188,4 @@ public class FacadeStudy001 implements Unit {
         return null;
     }
 }
-
 ```
