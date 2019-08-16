@@ -15,6 +15,10 @@ class Page {
 }
 
 console.log(new Page().getCompiledTime());
+
+var chmunk = <span></span>;
+var merryGoAround = <span></span>;
+var myBean = <span></span>;
 ```
 
 ### History
@@ -40,3 +44,12 @@ console.log(new Page().getCompiledTime());
 |/
 * 2005.03.01. --ENTER Hongik University
 ```
+<script>
+var curDate = new Date();
+var merryGoAround = Math.ceil((curDate-new Date(2017, 09-1, 16))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
+var myBean = Math.ceil((curDate-new Date(2018, 12-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
+var chmunk = Math.ceil((curDate-new Date(2010, 01-1, 12))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
+
+
+
+</script>
