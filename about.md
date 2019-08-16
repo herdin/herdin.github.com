@@ -49,7 +49,6 @@ console.log(new Page().getCompiledTime());
     var chmunk = Math.ceil((curDate-new Date(2010, 01-1, 12))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
     $('.highlight code').eq(0).append('<span class="kd">var</span> <span class="nx">merryGoAround</span> <span class="o">=</span> <span class="mo">' + merryGoAround + '</span> <span class="err">;\n');
     $('.highlight code').eq(0).append('<span class="kd">var</span> <span class="nx">myBean</span> <span class="o">=</span> <span class="mo">' + myBean + '</span> <span class="err">;\n');
-  $('.highlight code').eq(0).append('<span class="kd">var</span> <span class="nx">chmunk</span> <span class="o">=</span> <span class="mo">' + chmunk + '</span> <span class="err">;\n');
-</span>
+    $('.highlight code').eq(0).append('<span class="kd">var</span> <span class="nx">chmunk</span> <span class="o">=</span> <span class="mo">' + chmunk + '</span> <span class="err">;\n');
   });
 </script>
