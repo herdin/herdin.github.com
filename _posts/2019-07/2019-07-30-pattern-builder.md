@@ -2,7 +2,7 @@
 layout: post
 title: "Builder Pattern"
 date: 2019-07-30
-tags: design-pattern writing
+tags: design-pattern
 ---
 
 - 객체를 생성 시, 초기화 할 변수가 많으면..
@@ -23,7 +23,7 @@ tags: design-pattern writing
 >
 > 빌더 패턴으로 변수 초기화 시 변수 값을 validation 할 수도 있다.
 
-{% highlight java %}
+``` java
 public class SchemaObject003001 {
     private final String innerId;
     private final String innerName;
@@ -65,9 +65,9 @@ public class SchemaObject003001 {
         return innerAlias;
     }
 }
-{% endhighlight %}
+```
 
-{% highlight java %}
+``` java
 
 SchemaObject003001 so = new SchemaObject003001
   .Builder()
@@ -76,5 +76,6 @@ SchemaObject003001 so = new SchemaObject003001
   .innerAlias("inner-alias1")
   .build();
 
-{% endhighlight %}
+```
+
 - [참고자료1](https://johngrib.github.io/wiki/builder-pattern/)
