@@ -5,7 +5,7 @@ date: 2019-08-22
 tags: opensource
 ---
 
-<script src="/assets/js/Chart.bundle.min.js"></script>
+<script src="/assets/js/Chart.bundle.min.js" />
 
 [Chart.js Document](https://www.chartjs.org/docs/latest/getting-started/)
 
