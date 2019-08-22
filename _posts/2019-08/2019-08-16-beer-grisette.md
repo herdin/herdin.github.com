@@ -5,7 +5,7 @@ date: 2019-08-16
 tags: beer
 ---
 
-[Grisette on wiki](https://en.wikipedia.org/wiki/Grisette_(beer)
+[Grisette on wiki](https://en.wikipedia.org/wiki/Grisette_(beer))
 
 ![grisette](/assets/images/posts/2019-08-16-beer-grisette-01.jpg)
 
