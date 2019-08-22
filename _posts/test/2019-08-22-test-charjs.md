@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Chart.js test
+date: 2019-08-22
 tags: opensource
 ---
 
