@@ -22,8 +22,33 @@ html {
 
 body {
 	background: $white;
-  font: 16px/1.4 $gitbookFont;
+  font: 16px/1.4 $d2coding;
   color: $darkGray;
+}
+
+@font-face {
+  font-family: 'D2 coding';
+  font-style: normal;
+  font-weight: 400;
+  src: url('D2Coding.eot');
+  src: local('※'), local('D2Coding'),
+       url('D2Coding.eot?#iefix') format('embedded-opentype'),
+       url('D2Coding.woff2') format('x-woff2'),
+       url('D2Coding.woff') format('woff'),
+       url('D2Coding.ttf') format('truetype'),
+       url('D2Coding.svg') format('svg');
+}
+@font-face {
+  font-family: 'D2 coding';
+  font-style: normal;
+  font-weight: 700;
+  src: url('d2codingbold.eot');
+  src: local('※'), local('D2Coding Bold'),
+       url('D2CodingBold.eot?#iefix') format('embedded-opentype'),
+       url('D2CodingBold.woff2') format('x-woff2'),
+       url('D2CodingBold.woff') format('woff'),
+       url('D2CodingBold.ttf') format('truetype'),
+       url('D2CodingBold.svg') format('svg');
 }
 
 .container {
@@ -34,7 +59,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helveticaNeue;
+  font-family: $d2coding;
   color: $darkerGray;
   font-weight: bold;
 
@@ -224,7 +249,7 @@ img {
   margin: 0;
   color: $darkGray;
   cursor: pointer;
-  font-family: $helveticaNeue;
+  font-family: $d2coding;
   font-weight: 300;
   font-size: 28px;
   letter-spacing: 1px;
@@ -243,7 +268,7 @@ img {
 nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
+  font-family: $d2coding;
   font-size: 18px;
 
   @include mobile {
