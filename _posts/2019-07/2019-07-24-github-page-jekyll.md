@@ -232,3 +232,5 @@ layout: null
 이렇게하고 네이버처럼 [구글 서치콘솔](https://search.google.com/search-console/about?hl=ko) 에 가서 잘 등록되었는지 확인하고 잘안되었으면 `sitemap.xml` 위치를 제출하면된다.
 
 > 되는..건가..?
+
+[Github Page 의 Github 주소](https://github.com/herdin/herdin.github.com)
