@@ -20,14 +20,14 @@ tags: web
 genrsa -des3 -out <MY PRIVATE KEY FILE NAME> 2048
 
 # EXAMPLE
-OpenSSL> genrsa -des3 -out delete.me.plz.key 2048
+OpenSSL> genrsa -des3 -out delete.me.plz.private.key 2048
 Generating RSA private key, 2048 bit long modulus
 ............................+++
 .........................................+++
 unable to write 'random state'
 e is 65537 (0x10001)
-Enter pass phrase for delete.me.plz.key: <TYPE MY PASSWORD>
-Verifying - Enter pass phrase for delete.me.plz.key: <TYPE MY PASSWORD>
+Enter pass phrase for delete.me.plz.private.key: <TYPE MY PASSWORD>
+Verifying - Enter pass phrase for delete.me.plz.private.key: <TYPE MY PASSWORD>
 
 # 비밀번호가 없는 개인키 만들기
 genrsa -out <MY PRIVATE KEY FILE NAME> 2048
@@ -39,8 +39,8 @@ genrsa -out <MY PRIVATE KEY FILE NAME> 2048
 rsa -in <MY PRIVATE KEY FILE NAME> -pubout -out <MY PUBLIC KEY FILE NAME>
 
 # EXAMPLE
-OpenSSL> rsa -in delete.me.plz.key -pubout -out delete.me.plz.public.key
-Enter pass phrase for delete.me.plz.key: <TYPE MY PASSWORD>
+OpenSSL> rsa -in delete.me.plz.private.key -pubout -out delete.me.plz.public.key
+Enter pass phrase for delete.me.plz.private.key: <TYPE MY PASSWORD>
 writing RSA key
 ```
 
@@ -52,7 +52,7 @@ writing RSA key
 req -new -key <MY PRIVATE KEY FILE NAME> -out <MY CSR FILE NAME>
 
 # EXAMPLE
-OpenSSL> req -new -key delete.me.plz.key -out delete.me.plz.csr
+OpenSSL> req -new -key delete.me.plz.private.key -out delete.me.plz.csr
 Unable to load config info from C:/OpenSSL/openssl.cnf
 error in req
 ```
@@ -70,8 +70,8 @@ WARNING: can't open config file: C:/OpenSSL/openssl.cnf
 req -config <LOCATION OF openssl.cnf FILE> -new -key <MY PRIVATE KEY FILE NAME> -out <MY CSR FILE NAME>
 
 # EXAMPLE
-OpenSSL> req -config ./openssl.cnf -new -key delete.me.plz.key -out delete.me.plz.csr
-Enter pass phrase for delete.me.plz.key:
+OpenSSL> req -config ./openssl.cnf -new -key delete.me.plz.private.key -out delete.me.plz.csr
+Enter pass phrase for delete.me.plz.private.key:
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
@@ -95,13 +95,17 @@ An optional company name []:harm
 
 저렇게 하면 된다.  
 저런 뒤, 만들어진 `CSR` 파일을 열어보면
+
 ```
 -----BEGIN CERTIFICATE REQUEST-----
 어쩌구저쩌구알수없는암호화문자열들...
 -----END CERTIFICATE REQUEST-----
 ```
 
-위와 같은 양식의 요청서를 볼 수 있다. 여기까지했으면, CA
+위와 같은 양식의 요청서를 볼 수 있다. 여기까지했으면, `CA(Certificate Authority)` 인증 기관에 요청하여 `CRT(CeRTificate)` 파일을 받을 수 있다.
+> 뭐 메일로 받는다던데.. 안해봐서..
+
+하지만 요청하고 다시 회신받고 귀찮고 난 그냥 로컬서버에 tomcat 이 https 요청을 받아주기만 할 수 있으면 되기 때문에 사설 CA 를 만들고 진행한다.
 
 ### 5. root CA 만들기
 
@@ -123,10 +127,12 @@ Verifying - Enter pass phrase for rootCA.key:
 ### 6.  root CA 사설 CSR 생성하기
 
 위에서 만든 root CA 를 이용하여 사설 CSR 을 만든다.
+> 위에서 CSR 만들었는데 왜 또 만들지? 잘모르겠지만 root CA 의 CSR 과 개인 CSR 이 둘다 필요한 것 같다. 확장자는 중요하지 않은 것 같다.
 
 ``` shell
-req -x509 -new -nodes -key <ROOT CA FILE NAME> -days 3650 -out <CSR FILE NAME>
+req -x509 -new -nodes -key <ROOT CA FILE NAME> -days 3650 -out <ROOT CA CSR FILE NAME>
 
+# EXAMPLE
 OpenSSL> req -config ./openssl.cnf -x509 -nodes -key rootCA.key -days 3650 -out rootCSR.pem
 Enter pass phrase for rootCA.key:
 You are about to be asked to enter information that will be incorporated
@@ -149,15 +155,15 @@ Email Address []:herdin86@gmail.com
 
 ``` shell
 
-x509 -req -in <MY CSR FILE NAME> -CA <CSR FILE NAME> -CAkey <ROOT CA FILE NAME> -CAcreateserial -out <MY CRT FILE NAME> -days 3650
+x509 -req -in <MY CSR FILE NAME> -CA <ROOT CA CSR FILE NAME> -CAkey <ROOT CA FILE NAME> -CAcreateserial -out <MY CRT FILE NAME> -days 3650
 
-x509 -req -in private.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out private.crt -days 3650
+x509 -req -in private.csr -CA rootCSR.pem -CAkey rootCA.key -CAcreateserial -out private.crt -days 3650
 ```
 
 ### 8. tomcat 에 적용하기 위해 형식 변경
 
 ``` shell
-pkcs12 -export -in <MY CRT FILE NAME> -inkey <MY PRIVATE KEY FILE NAME> -out <MY SSL KEY FILE NAME?> -name <NAME??>
+pkcs12 -export -in <MY CRT FILE NAME> -inkey <MY PRIVATE KEY FILE NAME> -out <MY PKCS12 FILE NAME FOR TOMCAT> -name <NAME-여긴 뭘적는건지 모르겠다>
 
 pkcs12 -export -in private.crt -inkey private.key -out .keystore -name tomcat
 ```
@@ -174,8 +180,8 @@ tomcat `server.xml` 에 아래 내용을 추가한다. 대소문자를 잘 입�
         secure="true"
         SSLEnabled="true"
 
-        keystorePass="<KEYSTORE PASSWORD>"
-        keystoreFile="<KEYSTORE FILE PATH>"
+        keystorePass="<MY PKCS12 FILE EXPORT PASSWORD>"
+        keystoreFile="<MY PKCS12 FILE NAME FOR TOMCAT>"
 
         clientAuth="false"
         sslProtocol="TLS"
