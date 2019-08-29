@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker 이미지 초기화"
+title: "Docker 이미지 초기화 - CentOS"
 date: 2019-08-27
 tags: docker writing
 ---
