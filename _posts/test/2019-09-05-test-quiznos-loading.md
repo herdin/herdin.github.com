@@ -7,7 +7,7 @@ tags: opensource
 
 <style>
 .loader{
-	position: fixed;
+	/*position: fixed;*/
 	background:#fff;
 	z-index:11000;
 	height:100%;
