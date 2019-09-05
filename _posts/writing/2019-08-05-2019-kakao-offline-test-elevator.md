@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "BDB1507 Thread died in Berkeley DB library"
+title: "2019 카카오 오프라인 2차 테스트 개인 공부"
 date: 2019-08-15
-tags: linux
+tags: algorithm
 ---
 
-[2019 카카오 오프라인 2차 코딩 테스트 해설](https://tech.kakao.com/2018/10/23/kakao-blind-recruitment-round-2/) 을 보고 재밌어보이는데다가, 서버프로그램을 `Github` 에 올렸다고하여 그대로 `fork` 해서 실행해보았다.
+> 카카오에서 `Github` 에도 올리고 포스트도 올렸으니 막 갖다 써도되것지.......
 
-엘레베이터 서버를 실행하면, 아래와 같은 에러가 난다.
+[엘레베이터 서버](https://github.com/kakao-recruit/2019-blind-2nd-elevator)를 실행했더니, 아래와 같은 에러가 난다.
 
 ``` shell
 [root@instance-20190319-second example]# python example.py
@@ -30,7 +30,8 @@ Traceback (most recent call last):
 ValueError: No JSON object could be decoded
 ```
 
-찾아보니 python 라이브러리가 없는듯.. 그래서 설치하려고하니..
+구글링하니까 `requests` 모듈이 없나보다..  
+그래서 없는 애를 설치하려고 보니 `python-pip` 도 없어서 설치하려 했더니...
 
 ``` shell
 [root@instance-20190319-second example]# yum install python-pip
@@ -43,22 +44,14 @@ CRITICAL:yum.main:
 Error: rpmdb open failed
 ```
 
-띠용.. 또 검색하니 아래와같이 조치를 해주면 된다고 한다.
-> 뭐하는건진 잘모름..
+yum install 이 안될땐 [이렇게]({{ site.url}}/yum-thread-died-in-berkeley-db-library/) 하면 된다.
 
-``` shell
-rm /var/lib/rpm/__db*
-```
+암튼 다 깔고 실행하면 되긴하는데... 이러면 `python` 도 깔아야하고..  
+테스트 환경은 공짜 `GCP` 라 자원이 열악한데 이렇게 다 깔면 왠지 싫어서.. `Docker` 로 실행하려했다.
 
-아래 `requests` 모듈을 설치해주면 해결!
+`Docker` 파일이 있길래 빌드를 했더니 또 안돼...
+> 글을 쓰기 시작한날이 2019/08/05 이고 지금은 2019/09/05 라.. 기록도 안남아있고 간략하게 남기겠다.
 
-``` shell
-yum install python-pip
-pip install requests
-```
-
-하지만 실제 실행은 `Docker` 로 했다. 그냥 파이선이고 주절주절 깔아놓기 싫어서..  
-도커파일도 저장소에 있는데 역시 뭔가 잘안맞는지 실행을 잘못한건지..  
-잘안되서 수정해서 [이미지](https://hub.docker.com/r/epubaal/kakao-2019-offline-test-elevator) 로 떠놨음.  
-`Pull Request` 로 카카오 쪽에 보냈는데 답이 없다.  
-잘못됏으면 잘못됏다고 알려주면 더 좋을텐데..
+`dataset` 폴더와 `log` 폴더가 `Docker file context` 위치에 없어서 오류가 나서
+`Dockerfile` 위치를 옮기고, `dataset` 폴더를 복사하고, `log` 폴더를 만들어준 [Branch](https://github.com/herdin/2019-blind-2nd-elevator/tree/develop) 를 `Pull request` 를 날렸는데, 관심이 없는건지 내가 잘못 고친건지 피드백이 없다..
+> 헤헤. 뭐 내가 잘 썻으면 됐지.
