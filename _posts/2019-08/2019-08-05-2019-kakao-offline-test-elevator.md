@@ -55,3 +55,13 @@ yum install 이 안될땐 [이렇게]({{ site.url}}/yum-thread-died-in-berkeley-
 `dataset` 폴더와 `log` 폴더가 `Docker file context` 위치에 없어서 오류가 나서
 `Dockerfile` 위치를 옮기고, `dataset` 폴더를 복사하고, `log` 폴더를 만들어준 [Branch](https://github.com/herdin/2019-blind-2nd-elevator/tree/develop) 를 `Pull request` 를 날렸는데, 관심이 없는건지 내가 잘못 고친건지 피드백이 없다..
 > 헤헤. 뭐 내가 잘 썻으면 됐지.
+
+아무튼
+
+`docker run -d -p 8000:8000 --name kakaoelevator epubaal/kakao-2019-offline-test-elevator`
+
+> 도커이미지도 떠서 허브에 올렸다!!
+
+![yes](/assets/images/posts/kakao-offline-test-elevator-01.PNG)
+
+짜잔.
