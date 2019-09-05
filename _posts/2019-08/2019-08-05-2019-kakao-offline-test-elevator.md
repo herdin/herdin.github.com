@@ -58,7 +58,7 @@ yum install 이 안될땐 [이렇게]({{ site.url}}/yum-thread-died-in-berkeley-
 
 아무튼
 
-`docker run -d -p 8000:8000 --name kakaoelevator epubaal/kakao-2019-offline-test-elevator`
+`docker run -d -p 8000:8000 --name kakaoelevator epubaal/kakao-2019-offline-test-elevator:0.4`
 
 > 도커이미지도 떠서 허브에 올렸다!!
 
