@@ -5,6 +5,8 @@ date: 2019-09-17
 tags: docker vault
 ---
 
+host file 사용안할 때,
+
 ``` shell
 #config init
 docker run
@@ -16,6 +18,7 @@ docker run
  docker.io/vault:1.1.2 server
 ```
 
+host file 사용 할 때, (z 옵션은 SELinux 사용 시)
 
 ``` shell
 #config 2
