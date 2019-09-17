@@ -116,7 +116,6 @@ docker run [REPO/IMAGE_NAME]:[IMAGES_TAG]
 여기서 모든 Capability 는 [여기서](https://linux.die.net/man/7/capabilities) 볼 수 있다.  
 > 그럼 Capability 는 뭘까? ㅠㅠ ㅎ그흑 [참고](https://access.redhat.com/documentation/ko-kr/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
 
-
 ``` shell
 docker ps
 #-a : all, default

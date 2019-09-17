@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "redis with docker"
+title: "Redis with docker"
 date: 2019-08-08
 tags: docker
 ---
@@ -99,6 +99,8 @@ chcon -Rt svirt_sandbox_file_t -l s0:c1,c2 /container/dir #Z 사용시
 
 아래의 명령어와 설정파일을를 사용하고 있는데...
 
+> 아래는 명령어
+
 ```shell
 docker run
 -d
@@ -109,6 +111,8 @@ docker run
 docker.io/redis:4-alpine
 redis-server /usr/local/etc/redis/redis.conf
 ```
+
+> 아래는 설정파일
 
 ```shell
 daemonize no
