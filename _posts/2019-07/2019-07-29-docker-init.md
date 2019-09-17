@@ -6,6 +6,8 @@ tags: docker writing
 ---
 ![많이 보던 그 그림](/assets/images/posts/2019-07-29-docker.jpg)
 
+[Docker document](https://docs.docker.com/)
+
 `docker` vs `vm` 이라기보단 `container` vs `vm` 이라고 해야한다.
 `docker` 는 많은 `container` 기술 중 하나이다.
 `vm` 은 `hypervisor` 로 하드웨어 가상화를 한 뒤에 `guest OS` 를 올리고, 그 위에 `application` 이 필요한 `bins/lib` 가 올라 간다.
@@ -106,8 +108,16 @@ docker run [REPO/IMAGE_NAME]:[IMAGES_TAG]
 #-p [HOST PORT]:[CONTAINER PORT]: port mapping
 #--name : container name
 #--restart=no/on-failure[:max-retries]/always/unless-stopped : restart policy
+#--cap-add : Add Linux capabilities
 #ex) docker run -d -p 8081:8080 --name was01 was:0.1
+```
 
+`--cap-add` : 컨테이너에서 cgroups의 특정 Capability를 사용합니다. ALL을 지정하면 모든 Capability 를 사용합니다. [출처](http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter20/28)  
+여기서 모든 Capability 는 [여기서](https://linux.die.net/man/7/capabilities) 볼 수 있다.  
+> 그럼 Capability 는 뭘까? ㅠㅠ ㅎ그흑 [참고](https://access.redhat.com/documentation/ko-kr/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
+
+
+``` shell
 docker ps
 #-a : all, default
 #-f : filter : status=exited/running, status=exited/running/...
