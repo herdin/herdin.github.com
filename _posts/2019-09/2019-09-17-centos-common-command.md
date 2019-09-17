@@ -16,6 +16,7 @@ date #echo current date
 df #disk free
 df -h #--human-readable
 df -i #--inodes
+df -k #--block-size=1K
 
 history #사용한 명령어 히스토리
 ![line number] #히스토리의 해당 라인을 재실행
