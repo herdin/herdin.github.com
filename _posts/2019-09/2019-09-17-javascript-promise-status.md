@@ -83,4 +83,4 @@ myPromise.then(function(data){
 });
 ```
 
-간단한 wrapping function 과 closure scope 를 이용하여 상태를 알 수 있게 되었다!!
+간단한 `wrapping function` 과 `closure scope` 를 이용하여 상태를 알 수 있게 되었다!!
