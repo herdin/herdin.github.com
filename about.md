@@ -53,10 +53,10 @@ console.log(new Page().getCompiledTime());
     function appendDday(id, day) {
       var element = '';
       element += '<div>';
-      element += '<span class="kd">var</span>';
-      element += '<span class="nx">' + id + '</span>';
-      element += '<span class="o">=</span>';
-      element += '<span class="mo">' + chmunk + '</span>';
+      element += '<span class="kd">var</span> ';
+      element += '<span class="nx">' + id + '</span> ';
+      element += '<span class="o">=</span> ';
+      element += '<span class="mo">' + chmunk + '</span> ';
       element += '<span class="err">;</span>';
       element += '</div>';
       $('.highlight code').eq(0).append(element);      
