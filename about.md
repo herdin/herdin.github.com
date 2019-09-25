@@ -48,7 +48,7 @@ console.log(new Page().getCompiledTime());
     var chmunk = Math.ceil((curDate-new Date(2010, 01-1, 12))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
     var merryGoAround = Math.ceil((curDate-new Date(2017, 09-1, 16))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
     var myBean = Math.ceil((curDate-new Date(2018, 12-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
-    var myBeanSprout = Math.ceil((curDate-new Date(2018, 09-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
+    var myBeanSprout = Math.ceil((curDate-new Date(2019, 09-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
 
     function appendDday(id, day) {
       var element = '';
@@ -56,19 +56,15 @@ console.log(new Page().getCompiledTime());
       element += '<span class="kd">var</span> ';
       element += '<span class="nx">' + id + '</span> ';
       element += '<span class="o">=</span> ';
-      element += '<span class="mo">' + chmunk + '</span> ';
+      element += '<span class="mo">' + day + '</span> ';
       element += '<span class="err">;</span>';
       element += '</div>';
       $('.highlight code').eq(0).append(element);      
     }
-    appendDday('chmunk', chmunk);
+    appendDday('chmunk'       , chmunk);
     appendDday('merryGoAround', merryGoAround);
-    appendDday('myBean', myBean);
-    appendDday('myBeanSprout', myBeanSprout);
-
-    $('.highlight code').eq(0).append('<span class="kd">var</span> <span class="nx">chmunk</span> <span class="o">=</span> <span class="mo">' + chmunk + '</span><span class="err">;\n');
-    $('.highlight code').eq(0).append('<span class="kd">var</span> <span class="nx">merryGoAround</span> <span class="o">=</span> <span class="mo">' + merryGoAround + '</span><span class="err">;\n');
-    $('.highlight code').eq(0).append('<span class="kd">var</span> <span class="nx">myBean</span> <span class="o">=</span> <span class="mo">' + myBean + '</span><span class="err">;\n');
+    appendDday('myBean'       , myBean);
+    appendDday('myBeanSprout' , myBeanSprout);
 
   });
 </script>
