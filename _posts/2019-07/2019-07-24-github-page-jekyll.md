@@ -189,7 +189,7 @@ navigation:
 {% highlight liquid %}
 {% raw %}
 {% for nav in site.navigation %}
-  <a href="{{ site.baseurl }}{{ nav.url}}">{{ nav.name }}</a>
+  <a href="{{ site.url }}{{ nav.url}}">{{ nav.name }}</a>
 {% endfor %}
 {% endraw %}
 {% endhighlight %}

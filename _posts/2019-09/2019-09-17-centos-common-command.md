@@ -81,7 +81,7 @@ chmod [OPTION] [PERMISSION] [FILE]
 
 ### SELinux
 
-[SELinux 란?]({{ site.baseurl }}/selinux/)
+[SELinux 란?]({{ site.url }}/selinux/)
 
 ``` shell
 sestatus #selinux status
