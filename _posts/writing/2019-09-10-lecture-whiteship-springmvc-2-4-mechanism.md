@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Whiteship Spring MVC Mechanism"
+title: "Whiteship Spring MVC 2/4 Mechanism"
 date: 2019-09-10
 tags: web spring writing
 ---

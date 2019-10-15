@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Whiteship Spring MVC Usage"
+title: "Whiteship Spring MVC 4/4 Usage"
 date: 2019-09-12
 tags: web spring writing
 ---

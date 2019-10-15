@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Whiteship Spring MVC Configuration"
+title: "Whiteship Spring MVC 3/4 Configuration"
 date: 2019-09-11
 tags: web spring writing
 ---
@@ -8,21 +8,24 @@ tags: web spring writing
 # 스프링 MVC 설정
 ## 스프링 MVC 빈 설정
 
-> 2019-09-10 : 02:00  
+> 2019-09-10 : 02:00
+
 별다른 설정을 하지 않아도 `DispatcherServlet` 에 기본으로 등록되어있는 기본 전략 `Bean` 들을 사용하게 된다.  
 
-> 2019-10-07 : 12:20  
+> 2019-10-07 : 12:20
+
 `InternalResourceViewResolver` 같은 경우는 `prefix` 와 `suffix` 가 기본적으로 없는 상태로 등록된다.  
-유저가 직접 `InternalResourceViewResolver` 을 사용할 때 설정 가능하다. (대부분의 빈들이 그러하다)
->
-> HandlerMapping 은 어떤 요청이 들어왔을때, 그 요청을 처리할 수 있는 Handler 를 찾아주는 Interface 이다. (HandlerIntercepter 설정 가능.)  
+유저가 직접 `InternalResourceViewResolver` 을 사용할 때 설정 가능하다. (대부분의 빈들이 그러하다)  
+HandlerMapping 은 어떤 요청이 들어왔을때, 그 요청을 처리할 수 있는 Handler 를 찾아주는 Interface 이다. (HandlerIntercepter 설정 가능.)  
 
 ## @EnableWebMvc
 
-> `@Configuration` 이 적힌 클래스에 `@EnableWebMvc` 을 적어주면 DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport 설정을 추가한다.
-실질적인 설정은 WebMvcConfigurationSupport 에서 함.
+`@Configuration` 이 적힌 클래스에 `@EnableWebMvc` 을 적어주면 `DelegatingWebMvcConfiguration` 를 import 하고 해당 `class` 는 `WebMvcConfigurationSupport` 를 상속받는다.
+실질적인 빈 설정은 WebMvcConfigurationSupport 에서 한다.
 
-02:57 까지 봄
+> 2019-10-15 : 12:05
+
+
 
 
 ## WebMvcConfigurer
