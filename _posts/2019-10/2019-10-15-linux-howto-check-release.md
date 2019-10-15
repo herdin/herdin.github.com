@@ -12,7 +12,7 @@ tags: linux command
 ### 1. `grep . /etc/*-release`
 
 ``` shell
-[herdin86@instance-1 ~]$ grep . /etc/*-release
+$ grep . /etc/*-release
 /etc/centos-release:CentOS Linux release 8.0.1905 (Core)
 /etc/os-release:NAME="CentOS Linux"
 /etc/os-release:VERSION="8 (Core)"
@@ -36,7 +36,7 @@ tags: linux command
 ### 2. `cat /etc/*-release | uniq`
 
 ``` shell
-[herdin86@instance-1 ~]$ cat /etc/*-release | uniq
+$ cat /etc/*-release | uniq
 CentOS Linux release 8.0.1905 (Core)
 NAME="CentOS Linux"
 VERSION="8 (Core)"
@@ -63,7 +63,7 @@ CentOS Linux release 8.0.1905 (Core)
 > 이건 centos 랑 안맞나?
 
 ``` shell
-[herdin86@instance-1 ~]$ grep . /etc/issue*
+$ grep . /etc/issue*
 /etc/issue:\S
 /etc/issue:Kernel \r on an \m
 /etc/issue.net:\S
@@ -73,6 +73,6 @@ CentOS Linux release 8.0.1905 (Core)
 ### `rpm -qa *-release`
 
 ``` shell
-[herdin86@instance-1 ~]$ rpm -qa *-release
+$ rpm -qa *-release
 centos-release-8.0-0.1905.0.9.el8.x86_64
 ```
