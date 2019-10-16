@@ -112,7 +112,7 @@ Server: Docker Engine - Community
   Version:          0.18.0
   GitCommit:        fec3683
 
-  $ docker run hello-world
+$ docker run hello-world
   Unable to find image 'hello-world:latest' locally
   latest: Pulling from library/hello-world
   1b930d010525: Pull complete

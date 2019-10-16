@@ -5,6 +5,8 @@ date: 2019-08-19
 tags: web
 ---
 
+> 아래 내용을 다시 해보려니 뭔가 안되서 다시 작성합니다. [여기로]({{ site.url }}/apply-tls-to-tomcat-custom-openssl-certification2/)
+
 > apache-tomcat-9.0.14 에 적용했다.
 
 ### 1. OpenSSL 프로그램을 다운받자
