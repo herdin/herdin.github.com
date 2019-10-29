@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Common Command on CentOS"
+title: "Common Command on Linux(CentOS)"
 date: 2019-09-17
 tags: linux centos
 ---
@@ -31,6 +31,9 @@ tar -xvzf [UNCOMPRESSING TARGET]
 #p : 권한(permission)을 원본과 동일하게 유지
 
 ln -s [SYMBOLIC LINK TARGET] [SYMBOLIC LINK NAME]
+
+# 디렉토리와 하위 디렉토리 사이즈
+du -h --apparent-size [TARGET LOCATION:DEFAULT .]
 ```
 
 ### systemctl
