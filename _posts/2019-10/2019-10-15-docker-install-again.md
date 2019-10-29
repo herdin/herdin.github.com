@@ -7,7 +7,15 @@ tags: docker shovel-knight
 
 공짜 `GCE instance` 가 맛탱이가 가서 다시 하나 파고 `Docker` 를 설치하려고 하니 또 머가 바뀐것같아서 버벅대는걸 기록으로 남긴다.
 
-먼저 `linux` 버전..
+## `Amazon Linux 2 ` 버전..
+
+``` shell
+amazon-linux-extras install docker
+```
+
+> 쉽죠?
+
+##  `linux` 버전..
 
 ``` shell
 $ cat /etc/*-release | uniq
