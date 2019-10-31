@@ -23,6 +23,51 @@ tags: web spring writing
 `Root WebApplicationContext` 는 다른 `Servlet` 들이 공통으로 이용할 수 있다. `Scope` 가 다름.
 `Root WebApplicationContext` 는 주로 `Web` 과 관련된 `Bean` 들은 등록되지 않는다. (`Contrller`, `ViewResulver`, `HandlerMapping`) vs (`Service`, `Repository`)
 
+> 2019-10-31
+
+스프링 IoC 컨테이너 연동을 위한 의존성 추가
+
+``` xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>5.1.3.RELEASE</version>
+</dependency>
+```
+`web.xml` 에
+
+``` xml
+<listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+<context-param>
+    <param-name>contextClass</param-name>
+    <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+</context-param>
+<context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>com.harm.AppConfig</param-value>
+</context-param>
+
+<servlet>
+    <servlet-name>app</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </init-param>
+    <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>com.harm.WebConfig</param-value>
+    </init-param>
+</servlet>
+<servlet-mapping>
+    <servlet-name>app</servlet-name>
+    <url-pattern>/app/*</url-pattern>
+</servlet-mapping>
+```
+
+
 ## 스프링 MVC 연동
 ## DispatcherServlet 1부
 ## DispatcherServlet 2부

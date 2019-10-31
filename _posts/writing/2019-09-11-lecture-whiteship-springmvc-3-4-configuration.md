@@ -23,8 +23,8 @@ HandlerMapping 은 어떤 요청이 들어왔을때, 그 요청을 처리할 수
 `@Configuration` 이 적힌 클래스에 `@EnableWebMvc` 을 적어주면 `DelegatingWebMvcConfiguration` 를 import 하고 해당 `class` 는 `WebMvcConfigurationSupport` 를 상속받는다.
 실질적인 빈 설정은 WebMvcConfigurationSupport 에서 한다.
 
-> 2019-10-15 : 12:05
-
+> 2019-10-31
+으 2-4 랑 3-4 보다가 너무 졸려서.. ㅠㅠ 3-4 04:31 까지 봄
 
 
 
