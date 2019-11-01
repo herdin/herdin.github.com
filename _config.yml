@@ -56,6 +56,10 @@ google_adsense: ca-pub-6021900706575667
 # Used for Sitemap.xml and your RSS feed
 url: https://herdin.github.io
 
+# Images locatioin
+images-locatioin: /assets/images/
+post-images-location: /assets/images/posts/
+
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
