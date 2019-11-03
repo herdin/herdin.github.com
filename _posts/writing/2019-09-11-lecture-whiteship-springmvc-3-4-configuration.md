@@ -33,8 +33,57 @@ RequestMapping, RequestAdapter, ViewResolver 가 뭐가 등록되는지 확인�
 
 ## WebMvcConfigurer
 
-> 2019-11-01 : 17:02
-시작
+> 2019-11-03 : 16:19
+
+`web.xml` 없이 web 설정.
+
+``` java
+package com.harm;
+
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+
+public class WebInit implements WebApplicationInitializer {
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        context.setServletContext(servletContext);
+        context.register(WebConf.class);
+        context.refresh();
+
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(context); //servletContext 를 받은 context 를 주는것이 중요
+        ServletRegistration.Dynamic app = servletContext.addServlet("app", dispatcherServlet); //ServletRegistration 은 javax.servlet-api 3.0.1 이상부터 사용가능
+        app.addMapping("/app/*");
+    }
+}
+```
+``` java
+package com.harm;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan
+public class WebConf implements WebMvcConfigurer {
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.jsp("/WEB-INF/", ".jsp");
+    }
+}
+```
+
+위 처럼 설정하면 `web.xml` 을 `java configuration` 으로 대체.
+`Spring Boot` 가 아니라 `Spring` 임.
 
 ## 스프링 부트의 스프링 MVC 설정
 ## 스프링 부트 JSP
