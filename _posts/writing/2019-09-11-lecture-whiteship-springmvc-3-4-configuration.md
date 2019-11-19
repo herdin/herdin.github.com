@@ -86,6 +86,9 @@ public class WebConf implements WebMvcConfigurer {
 `Spring Boot` 가 아니라 `Spring` 임.
 
 ## 스프링 부트의 스프링 MVC 설정
+
+> 2019-11-12 에 듣기 시작은했는데 합숙교육 2일차에 너무 무리했나 머누졸리다
+
 ## 스프링 부트 JSP
 ## WAR 파일 배포하기
 ## WebMvcConfigurer 1부 Formatter

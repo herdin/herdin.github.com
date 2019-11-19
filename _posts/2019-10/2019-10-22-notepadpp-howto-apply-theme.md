@@ -2,7 +2,7 @@
 layout: post
 title: "Notepad++ 테마 적용"
 date: 2019-10-22
-tags:
+tags: software
 ---
 
 1. `notepad++` 가 깔린 곳에 `themes` 폴더를 만든다.
