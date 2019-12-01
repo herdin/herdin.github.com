@@ -39,6 +39,7 @@ tags: opensource
 <div class="container" id="container_basic"></div>
 ```
 
+
 ``` javascript
 var bar = new ProgressBar.Circle(document.getElementById('container_basic'), {
   strokeWidth: 6,
@@ -59,6 +60,7 @@ bar.animate(1.0, {duration:2000});
 ``` html
 <div class="container" id="container_bounce"></div>
 ```
+
 
 ``` javascript
 var bar = new ProgressBar.Circle(document.getElementById('container_bounce'), {
@@ -85,6 +87,7 @@ bar.animate(0.0, {duration:2000});
 ``` html
 <div class="container" id="container_multiple"></div>
 ```
+
 
 ``` javascript
 var bar = new ProgressBar.Circle(document.getElementById('container_multiple'), {
