@@ -18,13 +18,13 @@ tags: opensource
   }
 </style>
 
-<div class="container" id="container_simple"></div>
-<div class="container" id="container_"></div>
+<div class="container" id="container_basic"></div>
+<div class="container" id="container_bounce"></div>
 
 <script>
   $(document).ready(function(){
-    var container_simple = $('#container_simple');
-    var bar = new ProgressBar.Circle(container_simple, {
+    var container_basic = $('#container_basic');
+    var bar = new ProgressBar.Circle(container_basic, {
       strokeWidth: 6,
       easing: 'easeInOut',
       duration: 1400,
@@ -32,6 +32,24 @@ tags: opensource
       trailColor: '#eee',
       trailWidth: 1,
       svgStyle: null
+    });
+
+    bar.animate(1.0);  // Number from 0.0 to 1.0
+
+    var container_bounce = $('#container_bounce');
+    bar = new ProgressBar.Circle(container_bounce, {
+      color: '#FFEA82',
+      trailColor: '#eee',
+      trailWidth: 1,
+      duration: 1400,
+      easing: 'bounce',
+      strokeWidth: 6,
+      from: {color: '#FFEA82', a:0},
+      to: {color: '#ED6A5A', a:1},
+      // Set default step function for all animate calls
+      step: function(state, circle) {
+        circle.path.setAttribute('stroke', state.color);
+      }
     });
 
     bar.animate(1.0);  // Number from 0.0 to 1.0
