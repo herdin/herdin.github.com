@@ -19,10 +19,10 @@ avatar: /assets/images/epubaal.jpg
 # https://shopify.github.io/liquid/
 # https://jekyllrb-ko.github.io/
 navigation:
-  - name: Log
-    url: /
   - name: About
-    url: /about
+    url: /
+  - name: Logs
+    url: /logs
   - name: Tags
     url: /tags
 # File name Pattern - Tag

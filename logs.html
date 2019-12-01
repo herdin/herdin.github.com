@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post">
+
+      <h2><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h2>
+      <div clsss="meta">
+        <span class="date">
+          {{ post.date | date: "%Y-%m-%d" }}
+        </span>
+
+        <span class="site-tags">
+          {% for tag in post.tags %}
+          <li class="site-tag">
+            <a href="/tags/#{{ tag }}">
+              {{ tag }}
+            </a>
+          </li>
+          {% endfor %}
+        </span>
+      </div>
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
+
+      <a href="{{ site.url }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>
