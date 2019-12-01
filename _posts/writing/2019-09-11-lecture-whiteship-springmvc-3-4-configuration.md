@@ -87,7 +87,30 @@ public class WebConf implements WebMvcConfigurer {
 
 ## 스프링 부트의 스프링 MVC 설정
 
-> 2019-11-12 에 듣기 시작은했는데 합숙교육 2일차에 너무 무리했나 머누졸리다
+> 2019-11-12 에 듣기 시작은했는데 합숙교육 2일차에 너무 무리했나 너무졸리다  
+2019-11-26 일단 듣기만.  
+2019-12-01 다시 시작..  
+
+`spring-boot-starter-web` 에 의한 `DispatcherServlet` 의 내부 변수들
+- handlerMappings
+  - SimpleUrlHandlerMapping : favicon
+  - RequestMappingHandlerMapping
+  - SimpleUrlHandlerMapping : static resources + caching
+  - WelcomePageHandlerMapping
+- handlerAdapters
+  - RequestMappingHandlerAdapter
+  - HttpRequestHandlerAdapter : 왜 안에 아무것도 없지?
+  - SimpleControllerHandlerAdapter : 왜 안에 아무것도 없지?
+- viewResolvers
+  - ContentNegotiatingViewResolver : 아래의 네개
+  - BeanNameViewResolver
+  - ThymeleafViewResolver : Thymeleaf 추가 의존성
+  - ViewResolverComposite
+  - InternalResourceViewResolver
+
+`spring-boot-autoconfigure` 의존성 내부의 `META-INF/spring.factories` 파일에 `org.springframework.boot.autoconfigure.EnableAutoConfiguration` 항목들이 조건에 따라 설정되는 설정클래스들임.
+
+저 자동설정목록 중에는 `org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration` 도 있는데, 내부에 `@ConditionalOnMissingBean({WebMvcConfigurationSupport.class})` 가 붙어있음.
 
 ## 스프링 부트 JSP
 ## WAR 파일 배포하기

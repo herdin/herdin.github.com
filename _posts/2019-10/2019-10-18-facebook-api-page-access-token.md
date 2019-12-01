@@ -2,7 +2,7 @@
 layout: post
 title: "Facebook API 사용법"
 date: 2019-10-18
-tags: opensource open-api writing
+tags: open-api writing
 ---
 # OAuth2.0 Flow 를 따르면 되는거 아닌가?
 
