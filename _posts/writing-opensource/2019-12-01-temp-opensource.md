@@ -5,7 +5,11 @@ date: 2019-11-27
 tags: temp
 ---
 
-# AWS NAT Gateway to NAT Instance
+# AWS
+## NAT Gateway
+- [NAT Gateway 를 통한 Private Subnet 인터넷 연결](https://galid1.tistory.com/367)
+
+## NAT Gateway to NAT Instance
 - [AWS NAT Gateway에서 NAT instance로 전환하기](https://blog.2dal.com/2018/12/31/nat-gateway-to-nat-instance/)
 
 # Apache Kafka
