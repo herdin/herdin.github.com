@@ -9,15 +9,17 @@ tags: opensource
 
 [Progress.js Document](https://progressbarjs.readthedocs.io/en/latest/)
 
-```
-<style>
-  .container .container{
-    margin: 20px;
-    width: 200px;
-    height: 200px;
-    position: relative;
-  }
-</style>
+# circle
+
+## common style
+
+``` css
+.container{
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
 ```
 
 <style>
@@ -29,7 +31,7 @@ tags: opensource
   }
 </style>
 
-# basic
+## basic
 
 <div class="container" id="container_basic"></div>
 
@@ -58,7 +60,9 @@ bar.animate(1.0);
 
 <script>
   $(document).ready(function(){
+    //circle - basic
     (function(){
+      var flag = true;
       var bar = new ProgressBar.Circle(document.getElementById('container_basic'), {
         strokeWidth: 6,
         easing: 'easeInOut',
@@ -68,7 +72,14 @@ bar.animate(1.0);
         trailWidth: 1,
         svgStyle: null
       });
-      bar.animate(1.0);
+      setInterval(function(){
+        if(flag) {
+          bar.animate(0.0, {duration:3000});
+        } else {
+          bar.animate(1.0, {duration:3000});
+        }
+      }, 5000);
+
     })();
 
     (function(){
