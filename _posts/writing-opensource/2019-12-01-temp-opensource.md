@@ -1,9 +1,12 @@
 ---
 layout: post
-title: "Wait for write(opensource)"
+title: "Wait for write(solution)"
 date: 2019-11-27
 tags: temp
 ---
+
+# AWS NAT Gateway to NAT Instance
+- [AWS NAT Gateway에서 NAT instance로 전환하기](https://blog.2dal.com/2018/12/31/nat-gateway-to-nat-instance/)
 
 # Apache Kafka
 - [아직 출처 없음]({{ site.baseurl }})
