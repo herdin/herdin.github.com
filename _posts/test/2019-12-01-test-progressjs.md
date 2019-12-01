@@ -23,8 +23,7 @@ tags: opensource
 
 <script>
   $(document).ready(function(){
-    var container_basic = $('#container_basic');
-    var bar = new ProgressBar.Circle(container_basic, {
+    var bar = new ProgressBar.Circle(document.getElementById('container_basic'), {
       strokeWidth: 6,
       easing: 'easeInOut',
       duration: 1400,
@@ -36,8 +35,7 @@ tags: opensource
 
     bar.animate(1.0);  // Number from 0.0 to 1.0
 
-    var container_bounce = $('#container_bounce');
-    bar = new ProgressBar.Circle(container_bounce, {
+    bar = new ProgressBar.Circle(document.getElementById('container_bounce'), {
       color: '#FFEA82',
       trailColor: '#eee',
       trailWidth: 1,
