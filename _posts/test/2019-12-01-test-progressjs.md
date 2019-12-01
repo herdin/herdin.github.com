@@ -78,6 +78,7 @@ bar.animate(1.0);
         } else {
           bar.animate(1.0, {duration:3000});
         }
+        flag = !flag;
       }, 5000);
 
     })();
