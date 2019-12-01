@@ -10,27 +10,30 @@ tags: opensource
 [Progress.js Document](https://progressbarjs.readthedocs.io/en/latest/)
 
 <style>
-    .progress {
-        height: 300px;
-    }
-    .progress > svg {
-        height: 100%;
-        display: block;
-    }
+  .container {
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+  }
 </style>
 
-<div class="progress" id="progress"></div>
+<div class="container" id="container_simple"></div>
+<div class="container" id="container_"></div>
 
 <script>
   $(document).ready(function(){
-    window.onload = function onLoad() {
-        var circle = new ProgressBar.Circle('#progress', {
-            color: '#FCB03C',
-            duration: 3000,
-            easing: 'easeInOut'
-        });
+    var container_simple = $('#container_simple');
+    var bar = new ProgressBar.Circle(container_simple, {
+      strokeWidth: 6,
+      easing: 'easeInOut',
+      duration: 1400,
+      color: '#FFEA82',
+      trailColor: '#eee',
+      trailWidth: 1,
+      svgStyle: null
+    });
 
-        circle.animate(1);
-    };
+    bar.animate(1.0);  // Number from 0.0 to 1.0
   });
 </script>
