@@ -2,7 +2,7 @@
 layout: post
 title: "Java JDBC 와 JNDI"
 date: 2019-11-19
-tags: temp java
+tags: java writing
 ---
 
 # WAS 에 Datasource 를 설정하는 이유 (JNDI)
