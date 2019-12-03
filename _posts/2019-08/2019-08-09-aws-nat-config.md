@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AWS RDS mariadb config"
+title: "AWS NAT instace config"
 date: 2019-08-09
 tags: aws
 ---
