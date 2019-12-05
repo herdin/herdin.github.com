@@ -6,7 +6,7 @@ tags: javascript writing
 ---
 
 화살표 함수(애로우 펑션, Arrow functions, Fat arrow functions) 는 ECMAScript 2015 의 표현식이다.
-function 표현에 비해 **구문이 짧고**, **항상 익명이며*, **자신의 this/arguments/super/new.target 을 바인딩 하지 않는다**.
+function 표현에 비해 **구문이 짧고**, **항상 익명이며**, **자신의 this/arguments/super/new.target 을 바인딩 하지 않는다**.
 
 일단 예제
 
