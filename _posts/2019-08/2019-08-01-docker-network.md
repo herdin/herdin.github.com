@@ -2,7 +2,7 @@
 layout: post
 title: "Docker Network"
 date: 2019-08-01
-tags: docker writing
+tags: docker
 ---
 
 `container` 는 기본적으로 `eth0` 과 `lo` 네트워크 인터페이스를 갖고있음.  

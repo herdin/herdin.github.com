@@ -2,7 +2,7 @@
 layout: post
 title: "javascript 화살표 함수(애로우 펑션, arrow function)"
 date: 2019-12-04
-tags: javascript writing
+tags: javascript
 ---
 
 화살표 함수(애로우 펑션, Arrow functions, Fat arrow functions) 는 ECMAScript 2015 의 표현식이다.

@@ -2,7 +2,7 @@
 layout: post
 title: "javascript call apply bind 에 대해서"
 date: 2019-12-04
-tags: javascript writing
+tags: javascript
 ---
 
 셋다 함수의 기본 함수이다.  

@@ -2,7 +2,7 @@
 layout: post
 title: "REST API 설계 시 참고"
 date: 2019-11-18
-tags: web writing
+tags: web
 ---
 
 [출처](https://meetup.toast.com/posts/92)

@@ -2,7 +2,7 @@
 layout: post
 title: "Java Thread Dump"
 date: 2019-11-19
-tags: java writing
+tags: java
 ---
 
 # Thread dump 란?

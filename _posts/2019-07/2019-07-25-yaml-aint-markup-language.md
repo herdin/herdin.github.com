@@ -2,7 +2,7 @@
 layout: post
 title: "YAML"
 date: 2019-07-25
-tags: file-format writing
+tags: file-format
 ---
 
 - 공백문자를 이용하여 구조체를 구분한다. 하이픈은 사용하지 않는다.
