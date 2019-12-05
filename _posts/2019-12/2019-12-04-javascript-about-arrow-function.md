@@ -65,15 +65,15 @@ var obj = {
 	name : "obj for test",
 	funcExp : function() {
 		setTimeout(function() {
-      console.dir(this);
+			console.dir(this);
 			console.log(this.name);
 		}, 1000);
 	},
 	funcArrowExp : function() {
 		setTimeout(() => {
-      console.dir(this);
-      console.log(this.name);
-    }, 1000);
+			console.dir(this);
+			console.log(this.name);
+		}, 1000);
 	},
 }
 
