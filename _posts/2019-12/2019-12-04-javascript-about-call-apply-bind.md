@@ -5,7 +5,14 @@ date: 2019-12-04
 tags: javascript writing
 ---
 
-셋다 함수의 기본 함수이다.
+셋다 함수의 기본 함수이다.  
+함수를 호출하는 방법중에 하나이다.
+
+``` javascript
+METHOD();
+```
+
+보통 위와같이 호출하지만, 아래와 같은 방법도 있다.
 
 ``` javascript
 METHOD.call(
