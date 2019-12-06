@@ -86,8 +86,9 @@ baseurl: ""
 # timezone for check page creation time
 timezone: Asia/Seoul
 
-#
-permalink: /:title/
+# page url
+# permalink: /:title/
+permalink: /:year/:month/:day/:title
 
 # paging configuration
 paginate: 5
