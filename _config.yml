@@ -22,7 +22,7 @@ avatar: /assets/images/epubaal.jpg
 # https://jekyllrb-ko.github.io/
 navigation:
   - name: About
-    url: /
+    url: /about
   - name: Paging
     url: /paging
   - name: Tags
