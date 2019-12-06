@@ -27,6 +27,8 @@ navigation:
     url: /logs
   - name: Tags
     url: /tags
+  - name: Paging
+    url: /paging
 # File name Pattern - Tag
 # shovel - shovel-knight
 
