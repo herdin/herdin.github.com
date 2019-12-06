@@ -126,8 +126,8 @@ paginate_path: "pages/page:num/"
 #   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
 #   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
 
-# plugins:
-#   - jekyll-paginate #Jekyll2 has default
+plugins:
+  - jekyll-paginate #Jekyll2 has default
 
 
 # Exclude these files from your production _site
