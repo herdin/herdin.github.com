@@ -23,12 +23,12 @@ avatar: /assets/images/epubaal.jpg
 navigation:
   - name: About
     url: /
-  - name: Logs
-    url: /logs
-  - name: Tags
-    url: /tags
   - name: Paging
     url: /paging
+  - name: Tags
+    url: /tags
+  - name: Logs
+    url: /logs
 # File name Pattern - Tag
 # shovel - shovel-knight
 
