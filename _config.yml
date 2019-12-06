@@ -113,7 +113,7 @@ sass:
 
 # paging configuration
 paginate: 5
-paginate_path: "/logs/page:num/"
+paginate_path: "/pages/page:num/"
 
 
 
