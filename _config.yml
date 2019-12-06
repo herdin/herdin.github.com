@@ -90,7 +90,7 @@ timezone: Asia/Seoul
 
 # paging configuration
 paginate: 5
-paginate_path: /page:num/
+paginate_path: /paging/page:num/
 
 # page url
 # permalink: /:title/
