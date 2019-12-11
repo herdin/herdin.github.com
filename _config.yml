@@ -118,7 +118,7 @@ kramdown:
 sass:
   # You might prefer to readable [:expanded]
   # You might prefer to minify using [:compressed]
-  style: :compressed
+  style: :expanded
 
 # Use the following plug-ins - herdin temporary comment
 # gems:
