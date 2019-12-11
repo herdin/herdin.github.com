@@ -10,6 +10,7 @@ https://jekyllrb-ko.github.io/docs/assets/
 
 @import "reset";
 @import "variables";
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css);
 // Syntax highlighting @import is at the bottom of this file
 
 /**************/
@@ -22,7 +23,7 @@ html {
 
 body {
 	background: $white;
-  font: 16px/1.4 $d2coding;
+  font: 16px/1.4 $spoqaHanSans;
   color: $darkGray;
 }
 
@@ -62,7 +63,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $d2coding;
+  font-family: $spoqaHanSans;
   color: $darkerGray;
   font-weight: bold;
 
@@ -252,7 +253,7 @@ img {
   margin: 0;
   color: $darkGray;
   cursor: pointer;
-  font-family: $d2coding;
+  font-family: $spoqaHanSans;
   font-weight: 300;
   font-size: 28px;
   letter-spacing: 1px;
@@ -271,7 +272,7 @@ img {
 nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $d2coding;
+  font-family: $spoqaHanSans;
   font-size: 18px;
 
   @include mobile {
