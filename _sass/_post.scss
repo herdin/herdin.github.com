@@ -1,6 +1,6 @@
 .posts > .post {
   padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+  border-bottom: 1px solid $gray-light;
 }
 
 .posts > .post:last-child {
@@ -18,9 +18,9 @@
   }
   blockquote {
     margin: 0px 0px 24px;
-    border-left: 4px solid $gitbookLightGray;
+    border-left: 4px solid $gitbook-light-gray;
     padding: 0px 0px 0px 12px;
-    color: $gitbookGray;
+    color: $gitbook-gray;
     font-size: 16px;
     font-weight: 400;
     font-style: italic;

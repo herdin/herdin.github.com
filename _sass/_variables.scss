@@ -3,26 +3,32 @@
 // VARIABLES
 //
 
-// Colors
+// Color stacks
+$black: #000;
+$white: #fff;
 $blue: #4183C4;
 
-// Grays
-$black: #000;
-$darkerGray: #222;
-$darkGray: #333;
+$gray-light: #eee;
 $gray: #666;
-$gitbookGray: rgb(116, 129, 141);
-$gitbookLightGray: rgb(230, 236, 241);
-$lightGray: #eee;
-$white: #fff;
+$gray-dark: #333;
+$gray-darker: #222;
+
+$gitbook-gray: rgb(116, 129, 141);
+$gitbook-light-gray: rgb(230, 236, 241);
+
 
 // Font stacks
 $helvetica: Helvetica, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $d2coding: D2Coding, 'D2 coding', monosapce;
 $georgia: Georgia, serif;
-$gitbookFont: "Content-font", Roboto, sans-serif;
-$spoqaHanSans:'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+$gitbook: "Content-font", Roboto, sans-serif;
+$spoqa-han-sans:'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+
+$spoqa-han-sans-path: '/SpoqaHanSans-subset';
+
+$base-font: $spoqaHanSans;
+$base-font-path: '/assets/fonts' + $spoqa-han-sans-path;
 
 // Mobile breakpoints
 @mixin mobile {

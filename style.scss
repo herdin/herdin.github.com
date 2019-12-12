@@ -10,7 +10,7 @@ https://jekyllrb-ko.github.io/docs/assets/
 
 @import "reset";
 @import "variables";
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css);
+//@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css);
 // Syntax highlighting @import is at the bottom of this file
 
 /**************/
@@ -23,13 +23,52 @@ html {
 
 body {
 	background: $white;
-  font: 16px/1.4 $spoqaHanSans;
-  color: $darkGray;
+  font: 16px/1.4 $base-font;
+  color: $gray-dark;
+}
+
+/*
+ * Spoqa Han Sans (Korean) https://spoqa.github.io/spoqa-han-sans/ko-KR/
+ */
+@font-face {
+    font-family: 'Spoqa Han Sans';
+    font-weight: 700;
+    src: local('Spoqa Han Sans Bold'),
+    url('#{$base-font-path}/SpoqaHanSansBold.woff2') format('woff2'),
+    url('#{$base-font-path}/SpoqaHanSansBold.woff') format('woff'),
+    url('#{$base-font-path}/SpoqaHanSansBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans';
+    font-weight: 400;
+    src: local('Spoqa Han Sans Regular'),
+    url('#{$base-font-path}/SpoqaHanSansRegular.woff2') format('woff2'),
+    url('#{$base-font-path}/SpoqaHanSansRegular.woff') format('woff'),
+    url('#{$base-font-path}/SpoqaHanSansRegular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans';
+    font-weight: 300;
+    src: local('Spoqa Han Sans Light'),
+    url('#{$base-font-path}/SpoqaHanSansLight.woff2') format('woff2'),
+    url('#{$base-font-path}/SpoqaHanSansLight.woff') format('woff'),
+    url('#{$base-font-path}/SpoqaHanSansLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans';
+    font-weight: 100;
+    src: local('Spoqa Han Sans Thin'),
+    url('#{$base-font-path}/SpoqaHanSansThin.woff2') format('woff2'),
+    url('#{$base-font-path}/SpoqaHanSansThin.woff') format('woff'),
+    url('#{$base-font-path}/SpoqaHanSansThin.ttf') format('truetype');
 }
 
 /*
  * D2 coding (Korean) http://dev.naver.com/projects/d2coding/
- */
+
 @font-face {
   font-family: 'D2 coding';
   font-style: normal;
@@ -54,6 +93,7 @@ body {
        url('/assets/fonts/font-d2coding-master/D2CodingBold.ttf') format('truetype'),
        url('/assets/fonts/font-d2coding-master/D2CodingBold.svg') format('svg');
 }
+ */
 
 .container {
   margin: 0 auto;
@@ -64,7 +104,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $spoqaHanSans;
-  color: $darkerGray;
+  color: $gray-darker;
   font-weight: bold;
 
   line-height: 1.7;
@@ -182,11 +222,11 @@ img {
 // Specify the color of the selection
 ::-moz-selection {
   color: $black;
-  background: $lightGray;
+  background: $gray-light;
 }
 ::selection {
   color: $black;
-  background: $lightGray;
+  background: $gray-light;
 }
 
 // Nicolas Gallagher's micro clearfix hack
@@ -215,7 +255,7 @@ img {
 
 .masthead {
   padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
+  border-bottom: 1px solid $gray-light;
 
   @include mobile {
     text-align: center;
@@ -251,7 +291,7 @@ img {
 
 .site-name {
   margin: 0;
-  color: $darkGray;
+  color: $gray-dark;
   cursor: pointer;
   font-family: $spoqaHanSans;
   font-weight: 300;
@@ -284,7 +324,7 @@ nav {
 
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: $gray-dark;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
@@ -300,7 +340,7 @@ nav {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  background-color: $gray-light;
 }
 
 footer {
