@@ -2,7 +2,7 @@
 layout: post
 title: "Promise 가 뭐지"
 date: 2019-07-29
-tags: javascript promise
+tags: javascript async
 ---
 `ECMA Script 6` 부터 `native Promise` 를 지원한다.
 

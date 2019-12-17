@@ -2,7 +2,7 @@
 layout: post
 title: "Promise 의 상태를 보려면"
 date: 2019-09-17
-tags: javascript promise
+tags: javascript async
 ---
 
 관련 포스트
