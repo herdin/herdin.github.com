@@ -8,38 +8,29 @@ tags: lo-fi
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
 
 <script>
+const id = 0;
+const thumbnail = 1;
+const sourceSrc = 2;
+const sourceType = 3;
 let audios = {
   [
     "hyades.shoutca.st",
     "https://cdn-profiles.tunein.com/s288329/images/logoq.jpg?t=636294",
     "http://hyades.shoutca.st:8043/autodj",
     "audio/mpeg",
-    "autoplay",
-  ]
-  tunein_com_Lofi_HipHop_Radio__Chillsky_s288329 : {
-    thumbnail : "https://cdn-profiles.tunein.com/s288329/images/logoq.jpg?t=636294",
-    sourceSrc : ,
-    sourceType : ,
-	autoplay : ,
-  },
-  tunein_com_Now_Playing_s290316 : {
-    thumbnail : "https://cdn-profiles.tunein.com/s290316/images/logoq.jpg?t=151378",
-    sourceSrc : "http://listen.shoutcast.com/freshsndgold",
-    sourceType : "audio/mpeg",
-	autoplay : "",
-  },
-  tunein_com_Fresh_Sound_s278846 : {
-    thumbnail : "https://cdn-profiles.tunein.com/s278846/images/logoq.jpg?t=151378",
-    sourceSrc : "http://listen.shoutcast.com/freshsnd",
-    sourceType : "audio/aac",
-	autoplay : "",
-  },
-  radio_net_lautfm_lofi : {
-    thumbnail : "https://static.radio.net/inc/v2/images/avatars/station_avatar.gif",
-    sourceSrc : "https://stream.laut.fm/lofi?ref=radiode",
-    sourceType : "audio/mpeg",
-	autoplay : "",
-  },
+  ],
+  [
+    "tunein_com_Now_Playing_s290316",
+    "https://cdn-profiles.tunein.com/s290316/images/logoq.jpg?t=151378",
+    "http://listen.shoutcast.com/freshsndgold",
+    "audio/mpeg",
+  ],
+  [
+    "radio_net_lautfm_lofi",
+    "https://static.radio.net/inc/v2/images/avatars/station_avatar.gif",
+    "https://stream.laut.fm/lofi?ref=radiode",
+    "audio/mpeg",
+  ],
 };
 
 
@@ -56,10 +47,9 @@ $(document).ready(function(){
   for(let audioKey in audios) {
   	$('#audiobox').append(
   		audioTag
-  		.replace('#THUMBNAIL#', audios[audioKey].thumbnail)
-  		.replace('#SOURCESRC#', audios[audioKey].sourceSrc)
-  		.replace('#SOURCETYPE#', audios[audioKey].sourceType)
-  		.replace('#AUTOPLAY#', audios[audioKey].autoplay)
+  		.replace('#THUMBNAIL#', audios[audioKey][thumbnail])
+  		.replace('#SOURCESRC#', audios[audioKey][sourceSrc])
+  		.replace('#SOURCETYPE#', audios[audioKey][sourceType])
   	);
   }
 });
