@@ -14,7 +14,7 @@ Your browser does not support the audio element.
 </audio>
 
 <img src="https://cdn-profiles.tunein.com/s290316/images/logoq.jpg?t=151378"/>
-<audio controls="true" autoplay="true" loop="true">
+<audio controls="true" autoplay="false" loop="true">
   <source src="http://listen.shoutcast.com/freshsndgold" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
