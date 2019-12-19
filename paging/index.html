@@ -2,11 +2,9 @@
 layout: default
 ---
 
-{{ paginator.posts.size }}
-
 <div class="posts">
+    {% for post in paginator.posts %}
     <article class="post">
-
       <h2 style="color:#285bd1"><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h2>
       <div clsss="meta">
         <span class="date">
