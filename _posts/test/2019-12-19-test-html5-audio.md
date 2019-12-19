@@ -6,10 +6,19 @@ tags: opensource
 ---
 
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
-<audio controls="true" autoplay="true">
+
+<img src="https://cdn-profiles.tunein.com/s288329/images/logoq.jpg?t=636294"/>
+<audio controls="true" autoplay="true" loop="true">
   <source src="http://hyades.shoutca.st:8043/stream" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
+
+<img src="https://cdn-profiles.tunein.com/s290316/images/logoq.jpg?t=151378"/>
+<audio controls="true" autoplay="true" loop="true">
+  <source src="http://listen.shoutcast.com/freshsndgold" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
 
 file format : media type
 - MP3 : audio/mpeg
