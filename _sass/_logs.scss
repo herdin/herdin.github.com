@@ -1,0 +1,20 @@
+.logs {
+  .log {
+    padding-bottom: 2em;
+    border-bottom: 1px solid $gray-light;
+    a[href*="//"]:after {
+      content: "";
+      background-image: url(/assets/images/external_link.svg);
+      background-repeat: no-repeat;
+      background-position-x: right;
+      background-position-y: .3em;
+      background-size: 14px;
+      margin-right: 5px;
+      padding-right: 18px;
+    }
+  }
+  .log:last-child {
+    padding-bottom: 1em;
+    border-bottom: none;
+  }
+}
