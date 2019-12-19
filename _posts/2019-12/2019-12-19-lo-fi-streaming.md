@@ -12,7 +12,7 @@ const id = 0;
 const thumbnail = 1;
 const sourceSrc = 2;
 const sourceType = 3;
-let audios = {
+let audios = [
   [
     "hyades.shoutca.st",
     "https://cdn-profiles.tunein.com/s288329/images/logoq.jpg?t=636294",
@@ -31,7 +31,7 @@ let audios = {
     "https://stream.laut.fm/lofi?ref=radiode",
     "audio/mpeg",
   ],
-};
+];
 
 
 let audioTag = ''
