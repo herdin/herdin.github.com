@@ -92,20 +92,19 @@ VM36:12 obj for test
 ``` javascript
 var obj = {
 	name : "obj for test",
-
 	funcExp : function() {
-    var that = this;
+		var that = this;
 		setTimeout(function() {
-      console.dir(that);
-			console.log(that.name);
+				console.dir(that);
+				console.log(that.name);
 		}, 1000);
 	},
 	funcArrowExp : function() {
-    var that = this;
+		var that = this;
 		setTimeout(() => {
-      console.dir(that);
-      console.log(that.name);
-    }, 1000);
+		console.dir(that);
+		console.log(that.name);
+		}, 1000);
 	},
 }
 
