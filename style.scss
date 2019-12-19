@@ -352,8 +352,9 @@ footer {
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 // search pygments theme like...
 // https://stylishthemes.github.io/Syntax-Themes/pygments/
+@import "about";
 @import "highlights";
+@import "logs";
+@import "posts";
 @import "svg-icons";
 @import "tags";
-@import "post";
-@import "about";
