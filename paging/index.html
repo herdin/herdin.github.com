@@ -5,7 +5,6 @@ layout: default
 {{ paginator.posts.size }}
 
 <div class="posts">
-  {% for post in paginator.posts %}
     <article class="post">
 
       <h2 style="color:#285bd1"><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h2>
@@ -35,14 +34,14 @@ layout: default
 
 <div class="pagination">
   {% if paginator.previous_page %}
-    <span class="prev">
+    <span class="prev" style="float:left;">
       <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="prev">
         &#xE000; Previous
       </a>
     </span>
   {% endif %}
   {% if paginator.next_page %}
-    <span class="next">
+    <span class="next" style="float:right;">
       <a href="{{ site.baseurl}}{{ paginator.next_page_path }}" class="next">
         Next &#xE001;
       </a>
