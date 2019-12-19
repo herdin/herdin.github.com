@@ -6,7 +6,6 @@ layout: default
   {% for post in site.posts %}
     <article class="post">
 
-      <h2 style="color:#285bd1"><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h2>
       <div clsss="meta">
         <span class="date">
           {{ post.date | date: "%Y-%m-%d" }}
@@ -20,6 +19,10 @@ layout: default
             </a>
           </li>
           {% endfor %}
+        </span>
+
+        <span>
+          <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
         </span>
       </div>
     </article>
