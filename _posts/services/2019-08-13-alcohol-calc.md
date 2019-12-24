@@ -2,7 +2,7 @@
 layout: post
 title: "알코올 함량 계산기"
 date: 2019-08-13
-tags: calc
+tags: services calc
 ---
 <input id="abv" type="text" placeholder="ABV" size="5"> % <input id="cc" type="text" placeholder="CC" size="5"> cc
 <input id="gram" type="text" placeholder="" size="5" readonly> g

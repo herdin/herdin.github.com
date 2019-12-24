@@ -2,7 +2,7 @@
 layout: post
 title: Lofi Radio Streaming List
 date: 2019-12-19
-tags: lo-fi
+tags: services lo-fi
 ---
 
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
