@@ -5,9 +5,9 @@ date: 2019-08-23
 tags: opensource
 ---
 
-<script type="text/javascript" src="/assets/vendor/jsgrid/js/jsgrid.min.js"></script>
-<link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid/css/jsgrid-theme.min.css"/>
-<link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid/css/jsgrid.min.css"/>
+<script type="text/javascript" src="/assets/vendor/jsgrid_v1.5.3/js/jsgrid.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/css/jsgrid-theme.min.css"/>
+<link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/css/jsgrid.min.css"/>
 
 [jsGrid Document](http://js-grid.com/docs/)
 
