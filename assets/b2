@@ -1,0 +1,119 @@
+package study.blockchain;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+
+public class BlockChainUtils {
+    public static byte[] encSHA256(byte[] bin) throws NoSuchAlgorithmException {
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+        byte[] bout = messageDigest.digest(bin);
+        return bout;
+    }//END OF FUNCTION
+    
+    public static byte[] getTargetFromNbits(Long nBits) {
+        final long BYTES_IN_SIGNIFICAND = 3L;
+        Long significant = (nBits&0x00ffffff);
+        Long exponent = (nBits>>>24);
+        Long base = 256L;
+        
+        BigInteger biSignificant = BigInteger.valueOf(significant);
+        BigInteger biExponent = BigInteger.valueOf(exponent);
+        BigInteger biBase = BigInteger.valueOf(base);
+        
+        BigInteger biThreshold = biSignificant.multiply(biBase.pow(biExponent.subtract(BigInteger.valueOf(BYTES_IN_SIGNIFICAND)).intValue()));
+        
+        return biThreshold.toByteArray();
+    }//END OF FUNCTION
+    
+    public static boolean isBlockHashValid(byte[] blockHash, byte[] targetThreshold) {
+        for(int i=0; i<blockHash.length; i++) {
+            if((blockHash[i]&0xff) > (targetThreshold[i]&0xff)) {
+                return false;
+            } else if((blockHash[i]&0xff) < (targetThreshold[i]&0xff)) {
+                return true;
+            }
+        }
+        return true;
+    }//END OF FUNCTION
+    
+    public static String byteArrayToHexString(byte[] bs) {
+        StringBuilder sb = new StringBuilder();
+        for(final byte b : bs) {
+            sb.append(String.format("%02x", b&0xff));
+        }
+        return sb.toString();
+    }//END OF FUNCTION
+    
+    public static String numericToHexString(BigDecimal bd, int bytes) {
+        String tempHexStr = String.format("%02x", bd);
+        if(tempHexStr.length() > bytes*2) {
+            throw new NumberFormatException("INPUT LONG IS TOO BIGGER THAN EXPECTED");
+        } else if(tempHexStr.length() < bytes*2) {
+            tempHexStr = BlockChainUtils.leftPad(tempHexStr, bytes*2, "0");
+        }
+        return tempHexStr;
+    }
+    
+    public static String numericToHexString(long l, int bytes) {
+        String tempHexStr = String.format("%02x", l);
+        if(tempHexStr.length() > bytes*2) {
+            throw new NumberFormatException("INPUT LONG IS TOO BIGGER THAN EXPECTED");
+        } else if(tempHexStr.length() < bytes*2) {
+            tempHexStr = BlockChainUtils.leftPad(tempHexStr, bytes*2, "0");
+        }
+        return tempHexStr;
+    }//END OF FUNCTION
+    
+    public static String leftPad(String input, int length, String pad) {
+        if(input == null || input.length() <= 0 || input.length() >= length || pad == null || pad.length() <= 0)
+            return null;
+        StringBuffer sb = new StringBuffer();
+        for(int i=0; i<length-input.length(); i++) {
+            sb.append(pad);
+        }
+        sb.append(input);
+        return sb.toString();
+    }//END OF FUNCTION
+    
+    public static byte[] hexStringToByteArray(String s) {
+        int len = s.length();
+        byte[] byteArr = new byte[len/2];
+        for(int i=0; i<len; i+=2) {
+            byteArr[i/2] = (byte)
+                (
+                    (Character.digit(s.charAt(i), 16) << 4) +
+                    (Character.digit(s.charAt(i+1), 16))
+                );
+        }
+        return byteArr;
+    }//END OF FUNCTION
+    
+    public static byte[] getReversedByteArray(byte[] inbs) {
+        int version = 1;
+        //version 2는 원래 값을 바꿔서 안됨.. ㅠㅠ
+        switch(version) {
+            case 1:
+                byte[] outbs = new byte[inbs.length];
+                Arrays.fill(outbs, (byte)0x00);
+                
+                for(int i=0; i<inbs.length/2; i++) {
+                    outbs[inbs.length-i-1] = inbs[i];
+                    outbs[i] = inbs[inbs.length-i-1];
+                }
+                return outbs;
+            case 2:
+                for(int i=0; i<inbs.length/2; i++) {
+                    byte temp = inbs[i];
+                    inbs[i] = inbs[inbs.length-1-i];
+                    inbs[inbs.length-1-i] = temp;
+                }
+                return inbs;
+            default :
+                return null;
+        }
+    }//END OF FUNCTION
+    
+}//END OF CLASS
