@@ -41,7 +41,7 @@ tags: web githubpage jekyll
   permalink: /tags/
   ---
   <!-- tag click 을 위한 jquery, cdn 말고 다운 받아서 사용헀음 -->
-  <script src="/assets/js/jquery-3.4.1.min.js"></script>
+  <script src="/assets/vendor/jquery-3.4.1.min.js"></script>
 
   <!-- site.tags 가 site 의 모든 tag 별 포스트 들을 갖고 있다 -->
   {% assign tags = site.tags | sort %}

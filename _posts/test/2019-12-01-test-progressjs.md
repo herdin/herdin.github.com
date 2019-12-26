@@ -5,7 +5,7 @@ date: 2019-12-01
 tags: opensource
 ---
 
-<script src="/assets/js/progressbar.min.js"></script>
+<script src="/assets/vendor/progressbar.min.js"></script>
 
 [Progress.js Document](https://progressbarjs.readthedocs.io/en/latest/)
 

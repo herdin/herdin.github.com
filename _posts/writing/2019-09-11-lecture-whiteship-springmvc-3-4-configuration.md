@@ -113,7 +113,7 @@ public class WebConf implements WebMvcConfigurer {
 저 자동설정목록 중에는 `org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration` 도 있는데, 내부에 `@ConditionalOnMissingBean({WebMvcConfigurationSupport.class})` 가 붙어있음.
 
 스프링 MVC 커스터마이징
-- application.properties :
+- application.properties : 가장 간단한 설정
 - @Configuration + implements WebMvcConfigurer : 스프링 부트의 스프링 MVC 자동설정 + 추가설정
 - @Configuration + @EnableWebMvc + implements WebMvcConfigurer(없어도되지만 편함) : 스프링 부트의 스프링 MVC 자동설정 사용안하는 상태
 
@@ -130,6 +130,11 @@ public class WebConf implements WebMvcConfigurer {
 스프링 부트는 `WebMvcAutoConfiguration` 에 의해 `Converter`, `GenericConverter`, `Formatter` 타입의 빈들을 자동으로 등록해주므로 `WebMvcConfigurer` 를 상속받은 클래스에서 포매터를 등록해줄 필요 없이 그냥 빈등록만 해주면 된다.
 
 `Thmeleaf` 는 `ThymeleafAutoConfiguration` 설정이 따로 있음.
+
+> 2019-12-17 23:15
+
+`ThymeleafAutoConfiguration` 는 `@EnableConfigurationProperties({ThymeleafProperties.class})` 을 프로퍼티로 사용하고 있다. 그리고 `@ConditionalOnClass({LayoutDialect.class})` 도 있네?
+
 
 ## 스프링 부트 JSP
 ## WAR 파일 배포하기
