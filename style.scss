@@ -18,12 +18,12 @@ https://jekyllrb-ko.github.io/docs/assets/
 /**************/
 
 html {
-  font-size: 100%;
+  font-size: $base-font-size;
 }
 
 body {
 	background: $white;
-  font: 16px/1.4 $base-font;
+  font: $base-font;
   color: $gray-dark;
 }
 

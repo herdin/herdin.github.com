@@ -29,6 +29,7 @@ $spoqa-han-sans-path: '/SpoqaHanSans-subset';
 
 $base-font: $spoqa-han-sans;
 $base-font-path: '/assets/fonts' + $spoqa-han-sans-path;
+$base-font-size: 18px;
 
 // Mobile breakpoints
 @mixin mobile {
