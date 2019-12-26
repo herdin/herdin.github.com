@@ -14,14 +14,14 @@ tags: opensource
 
 <style type="text/css">
   #wrapper {
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    width: 400px;
-    line-height: 40px;
-    margin-left: -200px;
+    //position: absolute;
+    //top: 50px;
+    //left: 50%;
+    //width: 400px;
+    //line-height: 40px;
+    //margin-left: -200px;
     font-size: 20px;
-    text-align: center;
+    //text-align: center;
   }
   #wrapper input {
     height: 30px;
