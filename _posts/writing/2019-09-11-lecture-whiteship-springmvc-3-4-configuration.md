@@ -117,9 +117,7 @@ public class WebConf implements WebMvcConfigurer {
 - @Configuration + implements WebMvcConfigurer : 스프링 부트의 스프링 MVC 자동설정 + 추가설정
 - @Configuration + @EnableWebMvc + implements WebMvcConfigurer(없어도되지만 편함) : 스프링 부트의 스프링 MVC 자동설정 사용안하는 상태
 
-스프링 부트의 설정 `org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration` 은  
-`@ConditionalOnClass({Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class})`,  
-`@ConditionalOnMissingBean({WebMvcConfigurationSupport.class})` 두개를 갖고있음.
+스프링 부트의 설정 `org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration` 은 `@ConditionalOnClass({Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class})`, `@ConditionalOnMissingBean({WebMvcConfigurationSupport.class})` 두개를 갖고있음.
 
 `@EnableWebMvc` 은 `@Import({DelegatingWebMvcConfiguration.class})` 을 갖고 있고, `public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport` 이므로 스프링 부트 설정을 하지 않게 된다.
 
