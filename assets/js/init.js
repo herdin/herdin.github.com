@@ -46,7 +46,7 @@ var ONLOAD_CALLBACK_LIST = [];
   }
 
   function replaceImageSrc() {
-    var postImagePath = '/assets/posts/';
+    var postImagePath = '/assets/images/posts/';
     var realImageName = 'post-image-name';
     $('img').each(function(index, obj) {
     	if($(obj).attr(realImageName) != null) {
