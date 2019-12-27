@@ -45,10 +45,11 @@ var ONLOAD_CALLBACK_LIST = [];
   }
 
   function replaceImageSrc() {
-    var realImgSrc = 'post-image-name';
+    var postImagePath = '/assets/posts/';
+    var realImageName = 'post-image-name';
     $('img').each(function(index, obj) {
-    	if($(obj).attr(realImgSrc) != null) {
-    		$(obj).attr('src', $(obj).attr());
+    	if($(obj).attr(realImageName) != null) {
+    		$(obj).attr('src', postImagePath + $(obj).attr(realImageName));
     	}
     });
   }
