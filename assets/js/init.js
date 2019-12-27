@@ -19,6 +19,7 @@ var ONLOAD_CALLBACK_LIST = [];
 
   function init() {
     ONLOAD_CALLBACK_LIST.push(addButtonScrollToTop);
+    ONLOAD_CALLBACK_LIST.push(replaceImageSrc);
     for(var i=0; i<ONLOAD_CALLBACK_LIST.length; i++) {
       ONLOAD_CALLBACK_LIST[i]();
     }
