@@ -1,3 +1,5 @@
+var ONLOAD_CALLBACK_LIST = [];
+
 (function(){
   var done = false;
   var v = '3.4.1'; /*IF PAGE HAS NO JQUERY OR JQUERY VERSION LOW*/
@@ -16,7 +18,10 @@
   }
 
   function init() {
-    addButtonScrollToTop();
+    ONLOAD_CALLBACK_LIST.push(addButtonScrollToTop);
+    for(var i=0; i<ONLOAD_CALLBACK_LIST.length; i++) {
+      ONLOAD_CALLBACK_LIST[i]();
+    }
   }
 
   function addButtonScrollToTop() {
