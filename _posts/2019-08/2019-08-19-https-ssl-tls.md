@@ -7,8 +7,7 @@ tags: web https
 
 > 나는 그냥 HTTPS 만 알고싶은데 왜 하나만 알면 안되는거야 행복할수가업서...ㅠㅠ
 
-![꽈찌쭈]({{ base.url }})
-![많이 보던 그 그림](/assets/images/posts/2019-08-19-https-ssl-tls.jpg)
+<img src="#" post-image-name="2019-08-19-https-ssl-tls.jpg" />
 
 ## HTTPS 와 SSL, TLS 그게 다 뭐지?
 
@@ -98,6 +97,12 @@ Decrypt(CKeyD, CS) => HASH1                  // 인증기관의 공개키(CKeyD,
 Hash(INFO_LIST) => HASH1'                    // 필요한 정보(INFO_LIST)를 직접 해시하여 해시값(HASH1')를 구한다.
 If HASH1 == HASH1', Execute C1 => Very Good! // 두 해시값이 일치한다면, 필요한 정보(INFO_LIST)들은 변조된적이 없는 것이고, 배포자의 공개키(KeyD) 역시 변조되지 않았음을 증명한다.
 ```
+
+그럼 위에서 뜬금없이 나온 인증기관의 공개키(CKeyD) 는 어디서 인증할 것인가? 배포자의 공개키(KeyD)를 인증한 방법으로 상위 기관의 인증서로 인증을 한다. 이렇게 상위 기관의 인증서로 하위 인증기관의 공개키를 검증하는 것을 인증서 체인이라고 하고, 인증서 체인을 따라올라가다보면 최상위 인증기관(Root CA, 스스로를 인증함)을 만날 수 있는데, 최상위 인증서는 무조건 신뢰한다고 가정하고 이 모든 인증을 진행하는 것이다.
+
+아래와 같이 최상위 인증서의 발급대상과 발급자가 같다.
+
+<img src="#" post-image-name="2019-08-19-https-ssl-tls-01.PNG" />
 
 > 긴 여정 이었다. 휴!
 

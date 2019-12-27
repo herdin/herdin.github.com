@@ -43,4 +43,13 @@ var ONLOAD_CALLBACK_LIST = [];
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     });
   }
+
+  function replaceImageSrc() {
+    var realImgSrc = 'post-image-name';
+    $('img').each(function(index, obj) {
+    	if($(obj).attr(realImgSrc) != null) {
+    		$(obj).attr('src', $(obj).attr());
+    	}
+    });
+  }
 })();
