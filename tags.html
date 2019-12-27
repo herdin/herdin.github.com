@@ -39,18 +39,19 @@ permalink: /tags/
 </div>
 
 <script>
-  $(document).ready(function(){
-    $('.site-tag').click(function(){
-      $('.site-tagged-posts > li').hide();
-      var prefix = '{{ prefix }}';
-      var delay = 100;
-      var tag = $(this).attr('id');
-      $('.' + prefix + tag).fadeIn(delay);
-    });
+    function addTags() {
+      $('.site-tag').click(function(){
+        $('.site-tagged-posts > li').hide();
+        var prefix = '{{ prefix }}';
+        var delay = 100;
+        var tag = $(this).attr('id');
+        $('.' + prefix + tag).fadeIn(delay);
+      });
 
-    var paramId = window.location.hash.replace('#', '');
-    if(paramId != null && paramId.length > 0) {
-      $('#' + paramId).click();
+      var paramId = window.location.hash.replace('#', '');
+      if(paramId != null && paramId.length > 0) {
+        $('#' + paramId).click();
+      }
     }
-  });
+    ONLOAD_CALLBACK_LIST.push(addTags);
 </script>
