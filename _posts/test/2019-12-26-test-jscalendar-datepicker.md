@@ -5,7 +5,6 @@ date: 2019-12-26
 tags: opensource
 ---
 
-<script src="/"></script>
 <!-- jsCalendar -->
 <link rel="stylesheet" type="text/css" href="/assets/vendor/jsCalendar_v1.4.4/jsCalendar.min.css">
 <!-- <link rel="stylesheet" type="text/css" href="../themes/jsCalendar.micro.css"> -->
