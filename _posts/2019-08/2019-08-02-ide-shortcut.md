@@ -82,6 +82,13 @@ tags: ide
     <td></td>
   </tr>
   <tr>
+    <td>code beautify</td>
+    <td>Ctrl+Shift+F</td>
+    <td>Ctrl+Alt+L</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>extends selection</td>
     <td></td>
     <td>Ctrl+W >> Alt+W</td>
