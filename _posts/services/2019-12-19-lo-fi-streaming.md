@@ -52,7 +52,7 @@ function addRadio() {
   	);
   }
 }
-ONLOAD_CALLBACK_LIST.add(addRadio);
+ONLOAD_CALLBACK_LIST.push(addRadio);
 
 </script>
 
