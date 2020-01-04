@@ -8,8 +8,7 @@ permalink: /about/
 class Page {
   constructor() {
     this.compiledTime = "{{ site.time }}";
-    this.getCompiledTime = function() {
-      return this.compiledTime;
+    this.getCompiledTime = () => return this.compiledTime;
     }
   }
 }
