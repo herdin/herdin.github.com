@@ -7,7 +7,7 @@ tags: web spring
 
 ## 리소스 핸들러
 
-정적 리소스를 웹컨테이너의 기본서블릿에 위임하는 핸들러이다. `WebMvcConfigurer` interface 를 구현해서 추가해 주면 된다. 캐시옵션을 사용하면 `Cache-Control` 헤더가 들어가게 된다.
+정적 리소스를 웹컨테이너의 기본서블릿에 위임하는 핸들러이다. 기본적으로 `classpath:/static` 경로가 추가되어 있으며, 더 추가할 때는 `WebMvcConfigurer` interface 를 구현해서 추가해 주면 된다. 캐시옵션을 사용하면 `Cache-Control` 헤더가 들어가게 된다.
 
 
 ``` java
