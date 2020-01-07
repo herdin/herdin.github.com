@@ -8,7 +8,7 @@ tags: opensource
 <!-- jsCalendar -->
 <link rel="stylesheet" type="text/css" href="/assets/vendor/circletimer/circletimer.css">
 <!-- <link rel="stylesheet" type="text/css" href="../themes/jsCalendar.micro.css"> -->
-<script type="text/javascript" src="/assets/vendor/jircletimer/circletimer.min.js"></script>
+<script type="text/javascript" src="/assets/vendor/circletimer/circletimer.min.js"></script>
 
 <style>
 #example-timer {
