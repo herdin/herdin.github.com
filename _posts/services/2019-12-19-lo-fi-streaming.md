@@ -5,6 +5,8 @@ date: 2019-12-19
 tags: services lo-fi
 ---
 
+> [여길보고](https://www.w3schools.com/howto/howto_js_slideshow.asp) 슬라드로 바꿔보자
+
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
 
 <script>
@@ -43,6 +45,7 @@ function addRadio() {
   + '</audio>'
   + '</div>';
 
+  let index = 0;
   for(let audioKey in audios) {
   	$('#audiobox').append(
   		audioTag
@@ -50,6 +53,15 @@ function addRadio() {
   		.replace('#SOURCESRC#', audios[audioKey][sourceSrc])
   		.replace('#SOURCETYPE#', audios[audioKey][sourceType])
   	);
+
+    var id = genID();
+    var $clone = $('#template').clone();
+    $clone.css('display', 'block');
+    $clone.attr('id', id);
+    $clone.find('[name=sequence]').html('this is caption');
+    $clone.find('[name=caption]').html('this is caption');
+    $('#slideshow-container').prepend($clone);
+    index++;
   }
 }
 ONLOAD_CALLBACK_LIST.push(addRadio);
@@ -57,3 +69,30 @@ ONLOAD_CALLBACK_LIST.push(addRadio);
 </script>
 
 <div id="audiobox"></div>
+
+<div class="slideshow-container">
+  <!-- contents -->
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+
+<!-- Full-width images with number and caption text -->
+<div id="template" class="mySlides fade" style="display:none;">
+  <div name="sequence" class="numbertext"></div>
+  <img name="thumbnail" src="#" style="width:150px; height:150px; border-radius:50%; vertical-align:middle;"/>
+  <div name="caption" class="text"></div>
+  <audio controls loop style="display:none;">
+    <source name="audiosrc" src="#" type="#">
+    Your browser does not support the audio element.
+  </audio>
+</div>
