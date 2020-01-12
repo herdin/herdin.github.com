@@ -4,10 +4,10 @@
 	<link rel="stylesheet" type="text/css" href="{{ site.url }}/style.css" />
 	<link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.url }}/feed.xml" />
 	<!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-	<script src="/assets/js/init.js"></script>
-	<script src="/assets/vendor/require.js" data-main="/assets/js/init.test.js"></script>
+	<!-- <script src="/assets/js/init.js"></script> -->
+	<script src="/assets/vendor/require.js" data-main="/assets/js/init.js"></script>
 	<script>
-		require(['init.test'], (initTest) => {
+		require(['init'], (initTest) => {
 			require(['jquery'], ($) => {
 
 				//add scroll to top button - start

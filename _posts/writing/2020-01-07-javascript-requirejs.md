@@ -6,9 +6,8 @@ tags: javascript writing
 ---
 
 <script>
-  require(['init-test'], () => {
-    let $ = require('jquery');
-    let util = require('util');
+  require(['jquery', 'util'], ($, util) => {
+    console.log('jquery version -> ' + $.fn.jquery);
     console.log('gen id from util module -> ' + util.genID());
   });
 </script>
