@@ -6,10 +6,12 @@ tags: javascript writing
 ---
 
 <script>
+require(['init'], (init) => {
   require(['jquery', 'util'], ($, util) => {
     console.log('jquery version -> ' + $.fn.jquery);
     console.log('gen id from util module -> ' + util.genID());
   });
+});
 </script>
 
 웹서칭을 하다가 어-썸한 js 나 css 를 보면 블로그로 퍼다가 담곤 한다.
