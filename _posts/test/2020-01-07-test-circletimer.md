@@ -88,7 +88,7 @@ code {
 <script>
 require(['init'], (init) => {
   require(['jquery'], ($) => {
-    require(['circletimer'], (circletimer) => {
+    require(['circletimer'], (ct) => {
       circletimerInit();
     });
   });
