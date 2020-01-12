@@ -39,7 +39,8 @@ permalink: /tags/
 </div>
 
 <script>
-    function addTags() {
+  require(['init'], (init) => {
+    require(['jquery'], ($) => {
       $('.site-tag').click(function(){
         $('.site-tagged-posts > li').hide();
         var prefix = '{{ prefix }}';
@@ -52,6 +53,6 @@ permalink: /tags/
       if(paramId != null && paramId.length > 0) {
         $('#' + paramId).click();
       }
-    }
-    ONLOAD_CALLBACK_LIST.push(addTags);
+    });
+  });
 </script>
