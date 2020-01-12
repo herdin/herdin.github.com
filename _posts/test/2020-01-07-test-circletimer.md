@@ -5,11 +5,7 @@ date: 2020-01-07
 tags: opensource
 ---
 
-<!-- jsCalendar -->
 <link rel="stylesheet" type="text/css" href="/assets/vendor/circletimer/circletimer.css">
-<!-- <link rel="stylesheet" type="text/css" href="../themes/jsCalendar.micro.css"> -->
-<script type="text/javascript" src="/assets/vendor/circletimer/circletimer.min.js"></script>
-
 <style>
 #example-timer {
   height: 150px;
@@ -90,6 +86,14 @@ code {
 <button id="add">Add 1s</button>
 
 <script>
+require(['init'], (init) => {
+  require(['jquery'], ($) => {
+    require(['circletimer'], (circletimer) => {
+      circletimerInit();
+    });
+  });
+});
+
 function circletimerInit() {
   /* Code highlighting */
   //hljs.initHighlightingOnLoad();
@@ -123,6 +127,4 @@ function circletimerInit() {
     });
   })
 }
-ONLOAD_CALLBACK_LIST.push(circletimerInit);
-
 </script>
