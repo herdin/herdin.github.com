@@ -92,7 +92,7 @@ jquery 로드보다 빠른 js 파일인 경우 내부에서 jquery 가 없어서
 
 > 흑
 
-<a id="#start"> 여기부터 시작 </a>
+<a id="start"> 여기부터 시작 </a>
 
 [공식 홈페이지](https://requirejs.org/) 로고는 대충 이렇다
 

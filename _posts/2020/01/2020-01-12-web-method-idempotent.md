@@ -1,4 +1,4 @@
-Idempotent---
+---
 layout: post
 title: "Idempotent in web method, 멱등성"
 date: 2020-01-12
