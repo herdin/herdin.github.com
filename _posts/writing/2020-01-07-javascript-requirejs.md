@@ -37,13 +37,13 @@ require(['init'], (init) => {
     <script>
       $.ajax('https://d2.naver.com').done(console.log); //직접해도 안됨. CORS 정책부터 해결. 본인은 d2.naver.com 페이지에서 수행함.
     </script>
-    <!-- 1번 케이스, 페이지 내에 스크립트를 불러오는 경우 -->
+    <!-- 2번 케이스, 페이지 내에 스크립트를 불러오는 경우 -->
     <script type="text/javascript" src="/assets/vendor/circletimer/circletimer.min.js"></script>
   </body>
 </html>
 ```
 
-무식한 방법이지만, 1번케이스에서 jquery 로드보다 먼저될 페이지 스크립트의 오류를 방지하기위해 아래와 같은 방법을 사용했다.
+무식한 방법이지만, 2번케이스에서 jquery 로드보다 먼저될 페이지 스크립트의 오류를 방지하기위해 아래와 같은 방법을 사용했다.
 
 ``` javascript
 var ONLOAD_CALLBACK_LIST = [];
