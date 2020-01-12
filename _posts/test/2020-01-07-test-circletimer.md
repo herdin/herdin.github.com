@@ -89,42 +89,35 @@ code {
 require(['init'], (init) => {
   require(['jquery'], ($) => {
     require(['circletimer'], (ct) => {
-      circletimerInit();
+      /* Example code */
+      $(document).on("ready", function() {
+        $("#example-timer").circletimer({
+          onComplete: function() {
+            alert("Time is up!");
+          },
+          onUpdate: function(elapsed) {
+            $("#time-elapsed").html(Math.round(elapsed));
+          },
+          timeout: 5000
+        });
+
+        $("#start").on("click", function() {
+          $("#example-timer").circletimer("start");
+        });
+
+        $("#pause").on("click", function() {
+          $("#example-timer").circletimer("pause");
+        });
+
+        $("#stop").on("click", function() {
+          $("#example-timer").circletimer("stop");
+        });
+
+        $("#add").on("click", function() {
+          $("#example-timer").circletimer("add", 1000);
+        });
+      });
     });
   });
 });
-
-function circletimerInit() {
-  /* Code highlighting */
-  //hljs.initHighlightingOnLoad();
-
-  /* Example code */
-  $(document).on("ready", function() {
-    $("#example-timer").circletimer({
-      onComplete: function() {
-        alert("Time is up!");
-      },
-      onUpdate: function(elapsed) {
-        $("#time-elapsed").html(Math.round(elapsed));
-      },
-      timeout: 5000
-    });
-
-    $("#start").on("click", function() {
-      $("#example-timer").circletimer("start");
-    });
-
-    $("#pause").on("click", function() {
-      $("#example-timer").circletimer("pause");
-    });
-
-    $("#stop").on("click", function() {
-      $("#example-timer").circletimer("stop");
-    });
-
-    $("#add").on("click", function() {
-      $("#example-timer").circletimer("add", 1000);
-    });
-  })
-}
 </script>
