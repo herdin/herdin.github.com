@@ -92,17 +92,30 @@ jquery 로드보다 빠른 js 파일인 경우 내부에서 jquery 가 없어서
 
 > 흑
 
+## RequireJS
+
 <a id="start"> 여기부터 시작 </a>
 
-[공식 홈페이지](https://requirejs.org/) 로고는 대충 이렇다
+[RequireJS 공식 홈페이지](https://requirejs.org/) 로고는 대충 이렇다.
 
 <img src='#' post-image-name='2020-01-07-javascript-requirejs.png'>
+
+javascript 모듈화의 두진영 AMD(Asynchronous module definition) 와 CommonJS 가 있는데, 이건 AMD 진영이다.
+
+사용법은 대충 이렇다.
+- require.js 파일 추가
+- 설정.js 추가
+- 모듈.js 파일 추가
+- 사용 페이지에서 require 함수를 사용하여 스크립트 사용.
+
+먼저 require.js 파일을 추가하자.
 
 ``` html
 <!--This sets the baseUrl to the "scripts" directory, and
     loads a script that will have a module ID of 'main'-->
-<script data-main="scripts/main.js" src="scripts/require.js"></script>
+<script src="/assets/vendor/require.js" data-main="/assets/js/init.js"></script>
 ```
+
 `data-main` 속성은 require.js 파일이 로드 된 뒤에 로드될 파일을 지정해 준다. 해당 파일의 path(scripts) 가 baseurl 로 취급된다. `data-main` 속성이 없으면, require.js 을 포함한 html 의 path 가 baseurl 이 된다.
 
 모든 모듈은 .js 파일로 간주하므로 .js 를 붙이지 않는다.
@@ -113,6 +126,55 @@ jquery 로드보다 빠른 js 파일인 경우 내부에서 jquery 가 없어서
 - `/` 로 시작하거나
 - `http`, `https` 같은 프로토콜을 포함하는 경우.
 
+``` html
+//main.js
+require.config({
+    baseUrl : '/assets', //requirejs 에서 사용할 모듈들의 default path
+    //추가 위치 및 js 모듈들이 default path 아래 어디있는지 정의한다.
+    paths : {
+        util : 'js/util', //적용될 경로는 /assets/js/util.js 가 된다.
+        jquery : 'vendor/jquery-3.4.1.min',
+        circletimer : 'vendor/circletimer/circletimer.min',
+    },
+});
+```
+
+``` html
+//util.js
+define((require) => {
+  let $ = require('jquery');
+
+  return {
+    genID : () => 'generatedID-' + Math.floor(Math.random()*100000),
+  };
+});
+```
+
+아주 기본적인 사용법을 숙지하고 아래와 같이 사용하고 있는데.. 잘 모르겠다..
+
+``` html
+<script>
+  require(['init'], (init) => {
+    require(['jquery'], ($) => {
+      $('#someElementId').hide(2000);
+    });
+  });
+</script>
+```
+
+위에서 init 모듈과 jquery 모듈 사이에 의존 관계가 없다면,
+
+``` html
+<script>
+  require(['init', 'jquery'], (init) => {
+    $('#someElementId').hide(2000);
+  });
+</script>
+```
+
+이렇게 한줄로 줄일 수 있지만, 아닌 경우는 콜백지옥처럼 깊어지게 된다. 이렇게 쓰는게 맞는건지 잘 모르겠다..
+
 
 출처
 - [RequireJS - AMD의 이해와 개발](https://d2.naver.com/helloworld/591319)
+- [RequireJS](https://requirejs.org)
