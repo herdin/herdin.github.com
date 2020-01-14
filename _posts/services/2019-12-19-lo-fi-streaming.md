@@ -60,7 +60,7 @@ require(['init'], (init) => {
 
       $clone.find('[name=thumbnail]').click(() => {
           let audio = document.getElementById(audioId);
-          if(audio.pause) { audio.paly(); }
+          if(audio.paused) { audio.play(); }
           else { audio.pause(); }
       });
     }
