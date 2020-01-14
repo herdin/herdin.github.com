@@ -18,11 +18,10 @@ require(['init'], (init) => {
 
 공통 헤더 파일에 특정 라이브러리(jquery)가 들어간게 마음에 들지 않아서, 공통 헤더파일에는 init.js 만 두고, init.js 에서 jquery 를 동적으로 불러오도록 했다.
 
-### header.html
+### head.html
 ``` html
 <head>
-	<title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
-	{% include meta.html %}
+	<title>
 	<link rel="stylesheet" type="text/css" href="{{ site.url }}/style.css" />
 	<link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.url }}/feed.xml" />
 	<!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
