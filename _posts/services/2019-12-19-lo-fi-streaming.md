@@ -7,8 +7,6 @@ tags: services lo-fi
 
 <link rel="stylesheet" type="text/css" href="{{ site.url }}/assets/css/slideshow.css" />
 
-> [여길보고](https://www.w3schools.com/howto/howto_js_slideshow.asp) 슬라드로 바꿔보자
-
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
 
 <script>
@@ -78,10 +76,11 @@ require(['init'], (init) => {
     slideshow.currSlide(0);
   }); //end of require(['jquery', 'slideshow']
 }); //end of require(['init']
-
 </script>
 
-<div id="audiobox"></div>
+``` shell
+click below circle to play/pause
+```
 
 <div id="slideshow-container" class="slideshow-container" style="max-width:150px;">
   <!-- contents -->
@@ -89,7 +88,6 @@ require(['init'], (init) => {
   <a class="prev" id="prev">&#10094;</a>
   <a class="next" id="next">&#10095;</a>
 </div>
-<br>
 
 <!-- The dots/circles -->
 <div id="dot-container" style="text-align:center">
