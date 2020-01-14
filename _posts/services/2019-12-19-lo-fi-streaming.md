@@ -53,6 +53,12 @@ require(['init'], (init) => {
       $clone.find('[name=audiosrc]').attr('src', audios[audioKey][sourceSrc]);
       $clone.find('[name=audiosrc]').attr('type', audios[audioKey][sourceType]);
       $('#slideshow-container').prepend($clone);
+
+      $clone.find('[name=thumbnail]').click(() => {
+          let audio = document.getElementById(genId);
+          if(audio.pause) { audio.paly(); }
+          else { audio.pause();}
+      });
     }
 
     $('#prev').click(slideshow.nextSlide);
