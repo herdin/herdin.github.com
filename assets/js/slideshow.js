@@ -22,8 +22,11 @@ define(['jquery', 'util'], ($, util) => {
       slides[slideIndex].style.display = "block";
       dots[slideIndex].className += " active";
     };
-    let plusSlides = (n) => {
-       showSlides(slideIndex += n);
+    let nextSlide = () => {
+       showSlides(slideIndex += 1);
+    };
+    let prevSlide = () => {
+      showSlides(slideIndex += -1);
     };
     let currentSlide = (n) => {
       showSlides(slideIndex = n);
@@ -31,20 +34,8 @@ define(['jquery', 'util'], ($, util) => {
     return {
       init : init,
       showSlide : showSlides,
-      plusSlides : plusSlides,
-      currentSlide : currentSlide,
+      nextSlide : nextSlide,
+      prevSlide : prevSlide,
+      currSlide : currSlide,
     }
 });
-
-var slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
