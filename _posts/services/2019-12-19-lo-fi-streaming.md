@@ -64,7 +64,7 @@ require(['init'], (init) => {
 
 <div id="audiobox"></div>
 
-<div class="slideshow-container">
+<div id="slideshow-container" class="slideshow-container">
   <!-- contents -->
   <!-- Next and previous buttons -->
   <a class="prev" id="prev">&#10094;</a>
