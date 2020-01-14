@@ -141,3 +141,6 @@ docker volume rm $(docker volume ls -f dangling=true -q) #remove dangling volume
 #or using 1.13.x
 docker volume prune #remove dangling volume
 ```
+
+참고
+- [만들면서 이해하는 도커(Docker) 이미지의 구조](https://www.44bits.io/ko/post/how-docker-image-work)
