@@ -67,8 +67,8 @@ require(['init'], (init) => {
       $('#dot-container').append('<span class="dot"></span>');
     }
 
-    $('#prev').click(slideshow.nextSlide);
-    $('#next').click(slideshow.prevSlide);
+    $('#prev').click(slideshow.prevSlide);
+    $('#next').click(slideshow.nextSlide);
     for(let i=0; i<$('.dot').length; i++) {
     	$($('.dot').get(i)).click(() => {
         slideshow.currSlide(i);
