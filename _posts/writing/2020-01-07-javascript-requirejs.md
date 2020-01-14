@@ -16,37 +16,22 @@ require(['init'], (init) => {
 
 웹서칭을 하다가 어-썸한 js 나 css 를 보면 블로그로 퍼다가 담곤 한다.
 
-토이 프로젝트의 중요한 css 가 될 어-썸한 js 라이브러리를 찾아서([circletimer](https://github.com/abejfehr/circletimer)) 블로그로 담고 있었는데, 나름 페이지 내의 스크립트와 jQuery 의존관계를 풀어냈다고 생각했는데,
+공통 헤더 파일에 특정 라이브러리(jquery)가 들어간게 마음에 들지 않아서, 공통 헤더파일에는 init.js 만 두고, init.js 에서 jquery 를 동적으로 불러오도록 했다.
+
+### header.html
 ``` html
-<script type="text/javascript" src="/assets/vendor/circletimer/circletimer.min.js"></script>
+<head>
+	<title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+	{% include meta.html %}
+	<link rel="stylesheet" type="text/css" href="{{ site.url }}/style.css" />
+	<link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.url }}/feed.xml" />
+	<!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+	<script src="/assets/js/init.js"></script>
+  <!-- ... 이하 생략 -->
 ```
-
-페이지 내에서 태그로 가져오는 js 파일에 대한 jQuery 의존성까지는 생각하지 못했다.
-
-아래 내용은 `requirejs` 적용 전의 삽질기 이므로 관심이 없으면 `requirejs` 에 대해서는 <a href="#start">여기로</a>
-
-``` html
-<html>
-  <head>
-    <!-- 경로 신경쓰지말고 여기서 jquery 를 불러온다고 생각하자. -->
-    <script src="jqeury.js"></script>
-  </head>
-  <body>
-    hello, fuck'in js dependency
-    <!-- 1번 케이스, 페이지 내에 직접 스크립트를 심는 경우 -->
-    <script>
-      $.ajax('https://d2.naver.com').done(console.log); //직접해도 안됨. CORS 정책부터 해결. 본인은 d2.naver.com 페이지에서 수행함.
-    </script>
-    <!-- 2번 케이스, 페이지 내에 스크립트를 불러오는 경우 -->
-    <script type="text/javascript" src="/assets/vendor/circletimer/circletimer.min.js"></script>
-  </body>
-</html>
-```
-
-무식한 방법이지만, 2번케이스에서 jquery 로드보다 먼저될 페이지 스크립트의 오류를 방지하기위해 아래와 같은 방법을 사용했다.
-
+### init.js
 ``` javascript
-var ONLOAD_CALLBACK_LIST = [];
+var ONLOAD_CALLBACK_LIST = []; //각 페이지에서 jquery 로드 된 뒤 실행할 함수 배열
 
 (function(){
   var done = false;
@@ -74,39 +59,37 @@ var ONLOAD_CALLBACK_LIST = [];
 })();
 ```
 
-`ONLOAD_CALLBACK_LIST` jquery 로드 뒤 호출할 함수들을 담을 전역변수를 선언하고, 페이지에서
-
+### SomeHTML.html/SomeJS.js
 ``` html
 <script>
 function afterCall() {
-  $.ajax('https://d2.naver.com').done(console.log); //직접해도 안됨. CORS 정책부터 해결. 본인은 d2.naver.com 페이지에서 수행함.
+  console.log('this is page, jquery version is -> ' + $.fn.jquery);
 }
 ONLOAD_CALLBACK_LIST.push(afterCall);
 </script>
 ```
 
-이렇게 처넣는 방법이다. 대충 잘된다. 문제는 2번같은 케이스이다.
-jquery 로드보다 빠른 js 파일인 경우 내부에서 jquery 가 없어서 오류가 난다.....
+동적 로딩을 했으니, jquery 로드 시점이 미뤄져서 각 페이지에서 사용하는 jquery 변수나 함수들이 일반 script 태그로는 먹지 않았다.
 
-`RequireJS` 는 뭔가 러닝커브가 있는 것 같아서 나중에 하려고했는데, 내가 저걸 구현하면 더 구려질 것 같아서 공부를 하기로 했다.
+그래서 전역변수 `ONLOAD_CALLBACK_LIST` 배열을 하나 정의하고, 각 페이지에서는 해당 배열에 함수를 넣어주면 jquery 로드 콜백에서 해당 배열에 들어있는 함수를 실행하는 방식으로 각 페이지와 jquery 의 의존도를 풀어냈다.
 
-> 흑
+그런데 페이지에서 사용할 라이브러리가 jquery 에 의존도가 있는 경우는 생각하지 못했는데, 이번에 [circletimer](https://github.com/abejfehr/circletimer) 를 사용하려다보니 그런 경우가 생겼다.
+
+그래서 어차피 jquery 도 동적로딩한 마당에 라이브러리 의존도에 따른 동적로딩 모듈을 하나 만들까 생각하다보니, 공부도 할 겸 `RequireJS` 를 써보기로 했다.
 
 ## RequireJS
 
-<a id="start"> 여기부터 시작 </a>
-
 [RequireJS 공식 홈페이지](https://requirejs.org/) 로고는 대충 이렇다.
 
-<img src='#' post-image-name='2020-01-07-javascript-requirejs.png'>
+<img src='#' post-src='2020-01-07-javascript-requirejs.png'>
 
 javascript 모듈화의 두진영 AMD(Asynchronous module definition) 와 CommonJS 가 있는데, 이건 AMD 진영이다.
 
 사용법은 대충 이렇다.
 - require.js 파일 추가
-- 설정.js 추가
+- 설정.js(configuration option) 추가
 - 모듈.js 파일 추가
-- 사용 페이지에서 require 함수를 사용하여 스크립트 사용.
+- 사용 페이지 또는 js 에서 require 함수를 사용하여 스크립트 사용.
 
 먼저 require.js 파일을 추가하자.
 
@@ -117,7 +100,53 @@ javascript 모듈화의 두진영 AMD(Asynchronous module definition) 와 Common
 ```
 
 `data-main` 속성은 require.js 파일이 로드 된 뒤에 로드될 파일을 지정해 준다. 해당 파일의 path(scripts) 가 baseurl 로 취급된다. `data-main` 속성이 없으면, require.js 을 포함한 html 의 path 가 baseurl 이 된다.
+> 위의 예시에선 data-main 이 있으므로 /assets/js 가 baseurl 이 된다.
 
+보통은 `data-main` 에 설정옵션이 들어간 js 를 두고 그 아래에 불러올 모듈 js 를 기술한다고 한다.
+``` html
+<script src="/assets/vendor/require.js" data-main="/assets/js/init.js"></script>
+<script src="/assets/module1.js"></script>
+```
+
+`data-main` 을 사용하기 싫으면 이렇게 사용할 수도 있다.
+
+### 참고, 파일구조
+``` yaml
+/:
+  assets:
+    js:
+      init.js
+      module1.js
+      ...
+    vendor:
+      require.js
+```
+
+### init.js
+```html
+require.config({
+    baseUrl : '/assets',
+    paths : {
+        util : 'js/util',
+        module1 : 'js/module1',
+        jquery : 'vendor/jquery-3.4.1.min',
+        circletimer : 'vendor/circletimer/circletimer.min',
+    },
+});
+
+```
+
+### SomeHTML.html
+``` html
+<script src="/assets/vendor/require.js"></script>
+<script>
+require(['../js/init'], function() {
+    require(['module1'], function(module1) {
+      module1.someFunction();
+    });
+});
+</script>
+```
 모든 모듈은 .js 파일로 간주하므로 .js 를 붙이지 않는다.
 
 아래의 세가지 조건 중 하나만 충족하더라도 requirejs 는 해당 자원을 모듈로 인식하지 않는다.

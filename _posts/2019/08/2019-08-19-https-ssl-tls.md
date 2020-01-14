@@ -7,7 +7,7 @@ tags: web https
 
 > 나는 그냥 HTTPS 만 알고싶은데 왜 하나만 알면 안되는거야 행복할수가업서...ㅠㅠ
 
-<img src="#" post-image-name="2019-08-19-https-ssl-tls.jpg" />
+<img src="#" post-src="2019-08-19-https-ssl-tls.jpg" />
 
 ## HTTPS 와 SSL, TLS 그게 다 뭐지?
 
@@ -102,7 +102,7 @@ If HASH1 == HASH1', Execute C1 => Very Good! // 두 해시값이 일치한다면
 
 아래와 같이 최상위 인증서의 발급대상과 발급자가 같다.
 
-<img src="#" post-image-name="2019-08-19-https-ssl-tls-01.PNG" />
+<img src="#" post-src="2019-08-19-https-ssl-tls-01.PNG" />
 
 > 긴 여정 이었다. 휴!
 

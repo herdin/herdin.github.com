@@ -34,7 +34,7 @@
 				//img path replace - start
 				(() => {
 					let postImagePath = '/assets/images/posts/';
-					let realImageName = 'post-image-name';
+					let realImageName = 'post-src';
 					$('img').each(function(index, obj) {
 						if($(obj).attr(realImageName) != null) {
 							$(obj).attr('src', postImagePath + $(obj).attr(realImageName));
