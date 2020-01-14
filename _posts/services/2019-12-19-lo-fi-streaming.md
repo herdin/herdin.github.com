@@ -44,7 +44,6 @@ require(['init'], (init) => {
     for(let audioKey in audios) {
       let genId = util.genID();
       let $clone = $('#template').clone();
-      $clone.css('display', 'block');
       $clone.attr('id', genId);
       $clone.removeClass('mySlides');
       $clone.addClass(slideClassName);
