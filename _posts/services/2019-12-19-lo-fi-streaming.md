@@ -10,7 +10,8 @@ tags: services lo-fi
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
 
 <script>
-function addRadio() {
+
+require(['jquery', 'slideshow'], ($, slideshow) => {
   const id = 0;
   const thumbnail = 1;
   const sourceSrc = 2;
@@ -36,36 +37,19 @@ function addRadio() {
     ],
   ];
 
-  let audioTag = ''
-  + '<div style="margin-bottom:50px;">'
-  + '<img src="#THUMBNAIL#" style="width:150px; height:150px; border-radius:50%; vertical-align:middle; margin-right:50px;"/>'
-    + '<audio controls loop #AUTOPLAY# style="vertical-align:middle;">'
-    + '<source src="#SOURCESRC#" type="#SOURCETYPE#">'
-    + 'Your browser does not support the audio element.'
-  + '</audio>'
-  + '</div>';
-
-  let index = 0;
   for(let audioKey in audios) {
-  	$('#audiobox').append(
-  		audioTag
-  		.replace('#THUMBNAIL#', audios[audioKey][thumbnail])
-  		.replace('#SOURCESRC#', audios[audioKey][sourceSrc])
-  		.replace('#SOURCETYPE#', audios[audioKey][sourceType])
-  	);
-
-    var id = genID();
+    var id = util.genID();
     var $clone = $('#template').clone();
     $clone.css('display', 'block');
     $clone.attr('id', id);
-    $clone.find('[name=sequence]').html('this is caption');
-    $clone.find('[name=caption]').html('this is caption');
+    $clone.find('[name=sequence]').html('' + (audioKey+1) + '/' + audios.length);
+    $clone.find('[name=thumbnail]').attr('src', audios[audioKey][thumbnail]);
+    $clone.find('[name=caption]').html(audios[audioKey][id]);
+    $clone.find('[name=audiosrc]').attr('src', audios[audioKey][sourceSrc]);
+    $clone.find('[name=audiosrc]').attr('type', audios[audioKey][sourceType]);
     $('#slideshow-container').prepend($clone);
-    index++;
   }
-}
-ONLOAD_CALLBACK_LIST.push(addRadio);
-
+}); //end of require(['jquery', 'slideshow']
 </script>
 
 <div id="audiobox"></div>
