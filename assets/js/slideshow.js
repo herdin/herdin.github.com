@@ -28,7 +28,7 @@ define(['jquery', 'util'], ($, util) => {
     let prevSlide = () => {
       showSlides(slideIndex += -1);
     };
-    let currentSlide = (n) => {
+    let currSlide = (n) => {
       showSlides(slideIndex = n);
     };
     return {
