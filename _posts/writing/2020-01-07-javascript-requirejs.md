@@ -122,7 +122,7 @@ javascript 모듈화의 두진영 AMD(Asynchronous module definition) 와 Common
 ```
 
 ### init.js
-```html
+``` javascript
 require.config({
     baseUrl : '/assets',
     paths : {
@@ -154,7 +154,7 @@ require(['../js/init'], function() {
 - `/` 로 시작하거나
 - `http`, `https` 같은 프로토콜을 포함하는 경우.
 
-``` html
+``` javascript
 //main.js
 require.config({
     baseUrl : '/assets', //requirejs 에서 사용할 모듈들의 default path
@@ -167,7 +167,7 @@ require.config({
 });
 ```
 
-``` html
+``` javascript
 //util.js
 define((require) => {
   let $ = require('jquery');
