@@ -63,6 +63,8 @@ require(['init'], (init) => {
           if(audio.paused) { audio.play(); }
           else { audio.pause(); }
       });
+
+      $('#dot-container').append('<span class="dot"></span>');
     }
 
     $('#prev').click(slideshow.nextSlide);
@@ -81,7 +83,7 @@ require(['init'], (init) => {
 
 <div id="audiobox"></div>
 
-<div id="slideshow-container" class="slideshow-container">
+<div id="slideshow-container" class="slideshow-container" style="max-width:150px;">
   <!-- contents -->
   <!-- Next and previous buttons -->
   <a class="prev" id="prev">&#10094;</a>
@@ -90,15 +92,12 @@ require(['init'], (init) => {
 <br>
 
 <!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
+<div id="dot-container" style="text-align:center">
 </div>
 
 
 <!-- Full-width images with number and caption text -->
-<div id="template" class="mySlides fade" style="display:none;">
+<div id="template" class="mySlides fade" style="display:none; text-align:center;">
   <div name="sequence" class="numbertext"></div>
   <img name="thumbnail" src="#" style="width:150px; height:150px; border-radius:50%; vertical-align:middle;"/>
   <div name="caption" class="text"></div>
