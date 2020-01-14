@@ -49,6 +49,14 @@ require(['jquery', 'slideshow'], ($, slideshow) => {
     $clone.find('[name=audiosrc]').attr('type', audios[audioKey][sourceType]);
     $('#slideshow-container').prepend($clone);
   }
+
+  $('#prev').click(slideshow.nextSlide);
+  $('#next').click(slideshow.prevSlide);
+  for(let i=0; i<$('.dot').length; i++) {
+  	$($('.dot').get(i)).click(() => {
+      slideshow.currSlide(i);
+    });
+  }
 }); //end of require(['jquery', 'slideshow']
 </script>
 
@@ -57,16 +65,16 @@ require(['jquery', 'slideshow'], ($, slideshow) => {
 <div class="slideshow-container">
   <!-- contents -->
   <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  <a class="prev" id="prev">&#10094;</a>
+  <a class="next" id="next">&#10095;</a>
 </div>
 <br>
 
 <!-- The dots/circles -->
 <div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
 </div>
 
 
