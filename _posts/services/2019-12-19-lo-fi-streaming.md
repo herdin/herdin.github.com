@@ -11,7 +11,7 @@ tags: services lo-fi
 
 <script>
 require(['init'], (init) => {
-  require(['jquery', 'util', 'slideshow'], ($, slideshow) => {
+  require(['jquery', 'util', 'slideshow'], ($, util, slideshow) => {
     const id = 0;
     const thumbnail = 1;
     const sourceSrc = 2;
