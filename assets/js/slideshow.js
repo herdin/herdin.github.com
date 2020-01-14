@@ -9,7 +9,7 @@ define(['jquery'], ($) => {
     let showSlide = (n) => {
       let slides = document.getElementsByClassName(slideClassName);
       let dots = document.getElementsByClassName(dotClassName);
-      if (n > slides.length) { slideIndex = 0; }
+      if (n >= slides.length) { slideIndex = 0; }
       if (n < 0) { slideIndex = slides.length-1; }
       for (let i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
