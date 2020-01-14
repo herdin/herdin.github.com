@@ -5,6 +5,8 @@ date: 2019-12-19
 tags: services lo-fi
 ---
 
+<link rel="stylesheet" type="text/css" href="{{ site.url }}/assets/css/slideshow.css" />
+
 > [여길보고](https://www.w3schools.com/howto/howto_js_slideshow.asp) 슬라드로 바꿔보자
 
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
@@ -42,20 +44,22 @@ require(['init'], (init) => {
     slideshow.init(slideClassName, 'dot');
 
     for(let audioKey in audios) {
-      let genId = util.genID();
+      let templateId = util.genID();
       let $clone = $('#template').clone();
-      $clone.attr('id', genId);
+      $clone.attr('id', templateId);
       $clone.removeClass('mySlides');
       $clone.addClass(slideClassName);
       $clone.find('[name=sequence]').html('' + (audioKey+1) + '/' + audios.length);
       $clone.find('[name=thumbnail]').attr('src', audios[audioKey][thumbnail]);
       $clone.find('[name=caption]').html(audios[audioKey][id]);
+      let audioId = util.genID();
+      $clone.find('audio').attr('id', audioId);
       $clone.find('[name=audiosrc]').attr('src', audios[audioKey][sourceSrc]);
       $clone.find('[name=audiosrc]').attr('type', audios[audioKey][sourceType]);
       $('#slideshow-container').prepend($clone);
 
       $clone.find('[name=thumbnail]').click(() => {
-          let audio = document.getElementById(genId);
+          let audio = document.getElementById(audioId);
           if(audio.pause) { audio.paly(); }
           else { audio.pause(); }
       });
