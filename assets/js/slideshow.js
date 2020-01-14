@@ -5,9 +5,8 @@ define(['jquery'], ($) => {
     let init = (customSlideClassName, customDotClassName) => {
       if(customSlideClassName) { slideClassName = customDotClassName; }
       if(customDotClassName) { dotClassName = customDotClassName; }
-      showSlides(slideIndex);
     };
-    let showSlides = (n) => {
+    let showSlide = (n) => {
       var i;
       var slides = document.getElementsByClassName(slideClassName);
       var dots = document.getElementsByClassName(dotClassName);
@@ -23,17 +22,17 @@ define(['jquery'], ($) => {
       dots[slideIndex].className += " active";
     };
     let nextSlide = () => {
-       showSlides(slideIndex += 1);
+       showSlide(slideIndex += 1);
     };
     let prevSlide = () => {
-      showSlides(slideIndex += -1);
+      showSlide(slideIndex += -1);
     };
     let currSlide = (n) => {
-      showSlides(slideIndex = n);
+      showSlide(slideIndex = n);
     };
+
     return {
       init : init,
-      showSlide : showSlides,
       nextSlide : nextSlide,
       prevSlide : prevSlide,
       currSlide : currSlide,

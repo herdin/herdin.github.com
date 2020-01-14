@@ -39,6 +39,7 @@ require(['init'], (init) => {
 
     let slideClassName = 'musicSlide';
     slideshow.init(slideClassName, 'dot');
+
     for(let audioKey in audios) {
       let genId = util.genID();
       let $clone = $('#template').clone();
@@ -61,6 +62,8 @@ require(['init'], (init) => {
         slideshow.currSlide(i);
       });
     }
+
+    slideshow.currSlide(0);
   }); //end of require(['jquery', 'slideshow']
 }); //end of require(['init']
 
