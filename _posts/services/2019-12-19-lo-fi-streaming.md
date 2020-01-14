@@ -38,10 +38,10 @@ require(['jquery', 'slideshow'], ($, slideshow) => {
   ];
 
   for(let audioKey in audios) {
-    var id = util.genID();
-    var $clone = $('#template').clone();
+    let genId = util.genID();
+    let $clone = $('#template').clone();
     $clone.css('display', 'block');
-    $clone.attr('id', id);
+    $clone.attr('id', genId);
     $clone.find('[name=sequence]').html('' + (audioKey+1) + '/' + audios.length);
     $clone.find('[name=thumbnail]').attr('src', audios[audioKey][thumbnail]);
     $clone.find('[name=caption]').html(audios[audioKey][id]);
