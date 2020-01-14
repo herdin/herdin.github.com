@@ -1,4 +1,4 @@
-define(['jquery', 'util'], ($, util) => {
+define(['jquery'], ($) => {
     let slideIndex = 0;
     let slideClassName = 'mySlides';
     let dotClassName = 'dot';
