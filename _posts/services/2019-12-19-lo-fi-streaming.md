@@ -49,7 +49,7 @@ require(['init'], (init) => {
       $clone.attr('id', templateId);
       $clone.removeClass('mySlides');
       $clone.addClass(slideClassName);
-      $clone.find('[name=sequence]').html('' + (audioKey+1) + '/' + audios.length);
+      $clone.find('[name=sequence]').html('' + (Number(audioKey)+1) + '/' + audios.length);
       $clone.find('[name=thumbnail]').attr('src', audios[audioKey][thumbnail]);
       $clone.find('[name=caption]').html(audios[audioKey][id]);
       let audioId = util.genID();

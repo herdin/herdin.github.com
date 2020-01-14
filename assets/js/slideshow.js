@@ -7,15 +7,14 @@ define(['jquery'], ($) => {
       if(customDotClassName) { dotClassName = customDotClassName; }
     };
     let showSlide = (n) => {
-      var i;
-      var slides = document.getElementsByClassName(slideClassName);
-      var dots = document.getElementsByClassName(dotClassName);
-      if (n > slides.length) {slideIndex = 0;}
-      if (n < 0) {slideIndex = slides.length-1;}
-      for (i = 0; i < slides.length; i++) {
+      let slides = document.getElementsByClassName(slideClassName);
+      let dots = document.getElementsByClassName(dotClassName);
+      if (n > slides.length) { slideIndex = 0; }
+      if (n < 0) { slideIndex = slides.length-1; }
+      for (let i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
       }
-      for (i = 0; i < dots.length; i++) {
+      for (let i = 0; i < dots.length; i++) {
           dots[i].className = dots[i].className.replace(" active", "");
       }
       slides[slideIndex].style.display = "block";
