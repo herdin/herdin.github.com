@@ -23,12 +23,13 @@ require(['init'], (init) => {
         "http://hyades.shoutca.st:8043/autodj",
         "audio/mpeg",
       ],
+      /*
       [
         "tunein_com_Now_Playing_s290316",
         "https://cdn-profiles.tunein.com/s290316/images/logoq.jpg?t=151378",
         "http://listen.shoutcast.com/freshsndgold",
         "audio/mpeg",
-      ],
+      ],*/
       [
         "radio_net_lautfm_lofi",
         "https://static.radio.net/inc/v2/images/avatars/station_avatar.gif",
@@ -57,7 +58,7 @@ require(['init'], (init) => {
       $clone.find('[name=thumbnail]').click(() => {
           let audio = document.getElementById(genId);
           if(audio.pause) { audio.paly(); }
-          else { audio.pause();}
+          else { audio.pause(); }
       });
     }
 

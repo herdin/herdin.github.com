@@ -3,7 +3,7 @@ define(['jquery'], ($) => {
     let slideClassName = 'mySlides';
     let dotClassName = 'dot';
     let init = (customSlideClassName, customDotClassName) => {
-      if(customSlideClassName) { slideClassName = customDotClassName; }
+      if(customSlideClassName) { slideClassName = customSlideClassName; }
       if(customDotClassName) { dotClassName = customDotClassName; }
     };
     let showSlide = (n) => {
