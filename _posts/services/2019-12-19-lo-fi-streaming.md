@@ -11,7 +11,10 @@ tags: services lo-fi
 
 <script>
 require(['init'], (init) => {
-  require(['jquery', 'util', 'slideshow'], ($, util, slideshow) => {
+  require(['jquery', 'util', 'slideshow', 'progressbarutil'], ($, util, slideshow, progressbarutil) => {
+    let bar = progressbarutil.draw('progressbar-container', 'line');
+    progressbarutil.animate(bar, 0.0, 0);
+
     const id = 0;
     const thumbnail = 1;
     const sourceSrc = 2;
@@ -63,6 +66,8 @@ require(['init'], (init) => {
       });
 
       $('#dot-container').append('<span class="dot"></span>');
+
+      progressbarutil.animate(bar, (Number(audioKey)+1)/audios.length, 10);
     }
 
     $('#prev').click(slideshow.prevSlide);
@@ -74,6 +79,7 @@ require(['init'], (init) => {
     }
 
     slideshow.currSlide(0);
+    progressbarutil.animate(bar, 1.0, 100);
   }); //end of require(['jquery', 'slideshow']
 }); //end of require(['init']
 </script>
@@ -81,6 +87,8 @@ require(['init'], (init) => {
 ``` shell
 click below circle to play/pause
 ```
+
+<div id="progressbar-container"></div>
 
 <div id="slideshow-container" class="slideshow-container" style="max-width:150px;">
   <!-- contents -->
