@@ -89,10 +89,10 @@ define(['progressbar'], (ProgressBar) => {
   };
   return {
     draw : (containerId, type) => {
-      if(type == 'line') { return drawLine(); }
-      else if(type == 'circle') { return drawCircle(); }
-      else if(type == 'circleb') { return drawCircleBounce(); }
-      else if(type == 'circlemp') { return drawCircleMultiProp(); }
+      if(type == 'line') { return drawLine(containerId); }
+      else if(type == 'circle') { return drawCircle(containerId); }
+      else if(type == 'circleb') { return drawCircleBounce(containerId); }
+      else if(type == 'circlemp') { return drawCircleMultiProp(containerId); }
       else { throw new Error('IllegalArgumentError, containerId[' + containerId + '] type[' + type + ']'); }
     },
     animate : (bar, ratio, millisec) => {
