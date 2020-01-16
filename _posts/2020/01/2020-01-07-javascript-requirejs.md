@@ -2,7 +2,7 @@
 layout: post
 title: "어쩔 수 없이 사용하는 RequireJS"
 date: 2020-01-07
-tags: javascript writing
+tags: javascript
 ---
 
 <script>
@@ -84,7 +84,11 @@ ONLOAD_CALLBACK_LIST.push(afterCall);
 
 javascript 모듈화의 두진영 AMD(Asynchronous module definition) 와 CommonJS 가 있는데, 이건 AMD 진영이다.
 
-사용법은 대충 이렇다.
+### 그래서 왜 써야되는데?
+- 의존성 관리. 언어 차원에서 package/import 정책을 지원하지 않는다.
+- 모듈화. 전역변수의 남발과 충돌로 유지보수를 힘들게 만듬. Closure 를 사용하여 격리
+
+### 어떻게 쓰지?
 - require.js 파일 추가
 - 설정.js(configuration option) 추가
 - 모듈.js 파일 추가
