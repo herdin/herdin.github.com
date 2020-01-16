@@ -12,7 +12,7 @@ tags: services lo-fi
 <script>
 require(['init'], (init) => {
   require(['jquery', 'util', 'slideshow', 'progressbarwrapper'], ($, util, slideshow, progressbarwrapper) => {
-    let bar = progressbarwrapper.draw('progressbar-container', 'line');
+    let bar = progressbarwrapper.draw('progressbar-container', 'linep');
     progressbarwrapper.animate(bar, 0.0, 0);
 
     const id = 0;

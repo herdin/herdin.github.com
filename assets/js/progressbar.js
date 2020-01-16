@@ -30,6 +30,36 @@ define(['progressbar'], (ProgressBar) => {
       }
     });
   };
+  let drawLinePercentage = (containerId) => {
+    return new ProgressBar.Line(container, {
+      strokeWidth: 4,
+      easing: 'easeInOut',
+      duration: 1400,
+      color: '#FFEA82',
+      trailColor: '#eee',
+      trailWidth: 1,
+      svgStyle: {width: '100%', height: '100%'},
+      text: {
+        style: {
+          // Text color.
+          // Default: same as stroke color (options.color)
+          color: '#999',
+          position: 'absolute',
+          right: '0',
+          top: '30px',
+          padding: 0,
+          margin: 0,
+          transform: null
+        },
+        autoStyleContainer: false
+      },
+      from: {color: '#FFEA82'},
+      to: {color: '#ED6A5A'},
+      step: (state, bar) => {
+        bar.setText(Math.round(bar.value() * 100) + ' %');
+      }
+});
+  };
   let drawCircle = (containerId) => {
     return new ProgressBar.Circle(document.getElementById(containerId), {
       strokeWidth: 6,
@@ -58,7 +88,7 @@ define(['progressbar'], (ProgressBar) => {
     });
   };
   let drawCircleMultiProp = (containerId) => {
-    return new ProgressBar.Circle(document.getElementById(containerId), {
+    let bar = new ProgressBar.Circle(document.getElementById(containerId), {
       color: '#aaa',
       // This has to be the same size as the maximum width to
       // prevent clipping
@@ -86,12 +116,14 @@ define(['progressbar'], (ProgressBar) => {
     });
     bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
     bar.text.style.fontSize = '2rem';
+    return bar;
   };
   return {
     draw : (containerId, type) => {
-      if(type == 'line') { return drawLine(containerId); }
-      else if(type == 'circle') { return drawCircle(containerId); }
-      else if(type == 'circleb') { return drawCircleBounce(containerId); }
+      if(type == 'line')          { return drawLine(containerId);            }
+      else if(type == 'linep')    { return drawLinePercentage(containerId);  }
+      else if(type == 'circle')   { return drawCircle(containerId);          }
+      else if(type == 'circleb')  { return drawCircleBounce(containerId);    }
       else if(type == 'circlemp') { return drawCircleMultiProp(containerId); }
       else { throw new Error('IllegalArgumentError, containerId[' + containerId + '] type[' + type + ']'); }
     },
