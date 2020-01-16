@@ -120,7 +120,7 @@ bar.animate(1.0, {duration:2000});
 
 <script>
 require(['init'], (init) => {
-  require(['jquery', 'progressbar'], ($, progressbar) => {
+  require(['jquery', 'progressbar'], ($, ProgressBar) => {
     $(document).ready(function(){
       //circle - basic
       (function(){
