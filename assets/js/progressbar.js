@@ -31,7 +31,7 @@ define(['progressbar'], (ProgressBar) => {
     });
   };
   let drawLinePercentage = (containerId) => {
-    return new ProgressBar.Line(container, {
+    return new ProgressBar.Line(document.getElementById(containerId), {
       strokeWidth: 4,
       easing: 'easeInOut',
       duration: 1400,
@@ -58,7 +58,7 @@ define(['progressbar'], (ProgressBar) => {
       step: (state, bar) => {
         bar.setText(Math.round(bar.value() * 100) + ' %');
       }
-});
+    });
   };
   let drawCircle = (containerId) => {
     return new ProgressBar.Circle(document.getElementById(containerId), {
