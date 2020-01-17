@@ -28,8 +28,8 @@ $spoqa-han-sans-path: '/SpoqaHanSans-subset';
 $noto-sans-kr:'Noto Sans KR';
 $noto-sans-kr-path: '/Noto_Sans_KR';
 
-$base-font: $spoqa-han-sans;
-$base-font-path: '/assets/fonts' + $spoqa-han-sans-path;
+$base-font: $noto-sans-kr;
+$base-font-path: '/assets/fonts' + $noto-sans-kr-path;
 $base-font-size: 18px;
 
 // Mobile breakpoints
