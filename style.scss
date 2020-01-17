@@ -30,18 +30,18 @@ body {
 /*
  * Noto Sans KR
  * https://fonts.google.com/specimen/Noto+Sans+KR?selection.family=Noto+Sans+KR
- */
+
 @font-face {
   font-family: 'Noto Sans KR';
   src: local('Noto Sans KR'),
   url('#{$base-font-path}/notosanskr-regular.woff2') format('woff2'),
   url('#{$base-font-path}/notosanskr-regular.woff') format('woff'),
 }
-
+ */
 /*
  * Spoqa Han Sans (Korean)
  * https://spoqa.github.io/spoqa-han-sans/ko-KR/
-
+*/
 @font-face {
     font-family: 'Spoqa Han Sans';
     font-weight: 700;
@@ -77,7 +77,7 @@ body {
     url('#{$base-font-path}/SpoqaHanSansThin.woff') format('woff'),
     url('#{$base-font-path}/SpoqaHanSansThin.ttf') format('truetype');
 }
-*/
+
 
 /*
  * D2 coding (Korean) http://dev.naver.com/projects/d2coding/
