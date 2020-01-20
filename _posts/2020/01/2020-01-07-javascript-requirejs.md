@@ -207,6 +207,68 @@ define((require) => {
 이렇게 한줄로 줄일 수 있지만, 아닌 경우는 콜백지옥처럼 깊어지게 된다. 이렇게 쓰는게 맞는건지 잘 모르겠다..
 
 
+## 전역변수를 오염시키지 않고($, jQuery) 여러버전의 jQuery 를 사용하는 방법
+
+위와 같이 하면 전역변수인 `$`, `jQuery` 가 마지막 로드된 jquery 에 의해 오염되게 된다. `$`, `jQuery` 변수를 jQuery 에서만 사용한다고 하면 상관 없지만, `$` 를 다른 라이브러리에서 사용하거나 다른 버전의 jQuery 를 사용한다고하면 문제가 될 수 있다. 이럴땐 `jQuery.noConflict` 함수를 사용하여 전역변수 오염을 피할 수 있다. RequireJS 홈페이지에 noConflict 함수를 사용한 방법이 가이드 되어있는데 뭘 잘못했는지 모르겠는데 그대로하면 오류가난다.
+
+### init.js
+``` javascript
+require.config({
+    baseUrl : '/static',
+    paths : {
+        'jquery-private' : 'js/jquery-private',
+        'jquery-private2' : 'js/jquery-private2',
+        'jquery341' : 'lib/jquery-3.4.1.min',
+        'jquery331' : 'lib/jquery-3.3.1.min',
+    },
+    map: {
+        '*': {
+            'jquery': 'jquery-private', //jquery 모듈 요청 시 jquery-private 모듈로 매핑
+            'jquery2' : 'jquery-private2', //jquery2 모듈 요청 시 jquery-private2 모듈로 매핑
+        },
+        // 'jquery-private' : { 'jquery': 'jquery' }, //jquery-private 모듈 내부에서 jquery 를 호출 시 순환오류를 회피하기 위함
+        // 'jquery-private2' : { 'jquery': 'jquery' },
+    }
+});
+```
+
+### jquery-private.js
+``` javascript
+define(['jquery341'], function () {
+    return $.noConflict( true );
+});
+/*
+RequireJS 공식 문서에서는 아래와 같이 가이드하고 있다.
+하지만 실제로 이렇게 하면 함수의 $ 변수가 undefined 상태로 넘어온다.
+define(['jquery341'], function ($) {
+    return $.noConflict( true );
+});
+*/
+```
+
+### jquery-private2.js
+``` javascript
+define(['jquery331'], function () {
+    return $.noConflict( true );
+});
+```
+
+### SomeHTML.html
+``` html
+<script src="/static/lib/require.js" data-main="/static/js/init.js"></script>
+<script>
+require(['init'], function(init) {
+    require(['jquery'], function(jq) {
+        console.log('jquery version -> ' + jq.fn.jquery);
+    });
+    require(['jquery2'], function(jq) {
+        console.log('jquery2 version -> ' + jq.fn.jquery);
+    });
+});
+console.log('global variable $ -> ' + $); //Uncaught ReferenceError: $ is not defined
+</script>
+```
+
 출처
 - [RequireJS - AMD의 이해와 개발](https://d2.naver.com/helloworld/591319)
 - [RequireJS](https://requirejs.org)
