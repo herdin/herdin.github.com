@@ -99,3 +99,4 @@ docker run \
 - [[Prometheus-Grafana] Grafana 설치 및 설정 - 초보자용](https://hyunki1019.tistory.com/128)
 - [INSTALLATION](https://prometheus.io/docs/prometheus/latest/installation/)
 - [오픈소스 모니터링 시스템 Prometheus #1](https://blog.outsider.ne.kr/1254)
+- [Prometheus 를 알아보자](https://gompangs.tistory.com/entry/Prometheus-%EB%A5%BC-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90)
