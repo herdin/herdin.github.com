@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Prometheus with Docker"
+title: "Prometheus-Grafana with Docker"
 date: 2020-01-20
 tags: docker
 ---
@@ -91,7 +91,33 @@ docker run \
     prom/node-exporter
 ```
 
-위에 설정파일에서 미리 설정했으므로 확인하면된다.
+위에 설정파일에서 미리 설정했으므로 확인하면된다. 이걸로 프로메테우스는 일단 끝.
+
+# Grafana
+
+이미지를 받는다.
+``` shell
+docker pull grafana/grafana
+```
+그리고 실행.
+``` shell
+docker run \
+  -d \
+  --name=mygraf \
+  -p 3000:3000 \
+  grafana/grafana
+```
+
+호옹이 뭐하지도않았는데 막 나오네.. 좋다...
+
+<img src='#' post-src='2020-01-28-docker-prometheus-03.png' />
+
+
+메모리도 별로 안잡아먹는 것 같다..
+
+<img src='#' post-src='2020-01-28-docker-prometheus-04.png' />
+
+익스포터를 커스터마이즈하는 방법을 알면 아무데나 써먹을 수 있을 것 같다
 
 
 출처
@@ -100,3 +126,4 @@ docker run \
 - [INSTALLATION](https://prometheus.io/docs/prometheus/latest/installation/)
 - [오픈소스 모니터링 시스템 Prometheus #1](https://blog.outsider.ne.kr/1254)
 - [Prometheus 를 알아보자](https://gompangs.tistory.com/entry/Prometheus-%EB%A5%BC-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90)
+- [Grafana Document](https://grafana.com/docs/grafana/latest/features/panels/graph/)
