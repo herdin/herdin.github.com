@@ -1,6 +1,12 @@
 .test .important {
-  background-color: orange!important;
+  background-color: #7273ff!important;
 }
 .test .notimportant {
-  background-color: yellow;
+  background-color: #7273ff;
+}
+.test .userimportant {
+  background-color: #7273ff;
+}
+.test .writerimportant {
+  background-color: #7273ff!important;
 }
