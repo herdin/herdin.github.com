@@ -41,5 +41,13 @@
       margin-right: 5px;
       padding-right: 18px;
     }
+    .test {
+      .important {
+        background-color: orange!important;
+      }
+      .notimportant {
+        background-color: yellow;
+      }
+    }
   }
 }

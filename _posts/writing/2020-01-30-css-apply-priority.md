@@ -10,26 +10,33 @@ tags: css writing
 # 1. 사용자 스타일 시트 우선
 
 ``` css
-.target01 {
-  background-color: red;
+.posts .post .test .important {
+  background-color: red!important;
+}
+.posts .post .test .notimportant {
+  background-color: green;
 }
 ```
 
 ``` html
-<div class='about'>
-  <div class='highlighter-rouge'>THIS IS TARGET</div>
+<div class='test'>
+  <div class='important'>THIS IS TARGET</div>
 </div>
 ```
 ---
 
 <style>
-.target01 {
+.posts .post .test .important {
   background-color: red!important;
+}
+.posts .post .test .notimportant {
+  background-color: green;
 }
 </style>
 
-<div class='about'>
-  <div class='highlighter-rouge'>THIS IS TARGET</div>
+<div class='test'>
+  <div class='important'>THIS IS IMPORTANT</div>
+  <div class='notimportant'>THIS IS NOT IMPORTANT</div>
 </div>
 
 출처
