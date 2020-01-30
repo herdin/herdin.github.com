@@ -1,0 +1,6 @@
+.test .important {
+  background-color: red!important;
+}
+.test .notimportant {
+  background-color: green;
+}
