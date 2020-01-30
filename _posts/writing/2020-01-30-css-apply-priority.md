@@ -24,11 +24,13 @@ tags: css writing
 
 <style>
 .target01 {
-  background-color: red;
+  background-color: red!important;
 }
 </style>
 
-<div class='target01'>THIS IS TARGET</div>
+<div class='about'>
+  <div class='highlighter-rouge'>THIS IS TARGET</div>
+</div>
 
 출처
 - [CSS 적용 우선순위](https://opentutorials.org/module/484/4149)
