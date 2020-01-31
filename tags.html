@@ -41,7 +41,7 @@ permalink: /tags/
 <script>
   require(['init'], (init) => {
     require(['jquery'], ($) => {
-      $('.site-tag').click(function(){
+      $('.site-tag').click(() => {
         $('.site-tagged-posts > li').hide();
         var prefix = '{{ prefix }}';
         var delay = 100;
@@ -49,7 +49,8 @@ permalink: /tags/
         $('.' + prefix + tag).fadeIn(delay);
       });
 
-      var paramId = window.location.hash.replace('#', '');
+      //access from post tag, auto show tag
+      let paramId = window.location.hash.replace('#', '');
       if(paramId != null && paramId.length > 0) {
         $('#' + paramId).click();
       }
