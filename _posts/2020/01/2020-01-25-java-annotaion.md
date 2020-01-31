@@ -129,6 +129,7 @@ annotaion 을 어디에 붙일지 `enum ElementType` 로 설명한다. 잘못 �
 
 
 ### `@Documented`
+annotaion 정보를 java doc 에 표시해준다.
 
 ### `@Inherited`
 
