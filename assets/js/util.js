@@ -1,7 +1,18 @@
-define((require) => {
-  let $ = require('jquery');
+// define((require) => {
+//   let $ = require('jquery');
+//
+//   return {
+//     genID : () => 'generatedID-' + Math.floor(Math.random()*100000),
+//     genTable : (tableHeaders, tableDatas) => {
+//
+//     },
+//   };
+// });
 
-  return {
-    genID : () => 'generatedID-' + Math.floor(Math.random()*100000),
-  };
+define(['jquery'], () => {
+    return {
+      genID : () => 'generatedID-' + Math.floor(Math.random()*100000),
+      genTable : (tableHeaders, tableDatas) => {
+      },
+    };
 });
