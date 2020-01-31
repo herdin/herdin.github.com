@@ -36,7 +36,7 @@ function drawChart() {
    var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
 
    var options = {
-     title: "Red Sox Attendance",
+     title: "Google Calendar Chart Example",
      height: 350,
    };
 
