@@ -41,7 +41,7 @@ permalink: /tags/
 <script>
   require(['init'], (init) => {
     require(['jquery'], ($) => {
-      $('.site-tag').click(function() => {
+      $('.site-tag').click(function() {
         $('.site-tagged-posts > li').hide();
         var prefix = '{{ prefix }}';
         var delay = 100;
