@@ -2,7 +2,7 @@
 layout: post
 title: "CSS 적용 우선 순위"
 date: 2020-01-30
-tags: css writing
+tags: css
 ---
 
 <link rel="stylesheet" type="text/css" href="{{ site.url }}/assets/css/2020-01-30-css-apply-priority.css" />
