@@ -89,7 +89,7 @@ public void run(ApplicationArguments args) throws Exception {
 }
 ```
 
-## (Declaratively) `initializer` 또는 `listener` 에서 property 를 설정한다.
+## 3. (Declaratively) `initializer` 또는 `listener` 에서 property 를 설정한다.
 
 ### main
 
@@ -136,7 +136,7 @@ public class CustomApplicationListener implements ApplicationListener<Applicatio
 }
 ```
 
-## (Declaratively) `META-INF/spring.factories` 에 `EnvironmentPostProcessor` 설정
+## 4. (Declaratively) `META-INF/spring.factories` 에 `EnvironmentPostProcessor` 설정
 
 classpath 에 `META-INF/spring.factories` 파일을 만들고, `EnvironmentPostProcessor` 위치를 알려준다.
 
