@@ -54,6 +54,7 @@ footer-links:
 
 open-apis:
   disqus: https-herdin-github-io
+  utteranc: true
   google_analytics: UA-143433153-1
   google_adsense: ca-pub-6021900706575667
 
