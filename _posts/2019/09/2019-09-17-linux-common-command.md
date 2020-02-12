@@ -89,6 +89,58 @@ chmod [OPTION] [PERMISSION] [FILE]
 #-R : recursive work
 ```
 
+### Process rel.
+``` shell
+ps #process show
+#-e : show all
+#-f : full format
+#-l : long format
+#-p : specific process
+#-u : specific user process
+
+kill #process kill
+#-l : show SIGNAL list
+1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX
+#ex)
+kill -SIGNAL PROCESS_ID
+kill -2 123
+kill -INT 123 #SIGINT - SIG
+```
+
+kill -9 ${PID} 를 사용하면 안되는 이유.
+
+개발자가 시그널핸들러를 작성했는데도 불구하고 `SIGKILL`(9), `SIGSTOP`(19) 은 핸들러를 등록할 수 없는 시그널이기 때문에 사용을 지양해야 한다.
+
+시그널 핸들러가 등록되지 않았을 때의 커널에 정의된 기본 행동 [출처](https://www.lesstif.com/pages/viewpage.action?pageId=12943674)
+
+<div id="pureTableHere"></div>
+<script>
+require(['util'], (util) => {
+  util.genPureTable(
+    'pureTableHere',
+    ['SIGNAL', '기본 행동'],
+    [
+      ['TERM', '시그널을 수신한 프로세스 종료'],
+      ['IGN', '시그널 무시'],
+      ['CORE', '시그널을 수신한 프로세스를 종료하면서 코어 덤프(core dump) 파일 생성'],
+      ['STOP', '시그널을 수신한 프로세스 정지'],
+      ['CONT', '중지된 프로세스 재시작'],
+    ]
+  );
+});
+</script>
 
 ### SELinux
 
