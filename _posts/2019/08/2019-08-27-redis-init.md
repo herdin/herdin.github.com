@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Redis 맛보기"
+title: "Redis 기초"
 date: 2019-08-27
 tags: opensource database redis writing
 ---
