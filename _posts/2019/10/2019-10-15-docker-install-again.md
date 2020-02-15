@@ -15,6 +15,8 @@ amazon-linux-extras install docker
 
 > 쉽죠?
 
+유저를 그룹에 넣는건 마찬가지로 해야한다.
+
 ##  `linux` 버전..
 
 ``` shell
@@ -45,6 +47,7 @@ CentOS Linux release 8.0.1905 (Core)
 메뉴얼 설치(download the RPM package and install it manually)가 있고 레포지토리를 통한 설치(Install using the repository)가 있는데, 레포지토리를 권장한다고 한다.  
 권장 방법으로..
 
+### 레포지토리 추가
 ``` shell
 $ sudo yum install -y yum-utils \
   device-mapper-persistent-data \
@@ -54,43 +57,50 @@ $ sudo yum-config-manager \
       --add-repo \
       https://download.docker.com/linux/centos/docker-ce.repo
 
+```
+
+### 레포지토리를 통한 설치
+``` shell
 $ sudo yum install docker-ce docker-ce-cli containerd.io
 ```
 
-자 설치했다... 이제 실행..
+### 실행
 
 ``` shell
 $ sudo systemctl start docker
 $ docker ps -a
-Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
+Got permission denied -while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
 ```
 
 얼씨구.
 현재 `user` 를 `docker group` 에 넣어 줘야 한다.
 
+### 유저 확인
 ``` shell
-# 유저 확인
 $ cat /etc/passwd
 ...
 herdin86:x:1000:1001::/home/herdin86:/bin/bash
 ...
+```
 
-# 그룹 확인
+### 그룹 확인
+``` shell
 $ cat /etc/group
 ...
 herdin86:x:1001:
 docker:x:991:
 ...
+```
 
-# 유저에 그룹추가
+### 그룹에 유저 추가
+``` shell
 $ sudo usermod -a -G docker $USER
 $ sudo systemctl restart docker
-
-# 다시 로그인 한다.
 $ exit
+```
 
-...
-
+### 실행되는지 확인
+``` shell
 $ docker version
 Client: Docker Engine - Community
  Version:           19.03.3

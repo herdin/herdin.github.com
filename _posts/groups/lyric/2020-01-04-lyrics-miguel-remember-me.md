@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Remember me, coco, miguel. lyrics"
+title: "Remember me, miguel, from movie Coco, lyrics"
 date: 2020-01-04
 tags: lyrics
 ---

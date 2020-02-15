@@ -145,6 +145,67 @@ public class WebConfig implements WebMvcConfigurer {
 ```
 
 ## 핸들러 메소드 3부 요청 매개변수 (단순 타입)
+
+request 의 parameter 를 handler method 의 argument 로 받을 때, `@RequestParam(value = "name", required = false, defaultValue = "DEFAULT_NAME") String paramName` 이렇게 받을 수 도 있지만, 변수 명을 맞춰주고 생략할 수도 있다.
+
+전에 살펴보았던 `@MatrixVariable` 로 Path Variable 을 받는 방법
+``` java
+@RequestMapping(value = "/usage05/hello1/id/{id}")
+@ResponseBody
+public User hello1(@PathVariable String id, @MatrixVariable String name, @MatrixVariable String nickname, @MatrixVariable String anagram) {
+    logger.debug("id -> {}, name -> {}, nickname -> {}, anagram -> {}", id, name, nickname, anagram);
+    User user = new User.Builder().id(id).name(name).nickname(nickname).anagram(anagram).build();
+    return user;
+}
+```
+
+`@RequestParam` 에서 사용할 수 있는 옵션들을 모두 써았다.
+
+``` java
+@RequestMapping("/usage05/hello2")
+@ResponseBody
+public String hello2(@RequestParam(value = "name", required = false, defaultValue = "DEFAULT_NAME") String thisIsName) {
+    logger.debug("thisIsName -> {}", thisIsName);
+    return "hello2-" + thisIsName;
+}
+```
+
+value 를 생략하면, 변수명을 request parameter 의 key 값과 맞추면 된다.
+
+``` java
+@RequestMapping("/usage05/hello3")
+@ResponseBody
+public String hello3(@RequestParam String name) {
+    logger.debug("name -> {}", name);
+    return "hello3-" + name;
+}
+```
+
+`@RequestParam` 조차 생략이 가능하다.
+> 비추
+
+``` java
+@RequestMapping("/usage05/hello4")
+@ResponseBody
+public String hello4(String name) {
+    logger.debug("name -> {}", name);
+    return "hello4-" + name;
+}
+```
+
+request parameter 의 모든 key-value 를 map 으로 받아 볼 수도 있다.
+
+``` java
+@RequestMapping("/usage05/hello5")
+@ResponseBody
+public String hello5(@RequestParam Map<String, String> params) {
+    params.forEach((k, v) -> { logger.debug("k, v -> {}, {}", k, v);});
+    logger.debug("name -> {}", params.get("name"));
+    return "hello5-" + params.get("name");
+}
+```
+
+
 ## 핸들러 메소드 4부 폼 서브밋
 ## 핸들러 메소드 5부 @ModelAttribute
 ## 핸들러 메소드 6부 @Validated
