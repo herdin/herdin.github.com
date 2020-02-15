@@ -53,7 +53,7 @@ require(['init'], (init) => {
     function appendDday(id, day) {
       var element = '';
       element += '<div>';
-      element += '<span class="kd">var</span> ';
+      element += '<span class="kd">const</span> ';
       element += '<span class="nx">' + id + '</span> ';
       element += '<span class="o">=</span> ';
       element += '<span class="mo">' + day + '</span>';
