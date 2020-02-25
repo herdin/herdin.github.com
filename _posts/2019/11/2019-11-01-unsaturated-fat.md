@@ -2,7 +2,7 @@
 layout: post
 title: "트랜스 지방, 시스 지방, 불포화 지방, 포화 지방에 대해"
 date: 2019-11-01
-tags: science
+tags: info science
 ---
 
 매번 헷갈려서 세번째 검색해서 [나무위키](https://namu.wiki/w/트랜스%20지방#toc)보다가 결국 정리한다.

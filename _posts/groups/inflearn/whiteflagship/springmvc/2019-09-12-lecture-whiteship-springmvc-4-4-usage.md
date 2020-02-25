@@ -207,8 +207,73 @@ public String hello5(@RequestParam Map<String, String> params) {
 
 
 ## 핸들러 메소드 4부 폼 서브밋
+
+- `@{}`: URL 표현식
+- `${}`: variable 표현식
+- `*{}`: selection 표현식, ()객체안에서 필드를 뽑아낼 때)
+
 ## 핸들러 메소드 5부 @ModelAttribute
+
+`@RequestParam` 은 request parameter(?key=value) 를 하나씩 받아왔다면, request parameter 들을 한꺼번에 객체에 맵핑해주는 기능이다. `@RequestParam` 처럼 `@ModelAttribute` 도 생략이 가능하다.
+
+json 형태의 request parameter 들은 jackson 컨버터로 json data -> pojo 로 변환한다면, request 내부의 key=value.. 들은 @ModelAttribute 로 변환할 수 있다.
+
+### Event.java
+
+``` java
+public class Event {
+    int id;
+    String name;
+    int limit;
+    //... conttructor, getter, setter, Overrided toString
+}    
+```
+
+### Controller
+
+``` java
+///usage06/hello2/events
+@RequestMapping(value = "/usage06/hello2/events")
+@ResponseBody
+public String hello2(@ModelAttribute Event event) {
+    logger.debug("event -> {}", event);
+    return event.toString() ;
+}
+```
+
 ## 핸들러 메소드 6부 @Validated
+
+`@ModelAttribute` 를 사용해서 여러 request parameter 들을 객체로 맵핑할때, validation 을 수행할 때 사용한다.
+
+`@interface javax.validation.Valid` 와 `javax.validation.constraints.NotBlank, NotNull, Min, Max, ...` 등을 사용할 수도 있고, validation group 을 만들고, handler 마다 다른 validation group 을 적용하려면 `@interface org.springframework.validation.annotation.Validated` 를 사용해야 한다.
+
+### Event.java
+`ValidationGroupForNotBlack.class` 는 그냥 빈 interface 를 만들면된다.
+``` java
+public class Event {
+    @Min(1)
+    int id;
+    @NotBlank(groups = ValidationGroupForNotBlack.class)
+    String name;
+    @Min(value = 0, groups = ValidationGroupForNotBlack.class)
+    int limit;
+    //... conttructor, getter, setter, Overrided toString
+}
+```
+
+``` java
+@RequestMapping(value = "/usage06/hello3/events")
+public String hello3(@Valid @ModelAttribute Event event, BindingResult bindingResult) {
+  //이렇게 받으면 annotation 붙은 validation 이 모두 적용된다.
+}
+@RequestMapping(value = "/usage06/hello4/events")
+public String hello4(@Validated(ValidationGroupForNotBlack.class) @ModelAttribute Event event, BindingResult bindingResult) {
+  //이렇게 받으면 정의된 valitioin group 에 따라 다른 validation 을 한다.
+}
+```
+
+
+
 ## 핸들러 메소드 7부 폼 서브밋 에러 처리
 ## 핸들러 메소드 8부 @SessionAttributes
 ## 핸들러 메소드 9부 멀티 폼 서브밋
