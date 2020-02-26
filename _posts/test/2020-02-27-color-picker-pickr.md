@@ -11,8 +11,6 @@ tags: test
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme -->
 
 <!-- Modern or es5 bundle -->
-<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js"></script>
 
 [pickr](https://github.com/Simonwep/pickr)
 
@@ -20,7 +18,7 @@ tags: test
 
 <script type="text/javascript">
 require(['init'], (init) => {
-  require(['jquery'], ($) => {
+  require(['https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js', 'https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js', 'jquery'], ($) => {
     $(document).ready(() => {
       // Simple example, see optional options for more configuration.
       const pickr = Pickr.create({
