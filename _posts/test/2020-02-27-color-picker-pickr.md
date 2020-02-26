@@ -24,7 +24,7 @@ require(['init'], (init) => {
     $(document).ready(() => {
       // Simple example, see optional options for more configuration.
       const pickr = Pickr.create({
-          el: '.color-picker',
+          el: document.getElementsByClassName('.color-picker')[0],
           theme: 'classic', // or 'monolith', or 'nano'
 
           swatches: [
