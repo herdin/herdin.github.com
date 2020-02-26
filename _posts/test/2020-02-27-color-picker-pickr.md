@@ -14,7 +14,9 @@ tags: test
 
 [pickr](https://github.com/Simonwep/pickr)
 
-<div class=".color-picker"></div>
+<div>
+  <div class=".color-picker"></div>
+</div>
 
 <script type="text/javascript">
 require(['init'], (init) => {
