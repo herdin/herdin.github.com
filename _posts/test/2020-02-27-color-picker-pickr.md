@@ -18,7 +18,7 @@ tags: test
 
 <script type="text/javascript">
 require(['init'], (init) => {
-  require(['https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js', 'https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js', 'jquery'], ($) => {
+  require(['https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js', 'https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js', 'jquery'], (Pickr, pickr, $) => {
     $(document).ready(() => {
       // Simple example, see optional options for more configuration.
       const pickr = Pickr.create({
