@@ -14,7 +14,7 @@ tags: opensource
 <script>
 require(['init'], (initTest) => {
   require(['jquery'], ($) => {
-    require(['vendor/Chart.bundle.min.js'], function(Chart){
+    require(['vendor/Chart.bundle.dist.min.js'], function(Chart){
       $(document).ready(function(){
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
