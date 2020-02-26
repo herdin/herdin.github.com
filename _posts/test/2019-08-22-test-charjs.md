@@ -2,7 +2,7 @@
 layout: post
 title: Chart.js test
 date: 2019-08-22
-tags: opensource
+tags: test
 ---
 
 [Chart.js Document](https://www.chartjs.org/docs/latest/getting-started/)

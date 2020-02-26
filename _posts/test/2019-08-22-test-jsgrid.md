@@ -2,7 +2,7 @@
 layout: post
 title: jsGrid test
 date: 2019-08-23
-tags: opensource
+tags: test
 ---
 
 <script type="text/javascript" src="/assets/vendor/jsgrid_v1.5.3/js/jsgrid.min.js"></script>

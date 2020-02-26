@@ -2,7 +2,7 @@
 layout: post
 title: CSS text gradient
 date: 2019-09-25
-tags: opensource
+tags: test
 ---
 
 글자색에 그라데이션을 넣는 방법은 없는 듯하고

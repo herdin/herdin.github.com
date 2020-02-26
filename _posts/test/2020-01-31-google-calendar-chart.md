@@ -2,7 +2,7 @@
 layout: post
 title: google calendar chart
 date: 2020-01-31
-tags: opensource
+tags: test
 ---
 
 [Calendar Chart](https://developers.google.com/chart/interactive/docs/gallery/calendar)

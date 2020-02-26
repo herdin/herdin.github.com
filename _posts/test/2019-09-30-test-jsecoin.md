@@ -2,7 +2,7 @@
 layout: post
 title: test JSECoin
 date: 2019-09-30
-tags: opensource
+tags: test
 ---
 
 # JSE 스크립트를 위한 페이지

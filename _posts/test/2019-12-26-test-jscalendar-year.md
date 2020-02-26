@@ -2,7 +2,7 @@
 layout: post
 title: jsCalendar YearCalendar
 date: 2019-12-01
-tags: opensource
+tags: test
 ---
 
 <!-- jsCalendar -->

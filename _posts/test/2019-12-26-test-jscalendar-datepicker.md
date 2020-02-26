@@ -2,7 +2,7 @@
 layout: post
 title: jsCalendar Datepciker
 date: 2019-12-26
-tags: opensource
+tags: test
 ---
 
 <!-- jsCalendar -->

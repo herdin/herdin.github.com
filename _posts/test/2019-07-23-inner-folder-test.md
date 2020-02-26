@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Inner Folder Test
-tags: opensource jekyll
+tags: test
 ---
 
 how jekyll treat this post?

@@ -2,7 +2,7 @@
 layout: post
 title: Progress.js test
 date: 2019-12-01
-tags: opensource
+tags: test
 ---
 [Progress.js Document](https://progressbarjs.readthedocs.io/en/latest/)
 
