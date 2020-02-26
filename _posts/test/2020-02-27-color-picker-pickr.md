@@ -14,11 +14,11 @@ tags: test
 
 [pickr](https://github.com/Simonwep/pickr)
 
-<span id="color-picker-classic"></span>
+<span id="color-picker-classic"></span> classic
 
-<span id="color-picker-monolith"></span>
+<span id="color-picker-monolith"></span> monolith
 
-<span id="color-picker-nano"></span>
+<span id="color-picker-nano"></span> nano
 
 
 <script type="text/javascript">
