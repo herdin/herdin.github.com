@@ -12,8 +12,8 @@ tags: opensource
 <canvas id="myChart"></canvas>
 
 <script>
-require(['init'], (init) => {
-  require(['jquery'], () => {
+require(['init'], (initTest) => {
+  require(['jquery'], ($) => {
     $(document).ready(function(){
       var ctx = document.getElementById('myChart').getContext('2d');
       var chart = new Chart(ctx, {
