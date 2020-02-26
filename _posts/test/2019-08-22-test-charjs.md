@@ -5,8 +5,6 @@ date: 2019-08-22
 tags: opensource
 ---
 
-<script src="/assets/vendor/Chart.bundle.min.js"></script>
-
 [Chart.js Document](https://www.chartjs.org/docs/latest/getting-started/)
 
 <canvas id="myChart"></canvas>
@@ -14,7 +12,7 @@ tags: opensource
 <script>
 require(['init'], (initTest) => {
   require(['jquery'], ($) => {
-    require(['vendor/Chart.bundle.dist.min.js'], function(Chart){
+    require(['vendor/Chart.bundle.min.js'], function(Chart){
       $(document).ready(function(){
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
