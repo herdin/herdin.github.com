@@ -208,6 +208,7 @@ public String hello5(@RequestParam Map<String, String> params) {
 
 ## 핸들러 메소드 4부 폼 서브밋
 
+Thymeleaf 표현식
 - `@{}`: URL 표현식
 - `${}`: variable 표현식
 - `*{}`: selection 표현식, ()객체안에서 필드를 뽑아낼 때)
@@ -247,6 +248,8 @@ public String hello2(@ModelAttribute Event event) {
 
 `@interface javax.validation.Valid` 와 `javax.validation.constraints.NotBlank, NotNull, Min, Max, ...` 등을 사용할 수도 있고, validation group 을 만들고, handler 마다 다른 validation group 을 적용하려면 `@interface org.springframework.validation.annotation.Validated` 를 사용해야 한다.
 
+validation 을 수행한 뒤, 나오는 에러는 파라미터로 받은 `BindingResult` 에서 확인할 수 있다.
+
 ### Event.java
 `ValidationGroupForNotBlack.class` 는 그냥 빈 interface 를 만들면된다.
 ``` java
@@ -271,17 +274,260 @@ public String hello4(@Validated(ValidationGroupForNotBlack.class) @ModelAttribut
   //이렇게 받으면 정의된 valitioin group 에 따라 다른 validation 을 한다.
 }
 ```
-
-
-
 ## 핸들러 메소드 7부 폼 서브밋 에러 처리
+
+post 요청 후 refresh 를 했을때, 같은 post 요청이 일어나는 것을 막기 위해 [Post/Redirect/Get 패턴](https://en.wikipedia.org/wiki/Post/Redirect/Get) 이라는 것이 있다.
+post 요청은 요청을 처리 한 뒤, get 으로 redirect 하는 것을 말한다.
+
 ## 핸들러 메소드 8부 @SessionAttributes
+
+핸들러에 파라미터로 `javax.servlet.http.HttpSession` 를 받으면 session 객체를 가져올 수 있다. 받아서 뭔가 하던지 말던지. 아무튼.
+
+``` java
+@RequestMapping(value = "/usage07/hello1/events")
+@ResponseBody
+public String hello1(Event event, HttpSession httpSession) {
+    logger.debug("-> {}", event);
+    httpSession.setAttribute("myEvent", event);
+    return "hello1";
+}
+```
+
+그런데 저렇게 하지 않아도, Model 에 "myEvent" 로 넣어 줄 attribute 를 session 에도 넣고 싶다면, 아래와 같이 Controller 에 annotation 으로 `@SessionAttributes` 을 달고, 거기에 attribute name 을 넣어주면 자동으로 session 에 넣어준다.
+
+``` java
+@Controller
+@SessionAttributes({"myEvent"})
+public class Usage07SessionAttribute {
+    private Logger logger = LoggerFactory.getLogger(Usage07SessionAttribute.class);
+
+    @RequestMapping(value = "/usage07/hello1/events")
+    @ResponseBody
+    public String hello1(Event event, HttpSession httpSession, Model model) {
+        logger.debug("-> {}", event);
+//        httpSession.setAttribute("myEvent", event);
+        model.addAttribute("myEvent", event);
+        return "hello1";
+    }
+}
+
+@Test
+public void hello1() throws Exception {
+    MvcResult result = mockMvc.perform(get("/usage07/hello1/events")
+            .param("id", "2")
+            .param("name", "spring")
+            .param("limit", "-10")
+    )
+            .andDo(print())
+            .andExpect(status().isOk())
+        .andExpect(request().sessionAttribute("myEvent", CoreMatchers.notNullValue()))
+    .andReturn()
+    ;
+    Event myEvent = (Event) result.getRequest().getSession().getAttribute("myEvent");
+    logger.debug("event id -> {}", myEvent.getId()); //2 가 나온다.
+}
+```
 ## 핸들러 메소드 9부 멀티 폼 서브밋
+
+위와같이 단순히 session 에 넣어주는 것을 이용할 수도 있지만, form 에서 많은 데이터를 입력 받을때 나눠서 입력 받기 위해 사용할 수도 있다.
+위에서 배운 `@ModelAttribute` 은 session 의 attribute 도 매핑해 주기 때문에 같이 이용하여 나눠서 입력 받고, 마지막에 `SessionStatus sessionStatus` 를 파라미터로 받아서 `sessionStatus.setComplete();` 를 호출해 줌으로써 세션의 attribute 를 만료시킬 수도 있다.
+
+``` java
+@Controller
+@SessionAttributes({"myEvent"})
+public class Usage07SessionAttribute {
+    private Logger logger = LoggerFactory.getLogger(Usage07SessionAttribute.class);
+    private static ArrayList<Event> events = new ArrayList<>();
+
+    //초기 url
+    //id form 으로 이동
+    @GetMapping("/usage07/events/form")
+    public String form(Model model) {
+        model.addAttribute("size", events.size());
+        return "/events/id";
+    }
+
+    //id를 입력받는다.
+    @PostMapping("/usage07/events/id")
+    public String setId(@ModelAttribute Event event, Model model) {
+        logger.debug("-> {}", event);
+        Event newEvent = new Event();
+        newEvent.setId(event.getId());
+        model.addAttribute("myEvent", newEvent); //여기서 세션에 들어가게된다.
+        return "redirect:/usage07/events/name";
+    }
+
+    //name form 으로 이동
+    @GetMapping("/usage07/events/name")
+    public String gotoName() {
+        return "/events/name";
+    }
+
+    //name 입력 시 ModelAttribute 로 session 에 있는 myEvent 도 취합하여 갖고 온다.
+    @PostMapping("/usage07/events/name")
+    public String setName(@ModelAttribute("myEvent") Event event, Model model) {
+        logger.debug("-> {}", event);
+        model.addAttribute("myEvent", event); //그리고 마찬가지로 myEvent 이름으로 session 에 넣게된다.
+        return "redirect:/events/limit";
+    }
+
+    //limit form 으로 이동
+    @GetMapping("/events/limit")
+    public String gotoLimit() {
+        return "/events/limit";
+    }
+
+    //limit 을 입력받고 session 의 myEvent 와 취합하여 갖고온다.
+    @PostMapping("/usage07/events/limit")
+    public String setLimit(@ModelAttribute("myEvent") Event event, Model model, SessionStatus sessionStatus) {
+        logger.debug("-> {}", event);
+        events.add(event); //입력이 모두 완료 되었으므로 repository 에 저장
+        sessionStatus.setComplete(); //그리고 session 의 myEvent 를 만료시킨다.
+        return "redirect:/usage07/events/form";
+    }
+}
+```
+
 ## 핸들러 메소드 10부 @SessionAttribute
+
+session 의 attribute 를 가져올때, 파라미터로 그냥 `javax.servlet.http.HttpSession` 을 받아서 가져올 수도 있지만, 그렇게 되면 Object 타입으로 가져오게 되서 캐스팅을 해야되므로 Type Safe 하지 않다.
+
+`@SessionAttribute` 로 파라미터를 가져오게되면 Type Safe 하게 가져올 수 있다.
+
+``` java
+@GetMapping("/usage08/visit")
+@ResponseBody
+public String visit(@SessionAttribute LocalDateTime visitTime) { //session 에 visitTime 이름으로 LocalDateTime type 의 데이터를 넣었다고 치자.
+    logger.debug("visit time -> {}", visitTime);
+    return visitTime.toString();
+}
+```
+
 ## 핸들러 메소드 11부 RedirectAttributes
+
+Spring MVC 에선 기본적으로 Model 에 primitive type 을 넣고 redirect 를 하게 되면, url path parameter 로 ?key=value 로 붙게 되는데, Spring boot 의 설정(`org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties`) 의 `ignoreDefaultModelOnRedirect` 값이 기본으로 true 로 되어있다. 해당 값이 true 이면 model 에 넣은 primitive type 을 redirect 시 url parameter 로 넘겨주지 않는다.
+
+아래 설정으로 변경할 수 있다.
+```
+spring.mvc.ignore-default-model-on-redirect: false
+```
+
+아무튼, 아래와 같이 `redirect` 시 `@RequestParam` 나 `@ModelAttribute` 로 받아 줄 수 있다.
+
+``` java
+@Controller
+@SessionAttributes({"initEvent"})
+public class Usage09RedirectFlashAttribute {
+  //...
+  @GetMapping("/usage09/redirect/redirectattribute/init")
+  public String init(Model model, RedirectAttributes redirectAttributes) {
+      Event initEvent = new Event();
+      initEvent.setId(11);
+      initEvent.setName("NEW EVENT 111");
+      initEvent.setLimit(111);
+      model.addAttribute("initEvent", initEvent); //1)
+      redirectAttributes.addAttribute("id", "22");
+      redirectAttributes.addAttribute("name", "NAME IN REDIRECT");
+      redirectAttributes.addAttribute("limit", "2222");    
+      return "redirect:/usage09/redirect/next";
+  }
+
+  @GetMapping("/usage09/redirect/session/next")
+  @ResponseBody
+  public String next(@ModelAttribute Event event,
+                     @RequestParam Map<String, String> paramMap,
+                     @SessionAttribute Event initEvent,
+                     HttpSession session) {
+      logger.debug("recv event -> {}", event);
+      logger.debug("session event -> {}", initEvent);
+      logger.debug("session get -> {}", session.getAttribute("initEvent"));
+      Iterator<String> iter = paramMap.keySet().iterator();
+      while(iter.hasNext()) {
+          String key = iter.next();
+          logger.debug("{} -> {}", key, paramMap.get(key));
+      }
+      return "hello!@";
+  }
+  //...
+}
+```
+
+`@Controller` 에 `@SessionAttributes({"initEvent"})` 를 붙였고, 일부러 `1)` 부분에 model 에 같은 이름으로 initEvent 를 세팅해줘서 initEvent 라는 이름으로 session 에 저장하도록 의도했다.
+
+next 핸들러의 첫번째 파라미터로 `@ModelAttribute Event event` 를 `@ModelAttribute("initEvent") Event event`, 또는 `@ModelAttribute Event initEvent` 로 변경해주면, session 의 initEvent 가 redirectAttributes 에 의해 덮어써 지는 것을 볼 수있다.
+
+왜그런진 모르겠으나 같게 써주지말자.. `@ModelAttribute` 는 세션에서 데이터를 찾는데 없다면, Exception 이 나고, 있어도 변경이 되게 된다. 둘다 의도치 않은 상황..
+
 ## 핸들러 메소드 12부 Flash Attributes
+
+앞에서 본 `RedirectAttributes` 는 url path 에 query parameter 로 전달하기 떄문에, string 으로 변환이 가능해야한다. 복합객체전달이 힘듬.
+
+`RedirectAttributes` 의 `addFlashAttribute()` 를 사용하면, redirect 했을 떄, session 을 이용하여 객체를 전달하게 된다. query paramter 에 남지도 않고 깔끔함.
+
+``` java
+@GetMapping("/usage09/flash/send")
+public String flashSend(RedirectAttributes redirectAttributes) {
+    Event flashEvent = new Event();
+    flashEvent.setId(123);
+    flashEvent.setName("flash-event-name");
+    flashEvent.setLimit(456);
+    redirectAttributes.addFlashAttribute("flashEvent", flashEvent);
+    return "redirect:/usage09/flash/recv";
+}
+
+@GetMapping("/usage09/flash/recv")
+@ResponseBody
+public String flashRecv(@ModelAttribute("flashEvent") Event event) {
+    logger.debug("recv -> {}", event);
+    return "flash!";
+}
+```
+
+- [xpath 문법](https://www.w3schools.com/xml/xpath_syntax.asp)
+- [xpath test](https://www.freeformatter.com/xpath-tester.html#ad-output)
+
 ## 핸들러 메소드 13부 MultipartFile
+
+MultipartFile 을 사용하기 위해서는 MultipareResolver 가 DispatcherSerlvet 에 설정이 되어있어야하는데 기본적으로는 설정이 안되있다. spring boot 에선 설정이 된다. (spring-boot-starter/spring-boot-autoconfigure/META-INF/spring.factories/MultipartAutoConfiguration)
+
+form 의 `enctype="multipart/form-data"` 로 보내주고 request hanlder 의 request parameter 로 받아서 처리하면 된다.
+
+``` java
+@PostMapping("/usage10/file")
+public String upload(@RequestParam("uploadFile") MultipartFile file, RedirectAttributes redirectAttributes) {
+    logger.debug("upload file name -> {}", file.getOriginalFilename());
+    logger.debug("upload file size -> {}", file.getSize());
+    redirectAttributes.addFlashAttribute("message", "server got " + file.getOriginalFilename());
+    return "redirect:/usage10/file";
+}
+```
 ## 핸들러 메소드 14부 ResponseEntity
+
+리소스를 다운로드 받을 떄, 응답 상태코드/헤더/본문을 설정할 수 있는 ResponseEntity 를 사용해 본다. file 의 media type 을 알아낼 수 있는 [Apache Tika - a content analysis toolkit](https://tika.apache.org/) 를 사용했다.
+
+### pom.xml
+``` xml
+<dependency>
+  <groupId>org.apache.tika</groupId>
+  <artifactId>tika-core</artifactId>
+  <version>1.23</version>
+</dependency>
+```
+
+``` java
+@GetMapping("/usage10/file/{filename}")
+public ResponseEntity<Resource> get(@PathVariable String filename) throws IOException {
+    Resource resource = resourceLoader.getResource("classpath:/" + filename);
+    Tika tika = new Tika();
+    String mediaType = tika.detect(resource.getFile());
+    return ResponseEntity
+            .ok()
+            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+            .header(HttpHeaders.CONTENT_TYPE, mediaType)
+            .header(HttpHeaders.CONTENT_LENGTH, String.valueOf(resource.getFile().length()))
+            .body(resource);
+}
+```
 ## 핸들러 메소드 15부 @RequestBody & HttpEntity
 ## 핸들러 메소드 16부 @ResponseBody & ResponseEntity
 ## 핸들러 메소드 17부 정리 및 과제
