@@ -529,9 +529,41 @@ public ResponseEntity<Resource> get(@PathVariable String filename) throws IOExce
 }
 ```
 ## 핸들러 메소드 15부 @RequestBody & HttpEntity
+요청 본문(body)의 데이터를 HttpMessageConvert 로 변환하여 handler(Controller 의 mapping 함수) 의 argument 로 받아올 수 있다. 요청 헤더의 contentType 을 보고 HandlerAdapter 가 HttpMessageConvert 를 사용하여 argument 를 revolving 한다.
+
+HttpEntity 를 handler argument 로 받아오면 헤더접근이 가능해진다.
+
 ## 핸들러 메소드 16부 @ResponseBody & ResponseEntity
+@ResponseBody 가 붙은 method 의 return value 는 요청의 accept header 를 참고하여 HttpMessageConvert 를 선택, 사용하여 응답 본문(body) 에 적히게 된다.
+
+handler 의 return value 가 ResponseEntity 타입일 경우, 응답 본문에 들어간다. (@ResponseBody 가 없어도)
+
 ## 핸들러 메소드 17부 정리 및 과제
+- (@JsonView)[https://www.youtube.com/watch?v=5QyXswB_Usg&t=188s]
+- PushBuidler: HTTP/2, 스프링 5
+- 과제는 [spring-petclinic 분석](https://github.com/spring-projects/spring-petclinic)
+> [chrome plugin octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc/related?hl=ko_KR) 를 깔면 웹에서 github 를 편하게 볼 수 있음.
+
 ## 모델 @ModelAttribute
+Controller 내부에서 공통적으로 참고해야될 model 이 있는 경우, 함수에 `@ModelAttribute` 를 붙여주고, argument 로 model 을 받아서 필요한 데이터를 넣어주거나, 반환해주면 해당 데이터를 다른 handler 에서 접근할 수 있게된다.
+
+@RequestMapping 과 함께 사용하게되면 해당 함수에서 반환한 데이터를 모델에 자동으로 담아준다. 이때 view name 은 RequestToViewNameTranslator 에 의해서 request mapping url 과 동일한 view name 을 찾아준다.
+
+``` java
+@ModelAttribute("owner")
+public Owner findOwner(@PathVariable("ownerId") int ownerId) {
+  return this.owners.findById(ownerId);
+}
+
+@GetMapping("/pets/new")
+public String initCreationForm(Owner owner, ModelMap model) {
+  Pet pet = new Pet();
+  owner.addPet(pet);
+  model.put("pet", pet);
+  return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
+}
+```
+
 ## 데이터 바인더 @InitBinder
 ## 예외 처리 핸들러 @ExceptionHandler
 ## 전역 컨트롤러 @ControllerAdvice
