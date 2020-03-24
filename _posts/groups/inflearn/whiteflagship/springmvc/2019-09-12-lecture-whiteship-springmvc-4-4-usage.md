@@ -545,7 +545,7 @@ handler 의 return value 가 ResponseEntity 타입일 경우, 응답 본문에 �
 > [chrome plugin octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc/related?hl=ko_KR) 를 깔면 웹에서 github 를 편하게 볼 수 있음.
 
 ## 모델 @ModelAttribute
-Controller 내부에서 공통적으로 참고해야될 model 이 있는 경우, 함수에 `@ModelAttribute` 를 붙여주고, argument 로 model 을 받아서 필요한 데이터를 넣어주거나, 반환해주면 해당 데이터를 다른 handler 에서 접근할 수 있게된다.
+Controller 내부에서 공통적으로 참고해야될 model 이 있는 경우, 함수에 `@ModelAttribute` 를 붙여주고, argument 로 model 을 받아서 필요한 데이터를 넣어주거나, 데이터를 반환해주면 해당 데이터를 다른 handler 에서 접근할 수 있게된다.
 
 @RequestMapping 과 함께 사용하게되면 해당 함수에서 반환한 데이터를 모델에 자동으로 담아준다. 이때 view name 은 RequestToViewNameTranslator 에 의해서 request mapping url 과 동일한 view name 을 찾아준다.
 
@@ -565,6 +565,28 @@ public String initCreationForm(Owner owner, ModelMap model) {
 ```
 
 ## 데이터 바인더 @InitBinder
+특정 Controller 에서만 바인딩/검증설정을 변경하고 싶을 때 사용.
+``` java
+//바인딩 설정
+webDataBinder.setDisallowedFields();
+//포매터 설정
+webDataBinder.addCustomFormatter();
+//Validator 설정
+webDataBinder.addValidators();
+//특정 모델 객체에만 바인딩 또는 Validator 설정을 적용하고 싶은 경우
+@InitBinder(“event”)
+
+@InitBinder("owner")
+public void initOwnerBinder(WebDataBinder dataBinder) {
+  dataBinder.setDisallowedFields("id");
+}
+
+@InitBinder("pet")
+public void initPetBinder(WebDataBinder dataBinder) {
+  dataBinder.setValidator(new PetValidator());
+}
+```
+
 ## 예외 처리 핸들러 @ExceptionHandler
 ## 전역 컨트롤러 @ControllerAdvice
 ## 스프링 MVC 강좌 마무리
