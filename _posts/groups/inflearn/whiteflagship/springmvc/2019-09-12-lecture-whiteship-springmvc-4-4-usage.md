@@ -529,6 +529,19 @@ public ResponseEntity<Resource> get(@PathVariable String filename) throws IOExce
 }
 ```
 ## 핸들러 메소드 15부 @RequestBody & HttpEntity
+
+request body 에 있는 데이터를
+
+핸들러 어뎁터가 메세지 컨버터를 사용한다. 요청헤더의 컨텐츠 타입에 따라 다른 컨버터를 사용.
+
+아래 두 가지 방법으로 기본 메세지 컨버터들이 설정이 된다. (부트를 안썻을때, 썻을때)
+- `@EnableWebMvc` -> `DelegatingWebMvcConfiguration` -> `WebMvcConfigurationSupport`
+- Spring Boot autoconfigure -> `WebMvcAutoConfiguration` -> `EnableWebMvcConfiguration` -> `DelegatingWebMvcConfiguration` -> `WebMvcConfigurationSupport`
+
+
+
+
+
 ## 핸들러 메소드 16부 @ResponseBody & ResponseEntity
 ## 핸들러 메소드 17부 정리 및 과제
 ## 모델 @ModelAttribute
