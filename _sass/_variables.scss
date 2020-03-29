@@ -28,9 +28,13 @@ $spoqa-han-sans-path: '/SpoqaHanSans-subset';
 $noto-sans-kr:'Noto Sans KR';
 $noto-sans-kr-path: '/Noto_Sans_KR';
 
+$font-size-old: 18px;
+$font-size-jojoldu: 0.9375em;
+
 $base-font: $noto-sans-kr;
 $base-font-path: '/assets/fonts' + $noto-sans-kr-path;
-$base-font-size: 18px;
+$base-font-size: $font-size-jojoldu;
+
 
 // Mobile breakpoints
 @mixin mobile {
