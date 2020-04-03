@@ -16,6 +16,7 @@ $ docker pull postgres
 
 ### `volume` 생성
 > docker 삭제 시, 데이터를 유지할거니까
+
 ``` shell
 $ docker volume create pgdata
 ```
@@ -30,7 +31,7 @@ $ docker volume create pgdata
 docker run \
  -d \
  -p 5432:5432 \
- --name pgsql3 \
+ --name pgsql \
  -e POSTGRES_PASSWORD=mysecretpassword \
  -v pgdata:/var/lib/postgresql/data \
  postgres
@@ -55,3 +56,6 @@ alter user mytestuser password 'password1234'
 ```
 
 이렇게 하면 대충 사용설정은 끝난다.
+
+
+### 다시 amazon-linux 에서 깔아서 설정해보도록 하자

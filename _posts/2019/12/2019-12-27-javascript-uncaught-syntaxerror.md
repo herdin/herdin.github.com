@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Uncaught SyntaxError: Unexpected token '<'"
-date: 2019-12-24
+title: "Uncaught SyntaxError: Unexpected token &lt;"
+date: 2019-12-27
 tags: javascript writing
 ---
 

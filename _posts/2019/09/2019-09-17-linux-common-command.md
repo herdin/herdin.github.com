@@ -5,12 +5,12 @@ date: 2019-09-17
 tags: linux centos
 ---
 
-### common command
+### 시스템 관련
+
 ``` shell
 echo $USER #echo currernt user
 
 uname -a #os info
-
 uname -m #os bit 1
 getconf LONG_BIT #os bit 2
 arch #os bit 3
@@ -24,11 +24,13 @@ df -h #--human-readable
 df -i #--inodes
 df -k #--block-size=1K
 
-
-
 history #사용한 명령어 히스토리
 ![line number] #히스토리의 해당 라인을 재실행
+```
 
+### 압축
+
+``` shell
 tar -cvzf [COMPRESSED NAME].tar.gz [COMPRESSING TARGET]
 tar -xvzf [UNCOMPRESSING TARGET]
 #v : 묶음/해제 과정을 화면에 표시
@@ -56,7 +58,7 @@ systemctl status SERVICE_NAME.service
 systemctl cat SERVICE_NAME.service #check script?
 ```
 
-### user management
+### 유저관리 (user management)
 
 ``` shell
 cat /etc/passwd #check user
@@ -156,6 +158,48 @@ matchpathcon [FILE PATH] #check security context
 chcon [OPTION] [CONTEXT FILE] #change context
 #-t : type
 #-R : recursive
+```
+
+### 자주쓰는 alias
+
+> alias 설정을 위해 `.bashrc` 수정
+
+``` shell
+vi ~/.bashrc #modify .bashrc file
+```
+> alias 내용
+
+``` shell
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias compress='tar -cvzf'
+alias uncompress='tar -xvzf'
+
+alias start='systemctl start'
+alias stop='systemctl stop'
+alias status='systemctl status'
+alias restart='systemctl restart'
+alias reload='systemctl reload'
+
+#for docker
+alias dps='docker ps'
+alias dimg='docker images'
+
+#for public web server
+alias connect_private_server='ssh -i /root/herdin-aws-study-copy.pem'
+alias vim_nginx_conf='vim /etc/nginx/nginx.conf'
+alias cd_nginx_conf='cd /etc/nginx'
+alias cd_nginx_home='cd /usr/share/nginx/html'
+
+#for private was server
+alias cd_tomcat_home='cd /usr/share/tomcat'
+```
+
+> alias 설정 적용
+
+``` shell
+source ~/.bashrc #modified .bashrc file apply
 ```
 
 
