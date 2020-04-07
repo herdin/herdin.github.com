@@ -466,6 +466,22 @@ HttpEntity 를 handler argument 로 받아오면 헤더접근이 가능해진다
 - `@EnableWebMvc` -> `DelegatingWebMvcConfiguration` -> `WebMvcConfigurationSupport`
 - Spring Boot autoconfigure -> `WebMvcAutoConfiguration` -> `EnableWebMvcConfiguration` -> `DelegatingWebMvcConfiguration` -> `WebMvcConfigurationSupport`
 
+``` java
+@PostMapping("/hello1")
+public String hello1(@RequestBody Event event) {
+    logger.debug("recv event -> {}", event);
+    return "hello1";
+}
+
+@PostMapping("/hello2")
+public String hello2(HttpEntity<Event> httpEntity) {
+    logger.debug("recv http entity -> {}", httpEntity);
+    logger.debug("recv event -> {}", httpEntity.getBody());
+    return "hello2";
+}
+```
+
+
 ## 핸들러 메소드 16부 @ResponseBody & ResponseEntity
 @ResponseBody 가 붙은 method 의 return value 는 요청의 accept header 를 참고하여 HttpMessageConvert 를 선택, 사용하여 응답 본문(body) 에 적히게 된다.
 
@@ -483,17 +499,26 @@ Controller 내부에서 공통적으로 참고해야될 model 이 있는 경우,
 @RequestMapping 과 함께 사용하게되면 해당 함수에서 반환한 데이터를 모델에 자동으로 담아준다. 이때 view name 은 RequestToViewNameTranslator 에 의해서 request mapping url 과 동일한 view name 을 찾아준다.
 
 ``` java
-@ModelAttribute("owner")
-public Owner findOwner(@PathVariable("ownerId") int ownerId) {
-  return this.owners.findById(ownerId);
-}
+@Controller
+@RequestMapping("/owners/{ownerId}")
+class PetController {
 
-@GetMapping("/pets/new")
-public String initCreationForm(Owner owner, ModelMap model) {
-  Pet pet = new Pet();
-  owner.addPet(pet);
-  model.put("pet", pet);
-  return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
+  private static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
+  @Autowired
+  private final OwnerRepository owners;
+
+  @ModelAttribute("owner")
+  public Owner findOwner(@PathVariable("ownerId") int ownerId) {
+    return this.owners.findById(ownerId);
+  }
+
+  @GetMapping("/pets/new")
+  public String initCreationForm(Owner owner, ModelMap model) {
+    Pet pet = new Pet();
+    owner.addPet(pet);
+    model.put("pet", pet);
+    return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
+  }
 }
 ```
 
@@ -521,5 +546,71 @@ public void initPetBinder(WebDataBinder dataBinder) {
 ```
 
 ## 예외 처리 핸들러 @ExceptionHandler
+특정 예외가 발생한 요청을 처리하는 핸들러 정의
+``` java
+@ExceptionHandler
+public ResponseEntity<Event> errorHandler(OtherEventException exception, Model model) {
+    model.addAttribute("message", exception.getMessage());
+    return ResponseEntity.ok().body(new Event(9, "99", 999));
+}
+
+@ExceptionHandler({RuntimeException.class, IllegalArgumentException.class})
+public String errorHandler(Exception exception, Model model) {
+    model.addAttribute("message", exception.getMessage());
+    return "error";
+}
+
+@ExceptionHandler
+public String errorHandler(EventException exception, Model model) {
+    model.addAttribute("message", exception.getMessage());
+    return "error";
+}
+
+//요기서 에러가나면 그에 해당하는 ExceptionHandler 로 가게된다.
+@PostMapping("/usage12/hello1")
+public String hello1(@ModelAttribute Event event) {
+    logger.debug("recv event -> {}", event);
+    switch(event.getId()) {
+        case 1:
+            throw new EventException("hello, this is exception for event exception handler.");
+        case 2:
+            throw new RuntimeException("hello, this is exception for runtime exception handler.");
+        case 3:
+            throw new OtherEventException("hello, this is exception for other event exception handler.");
+        default:
+            throw new IllegalArgumentException("hello, this is exception for illegal argument exception handler.");
+    }
+}
+```
+
+
 ## 전역 컨트롤러 @ControllerAdvice
+위의 경우와 달리 특정 Controller 안에서의 처리가 아니라 모든 Controller 에서 아래의 어노테이션을 처리하고 싶다면, Controller 만들듯이 class 를 만들고 `@ControllerAdvice` 를 붙여준 뒤 아래의 어노테이션으로 설정해주면된다.
+- @ExceptionHandler
+- @InitBinder
+- @ModelAttribute
+
+범위를 주고싶을 때는 아래와 같이 줄 수 있다.
+``` java
+// Target all Controllers annotated with @RestController
+@ControllerAdvice(annotations = RestController.class)
+public class ExampleAdvice1 {}
+
+// Target all Controllers within specific packages
+@ControllerAdvice("org.example.controllers")
+public class ExampleAdvice2 {}
+
+// Target all Controllers assignable to specific classes
+@ControllerAdvice(assignableTypes = {ControllerInterface.class, AbstractController.class})
+public class ExampleAdvice3 {}
+```
+
 ## 스프링 MVC 강좌 마무리
+
+더 봐야 할 것들
+
+* 비동기 요청 처리
+* CORS 설정
+* HTTP/2
+* 웹 소켓
+* 웹 플럭스
