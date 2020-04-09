@@ -289,6 +289,12 @@ $ cat jsondata | jq '.data.scopes' | jq '[.[0], .[1], .[2], .[]]'
 
 이것외에도 filter 로 나온 값을 변경한다던지, 값을 체크한다는 기능들이 많은데 공식문서가 잘 나와있다.
 
+### select
+
+이 함수는 aws cli 를 사용하면서 알게 되었는데, tag 의 key, value 가 특정 값인 id 를 뽑을 때 사용했다.
+``` shell
+$ jq '.Reservations[].Instances[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "ec2-docker-postgresql") | .InstanceId'
+```
 
 출처
 - [jq Manual (development version)](https://stedolan.github.io/jq/manual/)

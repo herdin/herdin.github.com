@@ -206,6 +206,9 @@ public String hello4(@Validated(ValidationGroupForNotBlack.class) @ModelAttribut
 
 post 요청 후 refresh 를 했을때, 같은 post 요청이 일어나는 것을 막기 위해 [Post/Redirect/Get 패턴](https://en.wikipedia.org/wiki/Post/Redirect/Get) 이라는 것이 있다.
 post 요청은 요청을 처리 한 뒤, get 으로 redirect 하는 것을 말한다.
+> primitive type 은 redirect 시, GET 요청에 URL 에 붙게되는데 spring.mvc.ignore-default-model-on-redirect: true 프로퍼티 설정으로 막아줄 수 있다.
+
+
 
 ## 핸들러 메소드 8부 @SessionAttributes
 

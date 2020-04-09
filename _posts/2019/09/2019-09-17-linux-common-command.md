@@ -5,7 +5,7 @@ date: 2019-09-17
 tags: linux centos
 ---
 
-### 시스템 관련
+## 시스템 관련
 
 ``` shell
 echo $USER #echo currernt user
@@ -26,27 +26,13 @@ df -k #--block-size=1K
 
 history #사용한 명령어 히스토리
 ![line number] #히스토리의 해당 라인을 재실행
+
+file -bi [CHECK_FILE_NAME] #파일의 캐릭터셋을 확인한다
+#-b --brief                do not prepend filenames to output lines
+#-i, --mime                 output MIME type strings (--mime-type and --mime-encoding)
 ```
 
-### 압축
-
-``` shell
-tar -cvzf [COMPRESSED NAME].tar.gz [COMPRESSING TARGET]
-tar -xvzf [UNCOMPRESSING TARGET]
-#v : 묶음/해제 과정을 화면에 표시
-#c : 파일을 묶음
-#x : 묶음을 해제
-#z : gunzip을 사용
-#f : 파일 이름을 지정
-#p : 권한(permission)을 원본과 동일하게 유지
-
-ln -s [SYMBOLIC LINK TARGET] [SYMBOLIC LINK NAME]
-
-# 디렉토리와 하위 디렉토리 사이즈
-du -h --apparent-size [TARGET LOCATION:DEFAULT .]
-```
-
-### systemctl
+## systemctl
 
 ``` shell
 systemctl start SERVICE_NAME.service
@@ -58,7 +44,7 @@ systemctl status SERVICE_NAME.service
 systemctl cat SERVICE_NAME.service #check script?
 ```
 
-### 유저관리 (user management)
+## User
 
 ``` shell
 cat /etc/passwd #check user
@@ -91,7 +77,8 @@ chmod [OPTION] [PERMISSION] [FILE]
 #-R : recursive work
 ```
 
-### Process rel.
+## Process.
+
 ``` shell
 ps #process show
 #-e : show all
@@ -144,7 +131,7 @@ require(['util'], (util) => {
 });
 </script>
 
-### SELinux
+## SELinux
 
 [SELinux 란?]({{ site.url }}/selinux/)
 
@@ -160,6 +147,23 @@ chcon [OPTION] [CONTEXT FILE] #change context
 #-R : recursive
 ```
 
+## 압축
+
+``` shell
+tar -cvzf [COMPRESSED NAME].tar.gz [COMPRESSING TARGET]
+tar -xvzf [UNCOMPRESSING TARGET]
+#v : 묶음/해제 과정을 화면에 표시
+#c : 파일을 묶음
+#x : 묶음을 해제
+#z : gunzip을 사용
+#f : 파일 이름을 지정
+#p : 권한(permission)을 원본과 동일하게 유지
+
+ln -s [SYMBOLIC LINK TARGET] [SYMBOLIC LINK NAME]
+
+# 디렉토리와 하위 디렉토리 사이즈
+du -h --apparent-size [TARGET LOCATION:DEFAULT .]
+```
 ### 자주쓰는 alias
 
 > alias 설정을 위해 `.bashrc` 수정
