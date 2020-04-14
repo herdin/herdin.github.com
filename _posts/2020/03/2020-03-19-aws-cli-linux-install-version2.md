@@ -84,7 +84,7 @@ shell 하나 짜서 넣으면 된다.
 ``` shell
 $ aws ec2 start-instances --instance-ids `aws ec2 describe-instances | jq -r '.Reservations[].Instances[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "ec2-docker-postgresql") | .InstanceId'`
 $ aws ec2 stop-instances --instance-ids `aws ec2 describe-instances | jq -r '.Reservations[].Instances[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "ec2-docker-postgresql") | .InstanceId'`
-$ aws ec2 describe-instance-status --instance-ids `aws ec2 describe-instances | jq -r '.Reservations[].Instances[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "ec2-docker-postgresql") | .InstanceId'`
+$ aws ec2 describe-instance-status --include-all-instances --instance-ids `aws ec2 describe-instances | jq -r '.Reservations[].Instances[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "ec2-docker-postgresql") | .InstanceId'`
 ```
 
 
