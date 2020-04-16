@@ -206,6 +206,15 @@ alias cd_tomcat_home='cd /usr/share/tomcat'
 source ~/.bashrc #modified .bashrc file apply
 ```
 
+### 명령어의 결과를 명령어안에 넣기
+
+백팃 이나 `"$()"` 를 사용하면된다
+``` shell
+$ echo `cat ~/deleteme/test.conf`
+hello, config
+$ echo "$(cat ~/deleteme/test.conf)"
+hello, config
+```
 
 ### Bash PS1 gen
 
