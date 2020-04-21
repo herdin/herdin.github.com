@@ -68,6 +68,7 @@ $ sudo yum install docker-ce docker-ce-cli containerd.io
 
 ``` shell
 $ sudo systemctl start docker
+$ sudo systemctl enable docker
 $ docker ps -a
 Got permission denied -while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
 ```
