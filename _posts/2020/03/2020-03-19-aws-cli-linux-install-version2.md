@@ -33,6 +33,54 @@ aws-cli/2.0.4 Python/3.7.3 Linux/4.18.0-80.7.1.el8_0.x86_64 botocore/2.0.0dev8
 
 > 만세!
 
+## 그럼 이제 계정설정을 하자.
+
+먼저 `IAM` 에 가서 `AdministratorAccess` 권한이 있는 사용자를 만들고 Key ID 와 Access Key 를 잘 저장해놓자.
+그리고...
+
+### 계정설정 1) - 명령줄로 설정하기
+
+``` shell
+$ aws configure
+AWS Access Key ID [None]: AKIAJEXHUYCTEHM2D3S2A
+AWS Secret Access Key [None]: 3BqwEFsOBd3vx11+TOHhI9LVi2
+Default region name [None]:ap-northeast-2
+Default output format [None]:
+```
+
+### 계정설정 2) - 파일로 설정하기
+
+#### ~/.aws/config
+```
+[default]
+region = ap-northeast-2
+```
+
+#### ~/.aws/credentials
+```
+[default]
+aws_secret_access_key = AKIAJEXHUYCTEHM2D3S2A
+aws_access_key_id = 3BqwEFsOBd3vx11+TOHhI9LVi2
+```
+
+`aws configure --profile <PROFILE NAME>` 옵션으로 여러 키를 등록해 사용할 수도 있다.
+물론 사용할 때도 --profile 을 알려줘야한다.
+
+### 계정설정 3) - 환경변수로 설정하기
+
+```
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_DEFAULT_REGION
+AWS_DEFAULT_OUTPUT
+
+
+AWS_CONFIG_FILE
+```
+
+
+## 이제 진짜 사용하자.
+
 `json` 타입의 출력을 파싱하기 위해 `jq` 를 사용한다. 일단 파싱되는지 확인
 
 ``` shell
@@ -174,5 +222,6 @@ $ aws ec2 release-address --allocation-id `aws ec2 describe-addresses | jq -r '.
 
 출처
 - [Linux에 AWS CLI 버전 2 설치](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/install-cliv2-linux.html)
+- [환경 변수를 사용하여 AWS CLI 구성](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-configure-envvars.html)
 - [AWS CLI DOC](https://docs.aws.amazon.com/ko_kr/cli/latest/reference/)
 - [Elastic IP addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating)
