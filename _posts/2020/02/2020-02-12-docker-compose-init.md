@@ -37,7 +37,7 @@ $ docker-compose -f <COMPOSE-FILE-PATH> restart <SERVICE-NAME>
 > 분명 `yaml` 이 표준이라는 것 같은데 대부분 `yml` 을 사용한다..
 그리고 `vim` 에디터에서 yaml indent 가 왜이렇게 넓은지 모르겠다..
 
-아래 예제에는 `subicura` 의 docker hub 이미지를 사용했다.
+아래 예제에는 `subicura` 님의 docker hub 이미지를 사용했다.
 
 ### docker-compose-whoami.yaml
 ``` yaml
