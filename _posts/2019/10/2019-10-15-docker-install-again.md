@@ -10,7 +10,19 @@ tags: docker shovel-knight
 ## `Amazon Linux 2 ` 버전..
 
 ``` shell
-amazon-linux-extras install docker
+$ amazon-linux-extras install docker
+```
+
+또는
+
+``` shell
+$ yum install docker
+```
+
+귀찮아서 설치/유저그룹추가/도커 서비스 시작/부팅 시 서비스 자동시작 을 한번에
+``` shell
+# 명령어 실행 후 재로그인 해야함
+$ sudo yum install -y docker && sudo usermod -a -G docker $USER && sudo systemctl start docker && sudo systemctl enable docker
 ```
 
 > 쉽죠?
