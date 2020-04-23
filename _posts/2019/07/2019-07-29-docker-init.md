@@ -25,6 +25,11 @@ tags: docker
 > 설치 방법도 써놓으려고 했는데 문서가 자꾸 바뀌네 ㅠㅠ
 > `docker` group 에 `linux user` 를 추가해야 `root` 권한 없이 `docker` 를 실행할 수 있다.
 
+docker 의 Images, containers, volumes, or customized configuration files 들이 저장되는 장소
+
+```
+/var/lib/docker
+```
 # docker image build
 `docker file` 로 `docker images` 를 만든다.
 
@@ -105,7 +110,8 @@ Deleted: sha256:1bfeebd65323b8ddf5bd6a51cc7097b72788bc982e9ab3280d53d3c613adffa7
 ``` shell
 docker run [REPO/IMAGE_NAME]:[IMAGES_TAG]
 #-d : detach mode, deamonize
-#-p [HOST PORT]:[CONTAINER PORT]: port mapping
+#-p [HOST PORT]:[CONTAINER PORT]: port mapping -> old syntax
+#--publish published=[HOST PORT],target=[CONTAINER PORT] -> new syntax
 #--name : container name
 #--restart=no/on-failure[:max-retries]/always/unless-stopped : restart policy
 #--cap-add : Add Linux capabilities
