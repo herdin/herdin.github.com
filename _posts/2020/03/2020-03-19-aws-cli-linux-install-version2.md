@@ -215,13 +215,9 @@ $ aws ec2 release-address --allocation-id `aws ec2 describe-addresses | jq -r '.
 
 
 
-
-
-
-
-
 출처
 - [Linux에 AWS CLI 버전 2 설치](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/install-cliv2-linux.html)
 - [환경 변수를 사용하여 AWS CLI 구성](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-configure-envvars.html)
 - [AWS CLI DOC](https://docs.aws.amazon.com/ko_kr/cli/latest/reference/)
 - [Elastic IP addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating)
+- [AWS CLI에서 상위 수준(s3) 명령 사용](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-services-s3-commands.html)
