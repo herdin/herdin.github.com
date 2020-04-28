@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AWS CLI Linux install, ec2 start and stop"
+title: "AWS CLI Linux install, 간단 사용법"
 date: 2020-03-19
 tags: aws
 ---
@@ -212,7 +212,9 @@ $ aws ec2 release-address --allocation-id `aws ec2 describe-addresses | jq -r '.
 
 > ^^ 학습했다고 생각하자. 정신승리.
 
+### AWS Cli 를 사용하여 S3 연동
 
+[AWS CLI에서 상위 수준(s3) 명령 사용](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-services-s3-commands.html)
 
 
 출처
