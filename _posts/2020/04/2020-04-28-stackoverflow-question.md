@@ -284,3 +284,59 @@ TestCompC
 ```
 
 dataSource creation ok, and connect and select my postgresql success.
+
+
+---
+
+Compared with using jar command, There is a differency.
+#### `jar xvf aws-codebuild-bootJar.jar`
+```
+0 Mon Apr 27 08:43:36 UTC 2020 BOOT-INF/
+0 Mon Apr 27 08:43:36 UTC 2020 BOOT-INF/classes/
+0 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/
+0 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/runner/
+2792 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/runner/PostgreSQLRunner.class
+0 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/controller/
+632 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/controller/TestCompA.class
+4220 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/controller/SampleController.class
+632 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/controller/TestCompC.class
+687 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/controller/TestCompB.class
+0 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/dto/
+0 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/dto/request/
+1257 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/dto/request/UserReqeust.class
+0 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/dto/model/
+1403 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/dto/model/TestModel.class
+0 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/service/
+672 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/service/UserService.class
+0 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/mapper/
+531 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/mapper/TestMapper.class
+0 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/config/
+691 Mon Apr 27 08:43:28 UTC 2020 BOOT-INF/classes/app/config/TestConfB.class
+```
+#### `jar xvf aws-ec2-command-build-bootJar.jar`
+```
+0 Wed Apr 29 06:21:42 UTC 2020 BOOT-INF/
+0 Wed Apr 29 06:21:42 UTC 2020 BOOT-INF/classes/
+0 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/
+812 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/MainApp.class
+0 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/
+422 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/ElasticsearchConfiguration.class
+2821 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/RetryableRestTemplateConfiguration$1.class
+1414 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/RetryableRestTemplateConfiguration.class
+636 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/TestConfA.class
+691 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/TestConfB.class
+636 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/TestConfC.class
+1643 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/VaultConfiguration$VAULT_ENVIRONMENT_KEY.class
+1517 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/VaultConfiguration$VAULT_KEY.class
+1704 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/VaultConfiguration$SPRING_DATABASE_PROPERTY_KEY.class
+5046 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/config/VaultConfiguration.class
+0 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/controller/
+4220 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/controller/SampleController.class
+632 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/controller/TestCompA.class
+687 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/controller/TestCompB.class
+632 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/controller/TestCompC.class
+0 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/service/
+672 Wed Apr 29 06:21:40 UTC 2020 BOOT-INF/classes/app/service/UserService.class
+```
+
+And that Order is same as getResources for bean definition order.
