@@ -218,7 +218,16 @@ chcon [OPTION] [CONTEXT FILE] #change context
 #-R : recursive
 ```
 
+### shellscript while
 
+docker stack deploy 이후, service 가 뜨는지 확인하기 위해 계속 치는게 귀찮아서 사용했다.
+``` shell
+$ while true
+$ do
+$ docker service ls
+$ sleep 2
+$ done
+```
 
 ### Bash PS1 gen
 

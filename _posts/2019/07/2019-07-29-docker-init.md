@@ -46,6 +46,33 @@ $ docker build -t was:0.1 .
 $ docker build -t was:0.2 -f DockerfileForWas02 .
 ```
 
+## Dockerfile
+
+##### Dockerfile example
+```
+FROM alpine:3.10
+
+LABEL maintainer="herdin86@gmail.com"
+
+RUN apk add git
+RUN apk add openjdk11
+RUN mkdir /msa
+COPY ./build/libs/GradleSpringBootMybatis-1.0-SNAPSHOT.jar /msa
+
+CMD ["java", "-jar", "/msa/GradleSpringBootMybatis-1.0-SNAPSHOT.jar"]
+```
+### ADD 와 COPY 의 차이점
+* URL을 복사할 source로 사용할 수 있다. remote에 있는 파일을 받아서 복사하게 된다.
+* source 파일이 gzip과 같이 일반적으로 잘 알려진 압축형태인 경우, 압축을 풀어준다.
+* 압축된 remote 파일인 경우, 압축을 풀어주지는 않는다.
+
+ADD 보다 RUN 으로 작업을 할 경우, 더 명시적이고 이미지가 더 작아진다고한다.
+> ADD 대신 COPY 와 RUN 을 사용하자.
+
+출처
+- [Docker Tip #2: The Difference between COPY and ADD in a Dockerfile](https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile)
+- [[Docker] ADD vs COPY in Dockerfile](https://blog.leocat.kr/notes/2017/01/07/docker-add-vs-copy)
+
 # docker image commit
 
 `container` 로 부터 `images` 를 만든다.
