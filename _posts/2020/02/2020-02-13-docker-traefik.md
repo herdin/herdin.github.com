@@ -73,6 +73,16 @@ require(['util'], (util) => {
 docker 를 provider 로 사용할 경우, contianer label 을 통해서 설정을 한다.
 그리고 container label 을 붙일 때는 \` `backtick` 이나 `\"` `escaped double-quotes`을 사용해야한다. `Traefik` 이 Golang 으로 만들어져 있는데, Golang 에는 `'` `Single quotes` 가 string literal 이 아니란다.
 
+### Swarm mode
+* Swarm mode 에서는 label 을 delpoy 쪽에 넣어야한다.
+> Therefore, if you use a compose file with Swarm Mode, labels should be defined in the deploy part of your service.
+
+* 포트 또한 label 에 적어줘야한다.
+> Therefore you must specify the port to use for communication by using the label
+
+* Traefik 노드 또한 매니져에 배치해야한다.
+> As the Swarm API is only exposed on the manager nodes, you should schedule Traefik on the Swarm manager nodes by default
+
 
 ### docker-compose-traefik.yaml
 
@@ -173,7 +183,6 @@ services:
       - "traefik.http.routers.mywhoami.middlewares=mywhoami-stripprefix"
       - "traefik.http.middlewares.mywhoami-stripprefix.stripprefix.prefixes=/second"
 ```
-
 
 출처
 - [Traefik & Docker](https://docs.traefik.io/routing/providers/docker/)
