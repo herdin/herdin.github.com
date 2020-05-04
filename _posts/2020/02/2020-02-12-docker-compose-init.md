@@ -8,9 +8,6 @@ tags: docker
 단일 노드에서 container 끼리의 의존관계를 해결하기 위해 `docker-compose` 를 사용한다.
 > 여러 노드에서는 `docker-swarm`
 
-# 단순 서비스 - `subicura/whoami`
-container 간의 의존관계가 없는 단순한 `whoami`(http:4567 요청 시인스턴스의 해쉬값 반환) 서비스들을 구성해보자.
-
 ## 설치하자
 ``` shell
 #download
@@ -21,7 +18,34 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
-## 기본 커맨드
+## 기본 커맨드 정리
+기본 컴포즈 파일명은 `docker-compose.yml` 또는 `docker-compose.yaml` 이다. 없다면 `-f` 옵션으로 파일을 지정하자.  
+커맨드 바로 뒤에 넣으면 되는듯 하다. `docker-compose -f <FILE> up` 이런식
+
+### docker-compose up [options] [--scale SERVICE=NUM...] [SERVICE...]
+> Builds, (re)creates, starts, and attaches to containers for a service.
+> Unless they are already running, this command also starts any linked services.
+
+buld, create, start 까지 다 해준다.
+
+### docker-compose down [options]
+> Stops containers and removes containers, networks, volumes, and images created by up.
+
+`up` 커맨드로 생성된 컨테이너/네트워크/볼륨/이미지를 다 지운다.
+
+## docker-compose ps [options] [SERVICE...]
+
+### docker-compose build
+> 이건 뭔지 모르겠다.
+
+### docker-compose create
+> This command is deprecated. Use the up command with --no-start instead.
+
+서비스를 위한 컨테이너를 생성한다. `deprecated` 되었다. `up` 커맨드의 `--no-start` 옵션을 사용하자.
+
+
+
+## 기본 커맨드 up/down/restart
 
 ``` shell
 $ docker-compose -f <COMPOSE-FILE-PATH> up -d --scale <SERVICE-NAME>=<SCALE-NUMBER>
@@ -32,7 +56,14 @@ $ docker-compose -f <COMPOSE-FILE-PATH> down
 $ docker-compose -f <COMPOSE-FILE-PATH> restart <SERVICE-NAME>
 ```
 
-## 실행하자
+
+
+
+
+
+## 실습 - 단순 서비스 - `subicura/whoami`
+container 간의 의존관계가 없는 단순한 `whoami`(http:4567 요청 시인스턴스의 해쉬값 반환) 서비스들을 구성해보자.
+
 먼저 container 들을 정의한 `.yaml`/`.yml` 파일이 필요하다.
 > 분명 `yaml` 이 표준이라는 것 같은데 대부분 `yml` 을 사용한다..
 그리고 `vim` 에디터에서 yaml indent 가 왜이렇게 넓은지 모르겠다..
