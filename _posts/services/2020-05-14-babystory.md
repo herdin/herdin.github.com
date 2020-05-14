@@ -5,17 +5,10 @@ date: 2020-03-12
 tags: services
 ---
 
-<style>
-  .babystory.frame {
-    width: 100%;
-    height: 1000px;
-  }
-</style>
-
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202004.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202003.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202002.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202001.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_201912.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_201911.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_201910.html" class="babystory frame"/>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202004.html" target="blank">2020-04</a>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202003.html" target="blank">2020-03</a>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202002.html" target="blank">2020-02</a>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202001.html" target="blank">2020-01</a>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_201912.html" target="blank">2019-12</a>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_201911.html" target="blank">2019-11</a>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_201910.html" target="blank">2019-10</a>
