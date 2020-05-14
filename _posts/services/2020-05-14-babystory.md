@@ -6,8 +6,8 @@ tags: services
 ---
 
 <style>
-  .babystory .frame {
-    widht: 100%;
+  .babystory.frame {
+    width: 100%;
     height: 1000px;
   }
 </style>
