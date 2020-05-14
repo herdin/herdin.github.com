@@ -12,20 +12,10 @@ tags: services
   }
 </style>
 
-<script>
-  require(['init'], (initTest) => {
-    require(['jquery'], ($) => {
-      $('h1').click(item => {
-        $(item.target).next().toggle(500);
-      });
-    });
-  });
-</script>
-
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_201910.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_201911.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_201912.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202001.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202002.html" class="babystory frame"/>
-<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202003.html" class="babystory frame"/>
 <iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202004.html" class="babystory frame"/>
+<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202003.html" class="babystory frame"/>
+<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202002.html" class="babystory frame"/>
+<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_202001.html" class="babystory frame"/>
+<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_201912.html" class="babystory frame"/>
+<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_201911.html" class="babystory frame"/>
+<iframe src="{{ site.baseurl }}/assets/html/babystory/diary_inha_201910.html" class="babystory frame"/>
