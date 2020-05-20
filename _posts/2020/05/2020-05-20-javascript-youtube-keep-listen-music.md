@@ -36,20 +36,23 @@ let db = (() => {
 let interval = setInterval(() => {
 	let adSkipBtns = document.getElementsByClassName('ytp-ad-skip-button ytp-button');
 	let keepWatchBtn = document.getElementById('confirm-button');
-	let dialogDiv = keepWatchBtn.parentElement.parentElement.parentElement.parentElement;
 
 	console.clear();
-	console.log(new Date(), 'ad skip button checked ->', adSkipBtns, 'keep watch dialog display ->', dialogDiv.style.display);
+	console.log(new Date(), 'ad skip button checked ->', adSkipBtns);
 	console.log('skip count', db.getSkipCount(), 'watch count', db.getWatchCount());
 
 	if(adSkipBtns != null && adSkipBtns.length > 0) {
 		document.getElementsByClassName('ytp-ad-skip-button ytp-button')[0].click();
 		db.addSkipCount();
 	}
-	if(dialogDiv.style.display != 'none') {
-		keepWatchBtn.click();
-		db.addWatchCount();
+
+	if(keepWatchBtn != null) {
+		let dialogDiv = keepWatchBtn.parentElement.parentElement.parentElement.parentElement;
+		console.log('keep watch dialog display ->', dialogDiv.style.display);
+		if(dialogDiv.style.display != 'none') {
+			keepWatchBtn.click();
+			db.addWatchCount();
+		}
 	}
 }, 1*1000);
-
 ```
