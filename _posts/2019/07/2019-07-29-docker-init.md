@@ -2,7 +2,7 @@
 layout: post
 title: "Docker 기초"
 date: 2019-07-29
-tags: docker
+tags: docker writing
 ---
 ![많이 보던 그 그림](/assets/images/posts/2019-07-29-docker.jpg)
 
@@ -61,7 +61,13 @@ COPY ./build/libs/GradleSpringBootMybatis-1.0-SNAPSHOT.jar /msa
 
 CMD ["java", "-jar", "/msa/GradleSpringBootMybatis-1.0-SNAPSHOT.jar"]
 ```
-### ADD 와 COPY 의 차이점
+#### FROM
+도커 파일을 만들 베이스이미지를 지정한다.
+#### LABEL
+#### RUN
+#### ADD
+#### COPY
+##### ADD 와 COPY 의 차이점
 * URL을 복사할 source로 사용할 수 있다. remote에 있는 파일을 받아서 복사하게 된다.
 * source 파일이 gzip과 같이 일반적으로 잘 알려진 압축형태인 경우, 압축을 풀어준다.
 * 압축된 remote 파일인 경우, 압축을 풀어주지는 않는다.
@@ -73,7 +79,11 @@ ADD 보다 RUN 으로 작업을 할 경우, 더 명시적이고 이미지가 더
 - [Docker Tip #2: The Difference between COPY and ADD in a Dockerfile](https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile)
 - [[Docker] ADD vs COPY in Dockerfile](https://blog.leocat.kr/notes/2017/01/07/docker-add-vs-copy)
 
-# docker image commit
+#### CMD
+#### ENTRYPOINT
+
+
+## docker image commit
 
 `container` 로 부터 `images` 를 만든다.
 
@@ -83,7 +93,7 @@ $ docker commit (-a "[AUTHOR_INFO]") (-c "[COMMENT]") [CONTAINER_ID/NAME] [REPO/
 $ docker commit -a "epu baal <herdin86@gmail.com>" -c "new images" devwas02 newdevwas:0.1
 ```
 
-# docker images tag
+## docker images tag
 
 `remote repository` 에서 사용할 `tag` 를 저장한다.
 
@@ -92,7 +102,7 @@ $ docker tag [DOCKER_IMAGE_NAME]:[IMAGE_VERSION] [IMAGE_REPOSITORY_URL]:[IMAGE_V
 
 $ docker tag web:0.1 123456789012.dkr.ecr.ap-northeast-2.amazonaws.com/myweb01:0.1
 ```
-# docker image push
+## docker image push
 
 `remote repository` 로 `image` 를 전송한다.
 
@@ -101,7 +111,7 @@ $ docker push [IMAGE_REPOSITORY_URL]:[IMAGE_VERSION_IN_REPOSITORY]
 
 $ docker push 546552822736.dkr.ecr.ap-northeast-2.amazonaws.com/herdinecr01:0.1
 ```
-# docker image rmi (remove image)
+## docker image rmi (remove image)
 
 `docker images` 를 삭제한다.
 
@@ -132,7 +142,7 @@ Deleted: sha256:b7b28af77ffec6054d13378df4fdf02725830086c7444d9c278af25312aa39b9
 Deleted: sha256:1bfeebd65323b8ddf5bd6a51cc7097b72788bc982e9ab3280d53d3c613adffa7
 ```
 
-# docker container run/stop/start/exec/logs/kill/ps/rm
+## docker container run/stop/start/exec/logs/kill/ps/rm
 
 ``` shell
 docker run [REPO/IMAGE_NAME]:[IMAGES_TAG]
@@ -164,7 +174,7 @@ docker exec -it [CONTAINER_NAME] [COMMANDS..]
 #ex) docker exec -it was01 /bin/bash
 ```
 
-# docker volume
+## docker volume
 `docker` 에서 사용하는 `volume` 관련된 명령어들.
 
 ``` shell

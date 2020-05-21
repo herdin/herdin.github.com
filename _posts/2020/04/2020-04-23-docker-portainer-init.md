@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker, Portainer 설정"
+title: "Docker, Portainer 설정 + Swarm mode"
 date: 2020-04-23
 tags: docker
 ---
