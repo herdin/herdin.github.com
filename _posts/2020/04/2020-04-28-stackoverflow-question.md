@@ -5,6 +5,20 @@ date: 2020-04-28
 tags: stackoverflow
 ---
 
+토이프로젝트를 진행하다가 도저히 풀리지 않는 문제가 있어서 `stackoverflow` 에 질문을 올린 원문이다.
+질문을 영어로 올려서인지 의도가 잘 전달이 안된 모양이다. 답변이 다 뻔한 소리만 하고있어서...
+
+원인은 찾아냈지만, 근본적인 해답은 찾지 못했다.
+
+원인은 aws codebuild 로 gradlew bootJar 로 jar 를 만들었을때, 내부적으로 묶인 순서가 달라서 이다.
+
+아래에도 써놨는데 왜 달라졌는지는 모르겠다.
+
+해결은 spring @Configuration 에 의존하지말고, `EnvironmentPostProcessor` 을 사용하여, 모든 Bean 설정 보다 먼저 환경병수가 설정되도록 했다.
+
+
+## 원문
+
 I have weird situation now..
 
 Spring boot, Graldew, Github, Aws Codebuild
