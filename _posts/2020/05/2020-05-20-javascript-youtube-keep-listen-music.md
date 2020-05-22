@@ -15,44 +15,54 @@ tags: javascript
 
 ``` javascript
 let db = (() => {
-	let skipCount = 0;
-	let watchCount = 0;
-	function addSkipCount() {
-		skipCount++;
-	}
-	function addWatchCount() {
-		watchCount++;
-	}
-	function getSkipCount() { return skipCount; }
-	function getWatchCount() { return watchCount; }
+	let countSkipAd = 0;
+	function addCountSkipAd() { countSkipAd++; }
+	function getCountSkipAd() { return countSkipAd; }
+
+	let countStillWatch = 0;
+	function addCountStillWatch() { countStillWatch++; }
+	function getCountStillWatch() { return countStillWatch; }
+
+	let countCloseOverlayAd = 0;
+	function addCountCloseOverlayAd() { countCloseOverlayAd++; }
+	function getCountCloseOverlayAd() { return countCloseOverlayAd; }
+
 	return {
-		addSkipCount : addSkipCount,
-		addWatchCount : addWatchCount,
-		getSkipCount : getSkipCount,
-		getWatchCount : getWatchCount,
+		addCountSkipAd : addCountSkipAd,
+		getCountSkipAd : getCountSkipAd,
+		addCountStillWatch : addCountStillWatch,
+		getCountStillWatch : getCountStillWatch,
+		addCountCloseOverlayAd, addCountCloseOverlayAd,
+		getCountCloseOverlayAd, getCountCloseOverlayAd,
 	};
 })();
 
 let interval = setInterval(() => {
-	let adSkipBtns = document.getElementsByClassName('ytp-ad-skip-button ytp-button');
-	let keepWatchBtn = document.getElementById('confirm-button');
+	let skipAdBtns = document.getElementsByClassName('ytp-ad-skip-button ytp-button');
+	let stillWatchBtn = document.getElementById('confirm-button');
+	let overlayAdCloseBtns = document.getElementsByClassName('ytp-ad-overlay-close-container');
 
 	console.clear();
-	console.log(new Date(), 'ad skip button checked ->', adSkipBtns);
-	console.log('skip count', db.getSkipCount(), 'watch count', db.getWatchCount());
+	console.log(new Date(), 'skip ad button ->', (skipAdBtns != null && skipAdBtns.length > 0), 'still watch button -> ', (stillWatchBtn != null && stillWatchBtn.parentElement.parentElement.parentElement.parentElement.style.display != 'none'), 'close overlay ad button -> ', (overlayAdCloseBtns != null && overlayAdCloseBtns.length > 0));
+	console.log('skip ad', db.getCountSkipAd(), 'still watch', db.getCountStillWatch(), 'close overlay ad', db.getCountCloseOverlayAd());
 
-	if(adSkipBtns != null && adSkipBtns.length > 0) {
-		document.getElementsByClassName('ytp-ad-skip-button ytp-button')[0].click();
-		db.addSkipCount();
+	if(skipAdBtns != null && skipAdBtns.length > 0) {
+		skipAdBtns[0].click();
+		db.addCountSkipAd();
 	}
 
-	if(keepWatchBtn != null) {
-		let dialogDiv = keepWatchBtn.parentElement.parentElement.parentElement.parentElement;
-		console.log('keep watch dialog display ->', dialogDiv.style.display);
+	if(stillWatchBtn != null) {
+		let dialogDiv = stillWatchBtn.parentElement.parentElement.parentElement.parentElement;
 		if(dialogDiv.style.display != 'none') {
-			keepWatchBtn.click();
-			db.addWatchCount();
+			stillWatchBtn.click();
+			db.addCountStillWatch();
 		}
 	}
+
+	if(overlayAdCloseBtns != null && overlayAdCloseBtns.length > 0) {
+		overlayAdCloseBtns[0].click();
+		db.addCountCloseOverlayAd();
+	}
+
 }, 1*1000);
 ```
