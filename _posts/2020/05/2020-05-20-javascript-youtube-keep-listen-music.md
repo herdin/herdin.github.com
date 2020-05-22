@@ -27,6 +27,8 @@ let db = (() => {
 	function addCountCloseOverlayAd() { countCloseOverlayAd++; }
 	function getCountCloseOverlayAd() { return countCloseOverlayAd; }
 
+	function playNext() { document.getElementsByClassName('ytp-next-button ytp-button')[0].click(); }
+
 	return {
 		addCountSkipAd : addCountSkipAd,
 		getCountSkipAd : getCountSkipAd,
@@ -34,6 +36,7 @@ let db = (() => {
 		getCountStillWatch : getCountStillWatch,
 		addCountCloseOverlayAd, addCountCloseOverlayAd,
 		getCountCloseOverlayAd, getCountCloseOverlayAd,
+		playNext, playNext,
 	};
 })();
 
