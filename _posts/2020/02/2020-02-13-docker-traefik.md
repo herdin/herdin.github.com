@@ -187,3 +187,4 @@ services:
 출처
 - [Traefik & Docker](https://docs.traefik.io/routing/providers/docker/)
 - [Migration Guide: From v1 to v2](https://docs.traefik.io/migration/v1-to-v2/#frontends-and-backends-are-dead-long-live-routers-middlewares-and-services)
+- [how to redirect https to http on traefk](https://stackoverflow.com/questions/58356714/how-to-redirect-http-to-https-with-traefik-2-0-and-docker-compose-labels)

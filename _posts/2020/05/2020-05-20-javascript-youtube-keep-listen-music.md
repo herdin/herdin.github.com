@@ -14,7 +14,7 @@ tags: javascript
 그대로 복붙해서 console 에 넣는다.
 
 ``` javascript
-let db = (() => {
+let conn = (() => {
 	let countSkipAd = 0;
 	function addCountSkipAd() { countSkipAd++; }
 	function getCountSkipAd() { return countSkipAd; }
@@ -27,16 +27,18 @@ let db = (() => {
 	function addCountCloseOverlayAd() { countCloseOverlayAd++; }
 	function getCountCloseOverlayAd() { return countCloseOverlayAd; }
 
-	function playNext() { document.getElementsByClassName('ytp-next-button ytp-button')[0].click(); }
+	function prev() { document.getElementsByClassName('ytp-prev-button ytp-button')[0].click(); }
+	function next() { document.getElementsByClassName('ytp-next-button ytp-button')[0].click(); }
 
 	return {
 		addCountSkipAd : addCountSkipAd,
 		getCountSkipAd : getCountSkipAd,
 		addCountStillWatch : addCountStillWatch,
 		getCountStillWatch : getCountStillWatch,
-		addCountCloseOverlayAd, addCountCloseOverlayAd,
-		getCountCloseOverlayAd, getCountCloseOverlayAd,
-		playNext, playNext,
+		addCountCloseOverlayAd: addCountCloseOverlayAd,
+		getCountCloseOverlayAd: getCountCloseOverlayAd,
+		prev: prev,
+		next: next,
 	};
 })();
 
@@ -46,25 +48,48 @@ let interval = setInterval(() => {
 	let overlayAdCloseBtns = document.getElementsByClassName('ytp-ad-overlay-close-container');
 
 	console.clear();
-	console.log(new Date(), 'skip ad button ->', (skipAdBtns != null && skipAdBtns.length > 0), 'still watch button -> ', (stillWatchBtn != null && stillWatchBtn.parentElement.parentElement.parentElement.parentElement.style.display != 'none'), 'close overlay ad button -> ', (overlayAdCloseBtns != null && overlayAdCloseBtns.length > 0));
-	console.log('skip ad', db.getCountSkipAd(), 'still watch', db.getCountStillWatch(), 'close overlay ad', db.getCountCloseOverlayAd());
+	let logText = ''
+		+ ' %c skip ad button %c ' + (skipAdBtns != null && skipAdBtns.length > 0)
+		+ ' %c still watch button %c ' + (stillWatchBtn != null && stillWatchBtn.parentElement.parentElement.parentElement.parentElement.style.display != 'none')
+		+ ' %c close overlay ad button %c ' + (overlayAdCloseBtns != null && overlayAdCloseBtns.length > 0)
+		;
+	console.log(' ' + new Date());
+	console.log(logText,
+		'font-weight: normal; color: black',
+		'font-weight: bold; color: blue',
+		'font-weight: normal; color: black',
+		'font-weight: bold; color: red',
+		'font-weight: normal; color: black',
+		'font-weight: bold; color: green');
+	logText = ''
+		+ ' %c skip ad %c' + conn.getCountSkipAd()
+		+ ' %c still watch %c' + conn.getCountStillWatch()
+		+ ' %c close overlay ad %c' + conn.getCountCloseOverlayAd()
+		;
+	console.log(logText,
+		'font-weight: normal; color: black',
+		'font-weight: bold; color: blue',
+		'font-weight: normal; color: black',
+		'font-weight: bold; color: red',
+		'font-weight: normal; color: black',
+		'font-weight: bold; color: green');
 
 	if(skipAdBtns != null && skipAdBtns.length > 0) {
 		skipAdBtns[0].click();
-		db.addCountSkipAd();
+		conn.addCountSkipAd();
 	}
 
 	if(stillWatchBtn != null) {
 		let dialogDiv = stillWatchBtn.parentElement.parentElement.parentElement.parentElement;
 		if(dialogDiv.style.display != 'none') {
 			stillWatchBtn.click();
-			db.addCountStillWatch();
+			conn.addCountStillWatch();
 		}
 	}
 
 	if(overlayAdCloseBtns != null && overlayAdCloseBtns.length > 0) {
 		overlayAdCloseBtns[0].click();
-		db.addCountCloseOverlayAd();
+		conn.addCountCloseOverlayAd();
 	}
 
 }, 1*1000);
