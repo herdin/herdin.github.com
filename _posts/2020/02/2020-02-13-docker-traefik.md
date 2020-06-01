@@ -123,6 +123,9 @@ services:
     volumes:
       #docker provider 사용
       - /var/run/docker.sock:/var/run/docker.sock
+      #static configuration file 을 사용한다면 아래처럼 사용하면 된다.
+      #- <MY-STATIC-CONFIGURATION-FILE-LOCATION>:/etc/traefik/traefik.yaml #traefik static config
+      #- ./traefik-stack.yaml:/etc/traefik/traefik.yaml #예시
 
   prometheus:
     image: prom/prometheus
@@ -183,6 +186,39 @@ services:
       - "traefik.http.routers.mywhoami.middlewares=mywhoami-stripprefix"
       - "traefik.http.middlewares.mywhoami-stripprefix.stripprefix.prefixes=/second"
 ```
+
+
+> traefik static configration file example
+``` yaml
+## traefik.yml
+
+# Docker configuration backend
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+    swarmMode: true
+
+# API and dashboard configuration
+api:
+  insecure: true
+  dashboard: true
+
+log:
+  filePath: "/path/to/traefik.log"
+  level: DEBUG #DEBUG, PANIC, FATAL, ERROR, WARN, INFO.
+
+accessLog:
+  filePath: "/path/to/access.log"
+  bufferingSize: 100
+
+entryPoints:
+  web:
+    address: ":80"
+  my-address:
+    address: ":8090"
+```
+
 
 출처
 - [Traefik & Docker](https://docs.traefik.io/routing/providers/docker/)
