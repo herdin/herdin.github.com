@@ -2,7 +2,7 @@
 layout: post
 title: "AWS CLI Linux install, 간단 사용법"
 date: 2020-03-19
-tags: aws
+tags: aws cli
 ---
 
 
@@ -214,7 +214,41 @@ $ aws ec2 release-address --allocation-id `aws ec2 describe-addresses | jq -r '.
 
 ### AWS Cli 를 사용하여 S3 연동
 
-[AWS CLI에서 상위 수준(s3) 명령 사용](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-services-s3-commands.html)
+
+#### 버킷 만들기, make bucket
+``` shell
+$ aws s3 mb s3://bucket-name
+
+$ aws s3 mb s3://herdin-test
+make_bucket: herdin-test
+```
+
+#### 버킷 삭제, remove bucket
+``` shell
+$ aws s3 rb s3://bucket-name
+```
+
+#### 객체 복사, cp
+``` shell
+$ echo "not sync" > not-sync.txt
+$ cat not-sync.txt
+not sync
+
+$ aws s3 cp ./not-sync.txt s3://herdin-test
+upload: ./not-sync.txt to s3://herdin-test/not-sync.txt
+```
+
+#### 객체 동기화, sync
+``` shell
+$ aws s3 sync <source> <target> [--options]
+
+$ echo "hello" > hello.txt
+$ ls
+hello.txt
+
+$ aws s3 sync . s3://herdin-test
+upload: ./hello.txt to s3://herdin-test/hello.txt
+```
 
 
 출처
