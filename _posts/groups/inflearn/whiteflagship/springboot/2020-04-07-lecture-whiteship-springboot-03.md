@@ -78,3 +78,28 @@ public class WebConfig implements WebMvcConfigurer {
     }
 }
 ```
+
+## 스프링 웹 MVC 5부: 웹JAR, 2020-06-12
+Front 에서 사용하는 js/css 등의 자원을 jar 로 묶을 수 있다.
+
+###### 이렇게 의존성 추가를 하고,
+``` groovy
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web:2.2.2.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf:2.2.2.RELEASE')
+    compile('org.webjars.bower:jquery:3.2.1')
+    testCompile('org.springframework.boot:spring-boot-starter-test:2.2.2.RELEASE')
+}
+```
+##### 이렇게 사용하면 된다.
+``` html
+<script src="/webjars/jquery/3.2.1/dist/jquery.min.js"></script>
+<script>
+    $(function(){
+       alert('hello, webjar');
+    });
+</script>
+```
+
+내부 모습은 이렇다
+<img src="#" post-src="2020-04-07-lecture-whiteship-springboot-03.PNG" />
