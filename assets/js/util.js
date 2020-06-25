@@ -12,6 +12,24 @@ define(['jquery'], ($) => {
     return {
       genID : () => 'generatedID-' + Math.floor(Math.random()*100000),
 
+/* pure table usage
+<div id="pureTableHere"></div>
+<script>
+require(['util'], (util) => {
+ util.genPureTable(
+   'pureTableHere',
+   ['Provider', 'Type', 'Configuration Type'],
+   [
+     ['Kubernetes','Orchestrator','Custom Resource'],
+     ['Consul Catalog	Orchestrator','Label'],
+     ['Marathon','Orchestrator','Label'],
+     ['Rancher','Orchestrator','Label'],
+     ['File','Manual','TOML/YAML format'],
+   ]
+ );
+});
+</script>
+*/
       genPureTable : (table_location_indicator_id, table_headers, table_datas) => {
         const prefix_TABLE = '<table class="pure-table">';
       	const suffix_TABLE = '</table>';
