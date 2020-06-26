@@ -57,6 +57,7 @@ open-apis:
   utteranc: true
   google_analytics: UA-143433153-1
   google_adsense: ca-pub-6021900706575667
+  buymeacoffee: true
 
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
