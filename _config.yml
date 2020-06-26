@@ -34,6 +34,7 @@ navigation:
 
 
 # Includes an icon in the footer for each username you enter
+# icon image from : https://iconscout.com/icon-pack/logos-vol-3-1
 # image circle-crop : http://crop-circle.imageonline.co/#circlecropresult
 # base63 encode/decode : http://freeonlinetools24.com/base64-image
 footer-links:
@@ -57,7 +58,7 @@ open-apis:
   utteranc: true
   google_analytics: UA-143433153-1
   google_adsense: ca-pub-6021900706575667
-  buymeacoffee: true
+  buymeacoffee: false
 
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
