@@ -2,7 +2,7 @@
 layout: post
 title: "Traefik 기초 (with docker)"
 date: 2020-02-12
-tags: opensource docker reverse-proxy
+tags: docker reverse-proxy middleware
 ---
 
 재필님에게 배울적만해도 version 1 이었던 것 같은데..

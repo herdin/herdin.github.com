@@ -2,7 +2,7 @@
 layout: post
 title: "Redis 기초"
 date: 2019-08-27
-tags: opensource database redis writing
+tags: database redis writing
 ---
 
 > [Redis 설정](https://bstar36.tistory.com/349) 이 참 많다...
