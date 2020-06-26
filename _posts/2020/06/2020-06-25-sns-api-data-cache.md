@@ -2,7 +2,7 @@
 layout: post
 title: "Instagram API 이관, Open API(Instagram) 캐싱처리"
 date: 2020-06-25
-tags: web java
+tags: web java open-api
 ---
 
 ## 2020년 06월 29일 부터 기존 Instagram API 사용 금지!!
