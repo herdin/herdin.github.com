@@ -125,7 +125,7 @@ Name   Command   State   Ports
 ------------------------------
 ```
 
-# 응용 서비스 - `subicura/counter`
+## 응용 서비스 - `subicura/counter`
 container 간의 의존관계가 있는 서비스를 구성해보자.
 요청할때마다 증가시킨 counter 값을 반환하며 증가시킨 counter 를 `redis` 에 저장하는 서비스를 구성해보자.
 
@@ -179,12 +179,38 @@ counter 값이 증가하는 것을 볼 수 있다.
 docker-compose 로 구성된 서비스들은 따로 docker network 를 생성하지 않아도 한 네트워크로 묶이게 된다고 한다.
 > By default Compose sets up a single network for your app [출처](https://docs.docker.com/compose/networking/)
 
-# scale up
+## scale up
 
 ```
 docker-compose -f docker-compose-counter.yaml up -d -scale counter1=5
 ```
 
+## etc
+
+### docker-compose 자원(service/network/volume) 에 prefix 가 붙어요
+
+docker compose 는 compose file 이 존재하는 폴더의 이름을 프로젝트명으로 인식하고 모든 자원 앞에 prefix 로 붙인다.
+
+바꾸고 싶다면,
+
+* docker-compose up 의 옵션으로 -p, --project-name 옵션으로 명시한다.
+* docker compose 3.5 버전 이후로는 각 자원에 name 을 붙여주면, 해당 name 으로 자원이 생성된다.
+
+##### name 을 사용하여 kafka-network 라는 network 를 만들고 싶다면,
+```
+version: '3.5'
+services:
+
+    zookeeper:
+        image: zookeeper:3.4
+        ports:
+            - "2181:2181"
+        networks:
+            - kafka
+networks:
+    kafka:
+        name: kafka-network
+```
 
 
 출처

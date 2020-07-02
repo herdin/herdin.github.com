@@ -30,6 +30,7 @@ $ docker volume create pgdata
 ``` shell
 docker run \
  -d \
+ --restart=always \
  -p 5432:5432 \
  --name pgsql \
  -e POSTGRES_PASSWORD=mysecretpassword \
