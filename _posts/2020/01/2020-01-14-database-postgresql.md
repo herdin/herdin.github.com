@@ -10,14 +10,36 @@ tags: database
 학습해본다. 클라이언트는 `psql` 를 사용했다.
 > 단순 DML 은 intelliJ 의 client 를 사용했다. `\d` 같은 명령어라던지, multiple primary key 같은 경우는 intelliJ 의 client 에서 에러가 난다.
 
-# conncet via psql
+# psql 로 접속하기
 
 > 왜 비밀번호는 묻지않는지 잘 모르겠다
 
 ``` shell
+Connection options:
+  -h, --host=HOSTNAME      database server host or socket directory (default: "local socket")
+  -p, --port=PORT          database server port (default: "5432")
+  -U, --username=USERNAME  database user name (default: "root")
+  -w, --no-password        never prompt for password
+  -W, --password           force password prompt (should happen automatically)
+
+$ psql -U postgres
 $ psql --dbname=<DB_NAME> --username=<USER_NAME>
 ```
 
+# 정보 확인
+
+```
+# database 의 relation 확인
+$ \d
+# database 의 System table 확인
+$ \dS
+# database 의 table 확인
+$ \dt
+# database 의 view 확인
+$ \dv
+# 다른 databse 에 접속
+$ \c <DATABSE_NAME>
+```
 # ORACLE -> PostgreSQL 다른 점
 
 ``` sql
