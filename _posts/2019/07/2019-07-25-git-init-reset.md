@@ -5,7 +5,7 @@ date: 2019-07-25
 tags: git
 ---
 
-# reset
+# `reset`
 `commit` 을 되돌린다. 옵션에 따라 되돌리는 정도가 달라진다.
 * HEAD가 가리키는 브랜치를 옮긴다. (--soft)
 * Index를 HEAD가 가리키는 상태로 만든다. (--hard 옵션이 붙지 않았으면 여기까지)
@@ -81,6 +81,9 @@ $ git log --oneline
 1. `checkout` 은 워킹 디렉토리를 안전하게 다룬다. `reset` 처럼 변경사항을 무시하지 않는다. 아직 commit 되지 않은 변경사항이 있으면 checkout 으로 branch 를 변경하지 못하게 막는다.  그에 반해 `reset` 은 확인하지않고 바꿔버린다.
 2. checkout 은 HEAD 자체를 다른 branch 로 옮기지만, reset 은 HEAD 가 가르키는 branch 를 움직인다. (다른 commit 을 가르키도록)
 
+## 하나 더
+`git reflog` 를 실행하면, git 으로 명령 내린 것들이 로그처럼 나온다.
+`git reset HEAD@{index}` 를 사용해 이전으로 돌아갈 수 있다.
 
 참고
 - [7.7 Git 도구 - Reset 명확히 알고 가기](https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-Reset-%EB%AA%85%ED%99%95%ED%9E%88-%EC%95%8C%EA%B3%A0-%EA%B0%80%EA%B8%B0)

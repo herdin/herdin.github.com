@@ -5,7 +5,7 @@ date: 2019-07-25
 tags: git
 ---
 
-# rebase
+# `rebase`
 이미 커밋한 히스토리를 수정할 떄 사용한다.
 
 ## `-i`, `--interactive`
