@@ -189,6 +189,7 @@ services:
 
 
 > traefik static configration file example
+
 ``` yaml
 ## traefik.yml
 
