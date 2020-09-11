@@ -212,8 +212,31 @@ $ aws ec2 release-address --allocation-id `aws ec2 describe-addresses | jq -r '.
 
 > ^^ 학습했다고 생각하자. 정신승리.
 
-### AWS Cli 를 사용하여 S3 연동
+### AWS Cli 를 사용하여, 하나의 탄력적 IP (Elastic IP, EIP) 를 여러 ec2 instance 에 돌려 쓰기
 
+- Tag 가 Name:vaultEIP 인 EIP 를 어디 붙어있는지 모르겠으나 일단 연결 해제를 한다
+- Tag 가 Name:k8s-master 인 ec2 에 Tag 가 Name:vaultEIP 인 EIP 를 연결한다
+
+위의 두가지 명령어를 알면, EIP 를 돌려쓸 수 있다. 물론 한번에 하나만 활성화 한다는 가정하에..
+
+할당된 EIP 중 Tag 가 Name:vaultEIP 인 EIP 의 association ID(인스턴스 연결ID, 아래서 설명) 가져와서 해제하기
+> EIP 의 association ID 는 EIP 의 allocation ID 와는 다른 것이다.
+> allocation ID 는 EIP 의 유일한 ID, 즉 EIP 자체를 구분하기위한 ID 이고,
+> association ID 는 EIP 와 ec2 가 연결된 상태를 구분하기 위한 ID 이다.
+
+``` shell
+$ aws ec2 disassociate-address \
+  --association-id `aws ec2 describe-addresses | jq -r '.Addresses[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "vaultEIP") | .AssociationId'`
+```
+
+할당된 EIP 중 Tag 가 Name:vaultEIP 를 Tag 가 Name:k8s-master 인 ec2 에 연결하기
+``` shell
+aws ec2 associate-address \
+  --instance-id `aws ec2 describe-instances | jq -r '.Reservations[].Instances[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "k8s-master") | .InstanceId'` \
+  --allocation-id `aws ec2 describe-addresses | jq -r '.Addresses[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "vaultEIP") | .AllocationId'`
+```
+
+### AWS Cli 를 사용하여 S3 연동
 
 #### 버킷 만들기, make bucket
 ``` shell
