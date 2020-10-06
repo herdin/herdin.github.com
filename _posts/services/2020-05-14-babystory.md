@@ -4,8 +4,10 @@ title: babystory
 date: 2019-09-20
 tags: services
 ---
-
-
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202009.html" target="blank">2020-09</a><br/>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202008.html" target="blank">2020-08</a><br/>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202007.html" target="blank">2020-07</a><br/>
+<a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202006.html" target="blank">2020-06</a><br/>
 <a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202005.html" target="blank">2020-05</a><br/>
 <a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202004.html" target="blank">2020-04</a><br/>
 <a href="{{ site.baseurl }}/assets/html/babystory/diary_inha_202003.html" target="blank">2020-03</a><br/>
