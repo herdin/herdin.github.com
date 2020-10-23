@@ -198,8 +198,8 @@ tomcat `server.xml` 에 아래 내용을 추가한다. 대소문자를 잘 입�
 
 
 연관 포스트들
-- [HTTPS]({{ site.url }}/https-ssl-tls/)
-- [대칭키와 공개키]({{ site.url }}/encryption/)
+- [HTTPS]({{ site.url }}/2019/08/19/https-ssl-tls)
+- [대칭키와 공개키]({{ site.url }}/2019/08/21/encryption)
 
 참고 포스트들
 - [OpenSSL 을 이용한 SSL 인증서 발급](https://namjackson.tistory.com/24)

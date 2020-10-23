@@ -13,3 +13,14 @@ cat $(echo $HISTFILE) #echo command history
 apk search [SEARCH TARGET PACKAGE NAME]
 apk add [INSTALL TARGET PACKAGE NAME]
 ```
+
+##### curl
+```
+apk add curl
+```
+
+##### telnet
+```
+apk add busybox-extras
+busybox-extras telnet <ip> <port>
+```

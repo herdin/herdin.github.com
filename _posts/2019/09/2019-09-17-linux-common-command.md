@@ -204,7 +204,7 @@ require(['util'], (util) => {
 
 ## SELinux
 
-[SELinux 란?]({{ site.url }}/selinux/)
+[SELinux 란?]({{ site.url }}/2019/08/27/selinux)
 
 ``` shell
 sestatus #selinux status
