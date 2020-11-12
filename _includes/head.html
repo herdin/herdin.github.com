@@ -7,6 +7,23 @@
 	<!-- <script src="/assets/js/init.js"></script> -->
 	<script src="/assets/vendor/require.js" data-main="/assets/js/init.js"></script>
 	<script>
+		const debug = (function(){
+	    let isActive = false;
+	    function active() { isActive = true; }
+	    function deactive() { isActive = false; }
+	    function log(text, obj) {
+	      if(isActive) {
+	          if(obj) console.log(text, obj);
+	          else console.log(text);
+	      }
+	    }
+	    return {
+	        active: active,
+	        deactive: deactive,
+	        log: log,
+	    };
+		})();
+		
 		require(['init'], (initTest) => {
 			require(['jquery'], ($) => {
 
