@@ -3,6 +3,7 @@ layout: default
 permalink: /tags/
 ---
 
+<div style="text-align: center;"><input type="text" id="search" style="width: 70%;margin-bottom: 10px;"></div>
 <div class="site-tags">
   {% assign sorted_tags = (site.tags | sort:0) %}
   {% for tag in sorted_tags %}
@@ -41,12 +42,42 @@ permalink: /tags/
 <script>
   require(['init'], (init) => {
     require(['jquery'], ($) => {
+      const prefix = '{{ prefix }}';
+      const DELAY_DEBOUNCE = 300;
+      const DELAY_FADE_IN_OUT = 100;
+
+      let debounceTimer = null;
+      let debounce = function(callback, delay) {
+        if(debounceTimer) {
+          clearTimeout(debounceTimer)
+        }
+        debounceTimer = setTimeout(callback, delay);
+      }
+
+      let searchEventHandler = function(e) {
+        let searchText = $('#search').val();//e.target.value;
+        debug.log('search text', searchText);
+        if(searchText == null || searchText == undefined || searchText.length <= 0) return;
+        let taggedPosts = $('.site-tagged-posts > li');
+        for(taggedPost of taggedPosts) {
+            let taggedPostClass = $(taggedPost).attr('class');
+            let searchTextIndex = taggedPostClass.indexOf(searchText);
+            debug.log('tagged post class -> ' + taggedPostClass + ', search text index' + searchTextIndex);
+            if(searchTextIndex != -1) {
+                $(taggedPost).fadeIn(DELAY_FADE_IN_OUT);
+            } else {
+                $(taggedPost).fadeOut(DELAY_FADE_IN_OUT);
+            }
+        }
+      }
+
+
+      $('#search').keyup(() => debounce(searchEventHandler, 300));
+
       $('.site-tag').click(function() {
         $('.site-tagged-posts > li').hide();
-        var prefix = '{{ prefix }}';
-        var delay = 100;
-        var tag = $(this).attr('id');
-        $('.' + prefix + tag).fadeIn(delay);
+        let tag = $(this).attr('id');
+        $('.' + prefix + tag).fadeIn(DELAY_FADE_IN_OUT);
       });
 
       //access from post tag, auto show tag
