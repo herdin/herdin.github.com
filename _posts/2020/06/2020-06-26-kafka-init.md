@@ -2,7 +2,7 @@
 layout: post
 title: "Apache Kafka 기초"
 date: 2020-06-18
-tags: middleware queue
+tags: middleware queue kafka
 ---
 
 ## Apache Kafka
