@@ -155,6 +155,11 @@ com.harm.topic.2
 `com.harm.topic.1` topic 은 1 2 3  
 ``` shell
 $ sh bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic com.harm.topic.1
+# 2020-11-13 해보니 bootstrap-server is not a recognized option 이런 오류가 난다.
+# --bootstrap-server -> --broker-list 로 고치니 된다.
+$ sh bin/kafka-console-producer.sh --broker-list localhost:9092 --topic com.harm.topic.1
+
+--broker-list
 >1
 >2
 >3
@@ -162,7 +167,7 @@ $ sh bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic com
 ```
 `com.harm.topic.2` topic 은 1 2 3 4 5
 ``` shell
-$ sh bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic com.harm.topic.2
+$ sh bin/kafka-console-producer.sh --broker-list localhost:9092 --topic com.harm.topic.2
 >1
 >2
 >3
@@ -173,6 +178,9 @@ $ sh bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic com
 
 #### 메세지 받기
 `--consumer-property group.id=<GROUP-ID>` 옵션이 없으면 매번 새로운 `consumer group` 을 만들기 때문에, 각 `consumer` 마다 만들어진 메세지를 모두 확인할 수 있다.
+
+> 받을 때는 `--bootstrap-server` 옵션을 써야되네..
+
 ``` shell
 $ sh bin/kafka-console-consumer.sh --topic com.harm.topic.1 --bootstrap-server localhost:9092 --from-beginning
 1
