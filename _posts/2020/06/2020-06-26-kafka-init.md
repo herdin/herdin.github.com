@@ -21,7 +21,7 @@ zookeeper 없이는 기동하지 않는다.
 
 > 주절주절 설명을 할텐데, 아무래도 설명보다는 이후에 할 <a href="practice">실습 결과</a>를 보면 이해가 더 빠를 것 같다.
 
-<img src="#" post-src="2020-06-26-kafka-init-01" alt=""/>
+<img src="#" post-src="2020-06-26-kafka-init-01.png" alt=""/>
 
 `producer` 가 어떤 `topic` 에 `A B C D E ...` 라는 데이터를 쌓을 때, `partition` 이 3개 라면,
 * partition 0 : producer >> `...GDA` >> consumer
@@ -31,7 +31,7 @@ zookeeper 없이는 기동하지 않는다.
 저런 식으로 쌓이게 된다. 물론 저렇게 로드밸런싱된것처럼 나눠서 쌓이진 않는 것 같다. 그림에서의 번호는 `offset`(index) 를 의미하는 것 같다.  
 하나의 `topic` 에 하나의 `partition` 에서만 순서 보장이 된다.
 
-<img src="#" post-src="2020-06-26-kafka-init-02" alt=""/>
+<img src="#" post-src="2020-06-26-kafka-init-02.png" alt=""/>
 
 `consumer` 가 각자의 `offset` 을 관리할 수 있고, 위와 같은 경우는 1개의 `partition` 에 2개의 `consumer` 가 접근하는 것처럼 보이는데 이렇게 되려면, 2개의 `consumer` 가 다른 `consumer group` 을 가져야 하는 것 같다.
 
@@ -39,7 +39,7 @@ zookeeper 없이는 기동하지 않는다.
 
 어떤 `consumer` 가 카프카의 데이터를 소비했다고 해서, 카프카 내부에서 데이터가 사라진 것은 아니다. 카프카 내부에 데이터가 사라지는 기간을 설정할 수 있다.
 
-<img src="#" post-src="2020-06-26-kafka-init-03" alt=""/>
+<img src="#" post-src="2020-06-26-kafka-init-03.png" alt=""/>
 
 `consumer group` 이 나뉘어져 있다면, 위와 같이 같은 `topic` 을 다른 `consumer` 가 각각 가져갈 수 있다.
 
