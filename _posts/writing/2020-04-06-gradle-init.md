@@ -31,11 +31,27 @@ task intro(dependsOn: hello) << {
 
 gradle 은 maven 이 가지는 기본 라이프 사이클이 없다.
 
+## gradle wrapper 는 또뭐야
+gradle 의 설치 없이 빌드를 가능하게 해준다
+> 호옹이??
 
-
+```
+.
+├── build.gradle
+├── settings.gradle
+├── gradle
+│ └── wrapper
+│   ├── gradle-wrapper.jar
+│   └── gradle-wrapper.properties
+├── gradlew
+└── gradlew.bat
+```
+gradlew 는 shell(linux)
+gradlew.bat 은 batch(window)
 
 
 
 
 참고
 - [Gradle 강의](https://www.slipp.net/wiki/pages/viewpage.action?pageId=11632748)
+- [gradle scp 사용하여 원격 서버에 war 배포하기](https://jojoldu.tistory.com/51?category=721560)
