@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "유튜브 영상으로 음악 계속 듣기, keep listening music without disturbing"
+title: "유튜브 영상으로 음악 계속 듣기, keep listening music without disturbing on youtube"
 date: 2020-05-20
 tags: javascript
 ---
