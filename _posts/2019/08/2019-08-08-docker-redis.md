@@ -112,7 +112,7 @@ docker.io/redis:4-alpine
 redis-server /usr/local/etc/redis/redis.conf
 ```
 
-> 아래는 설정파일
+#### redis.conf
 
 ```shell
 daemonize no
