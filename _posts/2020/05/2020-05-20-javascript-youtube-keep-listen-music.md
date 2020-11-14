@@ -28,120 +28,120 @@ let conn=(()=>{let e={prev:{target:document.querySelectorAll(".ytp-prev-button.y
 
 ``` javascript
 let conn = (() => {
-	let elements = {
-		prev: {
-			target: document.querySelectorAll('.ytp-prev-button.ytp-button')[0],
-		},
-		next: {
-			target: document.querySelectorAll('.ytp-next-button.ytp-button')[0],
-		},
-		skipAd: {
-			target: null,
-			removeCount: 0,
-			detect: function(){
-				return this.target != null;
-			},
-			remove: function() {
-				if(this.detect()) {
-					this.target.click();
-					this.removeCount++;
-				}
-			},
-		},
-		stillWatch: {
-			target: null,
-			removeCount: 0,
-			detect: function() {
-				let isDetect = false;
-				if(this.target) {
-					isDetect = this.target
-						.parentElement
-						.parentElement
-						.parentElement
-						.parentElement.style.display != 'none';
-				}
-				return isDetect;
-			},
-			remove: function() {
-				if(this.detect()) {
-					this.target.click();
-					this.removeCount++;
-				}
-			},
-		},
-		skipAdOveray: {
-			target: null,
-			removeCount: 0,
-			detect: function() {
-				return this.target != null;
-			},
-			remove: function() {
-				if(this.detect()) {
-					this.target.click();
-					this.removeCount++;
-				}
-			},
-		},
-	};
+  let elements = {
+    prev: {
+      target: document.querySelectorAll('.ytp-prev-button.ytp-button')[0],
+    },
+    next: {
+      target: document.querySelectorAll('.ytp-next-button.ytp-button')[0],
+    },
+    skipAd: {
+      target: null,
+      removeCount: 0,
+      detect: function(){
+        return this.target != null;
+      },
+      remove: function() {
+        if(this.detect()) {
+          this.target.click();
+          this.removeCount++;
+        }
+      },
+    },
+    stillWatch: {
+      target: null,
+      removeCount: 0,
+      detect: function() {
+        let isDetect = false;
+        if(this.target) {
+          isDetect = this.target
+            .parentElement
+            .parentElement
+            .parentElement
+            .parentElement.style.display != 'none';
+        }
+        return isDetect;
+      },
+      remove: function() {
+        if(this.detect()) {
+          this.target.click();
+          this.removeCount++;
+        }
+      },
+    },
+    skipAdOveray: {
+      target: null,
+      removeCount: 0,
+      detect: function() {
+        return this.target != null;
+      },
+      remove: function() {
+        if(this.detect()) {
+          this.target.click();
+          this.removeCount++;
+        }
+      },
+    },
+  };
 
-	function refresh() {
-		elements.skipAd.target = document.querySelectorAll('.ytp-ad-skip-button.ytp-button')[0];
-		elements.stillWatch.target = document.querySelectorAll('#confirm-button')[0];
-		elements.skipAdOveray.target = document.querySelectorAll('.ytp-ad-overlay-close-container')[0];
-	}
+  function refresh() {
+    elements.skipAd.target = document.querySelectorAll('.ytp-ad-skip-button.ytp-button')[0];
+    elements.stillWatch.target = document.querySelectorAll('#confirm-button')[0];
+    elements.skipAdOveray.target = document.querySelectorAll('.ytp-ad-overlay-close-container')[0];
+  }
 
-	function prev() { elements.prev.target.click(); }
-	function next() { elements.next.target.click(); }
+  function prev() { elements.prev.target.click(); }
+  function next() { elements.next.target.click(); }
 
-	return {
-		elements: elements,
-		refresh: refresh,
-		prev: prev,
-		next: next,
-		delay: 1*1000
-	};
+  return {
+    elements: elements,
+    refresh: refresh,
+    prev: prev,
+    next: next,
+    delay: 1*1000
+  };
 })();
 
 let interval = setInterval(() => {
-	conn.refresh();
+  conn.refresh();
 
-	const style = {
-		normalBlack: 'font-weight: normal; color: black',
-		boldBlue: 'font-weight: bold; color: blue',
-		boldRed: 'font-weight: bold; color: red',
-		boldGreen: 'font-weight: bold; color: green',
-	};
+  const style = {
+    normalBlack: 'font-weight: normal; color: black',
+    boldBlue: 'font-weight: bold; color: blue',
+    boldRed: 'font-weight: bold; color: red',
+    boldGreen: 'font-weight: bold; color: green',
+  };
 
-	console.clear();
-	let targetDetectionReport = ''
-		+ ' %c skip ad %c ' + conn.elements.skipAd.detect()
-		+ ' %c still watch %c ' + conn.elements.stillWatch.detect()
-		+ ' %c close overlay ad %c ' + conn.elements.skipAdOveray.detect()
-		;
-	console.log(' ' + new Date());
-	console.log(targetDetectionReport,
-		style.normalBlack,
-		style.boldBlue,
-		style.normalBlack,
-		style.boldRed,
-		style.normalBlack,
-		style.boldGreen);
+  console.clear();
+  let targetDetectionReport = ''
+    + ' %c skip ad %c ' + conn.elements.skipAd.detect()
+    + ' %c still watch %c ' + conn.elements.stillWatch.detect()
+    + ' %c close overlay ad %c ' + conn.elements.skipAdOveray.detect()
+    ;
+  console.log(' ' + new Date());
+  console.log(targetDetectionReport,
+    style.normalBlack,
+    style.boldBlue,
+    style.normalBlack,
+    style.boldRed,
+    style.normalBlack,
+    style.boldGreen);
 
-	let targetRemoveReport = ''
-		+ ' %c skip ad %c' + conn.elements.skipAd.removeCount
-		+ ' %c still watch %c' + conn.elements.stillWatch.removeCount
-		+ ' %c close overlay ad %c' + conn.elements.skipAdOveray.removeCount
-		;
-	console.log(targetRemoveReport,
-		style.normalBlack,
-		style.boldBlue,
-		style.normalBlack,
-		style.boldRed,
-		style.normalBlack,
-		style.boldGreen);
+  let targetRemoveReport = ''
+    + ' %c skip ad %c' + conn.elements.skipAd.removeCount
+    + ' %c still watch %c' + conn.elements.stillWatch.removeCount
+    + ' %c close overlay ad %c' + conn.elements.skipAdOveray.removeCount
+    ;
+  console.log(targetRemoveReport,
+    style.normalBlack,
+    style.boldBlue,
+    style.normalBlack,
+    style.boldRed,
+    style.normalBlack,
+    style.boldGreen);
 
-		conn.elements.skipAd.remove();
-		conn.elements.stillWatch.remove();
-		conn.elements.skipAdOveray.remove();
+    conn.elements.skipAd.remove();
+    conn.elements.stillWatch.remove();
+    conn.elements.skipAdOveray.remove();
 }, conn.delay);
 ```
