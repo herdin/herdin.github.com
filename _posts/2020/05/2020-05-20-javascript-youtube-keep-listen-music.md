@@ -11,86 +11,137 @@ tags: javascript
 
 그게 귀찮아서 스크립트를 짯다. 언제 유튜브에서 바꿀진 모르겠지만, 2020-05-20 기준 잘된다.
 
-그대로 복붙해서 console 에 넣는다.
+2020-11-14 업데이트를 했다.
+
+아래의 세가지 중 아무거나 하면 된다.
+1. <a href='javascript:(function(){let conn=(()=>{let e={prev:{target:document.querySelectorAll(".ytp-prev-button.ytp-button")[0]},next:{target:document.querySelectorAll(".ytp-next-button.ytp-button")[0]},skipAd:{target:null,removeCount:0,detect:function(){return null!=this.target},remove:function(){this.detect()&&(this.target.click(),this.removeCount++)}},stillWatch:{target:null,removeCount:0,detect:function(){let e=!1;return this.target&&(e="none"!=this.target.parentElement.parentElement.parentElement.parentElement.style.display),e},remove:function(){this.detect()&&(this.target.click(),this.removeCount++)}},skipAdOveray:{target:null,removeCount:0,detect:function(){return null!=this.target},remove:function(){this.detect()&&(this.target.click(),this.removeCount++)}}};return{elements:e,refresh:function(){e.skipAd.target=document.querySelectorAll(".ytp-ad-skip-button.ytp-button")[0],e.stillWatch.target=document.querySelectorAll("#confirm-button")[0],e.skipAdOveray.target=document.querySelectorAll(".ytp-ad-overlay-close-container")[0]},prev:function(){e.prev.target.click()},next:function(){e.next.target.click()},delay:1e3}})(),interval=setInterval(()=>{conn.refresh();const e="font-weight: normal; color: black",t="font-weight: bold; color: blue",n="font-weight: bold; color: red",o="font-weight: bold; color: green";console.clear();let l=" %c skip ad %c "+conn.elements.skipAd.detect()+" %c still watch %c "+conn.elements.stillWatch.detect()+" %c close overlay ad %c "+conn.elements.skipAdOveray.detect();console.log(" "+new Date),console.log(l,e,t,e,n,e,o);let c=" %c skip ad %c"+conn.elements.skipAd.removeCount+" %c still watch %c"+conn.elements.stillWatch.removeCount+" %c close overlay ad %c"+conn.elements.skipAdOveray.removeCount;console.log(c,e,t,e,n,e,o),conn.elements.skipAd.remove(),conn.elements.stillWatch.remove(),conn.elements.skipAdOveray.remove()},conn.delay);})()'>youtubeAdRemove</a> 를 드래그하여 브라우저 북마크바에 넣는다.
+2. 아래의 `복붙 용도 (minify)` 의 코드를 복사하여 브라우저 console 창에 입력한다.
+3. `코드 보는 용도(human readable)` 의 코드를 복사하여 브라우저 console 창에 입력한다.
+
+#### 복붙 용도 (minify)
+
+``` javascript
+let conn=(()=>{let e={prev:{target:document.querySelectorAll(".ytp-prev-button.ytp-button")[0]},next:{target:document.querySelectorAll(".ytp-next-button.ytp-button")[0]},skipAd:{target:null,removeCount:0,detect:function(){return null!=this.target},remove:function(){this.detect()&&(this.target.click(),this.removeCount++)}},stillWatch:{target:null,removeCount:0,detect:function(){let e=!1;return this.target&&(e="none"!=this.target.parentElement.parentElement.parentElement.parentElement.style.display),e},remove:function(){this.detect()&&(this.target.click(),this.removeCount++)}},skipAdOveray:{target:null,removeCount:0,detect:function(){return null!=this.target},remove:function(){this.detect()&&(this.target.click(),this.removeCount++)}}};return{elements:e,refresh:function(){e.skipAd.target=document.querySelectorAll(".ytp-ad-skip-button.ytp-button")[0],e.stillWatch.target=document.querySelectorAll("#confirm-button")[0],e.skipAdOveray.target=document.querySelectorAll(".ytp-ad-overlay-close-container")[0]},prev:function(){e.prev.target.click()},next:function(){e.next.target.click()},delay:1e3}})(),interval=setInterval(()=>{conn.refresh();const e="font-weight: normal; color: black",t="font-weight: bold; color: blue",n="font-weight: bold; color: red",o="font-weight: bold; color: green";console.clear();let l=" %c skip ad %c "+conn.elements.skipAd.detect()+" %c still watch %c "+conn.elements.stillWatch.detect()+" %c close overlay ad %c "+conn.elements.skipAdOveray.detect();console.log(" "+new Date),console.log(l,e,t,e,n,e,o);let c=" %c skip ad %c"+conn.elements.skipAd.removeCount+" %c still watch %c"+conn.elements.stillWatch.removeCount+" %c close overlay ad %c"+conn.elements.skipAdOveray.removeCount;console.log(c,e,t,e,n,e,o),conn.elements.skipAd.remove(),conn.elements.stillWatch.remove(),conn.elements.skipAdOveray.remove()},conn.delay);
+```
+
+#### 코드 보는 용도(human readable)
 
 ``` javascript
 let conn = (() => {
-	let countSkipAd = 0;
-	function addCountSkipAd() { countSkipAd++; }
-	function getCountSkipAd() { return countSkipAd; }
+	let elements = {
+		prev: {
+			target: document.querySelectorAll('.ytp-prev-button.ytp-button')[0],
+		},
+		next: {
+			target: document.querySelectorAll('.ytp-next-button.ytp-button')[0],
+		},
+		skipAd: {
+			target: null,
+			removeCount: 0,
+			detect: function(){
+				return this.target != null;
+			},
+			remove: function() {
+				if(this.detect()) {
+					this.target.click();
+					this.removeCount++;
+				}
+			},
+		},
+		stillWatch: {
+			target: null,
+			removeCount: 0,
+			detect: function() {
+				let isDetect = false;
+				if(this.target) {
+					isDetect = this.target
+						.parentElement
+						.parentElement
+						.parentElement
+						.parentElement.style.display != 'none';
+				}
+				return isDetect;
+			},
+			remove: function() {
+				if(this.detect()) {
+					this.target.click();
+					this.removeCount++;
+				}
+			},
+		},
+		skipAdOveray: {
+			target: null,
+			removeCount: 0,
+			detect: function() {
+				return this.target != null;
+			},
+			remove: function() {
+				if(this.detect()) {
+					this.target.click();
+					this.removeCount++;
+				}
+			},
+		},
+	};
 
-	let countStillWatch = 0;
-	function addCountStillWatch() { countStillWatch++; }
-	function getCountStillWatch() { return countStillWatch; }
+	function refresh() {
+		elements.skipAd.target = document.querySelectorAll('.ytp-ad-skip-button.ytp-button')[0];
+		elements.stillWatch.target = document.querySelectorAll('#confirm-button')[0];
+		elements.skipAdOveray.target = document.querySelectorAll('.ytp-ad-overlay-close-container')[0];
+	}
 
-	let countCloseOverlayAd = 0;
-	function addCountCloseOverlayAd() { countCloseOverlayAd++; }
-	function getCountCloseOverlayAd() { return countCloseOverlayAd; }
-
-	function prev() { document.getElementsByClassName('ytp-prev-button ytp-button')[0].click(); }
-	function next() { document.getElementsByClassName('ytp-next-button ytp-button')[0].click(); }
+	function prev() { elements.prev.target.click(); }
+	function next() { elements.next.target.click(); }
 
 	return {
-		addCountSkipAd : addCountSkipAd,
-		getCountSkipAd : getCountSkipAd,
-		addCountStillWatch : addCountStillWatch,
-		getCountStillWatch : getCountStillWatch,
-		addCountCloseOverlayAd: addCountCloseOverlayAd,
-		getCountCloseOverlayAd: getCountCloseOverlayAd,
+		elements: elements,
+		refresh: refresh,
 		prev: prev,
 		next: next,
+		delay: 1*1000
 	};
 })();
 
 let interval = setInterval(() => {
-	let skipAdBtns = document.getElementsByClassName('ytp-ad-skip-button ytp-button');
-	let stillWatchBtn = document.getElementById('confirm-button');
-	let overlayAdCloseBtns = document.getElementsByClassName('ytp-ad-overlay-close-container');
+	conn.refresh();
+
+	const style = {
+		normalBlack: 'font-weight: normal; color: black',
+		boldBlue: 'font-weight: bold; color: blue',
+		boldRed: 'font-weight: bold; color: red',
+		boldGreen: 'font-weight: bold; color: green',
+	};
 
 	console.clear();
-	let logText = ''
-		+ ' %c skip ad button %c ' + (skipAdBtns != null && skipAdBtns.length > 0)
-		+ ' %c still watch button %c ' + (stillWatchBtn != null && stillWatchBtn.parentElement.parentElement.parentElement.parentElement.style.display != 'none')
-		+ ' %c close overlay ad button %c ' + (overlayAdCloseBtns != null && overlayAdCloseBtns.length > 0)
+	let targetDetectionReport = ''
+		+ ' %c skip ad %c ' + conn.elements.skipAd.detect()
+		+ ' %c still watch %c ' + conn.elements.stillWatch.detect()
+		+ ' %c close overlay ad %c ' + conn.elements.skipAdOveray.detect()
 		;
 	console.log(' ' + new Date());
-	console.log(logText,
-		'font-weight: normal; color: black',
-		'font-weight: bold; color: blue',
-		'font-weight: normal; color: black',
-		'font-weight: bold; color: red',
-		'font-weight: normal; color: black',
-		'font-weight: bold; color: green');
-	logText = ''
-		+ ' %c skip ad %c' + conn.getCountSkipAd()
-		+ ' %c still watch %c' + conn.getCountStillWatch()
-		+ ' %c close overlay ad %c' + conn.getCountCloseOverlayAd()
+	console.log(targetDetectionReport,
+		style.normalBlack,
+		style.boldBlue,
+		style.normalBlack,
+		style.boldRed,
+		style.normalBlack,
+		style.boldGreen);
+
+	let targetRemoveReport = ''
+		+ ' %c skip ad %c' + conn.elements.skipAd.removeCount
+		+ ' %c still watch %c' + conn.elements.stillWatch.removeCount
+		+ ' %c close overlay ad %c' + conn.elements.skipAdOveray.removeCount
 		;
-	console.log(logText,
-		'font-weight: normal; color: black',
-		'font-weight: bold; color: blue',
-		'font-weight: normal; color: black',
-		'font-weight: bold; color: red',
-		'font-weight: normal; color: black',
-		'font-weight: bold; color: green');
+	console.log(targetRemoveReport,
+		style.normalBlack,
+		style.boldBlue,
+		style.normalBlack,
+		style.boldRed,
+		style.normalBlack,
+		style.boldGreen);
 
-	if(skipAdBtns != null && skipAdBtns.length > 0) {
-		skipAdBtns[0].click();
-		conn.addCountSkipAd();
-	}
-
-	if(stillWatchBtn != null) {
-		let dialogDiv = stillWatchBtn.parentElement.parentElement.parentElement.parentElement;
-		if(dialogDiv.style.display != 'none') {
-			stillWatchBtn.click();
-			conn.addCountStillWatch();
-		}
-	}
-
-	if(overlayAdCloseBtns != null && overlayAdCloseBtns.length > 0) {
-		overlayAdCloseBtns[0].click();
-		conn.addCountCloseOverlayAd();
-	}
-
-}, 1*1000);
+		conn.elements.skipAd.remove();
+		conn.elements.stillWatch.remove();
+		conn.elements.skipAdOveray.remove();
+}, conn.delay);
 ```
