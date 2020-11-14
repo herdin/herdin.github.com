@@ -73,7 +73,7 @@ docker.io/redis:4-alpine
 ```
 저렇게 했더니 container 가 실행하자마자 죽어서 로그를 보니, container 내부에서 volume 설정하다가 `permission denied` 가 똑같이 떠서 다시한번 한참 구글링을 했는데
 
-(갓 스택플로우!!!)[https://stackoverflow.com/questions/24288616/permission-denied-on-accessing-host-directory-in-docker]
+[갓 스택플로우!!!](https://stackoverflow.com/questions/24288616/permission-denied-on-accessing-host-directory-in-docker)
 
 끝에 `z` or `Z` 를 붙이면 자동으로 `chcon` 을 써주면서 해결된다. `Z` 보단 `z` 가 나은 것 같다.
 
