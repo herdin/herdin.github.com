@@ -19,7 +19,7 @@ zookeeper 없이는 기동하지 않는다.
 * `partition` : topic 별로 데이터를 쌓을 때, 나눠 담는 영역.
 * `consumer-group` : topic 을 가져가는 프로그램 그룹
 
-> 주절주절 설명을 할텐데, 아무래도 설명보다는 이후에 할 <a href="practice">실습 결과</a>를 보면 이해가 더 빠를 것 같다.
+> 주절주절 설명을 할텐데, 아무래도 설명보다는 이후에 할 <a href="#practice">실습 결과</a>를 보면 이해가 더 빠를 것 같다.
 
 <img src="#" post-src="2020-06-26-kafka-init-01.png" alt=""/>
 
@@ -34,6 +34,13 @@ zookeeper 없이는 기동하지 않는다.
 <img src="#" post-src="2020-06-26-kafka-init-02.png" alt=""/>
 
 `consumer` 가 각자의 `offset` 을 관리할 수 있고, 위와 같은 경우는 1개의 `partition` 에 2개의 `consumer` 가 접근하는 것처럼 보이는데 이렇게 되려면, 2개의 `consumer` 가 다른 `consumer group` 을 가져야 하는 것 같다.
+> 모바일에서 상품을 구매한다 치자.
+> 구매정보를 결제시스템도 알아야하지만, 배송시스템과 통계시스템도 알아야 한다.
+> 1, 2, 3 의 구매정보가 있는데,
+> 1번정보를 결제시스템이 가져가고
+> 2번정보를 배송시스템이 가져가고 이렇게 된다면, 제대로 시스템이 돌아갈 수 없다.
+> 1, 2, 3 의 구매정보를 모든 시스템이 다 가져가야한다. 이럴때, 각 시스템별로 `consumer-group` 을 따로 설정하면 각 시스템이
+> 모든 정보를 받을 수 있다.
 
 1개의 `partition` 에서, 1개의 `consumer group` 의 2개의 `consumer` 가 있다고 하면, 하나의 `consumer` 는 계속 놀게 된다. 마치 `consumer` 하나가 `partition` 하나를 점유하는 것처럼 보인다.
 
@@ -305,3 +312,4 @@ $ sh bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe -
 - [Kafka Console Command](https://datacadamia.com/dit/kafka/kafka-console-consumer)
 - [Kafka Listeners – Explained](https://www.confluent.io/blog/kafka-listeners-explained/)
 - [아파치 카프카란 무엇인가?](https://soft.plusblog.co.kr/14?category=792301)
+- [Kafka 운영자가 말하는 Kafka Consumer Group](https://www.popit.kr/kafka-consumer-group/)
