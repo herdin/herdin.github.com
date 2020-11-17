@@ -35,7 +35,7 @@ zookeeper 없이는 기동하지 않는다.
 
 `consumer` 가 각자의 `offset` 을 관리할 수 있고, 위와 같은 경우는 1개의 `partition` 에 2개의 `consumer` 가 접근하는 것처럼 보이는데 이렇게 되려면, 2개의 `consumer` 가 다른 `consumer group` 을 가져야 하는 것 같다.
 
-2개의 `partition` 에서, 1개의 `consumer group` 의 2개의 `consumer` 가 있다고 하면, 하나의 `consumer` 는 계속 놀게 된다. 마치 `consumer` 하나가 `partition` 하나를 점유하는 것처럼 보인다.
+1개의 `partition` 에서, 1개의 `consumer group` 의 2개의 `consumer` 가 있다고 하면, 하나의 `consumer` 는 계속 놀게 된다. 마치 `consumer` 하나가 `partition` 하나를 점유하는 것처럼 보인다.
 
 어떤 `consumer` 가 카프카의 데이터를 소비했다고 해서, 카프카 내부에서 데이터가 사라진 것은 아니다. 카프카 내부에 데이터가 사라지는 기간을 설정할 수 있다.
 
