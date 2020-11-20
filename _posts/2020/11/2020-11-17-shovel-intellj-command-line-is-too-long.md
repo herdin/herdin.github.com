@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "intellj, Command line is too long"
-date: 2020-00-00
+date: 2020-11-17
 tags: shovel intellj ide
 ---
 
