@@ -5,7 +5,7 @@ layout: default
 <div class="posts">
     {% for post in paginator.posts %}
     <article class="post">
-      <h2 style="color:#285bd1">
+      <h4 style="color:#285bd1">
         <span clsss="meta">
           <span class="date">
             {{ post.date | date: "%Y-%m-%d" }}
@@ -22,7 +22,7 @@ layout: default
           </span>
         </span>
         <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
-      </h2>
+      </h4>
       <div class="entry">
         {{ post.excerpt }}
       </div>
