@@ -307,9 +307,39 @@ $ sh bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe -
 ```
 
 
+## Spring Kafka, Committing Offsets
+
+Spring Kafka 에서 consumer-group 에 consumer 가 추가되거나 삭제될 때, partition rebalancing 이 일어나는데,
+이때마다 자꾸 모든 offset 을 읽어 오는 일이 있어서 찾아보게 되었다.
+
+결론 -> commit 을 안해서;;
+
+`enable.auto.commit` 의 값이 `true` 이면(기본값), offset 은 auto commit 된다.  
+`false` 이면, ack mode 의 설정에 따라 달라진다.
+
+
+
+> 공식 문서의 Committing Offsets  
+> Several options are provided for committing offsets.  
+> If the `enable.auto.commit` consumer property is `true`, Kafka auto-commits the offsets according to its configuration. If it is `false`, the containers support several AckMode settings (described in the next list). The default AckMode is BATCH.  
+> Starting with version 2.3, the framework sets enable.auto.commit to false unless explicitly set in the configuration.  
+> Previously, the Kafka default (true) was used if the property was not set.  
+>
+> The consumer poll() method returns one or more ConsumerRecords. The MessageListener is called for each record. The following lists describes the action taken by the container for each AckMode (when transactions are not being used):
+> - `RECORD`: Commit the offset when the listener returns after processing the record.
+> - `BATCH`: Commit the offset when all the records returned by the poll() have been processed.
+> - `TIME`: Commit the offset when all the records returned by the poll() have been processed, as long as the ackTime since the last commit has been exceeded.
+> - `COUNT`: Commit the offset when all the records returned by the poll() have been processed, as long as ackCount records have been received since the last commit.
+> - `COUNT_TIME`: Similar to TIME and COUNT, but the commit is performed if either condition is true.
+> - `MANUAL`: The message listener is responsible to acknowledge() the Acknowledgment. After that, the same semantics as BATCH are applied.
+> - `MANUAL_IMMEDIATE`: Commit the offset immediately when the Acknowledgment.acknowledge() method is called by the listener.0
+
+
+
 참고
 - [Kafka Official Document](https://kafka.apache.org/documentation)
 - [Kafka Console Command](https://datacadamia.com/dit/kafka/kafka-console-consumer)
 - [Kafka Listeners – Explained](https://www.confluent.io/blog/kafka-listeners-explained/)
+- [Sring Kafka](https://docs.spring.io/spring-kafka/docs/current/reference/html/#committing-offsets)
 - [아파치 카프카란 무엇인가?](https://soft.plusblog.co.kr/14?category=792301)
 - [Kafka 운영자가 말하는 Kafka Consumer Group](https://www.popit.kr/kafka-consumer-group/)
