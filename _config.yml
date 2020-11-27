@@ -54,11 +54,12 @@ footer-links:
   googleplus: # anything in your profile username that comes after plus.google.com/
 
 open-apis:
-  disqus: https-herdin-github-io
+  disqus: false #https-herdin-github-io
   utteranc: true
   google_analytics: UA-143433153-1
   google_adsense: ca-pub-6021900706575667
   buymeacoffee: false
+  kakao_adfit: true
 
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
