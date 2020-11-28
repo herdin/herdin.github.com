@@ -27,7 +27,10 @@ console.log(new Page().getCompiledTime());
 * 2015.07.13. --ENTER Korea Customs Service. SI.
 |
 * 2015.06.30. --LEAVE AFC Solution development.
-* 2014.01.01. --ENTER AFC Solution development.
+* 2014.07.07. --ENTER AFC Solution development.
+|
+* 2014.06.20. --LEAVE KCTC(Korean Combat Training Center)
+* 2014.01.01. --ENTER KCTC(Korean Combat Training Center)
 |
 * 2014.12.31. --LEAVE TMONEY 2nd. SI.
 * 2013.11.07. --ENTER TMONEY 2nd. SI.
