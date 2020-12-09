@@ -14,9 +14,12 @@ tags: services
 
 <script>
 require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (jg) => { $(document).ready(function(){
+
   let sharedData = {
+    currentLocationName: null,
     selectedSszstoreid: 0,
   };
+
   function isFilterEmpty(filterObj) {
     let filterEmpty = true;
     for(filterKey in filterObj) {
@@ -27,6 +30,7 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
     }
     return filterEmpty;
   }
+
   function filteringData(filterObj, filterTargetDataArr) {
     return filterTargetDataArr.filter((filterTarget) => {
       debug.log(`filter target ->`, filterTarget);
@@ -47,6 +51,27 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
       return isFiltered;
     });
   }
+
+  navigator.geolocation.getCurrentPosition(function(pos) {
+		const apiKey = 'AIzaSyATNATgEjLVDxo4zAEuurszwREhK3HVvBw';
+		var latitude = pos.coords.latitude;
+		var longitude = pos.coords.longitude;
+		debug.log("current latitude, longitude : " + latitude + ", "+ longitude);
+		$.ajax({
+      url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`,
+			type: 'get',
+			success: (data) => {
+				debug.log('success data ->', data);
+				if(data.results && data.results.length > 0) {
+					targetAddressName = data.results[0].address_components[2].long_name;
+					debug.log('target address name -> ' + targetAddressName);
+					sharedData.currentLocationName = targetAddressName;
+					$('#storeGrid').jsGrid('loadData');
+				}
+			},
+			error: (data) => debug.log('error data ->', data),
+		});
+	});
 
   let storeController = {
     loadData: function(filterObj) {
