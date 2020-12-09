@@ -48,7 +48,6 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
     });
   }
 
-  let storeData = null;
   let storeController = {
     loadData: function(filterObj) {
       console.log('load data', filterObj);
@@ -101,7 +100,6 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
 
 	console.log('store grid init ok.');
 
-  let couponData = null;
   let couponController = {
     loadData: function(filterObj) {
       console.log('load data', filterObj);
