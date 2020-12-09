@@ -2,7 +2,7 @@
 layout: post
 title: "파파존스 할인쿠폰 조회"
 date: 2020-12-09
-tags: service
+tags: services
 ---
 
 <link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/css/jsgrid-theme.min.css"/>
@@ -13,26 +13,6 @@ tags: service
 
 
 <script>
-let debug = (function() {
-  let isActive = false;
-  function active() { isActive = true; }
-  function deactive() { isActive = false; }
-  function log(message, obj) {
-    if(isActive) {
-      if(obj) {
-        console.log(message, obj);
-      } else {
-        console.log(message);
-      }
-    }
-  }
-  return {
-    active: active,
-    deactive: deactive,
-    log: log,
-  };
-})();
-
 require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (jg) => { $(document).ready(function(){
   let sharedData = {
     selectedSszstoreid: 0,
