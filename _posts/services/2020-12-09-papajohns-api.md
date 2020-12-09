@@ -84,6 +84,10 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
           crossDomain: true,
           success: (dataArr) => {
             debug.log('success data -> ', dataArr)
+            if(sharedData.currentLocationName) {
+							filterObj['szaaddr'] = sharedData.currentLocationName;
+							sharedData.currentLocationName = null;
+						}
             resolve(filteringData(filterObj, dataArr));
           },
           error: (data) => {
