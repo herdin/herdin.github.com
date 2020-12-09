@@ -13,6 +13,26 @@ tags: service
 
 
 <script>
+let debug = (function() {
+  let isActive = false;
+  function active() { isActive = true; }
+  function deactive() { isActive = false; }
+  function log(message, obj) {
+    if(isActive) {
+      if(obj) {
+        console.log(message, obj);
+      } else {
+        console.log(message);
+      }
+    }
+  }
+  return {
+    active: active,
+    deactive: deactive,
+    log: log,
+  };
+})();
+
 require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (jg) => { $(document).ready(function(){
   let sharedData = {
     selectedSszstoreid: 0,
@@ -29,7 +49,7 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
   }
   function filteringData(filterObj, filterTargetDataArr) {
     return filterTargetDataArr.filter((filterTarget) => {
-      console.log(`filter target ->`, filterTarget);
+      debug.log(`filter target ->`, filterTarget);
       if(isFilterEmpty(filterObj)) {
         return true;
       }
@@ -37,7 +57,7 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
       for(filterKey in filterObj) {
         let filterValue = filterObj[filterKey];
         if(filterValue) {
-          console.log(`filter value -> ${filterValue}, filter target -> ${filterTarget[filterKey]}, indexOf -> ${filterTarget[filterKey].indexOf(filterValue)}`);
+          debug.log(`filter value -> ${filterValue}, filter target -> ${filterTarget[filterKey]}, indexOf -> ${filterTarget[filterKey].indexOf(filterValue)}`);
           if(filterTarget[filterKey].indexOf(filterValue) >= 0) {
             isFiltered = true;
             break;
@@ -50,7 +70,7 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
 
   let storeController = {
     loadData: function(filterObj) {
-      console.log('load data', filterObj);
+      debug.log('load data', filterObj);
       let prom = new Promise((resolve, reject) => {
         $.ajax({
           url: 'https://pji.co.kr/get.do?ex=Store&ac=getstores&szdocd=&szsicd=&szname=&szstoreid=',
@@ -58,7 +78,7 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
           dataType: 'jsonp',
           crossDomain: true,
           success: (dataArr) => {
-            console.log('success data -> ', dataArr)
+            debug.log('success data -> ', dataArr)
             resolve(filteringData(filterObj, dataArr));
           },
           error: (data) => {
@@ -71,7 +91,7 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
     },
   };
 
-	console.log('store controller init ok.');
+	debug.log('store controller init ok.');
 
   $("#storeGrid").jsGrid({
     width: "100%",
@@ -86,9 +106,9 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
 
     controller: storeController,
     rowClick: (clickInfo) => {
-      console.log('row click ->', clickInfo);
+      debug.log('row click ->', clickInfo);
       sharedData.selectedSszstoreid = clickInfo.item.szstoreid;
-      console.log('shared data ->', sharedData);
+      debug.log('shared data ->', sharedData);
       $('#couponGrid').jsGrid('loadData');
     },
 
@@ -98,11 +118,11 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
     ]
   });
 
-	console.log('store grid init ok.');
+	debug.log('store grid init ok.');
 
   let couponController = {
     loadData: function(filterObj) {
-      console.log('load data', filterObj);
+      debug.log('load data', filterObj);
       let prom = new Promise((resolve, reject) => {
         $.ajax({
           url: 'https://pji.co.kr/get.do?ex=Coupon&ac=selectCoupon&szDiscountCode=&nStoreId=' + sharedData.selectedSszstoreid,
@@ -110,7 +130,7 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
           dataType: 'jsonp',
           crossDomain: true,
           success: (dataArr) => {
-            console.log('success data -> ', dataArr)
+            debug.log('success data -> ', dataArr)
             resolve(filteringData(filterObj, dataArr));
           },
           error: (data) => {
@@ -123,7 +143,7 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
     },
   };
 
-    console.log('store controller init ok.');
+    debug.log('store controller init ok.');
 
     $("#couponGrid").jsGrid({
       width: "100%",
@@ -144,7 +164,7 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
       ]
     });
 
-  	console.log('store grid init ok.');
+  	debug.log('store grid init ok.');
 }); }); }); });
 
 </script>
