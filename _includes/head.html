@@ -8,7 +8,7 @@
 	<script src="/assets/vendor/require.js" data-main="/assets/js/init.js"></script>
 	<script>
 		const debug = (function(){
-	    let isActive = false;
+	    let isActive = !false;
 	    function active() { isActive = true; }
 	    function deactive() { isActive = false; }
 	    function log(text, obj) {
@@ -23,7 +23,7 @@
 	        log: log,
 	    };
 		})();
-		
+
 		require(['init'], (initTest) => {
 			require(['jquery'], ($) => {
 
