@@ -2,7 +2,7 @@
 layout: post
 title: "Common Command on Linux(CentOS)"
 date: 2019-09-17
-tags: linux centos
+tags: linux command centos
 ---
 
 ## 시스템 관련
