@@ -2,7 +2,7 @@
 layout: post
 title: "PostgreSQL with Docker"
 date: 2020-01-16
-tags: docker
+tags: docker database postgresql
 ---
 
 AWS 에 RDS 로 PostgreSQL 을 쓰는것보다 docker 로 쓰는게 더 싸지않을까?
