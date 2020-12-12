@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Whiteship Spring JPA, "
+title: "Whiteship Spring JPA, common repository"
 date: 2020-10-29
 tags: spring jpa
 ---
@@ -36,7 +36,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 }
 ```
 
-`@RepositoryDefinition` 를 사용해서 기능이 없는 Repository 를 만들고 원하는 기능만 넣는 방법이 있다.
+`@RepositoryDefinition` 를 사용해서 기능이 없는 Repository 를 만들고 원하는 기능만 넣는 방법이 있다. spring-data-jpa 가 구현할 수 있는 메소드라면 가능하다.
 
 ``` java
 @RepositoryDefinition(domainClass = Post.class, idClass = Long.class)
@@ -46,7 +46,7 @@ public interface CustomPostRepositoryWithRepositoryDefinition {
 }
 ```
 
-공통적인 Repository 를 만들고 상속받아 사용하는 방법도 있다.
+공통적인 함수를 모아놓고 싶다면, 공통 Repository 를 만들고 상속받아 사용하는 방법도 있다.
 
 ``` java
 public interface CommonPostRespository<T, ID extends Serializable> extends Repository<T, ID> {
@@ -58,7 +58,3 @@ public interface CommonPostRespository<T, ID extends Serializable> extends Repos
 public interface CustomPostRepositoryWithCommonPostRepository extends CommonPostRespository<Post, Long> {
 }
 ```
-
-## Null 처리
-
-Spring Data 2.0 부터 java 8 의 Optional 지원

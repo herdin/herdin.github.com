@@ -7,6 +7,7 @@ tags: spring jpa
 
 ## 프로젝트 설정
 
+##### maven
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -60,6 +61,36 @@ tags: spring jpa
 
 > 아직도 plugin 을 왜 넣는지 모르네..
 
+##### gradle
+
+``` groovy
+plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+ext {
+    springBootVersion = '2.2.2.RELEASE'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.postgresql:postgresql'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'junit:junit:4.12'
+}
+```
+
 저렇게 하고, main 에 spring application 으로 기동하고, runner 로 테스트했다.
 
 #### logging 설정
@@ -75,7 +106,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        format_sql: true
+        format_sql: true #쿼리 포메팅
         temp:
           use_jdbc_metadata_defaults: false
 logging:
