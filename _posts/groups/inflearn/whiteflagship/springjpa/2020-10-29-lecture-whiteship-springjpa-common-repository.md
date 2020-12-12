@@ -49,12 +49,12 @@ public interface CustomPostRepositoryWithRepositoryDefinition {
 공통적인 함수를 모아놓고 싶다면, 공통 Repository 를 만들고 상속받아 사용하는 방법도 있다.
 
 ``` java
+@NoRepositoryBean
 public interface CommonPostRespository<T, ID extends Serializable> extends Repository<T, ID> {
     <E extends T> E save(T t);
     List<T> findAll();
 }
 
-@NoRepositoryBean
 public interface CustomPostRepositoryWithCommonPostRepository extends CommonPostRespository<Post, Long> {
 }
 ```
