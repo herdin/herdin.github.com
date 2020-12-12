@@ -13,7 +13,7 @@ tags: spring jpa
   Dirty checking -> 객체를 save 로 JPA 가 관리하는 상태로 만든 후, 값을 변경하면, insert 후 update 를 하는데
   값이 변경되다가 다시 save 했을 당시의 값으로 돌아오면 update 도 하지 않는다.
   write behind -> ??
-- Detached : JPA 가 관리하지 않는 상태. 객체를 Transactional 스코프에서 사용하다가 해당 함수가 끝났을때.
+- Detached : JPA 가 관리한적이 있지만 지금은 관리하지 않는 상태. 객체를 Transactional 스코프에서 사용하다가 해당 함수가 끝났을때.
 - Removed : JPA 가 관리하긴 하지만 삭제하기로 한 상태
 
 사용에 따른 entity 의 상태 변화
