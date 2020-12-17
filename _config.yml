@@ -60,7 +60,7 @@ open-apis:
   google_adsense: ca-pub-6021900706575667
   buymeacoffee: false
   kakao_adfit: true
-
+  coupang_partners: true
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
