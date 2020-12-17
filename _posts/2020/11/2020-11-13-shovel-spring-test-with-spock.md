@@ -2,7 +2,7 @@
 layout: post
 title: "Spock with Spring, Exception, NoClassDefFoundError, ContextConfiguration"
 date: 2020-11-13
-tags: shovel spring test spock
+tags: shovel-knight spring test spock
 ---
 
 `groovy` 로 써진 `Spock` 이라는 테스트 프레임워크를 사용하게 되면, JUnit 으로도 테스트를 잘 하고 있었지만, 그것보다 더 명시적으로 테스트를 할 수 있다고 과거에서 소식을 들었다.
