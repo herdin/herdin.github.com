@@ -2,7 +2,7 @@
 layout: post
 title: "Gitbash 사용 시, 파일 및 경로명이 인코딩 안될때"
 date: 2020-11-20
-tags: gitbash shovel
+tags: gitbash shovel-knight
 ---
 
 `git log`, `git status`, `git add` 등 git 을 사용할 떄, 파일명이 한글이면 유니코드로 나올 경우가 있다.  

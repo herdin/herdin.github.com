@@ -2,7 +2,7 @@
 layout: post
 title: "intellj, Command line is too long"
 date: 2020-11-17
-tags: shovel intellj ide
+tags: shovel-knight intellj ide
 ---
 
 Spring Boot, Jpa, MariaDB, Eureka, ... 가 들어간 프로젝트를 만들고, DB 연결확인하려고 RepositoryTest 를 만들어서 @Autowired 받아서 로그만 찍는 테스트를 만들었는데...
