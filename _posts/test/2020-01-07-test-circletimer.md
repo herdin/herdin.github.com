@@ -85,37 +85,32 @@ code {
 <button id="stop">Stop</button>
 <button id="add">Add 1s</button>
 
+<script src="/assets/vendor/circletimer/circletimer.min.js"></script>
 <script>
-require(['init'], (init) => {
-  require(['jquery'], ($) => {
-    require(['circletimer'], (ct) => {
-      /* Example code */
-      $("#example-timer").circletimer({
-        onComplete: function() {
-          alert("Time is up!");
-        },
-        onUpdate: function(elapsed) {
-          $("#time-elapsed").html(Math.round(elapsed));
-        },
-        timeout: 5000
-      });
+/* Example code */
+$("#example-timer").circletimer({
+  onComplete: function() {
+    alert("Time is up!");
+  },
+  onUpdate: function(elapsed) {
+    $("#time-elapsed").html(Math.round(elapsed));
+  },
+  timeout: 5000
+});
 
-      $("#start").on("click", function() {
-        $("#example-timer").circletimer("start");
-      });
+$("#start").on("click", function() {
+  $("#example-timer").circletimer("start");
+});
 
-      $("#pause").on("click", function() {
-        $("#example-timer").circletimer("pause");
-      });
+$("#pause").on("click", function() {
+  $("#example-timer").circletimer("pause");
+});
 
-      $("#stop").on("click", function() {
-        $("#example-timer").circletimer("stop");
-      });
+$("#stop").on("click", function() {
+  $("#example-timer").circletimer("stop");
+});
 
-      $("#add").on("click", function() {
-        $("#example-timer").circletimer("add", 1000);
-      });
-    }); //end of require(['circletimer']
-  });
+$("#add").on("click", function() {
+  $("#example-timer").circletimer("add", 1000);
 });
 </script>
