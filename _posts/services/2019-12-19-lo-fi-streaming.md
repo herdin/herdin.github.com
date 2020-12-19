@@ -10,6 +10,7 @@ tags: services lo-fi
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
 
 <script src="/assets/vendor/progressbar.min.js"></script>
+<script src="/assets/js/progressbar.js"></script>
 <script>
 let progressbarwrapper = ProgressBarConf();
 let bar = progressbarwrapper.draw('progressbar-container', 'linep');
