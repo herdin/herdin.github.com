@@ -77,7 +77,7 @@ let slideshowObj = slideshow();
 slideshowObj.init(slideClassName, 'dot');
 
 for(let audioKey in audios) {
-  let templateId = util.genID();
+  let templateId = util().genID();
   let $clone = $('#template').clone();
   $clone.attr('id', templateId);
   $clone.removeClass('mySlides');
@@ -85,7 +85,7 @@ for(let audioKey in audios) {
   $clone.find('[name=sequence]').html('' + (Number(audioKey)+1) + '/' + audios.length);
   $clone.find('[name=thumbnail]').attr('src', audios[audioKey][thumbnail]);
   $clone.find('[name=caption]').html(audios[audioKey][id]);
-  let audioId = util.genID();
+  let audioId = util().genID();
   $clone.find('audio').attr('id', audioId);
   $clone.find('[name=audiosrc]').attr('src', audios[audioKey][sourceSrc]);
   $clone.find('[name=audiosrc]').attr('type', audios[audioKey][sourceType]);
