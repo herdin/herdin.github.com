@@ -40,6 +40,7 @@ click below circle to play/pause
 
 <script src="/assets/vendor/progressbar.min.js"></script>
 <script src="/assets/js/progressbar.js"></script>
+<script src="/assets/js/slideshow.js"></script>
 <script>
 let progressbarwrapper = ProgressBarConf();
 let bar = progressbarwrapper.draw('progressbar-container', 'linep');
