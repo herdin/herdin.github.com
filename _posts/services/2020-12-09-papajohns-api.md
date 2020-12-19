@@ -7,13 +7,13 @@ tags: services
 
 <link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/css/jsgrid-theme.min.css"/>
 <link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/css/jsgrid.min.css"/>
-
+<link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/js/jsgrid.min.js"></script>
 <div id="storeGrid"></div>
 <div id="couponGrid"></div>
 
 
 <script>
-require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (jg) => { $(document).ready(function(){
+$(document).ready(function(){
 
   let sharedData = {
        currentLocationName: null,
@@ -181,6 +181,6 @@ require(['init'], (init) => { require(['jquery'], ($) => { require(['jsgrid'], (
 
    debug.log('store grid init ok.');
 
-}); }); }); });
+});
 
 </script>
