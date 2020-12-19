@@ -7,7 +7,7 @@ tags: services
 
 <link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/css/jsgrid-theme.min.css"/>
 <link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/css/jsgrid.min.css"/>
-<script src="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/js/jsgrid.min.js"></script>
+<script src="/assets/vendor/jsgrid_v1.5.3/js/jsgrid.min.js"></script>
 <div id="storeGrid"></div>
 <div id="couponGrid"></div>
 
