@@ -1,5 +1,4 @@
-define(['progressbar'], (ProgressBar) => {
-
+function ProgressBarConf() {
   let drawLine = (containerId) => {
     return new ProgressBar.Line(document.getElementById(containerId), {
       strokeWidth: 4,
@@ -131,4 +130,4 @@ define(['progressbar'], (ProgressBar) => {
       bar.animate(ratio, {duration:millisec});
     },
   };//end of return
-});
+}

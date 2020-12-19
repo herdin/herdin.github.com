@@ -9,79 +9,78 @@ tags: services lo-fi
 
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
 
+<script src="/assets/vendor/progressbar.min.js"></script>
 <script>
-require(['init'], (init) => {
-  require(['jquery', 'util', 'slideshow', 'progressbarwrapper'], ($, util, slideshow, progressbarwrapper) => {
-    let bar = progressbarwrapper.draw('progressbar-container', 'linep');
-    progressbarwrapper.animate(bar, 0.0, 0);
+let progressbarwrapper = ProgressBarConf();
+let bar = progressbarwrapper.draw('progressbar-container', 'linep');
+progressbarwrapper.animate(bar, 0.0, 0);
 
-    const id = 0;
-    const thumbnail = 1;
-    const sourceSrc = 2;
-    const sourceType = 3;
-    let audios = [
-      [
-        "hyades.shoutca.st",
-        "https://cdn-profiles.tunein.com/s288329/images/logoq.jpg?t=636294",
-        "http://hyades.shoutca.st:8043/autodj",
-        "audio/mpeg",
-      ],
-      /*
-      [
-        "tunein_com_Now_Playing_s290316",
-        "https://cdn-profiles.tunein.com/s290316/images/logoq.jpg?t=151378",
-        "http://listen.shoutcast.com/freshsndgold",
-        "audio/mpeg",
-      ],*/
-      [
-        "radio_net_lautfm_lofi",
-        "https://static.radio.net/inc/v2/images/avatars/station_avatar.gif",
-        "https://stream.laut.fm/lofi?ref=radiode",
-        "audio/mpeg",
-      ],
-    ];
+const id = 0;
+const thumbnail = 1;
+const sourceSrc = 2;
+const sourceType = 3;
+let audios = [
+  [
+    "hyades.shoutca.st",
+    "https://cdn-profiles.tunein.com/s288329/images/logoq.jpg?t=636294",
+    "http://hyades.shoutca.st:8043/autodj",
+    "audio/mpeg",
+  ],
+  /*
+  [
+    "tunein_com_Now_Playing_s290316",
+    "https://cdn-profiles.tunein.com/s290316/images/logoq.jpg?t=151378",
+    "http://listen.shoutcast.com/freshsndgold",
+    "audio/mpeg",
+  ],*/
+  [
+    "radio_net_lautfm_lofi",
+    "https://static.radio.net/inc/v2/images/avatars/station_avatar.gif",
+    "https://stream.laut.fm/lofi?ref=radiode",
+    "audio/mpeg",
+  ],
+];
 
-    let slideClassName = 'musicSlide';
-    slideshow.init(slideClassName, 'dot');
+let slideClassName = 'musicSlide';
+let slideshowObj = slideshow();
+slideshowObj.init(slideClassName, 'dot');
 
-    for(let audioKey in audios) {
-      let templateId = util.genID();
-      let $clone = $('#template').clone();
-      $clone.attr('id', templateId);
-      $clone.removeClass('mySlides');
-      $clone.addClass(slideClassName);
-      $clone.find('[name=sequence]').html('' + (Number(audioKey)+1) + '/' + audios.length);
-      $clone.find('[name=thumbnail]').attr('src', audios[audioKey][thumbnail]);
-      $clone.find('[name=caption]').html(audios[audioKey][id]);
-      let audioId = util.genID();
-      $clone.find('audio').attr('id', audioId);
-      $clone.find('[name=audiosrc]').attr('src', audios[audioKey][sourceSrc]);
-      $clone.find('[name=audiosrc]').attr('type', audios[audioKey][sourceType]);
-      $('#slideshow-container').prepend($clone);
+for(let audioKey in audios) {
+  let templateId = util.genID();
+  let $clone = $('#template').clone();
+  $clone.attr('id', templateId);
+  $clone.removeClass('mySlides');
+  $clone.addClass(slideClassName);
+  $clone.find('[name=sequence]').html('' + (Number(audioKey)+1) + '/' + audios.length);
+  $clone.find('[name=thumbnail]').attr('src', audios[audioKey][thumbnail]);
+  $clone.find('[name=caption]').html(audios[audioKey][id]);
+  let audioId = util.genID();
+  $clone.find('audio').attr('id', audioId);
+  $clone.find('[name=audiosrc]').attr('src', audios[audioKey][sourceSrc]);
+  $clone.find('[name=audiosrc]').attr('type', audios[audioKey][sourceType]);
+  $('#slideshow-container').prepend($clone);
 
-      $clone.find('[name=thumbnail]').click(() => {
-          let audio = document.getElementById(audioId);
-          if(audio.paused) { audio.play(); }
-          else { audio.pause(); }
-      });
+  $clone.find('[name=thumbnail]').click(() => {
+      let audio = document.getElementById(audioId);
+      if(audio.paused) { audio.play(); }
+      else { audio.pause(); }
+  });
 
-      $('#dot-container').append('<span class="dot"></span>');
+  $('#dot-container').append('<span class="dot"></span>');
 
-      progressbarwrapper.animate(bar, (Number(audioKey)+1)/audios.length, 10);
-    }
+  progressbarwrapper.animate(bar, (Number(audioKey)+1)/audios.length, 10);
+}
 
-    $('#prev').click(slideshow.prevSlide);
-    $('#next').click(slideshow.nextSlide);
-    for(let i=0; i<$('.dot').length; i++) {
-    	$($('.dot').get(i)).click(() => {
-        slideshow.currSlide(i);
-      });
-    }
+$('#prev').click(slideshowObj.prevSlide);
+$('#next').click(slideshowObj.nextSlide);
+for(let i=0; i<$('.dot').length; i++) {
+	$($('.dot').get(i)).click(() => {
+    slideshowObj.currSlide(i);
+  });
+}
 
-    slideshow.currSlide(0);
-    progressbarwrapper.animate(bar, 1.0, 100);
-  }); //end of require(['jquery', 'slideshow']
-}); //end of require(['init']
+slideshowObj.currSlide(0);
+progressbarwrapper.animate(bar, 1.0, 100);
 </script>
 
 ``` shell
