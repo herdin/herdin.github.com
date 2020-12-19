@@ -9,6 +9,35 @@ tags: services lo-fi
 
 ![lo-fi image](/assets/images/posts/2019-12-19-test-html5-audio.gif)
 
+``` shell
+click below circle to play/pause
+```
+
+<div id="progressbar-container"></div>
+
+<div id="slideshow-container" class="slideshow-container" style="max-width:150px;">
+  <!-- contents -->
+  <!-- Next and previous buttons -->
+  <a class="prev" id="prev">&#10094;</a>
+  <a class="next" id="next">&#10095;</a>
+</div>
+
+<!-- The dots/circles -->
+<div id="dot-container" style="text-align:center">
+</div>
+
+
+<!-- Full-width images with number and caption text -->
+<div id="template" class="mySlides fade" style="display:none; text-align:center;">
+  <div name="sequence" class="numbertext"></div>
+  <img name="thumbnail" src="#" style="width:150px; height:150px; border-radius:50%; vertical-align:middle;"/>
+  <div name="caption" class="text"></div>
+  <audio controls loop style="display:none;">
+    <source name="audiosrc" src="#" type="#">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
 <script src="/assets/vendor/progressbar.min.js"></script>
 <script src="/assets/js/progressbar.js"></script>
 <script>
@@ -83,32 +112,3 @@ for(let i=0; i<$('.dot').length; i++) {
 slideshowObj.currSlide(0);
 progressbarwrapper.animate(bar, 1.0, 100);
 </script>
-
-``` shell
-click below circle to play/pause
-```
-
-<div id="progressbar-container"></div>
-
-<div id="slideshow-container" class="slideshow-container" style="max-width:150px;">
-  <!-- contents -->
-  <!-- Next and previous buttons -->
-  <a class="prev" id="prev">&#10094;</a>
-  <a class="next" id="next">&#10095;</a>
-</div>
-
-<!-- The dots/circles -->
-<div id="dot-container" style="text-align:center">
-</div>
-
-
-<!-- Full-width images with number and caption text -->
-<div id="template" class="mySlides fade" style="display:none; text-align:center;">
-  <div name="sequence" class="numbertext"></div>
-  <img name="thumbnail" src="#" style="width:150px; height:150px; border-radius:50%; vertical-align:middle;"/>
-  <div name="caption" class="text"></div>
-  <audio controls loop style="display:none;">
-    <source name="audiosrc" src="#" type="#">
-    Your browser does not support the audio element.
-  </audio>
-</div>
