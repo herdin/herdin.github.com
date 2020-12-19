@@ -35,8 +35,7 @@ tags: docker reverse-proxy middleware
 ### Supported Providers
 <div id="pureTableHere"></div>
 <script>
-require(['util'], (util) => {
- util.genPureTable(
+ util().genPureTable(
    'pureTableHere',
    ['Provider', 'Type', 'Configuration Type'],
    [
@@ -47,7 +46,6 @@ require(['util'], (util) => {
      ['File','Manual','TOML/YAML format'],
    ]
  );
-});
 </script>
 
 # [설정](https://docs.traefik.io/getting-started/configuration-overview/)

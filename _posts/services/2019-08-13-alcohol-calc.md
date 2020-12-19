@@ -8,17 +8,13 @@ tags: services calc
 <input id="gram" type="text" placeholder="" size="5" readonly> g
 
 <script>
-require(['init'], (init) => {
-    require(['jquery'], ($) => {
-      $(document).ready(function(){
-        var calc = function() {
-          var abv = $("#abv").val();
-          var cc =  $("#cc").val();
-          $("#gram").val((abv*cc/100*0.8).toFixed(2));
-        }
-        $("#abv").on("keyup", calc);
-        $("#cc").on("keyup", calc);
-      });
-    });
+$(document).ready(function(){
+  var calc = function() {
+    var abv = $("#abv").val();
+    var cc =  $("#cc").val();
+    $("#gram").val((abv*cc/100*0.8).toFixed(2));
+  }
+  $("#abv").on("keyup", calc);
+  $("#cc").on("keyup", calc);
 });
 </script>

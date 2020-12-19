@@ -187,8 +187,7 @@ kill -9 ${PID} 를 사용하면 안되는 이유.
 
 <div id="pureTableHere"></div>
 <script>
-require(['util'], (util) => {
-  util.genPureTable(
+  util().genPureTable(
     'pureTableHere',
     ['SIGNAL', '기본 행동'],
     [
@@ -199,7 +198,6 @@ require(['util'], (util) => {
       ['CONT', '중지된 프로세스 재시작'],
     ]
   );
-});
 </script>
 
 ## SELinux

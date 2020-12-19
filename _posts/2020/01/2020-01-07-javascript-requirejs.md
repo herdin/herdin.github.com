@@ -5,15 +5,6 @@ date: 2020-01-07
 tags: javascript
 ---
 
-<script>
-require(['init'], (init) => {
-  require(['jquery', 'util'], ($, util) => {
-    console.log('jquery version -> ' + $.fn.jquery);
-    console.log('gen id from util module -> ' + util.genID());
-  });
-});
-</script>
-
 웹서칭을 하다가 어-썸한 js 나 css 를 보면 블로그로 퍼다가 담곤 한다.
 
 공통 헤더 파일에 특정 라이브러리(jquery)가 들어간게 마음에 들지 않아서, 공통 헤더파일에는 init.js 만 두고, init.js 에서 jquery 를 동적으로 불러오도록 했다.

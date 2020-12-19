@@ -45,8 +45,6 @@ console.log(new Page().getCompiledTime());
 ```
 
 <script>
-require(['init'], (init) => {
-  require(['jquery', 'util'], ($, util) => {
     var curDate = new Date();
     var chmunk = Math.ceil((curDate-new Date(2010, 01-1, 12))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
     var merryGoAround = Math.ceil((curDate-new Date(2017, 09-1, 16))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
@@ -68,9 +66,4 @@ require(['init'], (init) => {
     appendDday('merryGoAround', merryGoAround);
     appendDday('myBean'       , myBean);
     appendDday('myBeanSprout' , myBeanSprout);
-  });
-});
-
-
-
 </script>
