@@ -2,7 +2,7 @@
 layout: post
 title: "javascript, IIFE"
 date: 2020-08-07
-tags: writing javascript
+tags: javascript
 ---
 
 ## IIFE(Immediately-Invoked Function Expression)
