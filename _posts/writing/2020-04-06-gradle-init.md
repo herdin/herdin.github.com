@@ -46,10 +46,7 @@ gradle 의 설치 없이 빌드를 가능하게 해준다
 ├── gradlew
 └── gradlew.bat
 ```
-gradlew 는 shell(linux)
-gradlew.bat 은 batch(window)
-
-
+gradlew 는 shell(linux), gradlew.bat 은 batch(window) 내부를 보면 settings.gradle 의 gradle 을 다운받아서 사용하는 것을 볼 수 있다. 
 
 
 참고

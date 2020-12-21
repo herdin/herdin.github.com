@@ -2,7 +2,7 @@
 layout: post
 title: "Redis with docker"
 date: 2019-08-08
-tags: docker redis
+tags: docker redis database
 ---
 # 1. docker redis 맛보기
 ## 1.1.  일단 띄워보기

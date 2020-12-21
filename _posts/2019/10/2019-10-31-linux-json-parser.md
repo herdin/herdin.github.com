@@ -2,7 +2,7 @@
 layout: post
 title: "linux json parser, jq 사용"
 date: 2019-10-18
-tags: linux json
+tags: linux json software
 ---
 
 업무상 `Access token` 을 확인할 일이 생겨서 `curl` 로 응답을 보다보니 `json` 응답이 가독 성이 떨어져서 `parser` 를 찾게 되었다.

@@ -2,7 +2,7 @@
 layout: post
 title: "Intellij, gradle 프로젝트 Could not target platform"
 date: 2020-11-13
-tags: ide debug gradle
+tags: ide gradle shovel-knight
 ---
 
 <img src="#" post-src="2020-11-13-intellij-gradle-could-not-target-platform.PNG" alt="대충 오류난 상황"/>
