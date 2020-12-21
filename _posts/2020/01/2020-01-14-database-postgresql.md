@@ -2,7 +2,7 @@
 layout: post
 title: "PostgreSQL 기본"
 date: 2020-01-14
-tags: database postgresql
+tags: database postgresql opensource 
 ---
 
 사내 스터디 `hamhuman` 에서 진행하는 각자 서비스 만들기 에서 정한 databse 는 PostgreSQL.

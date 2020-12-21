@@ -2,7 +2,7 @@
 layout: post
 title: "encoding, euc-kr 과 ksc5601 차이"
 date: 2020-12-09
-tags: encoding
+tags: encode-decode
 ---
 
 참고

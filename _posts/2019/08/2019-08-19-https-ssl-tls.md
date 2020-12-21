@@ -2,7 +2,7 @@
 layout: post
 title: "HTTPS, TLS, SSL, 전자서명"
 date: 2019-08-19
-tags: web https
+tags: web https security
 ---
 
 > 나는 그냥 HTTPS 만 알고싶은데 왜 하나만 알면 안되는거야 행복할수가업서...ㅠㅠ

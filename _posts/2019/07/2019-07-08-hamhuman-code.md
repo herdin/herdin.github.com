@@ -2,7 +2,7 @@
 layout: post
 title: "Hamhuman code"
 date: 2019-07-08
-tags: hamhuman
+tags: hustle
 ---
 belows are \`\`\`java
 

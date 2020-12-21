@@ -2,7 +2,7 @@
 layout: post
 title: "Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test"
 date: 2019-12-24
-tags: java springboot
+tags: java spring-boot
 ---
 
 Springboot 테스트를 실행했는데
