@@ -7,7 +7,7 @@ tags: design-pattern
 
 > 아래 예시는 이해를 돕기위한 자료로 정확하지 않음. 대충 이런 뜻이구나 정도로 이해하길 바람.
 
-아래와 같은 싱글톤 패턴에서 `Resource` 라는 싱글톤 자원을 초기화하고 관리한다고 치자.
+아래와 같은 싱글톤 패턴에서 `SingletonResource` 라는 싱글톤 자원을 초기화하고 관리한다고 치자.
 
 ``` java
 class SingletonResource {
