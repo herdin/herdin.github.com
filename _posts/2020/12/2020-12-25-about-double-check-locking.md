@@ -53,7 +53,7 @@ class SingletonResource {
 
 #### 1. Eager Initialization - 이른 초기화
 
-초기화에
+singleton 객체를 필요할 때가 아니라, class 를 로드하는 시점에 singleton 객체가 생성된다.
 
 ``` java
 public static class EagerInitializationSingletonResource {
@@ -70,6 +70,8 @@ public static class EagerInitializationSingletonResource {
 ```
 
 #### 2. Initialization-on-demand Holder Idiom - Static Holder 사용
+
+singleton 객체가 필요할 때(첫 getInstance 메소드가 호출될 때), singleton 객체가 생성된다.
 
 Bill Pugh Singleton(또는 Static holder singleton pattern, Initialization-on-demand holder idiom) 이라 불리는 방식.  
 JVM 의 static initializer 에 의해서 초기화 되는 private static class 의 특성을 이용한 것으로 thread safe는 보장이 되는 원리를 이용한 것이다. synchronized 를 이용하지 않고도 같은 효과를 낼 수 있다.
