@@ -2,7 +2,7 @@
 layout: post
 title: "XSS, CSRF/XSRF, Same-Origin policy, CORS"
 date: 2019-09-23
-tags: web security writing
+tags: web security
 ---
 
 웹취약점이라고 자주 듣는 단어들이 있는데, 듣기만 자주 듣고 뭔지 정확히 모르니 짜증나서 정리한다
