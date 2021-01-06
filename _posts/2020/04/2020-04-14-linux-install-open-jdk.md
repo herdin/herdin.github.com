@@ -2,7 +2,7 @@
 layout: post
 title: "Linux(Amazon Linux) 에 open-jdk 설치하기"
 date: 2020-04-14
-tags: linux install writing
+tags: linux install
 ---
 
 
