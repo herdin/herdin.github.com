@@ -15,7 +15,7 @@ tags:  web githubpage jekyll
 
 아래와 같이 링크를 걸자.
 ```
-[여기를 참고하세요]({% post_url 2010-07-21-name-of-post %})
+dd
 ```
 
 참고
