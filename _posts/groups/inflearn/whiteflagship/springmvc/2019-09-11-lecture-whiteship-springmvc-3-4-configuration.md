@@ -2,7 +2,7 @@
 layout: post
 title: "Whiteship Spring MVC 3/4 Configuration"
 date: 2019-09-11
-tags: web spring writing
+tags: web spring
 ---
 
 # 스프링 MVC 설정

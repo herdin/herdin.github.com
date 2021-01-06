@@ -2,7 +2,7 @@
 layout: post
 title: "Whiteship Spring MVC 11 Mechanism"
 date: 2019-07-24
-tags: web spring spring-boot writing
+tags: web spring spring-boot
 ---
 jsp 로 시작해서 Servlet, DispatcherServlet 그리고 마지막엔
 Spring Boot 로 구동하는 것을 보고 어떻게 구동되는지 설명하는 강좌.

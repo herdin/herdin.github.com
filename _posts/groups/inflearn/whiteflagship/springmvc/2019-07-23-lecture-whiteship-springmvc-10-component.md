@@ -2,7 +2,7 @@
 layout: post
 title: "Whiteship Spring MVC 10 Component"
 date: 2019-07-23
-tags: web spring writing
+tags: web spring
 ---
 `gitbook` 이랑 `gitpage` 랑 뭘 해야될지 모르겠다.
 `gitbook` 이 좀 더 편하긴한데...

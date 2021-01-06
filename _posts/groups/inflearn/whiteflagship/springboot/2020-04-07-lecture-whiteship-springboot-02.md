@@ -2,7 +2,7 @@
 layout: post
 title: "Whiteship Spring Boot 02 Starting"
 date: 2020-04-06
-tags: spring spring-boot writing
+tags: spring spring-boot
 ---
 
 > 1부는 소개

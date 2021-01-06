@@ -2,7 +2,7 @@
 layout: post
 title: "Uncaught SyntaxError: Unexpected token '&lt;'"
 date: 2019-12-27
-tags: javascript writing
+tags: javascript
 ---
 
 자꾸 블로그에 특정 페이지에서

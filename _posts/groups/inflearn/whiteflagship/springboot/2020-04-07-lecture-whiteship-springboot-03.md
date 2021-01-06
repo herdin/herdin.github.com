@@ -2,7 +2,7 @@
 layout: post
 title: "Whiteship Spring Boot 03 Principle"
 date: 2020-04-07
-tags: spring spring-boot writing
+tags: spring spring-boot
 ---
 
 > 1부는 소개

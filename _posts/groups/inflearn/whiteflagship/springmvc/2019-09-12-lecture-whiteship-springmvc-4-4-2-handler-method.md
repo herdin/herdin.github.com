@@ -2,7 +2,7 @@
 layout: post
 title: "Whiteship Spring MVC 4/4 Usage 2/2 핸들러 메소드"
 date: 2019-09-12
-tags: web spring writing
+tags: web spring
 ---
 
 ## 핸들러 메소드 1부 아규먼트와 리턴 타입
