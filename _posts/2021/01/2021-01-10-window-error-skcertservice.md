@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "파일이 SKCertService에서 열려 있으므로 이 작업을 완료할 수 없습니다."
-date: 2020-01-07
+date: 2021-01-07
 tags: window shovel-knight
 ---
 
