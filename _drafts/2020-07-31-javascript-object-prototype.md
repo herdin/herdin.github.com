@@ -45,7 +45,7 @@ console.dir(Person)
 */
 ```
 
-위의 Person 이라는 함수는
+위의 Person 이라는 변수는
 * `prototype` property (`Person Prototype Object` 참조) 와
 * `__proto__` property (`Function Prototype Object` 참조) 를 갖고 있다.(`_` underscore 가 두개)  
 
@@ -90,8 +90,10 @@ p.constructor === Person
 객체를 생성하는 방법
 * 객체 리터럴 -> 흔히 사용하는 `let obj = { name: 'herdin', age: 22 };` 리터럴 방식.
 * `Object.create()` -> Object 의 함수를 사용하는 방법.
-* 생성자 함수 -> 함수와 new 키워드를 사용한 방법.
+* 생성자 함수 -> 함수와 new 키워드를 사용한 방법. (ES5)
 > 생성자 함수로 만든다던지, 생성자 함수의 지위를 주면 된다는 말을 블로그에서 봤는데, 생성자 함수란게 뭔가 따로 있는게 아니라 함수로 객체를 생성하게되면 그 함수가 생성자 함수가 되나보다. 마치 `promise` 의 `thenable` 객체가 그냥 `then` 이란 함수를 가진 객체인 것 처럼..
+
+* class 키워드 (ES5, 관련 키워드  constructor, static, extends, super)
 
 ## `Object` 간의 상속관계를 만들어보자.
 
