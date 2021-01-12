@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "javascript, Object 와 Prototype"
-date: 2020-07-31
+date: 2021-01-10
 tags: javascript
 ---
 
