@@ -31,12 +31,14 @@ let problems = [];
 - Best Time to Buy and Sell Stock
 - Text Justification
 - Maximum Subarray
-- Integer to English Words
+- Integer to English Words -> hard, next
 - Verifying an Alien Dictionary
-- Median of Two Sorted Arrays
+- Median of Two Sorted Arrays -> hard, next
 - Valid Parentheses
 - Design Underground System
 - Longest Substring Without Repeating Characters
+> done here
+
 - 3Sum
 - Meeting Rooms II
 - K Closest Points to Origin

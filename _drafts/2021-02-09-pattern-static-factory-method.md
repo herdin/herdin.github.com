@@ -17,12 +17,12 @@ tags: design-pattern
 
 흔히 사용하는 네이밍 컨벤션은 다음과 같다.
 
-* `valueOf`
-* `of`
-* `getInstance`
-* `newInstance`
-* `getType`
-* `newType`
+* `valueOf` : argument 로 들어오는 값을 가지는 인스턴스를 생성할 경우
+* `of` : valueOf 의 줄인 형태
+* `getInstance` : argument 로 들어오는 값을 가질 수도 아닐수도있는 인스턴스를 생성할 경우, 싱글톤일 경우 argument 없고 매번 같은 객체 반환
+* `newInstance` : getInstance 와 비슷하지만, 매번 새로운 객체 생성
+* `getType` : getInstance 와 비슷하지만, 반환될 객체의 클래스와 다른 클래스에 팩토리 메소드가 있는 경우 (싱글톤 일 경우 참고)
+* `newType` : getType 과 비슷하지만 매번 새로운 객체 생성
 
 이 패턴을 사용하면 뭐가 좋을까?
 
