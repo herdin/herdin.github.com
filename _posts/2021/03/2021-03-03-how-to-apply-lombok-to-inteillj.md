@@ -17,24 +17,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok' //(2)
     //...
 }
-
-//(3) 아래로 쭉
-def querydslDir = "$buildDir/generated/querydsl"
-querydsl {
-    jpa = true
-    querydslSourcesDir = querydslDir
-}
-sourceSets {
-    main.java.srcDir querydslDir
-}
-configurations {
-    querydsl.extendsFrom compileClasspath
-}
-compileQuerydsl {
-    options.annotationProcessorPath = configurations.querydsl
-}
 ```
 
 > 마지막 annotationProcessor 설정하는 것 때문에 약간 시간이 지연되었다.
-> compileQuerydsl 설정을 하지 않으면, 아마 컴파일할때 오류가 난다. compileQuerydsl 이게 없어요~ 하면서
 > annotationProcessor 설정을 하지 않으면, 컴파일할때(아마?) 오류가 난다. 코드상으론 이상이 없는데 컴파일 결과에서 lombok 으로 생성된 getter 나 setter 를 모른다고 한다.
