@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "querydls 설정"
+title: "querydsl 설정"
 date: 2021-03-04
 tags: java jpa gradle
 ---
@@ -8,9 +8,7 @@ tags: java jpa gradle
 #### gradle plugins 설정
 ``` groovy
 plugins {
-    id 'java'
-    id 'org.springframework.boot' version '2.4.3'
-    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    //...
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 ```
@@ -42,3 +40,18 @@ compileQuerydsl {
     options.annotationProcessorPath = configurations.querydsl
 }
 ```
+
+위의 설정을 다 마치고, IntelliJ 를 사용할 때는
+
+`File | Settings | Build, Execution, Deployment | Build Tools | Gradle` 의 설정에 가서
+- Build and run using
+- Run Tests using
+을 모두 IntelliJ IDEA 로 바꿔놓는다.
+
+#### 기본 레포지토리 설정
+``` java
+public interface AccountRepository extends JpaRepository<Account, Long>, QuerydslPredicateExecutor<Account> {}
+```
+
+#### 레포지토리 익스텐션 설정
+기본레포지토리를 사용하지 않을 경우?
