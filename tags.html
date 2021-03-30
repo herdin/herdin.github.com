@@ -40,47 +40,51 @@ permalink: /tags/
 </div>
 
 <script>
-const prefix = '{{ prefix }}';
-const DELAY_DEBOUNCE = 300;
-const DELAY_FADE_IN_OUT = 100;
+dependencyPromise.then(() => tags());
 
-let debounceTimer = null;
-let debounce = function(callback, delay) {
-  if(debounceTimer) {
-    clearTimeout(debounceTimer)
+function tags() {
+  const prefix = '{{ prefix }}';
+  const DELAY_DEBOUNCE = 300;
+  const DELAY_FADE_IN_OUT = 100;
+
+  let debounceTimer = null;
+  let debounce = function(callback, delay) {
+    if(debounceTimer) {
+      clearTimeout(debounceTimer)
+    }
+    debounceTimer = setTimeout(callback, delay);
   }
-  debounceTimer = setTimeout(callback, delay);
-}
 
-let searchEventHandler = function(e) {
-  let searchText = $('#search').val();//e.target.value;
-  logger.log('search text', searchText);
-  if(searchText == null || searchText == undefined || searchText.length <= 0) return;
-  let taggedPosts = $('.site-tagged-posts > li');
-  for(taggedPost of taggedPosts) {
-      let taggedPostClass = $(taggedPost).attr('class');
-      let searchTextIndex = taggedPostClass.indexOf(searchText);
-      logger.log('tagged post class -> ' + taggedPostClass + ', search text index' + searchTextIndex);
-      if(searchTextIndex != -1) {
-          $(taggedPost).fadeIn(DELAY_FADE_IN_OUT);
-      } else {
-          $(taggedPost).fadeOut(DELAY_FADE_IN_OUT);
-      }
+  let searchEventHandler = function(e) {
+    let searchText = $('#search').val();//e.target.value;
+    logger.log('search text', searchText);
+    if(searchText == null || searchText == undefined || searchText.length <= 0) return;
+    let taggedPosts = $('.site-tagged-posts > li');
+    for(taggedPost of taggedPosts) {
+        let taggedPostClass = $(taggedPost).attr('class');
+        let searchTextIndex = taggedPostClass.indexOf(searchText);
+        logger.log('tagged post class -> ' + taggedPostClass + ', search text index' + searchTextIndex);
+        if(searchTextIndex != -1) {
+            $(taggedPost).fadeIn(DELAY_FADE_IN_OUT);
+        } else {
+            $(taggedPost).fadeOut(DELAY_FADE_IN_OUT);
+        }
+    }
   }
-}
 
 
-$('#search').keyup(() => debounce(searchEventHandler, 300));
+  $('#search').keyup(() => debounce(searchEventHandler, 300));
 
-$('.site-tag').click(function() {
-  $('.site-tagged-posts > li').hide();
-  let tag = $(this).attr('id');
-  $('.' + prefix + tag).fadeIn(DELAY_FADE_IN_OUT);
-});
+  $('.site-tag').click(function() {
+    $('.site-tagged-posts > li').hide();
+    let tag = $(this).attr('id');
+    $('.' + prefix + tag).fadeIn(DELAY_FADE_IN_OUT);
+  });
 
-//access from post tag, auto show tag
-let paramId = window.location.hash.replace('#', '');
-if(paramId != null && paramId.length > 0) {
-  $('#' + paramId).click();
+  //access from post tag, auto show tag
+  let paramId = window.location.hash.replace('#', '');
+  if(paramId != null && paramId.length > 0) {
+    $('#' + paramId).click();
+  }
 }
 </script>
