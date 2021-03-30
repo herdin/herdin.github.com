@@ -14,7 +14,7 @@ function includeResource(filePath, resourceMaker) {
         resolve();
       }
     };
-    document.body.appendChild(resource);
+    document.head.appendChild(resource);
   });
   return promise;
 }
