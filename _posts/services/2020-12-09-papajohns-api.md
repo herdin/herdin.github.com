@@ -16,7 +16,7 @@ dependencyPromise
 .then(() =>
   Promise.all([
     includeResource('/assets/vendor/jsgrid_v1.5.3/css/jsgrid-theme.min.css', css),
-    includeResource('/assets/vendor/jsgrid_v1.5.3/css/jsgrid.min.css', script),
+    includeResource('/assets/vendor/jsgrid_v1.5.3/css/jsgrid.min.css', css),
     includeResource('/assets/vendor/jsgrid_v1.5.3/js/jsgrid.min.js', script)
   ])
 )
