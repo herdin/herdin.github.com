@@ -34,7 +34,7 @@ function css(filePath) {
   return link;
 }
 
-Promise.resolve()
+const dependencyPromise = Promise.resolve()
 .then(() => {
   //css here
   includeResource('/style.css', css);

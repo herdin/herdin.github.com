@@ -14,7 +14,6 @@ class Page {
 }
 
 console.log(new Page().getCompiledTime());
-
 ```
 
 ### History
@@ -45,25 +44,28 @@ console.log(new Page().getCompiledTime());
 ```
 
 <script>
-    var curDate = new Date();
-    var chmunk = Math.ceil((curDate-new Date(2010, 01-1, 12))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
-    var merryGoAround = Math.ceil((curDate-new Date(2017, 09-1, 16))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
-    var myBean = Math.ceil((curDate-new Date(2018, 12-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
-    var myBeanSprout = Math.ceil((curDate-new Date(2019, 09-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
+dependencyPromise.then(() => about());
+function about() {
+  var curDate = new Date();
+  var chmunk = Math.ceil((curDate-new Date(2010, 01-1, 12))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
+  var merryGoAround = Math.ceil((curDate-new Date(2017, 09-1, 16))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
+  var myBean = Math.ceil((curDate-new Date(2018, 12-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
+  var myBeanSprout = Math.ceil((curDate-new Date(2019, 09-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
 
-    function appendDday(id, day) {
-      var element = '';
-      element += '<div>';
-      element += '<span class="kd">const</span> ';
-      element += '<span class="nx">' + id + '</span> ';
-      element += '<span class="o">=</span> ';
-      element += '<span class="mo">' + day + '</span>';
-      element += '<span class="err">;</span>';
-      element += '</div>';
-      $('.highlight code').eq(0).append(element);      
-    }
-    appendDday('chmunk'       , chmunk);
-    appendDday('merryGoAround', merryGoAround);
-    appendDday('myBean'       , myBean);
-    appendDday('myBeanSprout' , myBeanSprout);
+  function appendDday(id, day) {
+    var element = '';
+    element += '<div>';
+    element += '<span class="kd">const</span> ';
+    element += '<span class="nx">' + id + '</span> ';
+    element += '<span class="o">=</span> ';
+    element += '<span class="mo">' + day + '</span>';
+    element += '<span class="err">;</span>';
+    element += '</div>';
+    $('.highlight code').eq(0).append(element);      
+  }
+  appendDday('chmunk'       , chmunk);
+  appendDday('merryGoAround', merryGoAround);
+  appendDday('myBean'       , myBean);
+  appendDday('myBeanSprout' , myBeanSprout);
+}
 </script>
