@@ -32,7 +32,7 @@ $(document).ready(function(){
 
    function filteringData(filterObj, filterTargetDataArr) {
        return filterTargetDataArr.filter((filterTarget) => {
-           //debug.log(`filter target ->`, filterTarget);
+           //logger.log(`filter target ->`, filterTarget);
            if(isFilterEmpty(filterObj)) {
                return true;
            }
@@ -40,7 +40,7 @@ $(document).ready(function(){
            for(filterKey in filterObj) {
                let filterValue = filterObj[filterKey];
                if(filterValue) {
-                   //debug.log(`filter value -> ${filterValue}, filter target -> ${filterTarget[filterKey]}, indexOf -> ${filterTarget[filterKey].indexOf(filterValue)}`);
+                   //logger.log(`filter value -> ${filterValue}, filter target -> ${filterTarget[filterKey]}, indexOf -> ${filterTarget[filterKey].indexOf(filterValue)}`);
                    if(filterTarget[filterKey].indexOf(filterValue) >= 0) {
                        isFiltered = true;
                        break;
@@ -55,20 +55,20 @@ $(document).ready(function(){
        const apiKey = 'AIzaSyATNATgEjLVDxo4zAEuurszwREhK3HVvBw';
        var latitude = pos.coords.latitude;
        var longitude = pos.coords.longitude;
-       debug.log("current latitude, longitude : " + latitude + ", "+ longitude);
+       logger.log("current latitude, longitude : " + latitude + ", "+ longitude);
        $.ajax({
            url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`,
            type: 'get',
            success: (data) => {
-               debug.log('success data ->', data);
+               logger.log('success data ->', data);
                if(data.results && data.results.length > 0) {
                    targetAddressName = data.results[0].address_components[2].long_name;
-                   debug.log('target address name -> ' + targetAddressName);
+                   logger.log('target address name -> ' + targetAddressName);
                    sharedData.currentLocationName = targetAddressName;
                    $('#storeGrid').jsGrid('loadData');
                }
            },
-           error: (data) => debug.log('error data ->', data),
+           error: (data) => logger.log('error data ->', data),
        });
    });
 
@@ -79,7 +79,7 @@ $(document).ready(function(){
                filterObj['szaaddr'] = sharedData.currentLocationName;
                sharedData.currentLocationName = null;
            }
-           debug.log('load data', filterObj);
+           logger.log('load data', filterObj);
            let prom = new Promise((resolve, reject) => {
                if(storeDataArr) {
                    resolve(filteringData(filterObj, storeDataArr));
@@ -90,7 +90,7 @@ $(document).ready(function(){
                        dataType: 'jsonp',
                        crossDomain: true,
                        success: (dataArr) => {
-                           debug.log('success data -> ', dataArr)
+                           logger.log('success data -> ', dataArr)
                            storeDataArr = dataArr;
                            resolve(filteringData(filterObj, storeDataArr));
                        },
@@ -105,7 +105,7 @@ $(document).ready(function(){
        },
    };
 
- debug.log('store controller init ok.');
+ logger.log('store controller init ok.');
 
    $("#storeGrid").jsGrid({
        width: "100%",
@@ -120,9 +120,9 @@ $(document).ready(function(){
 
        controller: storeController,
        rowClick: (clickInfo) => {
-           debug.log('row click ->', clickInfo);
+           logger.log('row click ->', clickInfo);
            sharedData.selectedSszstoreid = clickInfo.item.szstoreid;
-           debug.log('shared data ->', sharedData);
+           logger.log('shared data ->', sharedData);
            $('#couponGrid').jsGrid('loadData');
        },
 
@@ -132,11 +132,11 @@ $(document).ready(function(){
        ]
    });
 
- debug.log('store grid init ok.');
+ logger.log('store grid init ok.');
 
    let couponController = {
        loadData: function(filterObj) {
-           debug.log('load data', filterObj);
+           logger.log('load data', filterObj);
            let prom = new Promise((resolve, reject) => {
            $.ajax({
                url: 'https://pji.co.kr/get.do?ex=Coupon&ac=selectCoupon&szDiscountCode=&nStoreId=' + sharedData.selectedSszstoreid,
@@ -144,7 +144,7 @@ $(document).ready(function(){
                dataType: 'jsonp',
                crossDomain: true,
                success: (dataArr) => {
-                   debug.log('success data -> ', dataArr)
+                   logger.log('success data -> ', dataArr)
                    resolve(filteringData(filterObj, dataArr));
                },
                error: (data) => {
@@ -157,7 +157,7 @@ $(document).ready(function(){
        },
    };
 
-   debug.log('store controller init ok.');
+   logger.log('store controller init ok.');
 
    $("#couponGrid").jsGrid({
        width: "100%",
@@ -178,7 +178,7 @@ $(document).ready(function(){
        ],
    });
 
-   debug.log('store grid init ok.');
+   logger.log('store grid init ok.');
 
 });
 
