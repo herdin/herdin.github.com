@@ -5,6 +5,12 @@ date: 2020-12-09
 tags: services
 ---
 
+파파존스 api 가 업데이트 되어 이제 사용할 수 없게 되었다.
+
+```
+M67 웹 라지사이즈 이상 30%
+```
+
 <!-- <link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/css/jsgrid-theme.min.css"/> -->
 <!-- <link type="text/css" rel="stylesheet" href="/assets/vendor/jsgrid_v1.5.3/css/jsgrid.min.css"/> -->
 <!-- <script src="/assets/vendor/jsgrid_v1.5.3/js/jsgrid.min.js"></script> -->
@@ -117,7 +123,7 @@ function papajohns() {
          },
      };
 
-   logger.log('store controller init ok.');
+     logger.log('store controller init ok.');
 
      $("#storeGrid").jsGrid({
          width: "100%",
@@ -144,13 +150,14 @@ function papajohns() {
          ]
      });
 
-   logger.log('store grid init ok.');
+     logger.log('store grid init ok.');
 
      let couponController = {
          loadData: function(filterObj) {
              logger.log('load data', filterObj);
              let prom = new Promise((resolve, reject) => {
              $.ajax({
+                 //url: 'https://pji.co.kr/get.do?ex=Coupon&ac=selectCoupon&szDiscountCode=&nStoreId=' + sharedData.selectedSszstoreid,
                  url: 'https://pji.co.kr/get.do?ex=Coupon&ac=selectCoupon&szDiscountCode=&nStoreId=' + sharedData.selectedSszstoreid,
                  type: 'get',
                  dataType: 'jsonp',
