@@ -26,7 +26,7 @@ tags: javascript library
 </pre>
 
 
-`run_prettify.js` 의 로드시점 이후에 동적으로 추가된 값에 대해서는 `prettyprint` class 를 제거하고, `PR.prettyPrint()` 를 호출하면 된다.
+`run_prettify.js` 의 로드시점 이후에 동적으로 추가된 값에 대해서는 `prettyprinted` class 를 제거하고, `PR.prettyPrint()` 를 호출하면 된다.
 
 끝.
 
