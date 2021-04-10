@@ -2,7 +2,7 @@
 layout: post
 title: "오라클 조인, Nested Loop, Sort Merge, Hash"
 date: 2021-02-18
-tags: db oracle
+tags: database oracle
 ---
 
 몇년전 협력 개발자분에게 oracle hint 에 대한 정보를 듣고, 유용하게 사용하고 있었는데,  
