@@ -16,7 +16,7 @@ tags: algorithm
 작성중
 * [Quick sort]({{ site.baseurl }})
 작성중
-* [Tim sort]({{ site.baseurl }})
+* [Tim sort]({{ site.baseurl }}/2020/02/17/about-sort-tim)
 작성중
 
 참고
