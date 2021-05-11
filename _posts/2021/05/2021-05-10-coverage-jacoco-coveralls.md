@@ -14,6 +14,7 @@ java project 에 `travis-ci`, `codecov` 를 사용하고 있었는데, `codecov`
 * maven-surefire-plugin: maven test phase 에 unit test 를 실행하도록함 -> 이게 없으면 리포트에 unit test 결과가 들어가지 않음
 * jacoco-maven-plugin: coverage 측정 및 report 생성
 * coveralls-maven-plugin: coveralls 에 업로드, coverall 에서 발급받은 token 을 설정해줘야한다.
+
 ``` xml
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
