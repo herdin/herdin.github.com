@@ -21,3 +21,5 @@ the two objects must produce the same integer result.
 > equals 는 동등성이고 hashcode 는 동일성이라고 설명을 하는데 이건 좀 와닿지 않는다.  
 > hashcode 가 동일성이라면, 동등성보다 더 까다로운 조건 아닌가? 그런데 동등하지 않는데 동일하다?  
 > hash 의 충돌 때문에 그럴 수 있다고하는데 그렇기엔 동일성이라는 설명이 앞뒤가 맞지 않는 것같다..
+
+* HashMap 에서 key 로 객체를 사용할 경우, equals 와 hashcode 를 함께 사용한다. -> Override 할 경우 주의.
