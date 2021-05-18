@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "java, hashcode 와 equals"
+title: "java, shift operation"
 date: 2021-05-16
 tags: java
 ---
