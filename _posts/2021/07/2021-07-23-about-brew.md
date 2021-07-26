@@ -12,7 +12,11 @@ tags: tool pakage-manager
 
 ##### 뭔가 설치(애플에서 제공하지않는 유용한 프로그램)
 ```
+#wget install
 brew install wget
+
+#tomcat version 7 install
+brew install tomcat@7
 ```
 
 ##### 깔려있는 것 확인
