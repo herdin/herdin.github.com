@@ -20,6 +20,8 @@ console.log(new Page().getCompiledTime());
 
 ``` shell
 * ...
+* 2021.07.19. --ENTER NAVER, LINE MUSIC DEV.
+* 2021.07.16. --LEAVE LG CNS, TMONEY 2nd. SM.
 * 2016.07.25. --ENTER TMONEY 2nd. SM.
 |
 * 2016.07.10. --LEAVE Korea Customs Service. SI.
@@ -37,8 +39,7 @@ console.log(new Page().getCompiledTime());
 * 2013.10.31. --LEAVE MILES firmware development. SI.
 * 2012.02.22. --GRADUATE Hongik University, Bachelor of Computer Engineering.
 |\
-| * 2012.01.01. --ENTER MILES firmware development. SI.
-| * 2012.01.01. --JOIN LG CNS.
+| * 2012.01.01. --ENTER LG CNS, MILES firmware development. SI.
 |/
 * 2005.03.01. --ENTER Hongik University
 ```
