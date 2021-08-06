@@ -25,4 +25,4 @@ P2P 통신을 할 경우, NAT 때문에 UDP 홀펀칭이라는 기법을 사용�
 
 
 참고
-- [UDP 홀펀칭(Hole Punching)] - NAT 그리고 P2P(1/2)](https://cjwoov.tistory.com/5)
+- [UDP 홀펀칭 Hole Punching] - NAT 그리고 P2P 1/2](https://cjwoov.tistory.com/5)
