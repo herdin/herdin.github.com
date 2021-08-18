@@ -5,6 +5,156 @@ date: 2019-07-25
 tags: git
 ---
 
+
+# 빠른사용
+
+자세한 설명은 아래쪽에..
+
+## 1. 커밋을 합치고 싶다.
+
+현재 상황 develop-temp branch 에서 작업중인데, 작업했던 것을 다 합치고 싶다.
+
+``` shell
+$ git log --oneline -5
+13e4685 (HEAD -> develop-temp) add 1, 1, 2, 3
+99285be add c
+935b826 done code01
+0222a9e (origin/develop, test, develop) done code01
+fa30853 code01 dev..
+```
+
+`-i` interactive 모드 와 `HEAD~3`  HEAD 를 포함한 3개까지의 commit 을 합친다.
+``` shell
+$ git rebase -i HEAD~3
+```
+
+그럼 편집기가 열리면서 요딴식으로 나오는데..
+``` shell
+pick 935b826 done code01
+pick 99285be add c
+pick 13e4685 add 1, 1, 2, 3
+
+```
+
+그걸 아래와 같이 고친다. squash 는 이전 commit 에 이후 commit 을 녹이는 작업이다. 그래서 이전 commit 이 없으면 안된다.  
+pick -> s 로 고침. s 는 squash 를 의미. 저렇게 고치고나서 `:wq` 로 저장 후 나가면..
+
+> squash <commit> = use commit, but meld into previous commit
+
+``` # 커밋 3개가 섞인 결과입니다.
+# 1번째 커밋 메시지입니다:
+
+done code01, add c, d, 1, 1, 2, 3
+
+# 커밋 메시지 #2번입니다:
+
+
+
+# 커밋 메시지 #3번입니다:
+
+
+shell
+pick 935b826 done code01
+s 99285be add c
+s 13e4685 add 1, 1, 2, 3
+```
+
+로그를 어떻게 수정할 건지 물어보는 편집기가 또 열린다.
+
+``` shell
+# 커밋 3개가 섞인 결과입니다.
+# 1번째 커밋 메시지입니다:
+
+done code01
+
+1
+
+2
+
+# 커밋 메시지 #2번입니다:
+
+add c
+
+add d
+
+# 커밋 메시지 #3번입니다:
+
+add 1, 1, 2, 3
+
+
+```
+
+잘고쳐준 뒤, 마찬가지로 `:wq` 로 저장 후 종료하면..
+
+``` shell
+# 커밋 3개가 섞인 결과입니다.
+# 1번째 커밋 메시지입니다:
+
+done code01, add c, d, 1, 1, 2, 3
+
+# 커밋 메시지 #2번입니다:
+
+
+
+# 커밋 메시지 #3번입니다:
+
+
+
+```
+
+합쳐진것을 확인할 수 있다.
+
+``` shell
+git log --oneline -5
+0032bd9 (HEAD -> develop-temp) done code01, add c, d, 1, 1, 2, 3
+0222a9e (origin/develop, test, develop) done code01
+fa30853 code01 dev..
+```
+
+## 2. 커밋 메세지를 수정하고 싶다.
+
+현재 상황.. done code01, add c, d, 1, 1, 2, 3 -> 이 커밋 내용을 심플하게 done! 으로 바꾸고싶다.
+
+``` shell
+$ git log --oneline -5
+0032bd9 (HEAD -> develop-temp) done code01, add c, d, 1, 1, 2, 3
+0222a9e (origin/develop, test, develop) done code01
+fa30853 code01 dev..
+```
+
+커밋 메세지만 수정할거니까.. `-i` interactive 모드 와 `HEAD~1`  HEAD 를 포함한 1개의 commit 을 수정한다.
+
+``` shell
+$ git rebase -i HEAD~1
+```
+
+그럼 아래와 같이 편집기가 열린다.
+
+``` shell
+pick 0032bd9 done code01, add c, d, 1, 1, 2, 3
+```
+
+`r` reword 로 마킹하고 `:wq` 로 저장 후 종료하면..
+
+``` shell
+r 0032bd9 done code01, add c, d, 1, 1, 2, 3
+```
+
+마찬가지로 커밋 메세지를 수정할 수 있는 편집기가 열린다.
+``` shell
+done code01, add c, d, 1, 1, 2, 3 
+```
+
+done! 으로 수정한 뒤, `:wq` 저장 후 종료한뒤, 확인해보자.
+
+``` shell
+$ git log --oneline -5
+d34433f (HEAD -> develop-temp) done!
+0222a9e (origin/develop, test, develop) done code01
+fa30853 code01 dev..
+```
+
+
 # `rebase`
 이미 커밋한 히스토리를 수정할 떄 사용한다.
 
@@ -216,3 +366,7 @@ $ git log --oneline --graph
 
 # \-\-abort
 현재 rebase 상태를 취소한다.
+
+
+참고
+- [3.6 Git 브랜치 - Rebase 하기](https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase-%ED%95%98%EA%B8%B0)

@@ -5,42 +5,19 @@ date: 2019-07-25
 tags: git
 ---
 
-# `stash`
+# `git stash`
 현재 작업하던 것을 잠깐 저장해놓고, 워킹 디렉토리를 HEAD 상태로 바꾼다.
 
-현재 상태, branch `stash-test` 에 `code01`, `code02`, `code03` 파일이 있다. 워킹 디렉토리는 깔끔한 상태.
+## `git push`
 
-``` shell
+깨끗한 상황에서
+```shell
 $ git status
-On branch stash-test
-nothing to commit, working tree clean
-
-$ ls
-code01  code02  code03
+현재 브랜치 feature-temp
+커밋할 사항 없음, 작업 폴더 깨끗함
 ```
 
-여기에서 작업중인 파일을 하나 만들고, add 해서 stage area 로 보낸다.
-``` shell
-$ vim code04-working
-$ git add .
-$ git status
-On branch stash-test
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-        new file:   code04-working
-```
-
-## 어? 그런데..
-작업 중인 내용을 commit 하면 안되거나, 하기 싫은 상황에서, 최신버전의 코드를 수정해야될 일이 생겼다.
-* 배포하고 개발하던 중, 배포된 소스에 문제가 생겨서 배포된 소스 이후부터 수정을 해야한다거나
-> 브랜치를 따면 되지만 아무튼..
-
-* 개발하고 있는데, 누군가 최신소스 체크좀 해달라고 하거나..
-
-그럼 현재 작업 중인 내용을 잠깐 어디에(stash) 넣어두면된다.
-
-## `git stash (save <STASH-NAME>)`
+## `git stash (save <STASH-NAME>)` -> 는 이제 `Deprecated`, `push` 를 사용하자.
 ``` shell
 $ git stash
 Saved working directory and index state WIP on stash-test: 49bf8b2 03 mod mod, add 02 03
@@ -60,6 +37,37 @@ On branch stash-test
 nothing to commit, working tree clean
 ```
 
+## `git stash push`
+
+* `-u|--include-untracked` : 추적하지 않는 파일도 stash 에 저장
+* `-m|--message <message>` : stash 메세지 작성
+
+아래와 같이 experimental-work 는 추적중인데 수정한거, private-work 는 추적중이지 않는 파일일 때 그냥 다 stash 에 넣고 싶다. 그러면..
+
+``` shell
+$ git status
+현재 브랜치 develop-temp
+브랜치가 'origin/develop'보다 2개 커밋만큼 앞에 있습니다.
+  (로컬에 있는 커밋을 제출하려면 "git push"를 사용하십시오)
+
+커밋하도록 정하지 않은 변경 사항:
+  (무엇을 커밋할지 바꾸려면 "git add <파일>..."을 사용하십시오)
+  (use "git restore <file>..." to discard changes in working directory)
+	수정함:        experimental-work
+
+추적하지 않는 파일:
+  (커밋할 사항에 포함하려면 "git add <파일>..."을 사용하십시오)
+	private-work
+
+커밋할 변경 사항을 추가하지 않았습니다 ("git add" 및/또는 "git commit -a"를
+사용하십시오)
+
+```
+
+``` shell
+$ git stash push -u -m "my-first-stash"
+```
+
 넣어 둔 것을 확인해보자
 
 ## `git stash list`
@@ -71,6 +79,7 @@ stash@{0}: On stash-test: my-first-stash
 ```
 
 넣어 둔 것을 꺼내보자
+
 ## `git stash pop`
 마지막 stash 를 꺼내오고, stash list 에서 삭제한다.
 
@@ -104,3 +113,7 @@ stash list 에서 저장내역을 삭제한다. 인자를 주면 인자에 해�
 
 ## `git stash clear`
 모든 stash
+
+
+참고
+- [7.3 Git 도구 - Stashing과 Cleaning](https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-Stashing%EA%B3%BC-Cleaning)
