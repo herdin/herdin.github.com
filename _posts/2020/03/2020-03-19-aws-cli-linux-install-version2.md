@@ -273,6 +273,19 @@ $ aws s3 sync . s3://herdin-test
 upload: ./hello.txt to s3://herdin-test/hello.txt
 ```
 
+### jq 와 연동하여 자주 사용하는 명령어
+
+``` shell
+# ec2 - tag 가 걸려있는 instance 의 public ip 구하기
+aws ec2 describe-instances --instance-ids `aws ec2 describe-instances | jq -r '.Reservations[].Instances[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "vault") | .InstanceId'` | jq '.Reservations[0].Instances[0].PublicIpAddress'
+
+# route53 - host zone 의 레코드셋 수정
+aws route53 change-resource-record-sets \
+--hosted-zone-id `aws route53 list-hosted-zones | jq -r '.HostedZones[] | select(.Name? == "anmani.link.") | .Id'` \
+--change-batch '{"Changes": [{"Action": "UPSERT", "ResourceRecordSet": {"Name": "vault.anmani.link", "Type": "A", "TTL": 300, "ResourceRecords": [{"Value": "12.345.678.901"}]}}]}'
+```
+
+
 
 출처
 - [Linux에 AWS CLI 버전 2 설치](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/install-cliv2-linux.html)

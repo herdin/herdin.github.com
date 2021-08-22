@@ -43,6 +43,12 @@ jq-1.5
 
 [공식홈페이지의 사용법](https://stedolan.github.io/jq/manual/)
 
+### options
+
+#### `--raw-output / -r`
+결과를 파싱하지않고 string 형태로 내보낸다. jq 결과값을 인자로 뭔가할때 유용하다.
+
+
 ### file : jsondata : 예제를 위한 데이터
 ``` json
 {
