@@ -23,11 +23,77 @@ tags: ide writing
   - 이클립스에선 필터에 `Ctrl+F9` 를 직접 쳐야한다.
 - `Lambda` 식을 추천해준다. 코드가 간결해짐.
   - `Lambda` 식이 익숙해 지지가 않는데, 익숙해질 필요가 없다고 생각이 든다. `IntelliJ` 가 추천해주는걸 보다보면 익숙해지겠지.. 라고 생각 했는데 결국 익숙해져서 `Lambda` 식 추천은 사용하지 않는다.
+  - 쓰다보니 그냥 `Lambda` 식이 익숙해져버림;;
 - Debugging 이 더 쉬운 것 같다.
   - 그냥 Debugger 를 사용하다 보니까 그런건지도 모르겠다.
 
 자주쓰는 단축키
-* `Alt` `1` : 프로젝트 뷰 (프로젝트 파일을 계층적으로 볼 수 있는 좌측 화면)
-* `Alt` `4` : Console
-* `Ctrl` `B` : 함수/변수 정의부로 이동, 이클립스에서 `F3` 과 동일
-* `Ctrl` `Alt` `V`
+* 프로젝트 뷰 (프로젝트 파일을 계층적으로 볼 수 있는 좌측 화면)
+	- window : `Alt` + `1`
+	- mac os : `Command` + `1`
+* Run Console
+	- window : `Alt` + `4`
+	- mac os : `Command` + `4`
+* 함수/변수 정의부로 이동, 이클립스에서 `F3` 과 동일
+	- window : `Ctrl` + `B` : 
+	- mac os : `Command` + `B`
+* class search
+	- window : `Ctrl` + `N`
+	- mac os : `Command` + `O`
+* file search
+	- window : `Ctrl` + `Shift` + `N`
+	- mac os : `Command` + `Shift` + `O`
+* find in file (디렉토리 내부의 파일에서 텍스트 찾기)
+	- window :
+	- mac os : `Command` + `Shift` + `F`
+
+* Navigate Back/Foward (이전/다음 보던 에디터로 넘어가기)
+	- window :
+	- mac os : `Command` + `Alt` + `⭠` / `⭢`
+* Select Next/Previous Tab (왼쪽/오른쪽 에디터로 넘어가기)
+	- window : 
+	- mac os : `Command` + `Shift` + `[` / `]`
+* Optimize Import (임포트 정리)
+	- window : 
+	- mac os : `Ctrl` + `Alt` + `O`
+
+
+* Preferences
+	- window : 
+	- mac os : `Command` + `,`
+* Project Structure
+	- window : 
+	- mac os : `Command` + `;`
+
+* 다른 Intellij window 로 전환
+	- window : `Alt` + `Tab`
+	- mac os : `Command` + `backtick`
+
+* return value auto generate (반환변수 자동생성)
+	window : `Ctrl` + `Alt` + `V`
+	mac os : `Command` + `Alt` + `V`
+
++ : 키 조합 (한 번에 같이 누른다.)
+⇢ : 다음 단계 키 누르기
+⌘ : Mac Command Key
+⌃ : Mac Control Key
+⌥ : Mac Option Key (Alt)
+⇧ : Mac Shift Key
+⇪ : Mac Capslock Key
+↩ : Mac Return
+⭠ : 화살표 왼쪽
+⭢ : 화살표 오른쪽
+⭡ : 화살표 위
+⭣ : 화살표 아래
+
+
+
+
+
+## 뭐야 메뉴가 왜 없어졌어?
+Command + Shift + A -> Edit Custom Properties
+apple.laf.useScreenMenuBar=false
+
+참고
+- [IntelliJIDEA_ReferenceCard.pdf](https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf)
+- [IntelliJ & Code 내가 주로 쓰는 단축키 Shortcut](https://secondmemory.kr/567)
