@@ -5,6 +5,18 @@ date: 2019-07-25
 tags: git
 ---
 
+# cheat sheet
+
+``` shell
+$ git stash list
+$ git push -m "your stash message"
+
+# stash 일부 삭제
+$ git stash drop ${stash@{index} | message}
+# stash 전부 삭제
+$ git stash clear
+```
+
 # `git stash`
 현재 작업하던 것을 잠깐 저장해놓고, 워킹 디렉토리를 HEAD 상태로 바꾼다.
 

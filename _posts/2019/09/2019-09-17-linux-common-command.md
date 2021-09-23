@@ -230,3 +230,10 @@ $ done
 ### Bash PS1 gen
 
 [Bash Prompt gen](http://ezprompt.net/)
+
+
+## sftp
+### with private key
+```shell
+$ sftp -oIdentityFile=/path/to/private/key user@hostname
+```

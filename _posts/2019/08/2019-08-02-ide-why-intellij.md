@@ -54,7 +54,7 @@ tags: ide writing
 	- window : 
 	- mac os : `Command` + `Shift` + `[` / `]`
 * Optimize Import (임포트 정리)
-	- window : 
+	- window : `Ctrl` + `Alt` + `O`
 	- mac os : `Ctrl` + `Alt` + `O`
 
 
@@ -70,8 +70,17 @@ tags: ide writing
 	- mac os : `Command` + `backtick`
 
 * return value auto generate (반환변수 자동생성)
-	window : `Ctrl` + `Alt` + `V`
+	window : `Ctrl`    + `Alt` + `V`
 	mac os : `Command` + `Alt` + `V`
+
+* bookmark set/unset
+  window :
+  mac os : `F3`
+  
+* bookmark list
+  window :
+  mac os : `Command` + `F3`
+
 
 + : 키 조합 (한 번에 같이 누른다.)
 ⇢ : 다음 단계 키 누르기
