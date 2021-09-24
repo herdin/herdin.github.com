@@ -19,3 +19,5 @@ tags: texteditor
 ```
 	- 이후로는 alt + m 으로 렌더링된 html 을 브라우져로 볼 수 있다. `쩐다!!`
 	- markdown 내용이 변경되더라도 새로고침만 하면된다. `쩐다!!`
+* command + K (and) command + U : 선택영역 uppercase
+* command + K (and) command + L : 선택영역 lowercase
