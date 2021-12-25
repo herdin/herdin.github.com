@@ -10,19 +10,47 @@ tags: linux command centos
 ``` shell
 echo $USER #echo currernt user
 
-uname -a #os info
-uname -m #os bit 1
-getconf LONG_BIT #os bit 2
-arch #os bit 3
+#os info
+uname -a
 
-lscpu #cpu info
-pwd #echo current path
-date #echo current date
+#os bit 1
+uname -m
 
-df #disk free
-df -h #--human-readable
-df -i #--inodes
-df -k #--block-size=1K
+#os bit 2
+getconf LONG_BIT
+
+#os bit 3
+arch
+
+#cpu info
+lscpu
+
+#cpu count
+nproc
+
+#memory info
+free
+
+#--human-readable
+free -h
+
+#disk free
+df
+
+#--human-readable
+df -h
+
+#--inodes
+df -i
+
+#--block-size=1K
+df -k
+
+#echo current path
+pwd
+
+#echo current date
+date
 
 history #사용한 명령어 히스토리
 ![line number] #히스토리의 해당 라인을 재실행
@@ -79,6 +107,32 @@ chmod [OPTION] [PERMISSION] [FILE]
 #-R : recursive work
 ```
 
+## process
+
+``` shell
+$ ps -ef | grep nginx
+```
+
+## port
+
+### open check -> netstat
+
+* options
+  * `-t, --tcp`
+  * `-u, --udp`
+  * `-n, --numeric`
+  * `-l, --listening`
+  * `-p, --programs` display PID/Program name for sockets
+  
+``` shell
+$ netstat -tnlp
+```
+
+### firewall 방화벽
+
+* centos6 이하에서는 `iptables` 사용
+* centos7 에서는 `firewall-cmd` 사용
+
 ## 압축
 
 ``` shell
@@ -96,6 +150,7 @@ ln -s [SYMBOLIC LINK TARGET] [SYMBOLIC LINK NAME]
 # 디렉토리와 하위 디렉토리 사이즈
 du -h --apparent-size [TARGET LOCATION:DEFAULT .]
 ```
+
 ### 자주쓰는 alias
 
 > alias 설정을 위해 `.bashrc` 수정
@@ -136,6 +191,12 @@ alias cd_tomcat_home='cd /usr/share/tomcat'
 
 ``` shell
 source ~/.bashrc #modified .bashrc file apply
+```
+
+> alias 해제
+
+``` shell
+unalias vim_nginx_conf
 ```
 
 ### 명령어의 결과를 명령어안에 넣기
@@ -200,21 +261,39 @@ kill -9 ${PID} 를 사용하면 안되는 이유.
   );
 </script>
 
-## SELinux
-
-[SELinux 란?]({{ site.url }}/2019/08/27/selinux)
+## ls
+디렉토리 목록 출력
 
 ``` shell
-sestatus #selinux status
-getenforce #selinux mode check
-setenforce 0 #selinux mode set Permissive=0 [로그만남김], Enforcing=1 [selinux 적용]
-tail -f /var/log/audit/audit.log #log
-
-matchpathcon [FILE PATH] #check security context
-chcon [OPTION] [CONTEXT FILE] #change context
-#-t : type
-#-R : recursive
+$ ls -trl 
+$ ls -trlh
 ```
+
+## du
+disk usage
+
+``` shell
+$ du -sh *
+$ du --summarize --human-readable *
+```
+
+## ln
+
+``` shell
+$ ln -sf
+
+```
+
+- [temp](https://jhnyang.tistory.com/269)
+
+## find
+
+``` shell
+# 파일명으로 찾을 경우
+$ find ${find-location} -name "${target-file-name}"
+```
+
+-[temp](https://recipes4dev.tistory.com/156)
 
 ### shellscript while
 
@@ -236,4 +315,132 @@ $ done
 ### with private key
 ```shell
 $ sftp -oIdentityFile=/path/to/private/key user@hostname
+```
+
+## base64
+
+* `-d, --decode`
+* `-i, --input` (default)
+
+``` shell
+# encode 했다가 decode 하기
+$ echo "hello world, epubaal" | base64 | base64 -d
+hello world, epubaal
+
+# 파일을 사용하기
+$ echo "hello world, epubaal, in file" > test.txt
+# 파일 내용 확인
+$ cat test.txt                                   
+hello world, epubaal, in file
+
+# 파일내용 encode 해서 다른 파일에 넣기
+$ base64 test.txt > test-encode.txt
+# 파일 내용 확인
+$ cat test-encode.txt 
+aGVsbG8gd29ybGQsIGVwdWJhYWwsIGluIGZpbGUK
+
+# 파일내용 decode 해서 다른 파일에 넣기
+$ base64 -d test-encode.txt > test-decode.txt
+# 파일 내용 확인
+$ cat test-decode.txt
+hello world, epubaal, in file
+```
+
+## more
+
+``` shell
+$ more <FILE_NAME>
+```
+
+- 화면 가득히 파일내용을 출력해준다
+- `space bar` 를 누르면 파일에서 한줄씩 내려간다.
+- `enter` 를 누르면 화면에서 한줄씩 내려간다.
+- 현재보이는 내용이 전체 파일에서 몇 % 를 차지하는지 알려준다.
+- `f` 를 누르면 forward 1페이지만큼 다음으로 간다
+- `b` 를 누르면 backward 1페이지만큼 이전으로 간다
+
+
+## less
+
+`more` 같은데 페이지단위로 볼 수 있고, 끝에서부터도 볼 수 있다.
+
+``` shell
+$ less <FILE_NAME>
+$ less -N <FILE_NAME> # show line number
+```
+
+- 화살표키 위아래로 한줄씩이동
+- `space`, `f` 로 한페이지 아래로 이동
+- b 으로 한페이지 위로 이동
+- `G` 로 끝으로 이동
+- more 와 유사하게 `/` 로 검색
+- `q` 로 종료
+
+## tr
+* 입력받은문자에서 특정문자를 자르거나 변경할때
+
+## sort
+* 입력받은 라인을 정렬
+
+## uniq
+* 입력받은 라인에서 중복을 제거
+* 곁에있는 라인에서 중복을 제거하므로, sort 다음에 쓰인다.
+
+
+## SELinux
+
+[SELinux 란?]({{ site.url }}/2019/08/27/selinux)
+
+``` shell
+sestatus #selinux status
+getenforce #selinux mode check
+setenforce 0 #selinux mode set Permissive=0 [로그만남김], Enforcing=1 [selinux 적용]
+tail -f /var/log/audit/audit.log #log
+
+matchpathcon [FILE PATH] #check security context
+chcon [OPTION] [CONTEXT FILE] #change context
+#-t : type
+#-R : recursive
+```
+
+## yum
+레드햇 계열의 리눅스 배포판에서 사용하는 프로그램(패키지) 설치 관리 도구
+
+### yum repository 활성화/비활성화
+
+``` shell
+# base repository 의 상태를 확인
+$ yum repolist base -v
+
+# repo list 의 상태가 저장된 파일들이 있는곳
+$ cd /etc/yum.repos.d
+
+# 안에서 설정파일들의 enabled=0 를 변경한다. (0 비활성화, 1 활성화)
+```
+
+## traceroute
+``` shell
+$ traceroute www.naver.com
+traceroute: Warning: www.naver.com has multiple addresses; using 223.130.195.200
+traceroute to www.naver.com.nheos.com (223.130.195.200), 64 hops max, 52 byte packets
+ 1  10.200.200.200 (10.200.200.200)  20.043 ms  4.234 ms  4.871 ms
+ 2  10.104.248.45 (10.104.248.45)  20.214 ms  4.501 ms  4.504 ms
+ 3  10.104.248.5 (10.104.248.5)  21.917 ms  5.678 ms  5.257 ms
+ 4  10.104.245.26 (10.104.245.26)  20.284 ms  5.247 ms
+    10.104.245.22 (10.104.245.22)  19.672 ms
+ 5  10.104.240.49 (10.104.240.49)  20.054 ms
+    10.104.241.47 (10.104.241.47)  20.204 ms
+    10.104.241.49 (10.104.241.49)  23.500 ms
+ 6  223.130.195.200 (223.130.195.200)  19.518 ms  4.366 ms  4.473 ms
+```
+
+## ftp/sftp
+
+``` shell
+# ftp ${ip} ${port}
+$ ftp 1.22.333.444 8888
+
+# sftp -P ${port} ${id}@${ip}
+$ sftp -P 8888 id@1.22.333.444
+
 ```

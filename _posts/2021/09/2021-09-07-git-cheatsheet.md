@@ -11,7 +11,6 @@ tags: git cheatsheet
 * 그럼 그냥 상대방것으로 엎어치고 (override update (svn)) 그상태에서 수정을 하자
 ``` shell
 $ git checkout --theirs <conflict-file-name>
-
 ```
 
 #### a branch 에서 작업 중(commit 안침)인데, b branch 에서 다른 작업을 해야한다.
@@ -56,4 +55,14 @@ $ git stash show stash@{0}
 
 # 이것은 다르다.. -u|--include-untracked 옵션을 빼먹어서 untracked 파일을 못보고 날릴뻔했다 ㅠ,ㅠ
 $ git stash show -u stash@{0}
+```
+
+#### branch 가 시작된 commit 을 확인하고 싶다
+``` shell
+$ git show --summary `git merge-base <check branch> <parant branch of check branch>`
+```
+
+#### 현재 branch 와 다른 branch 와 달라진 파일목록만 보고싶다
+``` shell
+$ git diff --name-status <DIFF-TARGET-BRANCH>
 ```
