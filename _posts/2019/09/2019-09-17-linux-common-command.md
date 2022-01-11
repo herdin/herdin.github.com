@@ -310,13 +310,6 @@ $ done
 
 [Bash Prompt gen](http://ezprompt.net/)
 
-
-## sftp
-### with private key
-```shell
-$ sftp -oIdentityFile=/path/to/private/key user@hostname
-```
-
 ## base64
 
 * `-d, --decode`
@@ -443,4 +436,7 @@ $ ftp 1.22.333.444 8888
 # sftp -P ${port} ${id}@${ip}
 $ sftp -P 8888 id@1.22.333.444
 
+$ sftp -P ${PORT_NUMBER} -oIdentityFile=/path/to/private/key user@hostname
+
 ```
+
