@@ -290,7 +290,8 @@ $ ln -sf
 
 ``` shell
 # 파일명으로 찾을 경우
-$ find ${find-location} -name "${target-file-name}"
+# find ${find-location} -name "${target-file-name}"
+$ find / -name hello
 ```
 
 -[temp](https://recipes4dev.tistory.com/156)
@@ -430,8 +431,10 @@ traceroute to www.naver.com.nheos.com (223.130.195.200), 64 hops max, 52 byte pa
 ## ftp/sftp
 
 ``` shell
+# ftp ${ip}
 # ftp ${ip} ${port}
 $ ftp 1.22.333.444 8888
+
 
 # sftp -P ${port} ${id}@${ip}
 $ sftp -P 8888 id@1.22.333.444
@@ -440,3 +443,64 @@ $ sftp -P ${PORT_NUMBER} -oIdentityFile=/path/to/private/key user@hostname
 
 ```
 
+## jdk 관련..
+
+jvm 에서 사용하는 `java.io.tmpdir` 가 어딘지 확인해보고싶었다.
+
+``` shell
+# 먼저 java 프로그램을 찾아서
+$ ps -ef | grep java
+# pid 를 jino 에 넣어준다
+# jinfo ${pid}
+$ jinfo 12345
+
+Java System Properties:
+#Fri Feb 04 15:55:52 KST 2022
+awt.toolkit=sun.lwawt.macosx.LWCToolkit
+java.specification.version=11
+kotlinx.coroutines.debug=off
+sun.cpu.isalist=
+sun.jnu.encoding=UTF-8
+sun.arch.data.model=64
+idea.fatal.error.notification=disabled
+sun.font.fontmanager=sun.font.CFontManager
+pty4j.preferred.native.folder=/Applications/IntelliJ IDEA.app/Contents/lib/pty4j-native
+java.vendor.url=https\://openjdk.java.net/
+apple.awt.fileDialogForDirectories=true
+sun.java2d.uiScale.enabled=true
+sun.io.useCanonCaches=false
+jna.tmpdir=/Users/user/Library/Caches/JetBrains/IntelliJIdea2021.2/tmp
+sun.boot.library.path=/Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home/lib
+jdk.debug=release
+sun.awt.exception.handler=com.intellij.openapi.application.impl.AWTExceptionHandler
+com.apple.mrj.application.live-resize=false
+java.specification.vendor=Oracle Corporation
+java.version.date=2021-04-20
+java.home=/Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home
+file.separator=/
+java.vm.compressedOopsMode=Zero based
+line.separator=\n
+java.specification.name=Java Platform API Specification
+java.vm.specification.vendor=Oracle Corporation
+jdk.attach.allowAttachSelf=true
+idea.home.path=/Applications/IntelliJ IDEA.app/Contents
+pty4j.tmpdir=/Users/user/Library/Caches/JetBrains/IntelliJIdea2021.2/tmp
+sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+java.runtime.version=11.0.11+9-b1504.16
+apple.awt.fullscreencapturealldisplays=false
+user.name=user
+javax.swing.rebaseCssSizeMap=true
+idea.paths.selector=IntelliJIdea2021.2
+sun.java2d.pmoffscreen=false
+sun.awt.noerasebackground=true
+file.encoding=UTF-8
+jnidispatch.path=/Users/user/Library/Caches/JetBrains/IntelliJIdea2021.2/tmp/jna7920715044168139379.tmp
+idea.popup.weight=heavy
+java.vendor.version=JBR-11.0.11.9-1504.16-jcef
+jna.loaded=true
+java.io.tmpdir=/var/folders/12/f2csmhbn7ll786vc8wvz26mw0000gn/T/
+java.version=11.0.11
+idea.xdebug.key=-Xdebug
+
+```
+찾았당 -> java.io.tmpdir=/var/folders/12/f2csmhbn7ll786vc8wvz26mw0000gn/T/

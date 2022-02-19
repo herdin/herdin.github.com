@@ -156,7 +156,18 @@ fa30853 code01 dev..
 
 
 # `rebase`
-이미 커밋한 히스토리를 수정할 떄 사용한다.
+~~이미 커밋한 히스토리를 수정할 떄 사용한다.~~ 완전 잘못 이해했었음.
+
+branch 의 parent 를 변경할 떄 사용.
+
+히스토리를 수정하거나 커밋을 합치는것은 부가적인 기능이다.
+
+``` shell
+$ git checkout -b feature-a
+$ .... working....
+# feature-a branch 의 부모를 master 로 변경한다. 
+$ git rebase master
+```
 
 ## `-i`, `--interactive`
 대화형으로 rebase 실행한다.

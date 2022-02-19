@@ -52,6 +52,7 @@ function about() {
   var merryGoAround = Math.ceil((curDate-new Date(2017, 09-1, 16))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
   var myBean = Math.ceil((curDate-new Date(2018, 12-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
   var myBeanSprout = Math.ceil((curDate-new Date(2019, 09-1, 20))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
+  var holdOnNaver = Math.ceil((curDate-new Date(2021, 07-1, 19))/1000/*millisec to sec*//60/*sec to min*//60/*min to hour*//24/*hour to day*/);
 
   function appendDday(id, day) {
     var element = '';
@@ -68,5 +69,6 @@ function about() {
   appendDday('merryGoAround', merryGoAround);
   appendDday('myBean'       , myBean);
   appendDday('myBeanSprout' , myBeanSprout);
+  appendDday('holdOn', holdOnNaver);
 }
 </script>

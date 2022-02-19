@@ -26,3 +26,12 @@ Step - read > process > write 의 Chunk Processing 의 단위.
 
 참고
 - [Spring Batch, Intro - 스프링 배치 기본 개념 익히기](https://www.fwantastic.com/2019/12/spring-batch-intro.html)
+- [Spring Batch에서 Multithread로 Step 실행하기](https://jojoldu.tistory.com/493)
+- [Spring Batch commit-interval에 대한 정리](https://sheerheart.tistory.com/entry/Spring-Batch-commitinterval%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC)
+- [3. Spring Batch 가이드 - 메타테이블엿보기](https://jojoldu.tistory.com/326)
+- [4. Spring Batch 가이드 - Spring Batch Job Flow](https://jojoldu.tistory.com/328)
+- [5. Spring Batch 가이드 - Spring Batch Scope & Job Parameter](https://jojoldu.tistory.com/330)
+- [Spring Batch Guide - 05. Spring Batch Scope & Job Parameter](https://velog.io/@lxxjn0/Spring-Batch-Guide-05.-Spring-Batch-Scope-Job-Parameter)
+- [6. Spring Batch 가이드 - Chunk 지향 처리](https://jojoldu.tistory.com/331)
+- [[Spring] 스프링 부트 배치 기본 지식과 설정: 용어 정리, Chunk 지향 프로세싱/Tasklet & Listener 설정 / Step 흐름 제어](https://hororolol.tistory.com/513)
+- [7. Spring Batch 가이드 - ItemReader](https://jojoldu.tistory.com/336)

@@ -17,7 +17,7 @@ $ git checkout --theirs <conflict-file-name>
 
 stash 에 untracked  까지 저장할 수 있다.
 ``` shell
-# -u|--include-untracked
+# -u|--include-untracked : untracked 한 파일까지포함. branch 를 바꿀땐 안해도된다.
 # -m|--message
 
 $ git stash push -u -m "식별 가능한 메세지"
@@ -47,7 +47,7 @@ $ git stash apply stash@{1}
 
 #### stash show 를 할때는..
 
-`-u|--include-untracked` 옵션을 까먹지말자..
+`-u|--include-untracked` 옵션을 사용했을때는 볼떄도 까먹지말고 사용해주자..
 
 ``` shell
 # 이것과
@@ -65,4 +65,25 @@ $ git show --summary `git merge-base <check branch> <parant branch of check bran
 #### 현재 branch 와 다른 branch 와 달라진 파일목록만 보고싶다
 ``` shell
 $ git diff --name-status <DIFF-TARGET-BRANCH>
+```
+
+#### 커밋을 했는데, user/email 이 잘못되어있다.
+
+혹시 push 까지 했으면, 아래 방법은 rebase 를 사용하는 방법이므로, git push -f 로 강제 push 를 해야한다.
+
+``` shell
+# 먼저 다음 커밋을 위해 config 부터 설정해준다. 
+# 모든 레포지토리에 설정하려면 --global 옵션을 넣어주자
+git config user.name "my-name"
+git config user.email my-email@domain.com
+
+# 방금전 커밋을 고치려면 1개니까, 1개만 고친다.
+# rebase 로 들어가서 고칠 커밋을 pick -> edit 으로 변경 하고 :wq 로 저장종료
+git rebase -i HEAD~1
+
+# 그상태에서 커밋 author 를 고친다.
+git commit --amend --author="my-name <my-email@domain.com>"
+
+# rebase continue 하면 끝
+git rebase --continue
 ```
