@@ -2,8 +2,10 @@
 layout: post
 title: "Nginx with docker"
 date: 2020-03-06
-tags: docker
+tags: docker nginx
 ---
+
+# TL;DR
 
 일단 바로 실행한다.
 
@@ -27,4 +29,6 @@ $ vim index.html
 $ service nginx reload
 ```
 
-끝!
+참고
+* [Nginx 기본 환경 설정](https://prohannah.tistory.com/136)
+* [nginx variable 변수](https://opentutorials.org/module/384/4508)

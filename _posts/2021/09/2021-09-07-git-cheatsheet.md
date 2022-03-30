@@ -5,6 +5,21 @@ date: 2021-09-07
 tags: git cheatsheet
 ---
 
+#### user name/eamil 설정을 안하고 commit 을 했을때
+``` shell
+# 먼저 user name/email 설정부터 한다. 또 실수 하지 않기 위해
+$ git config user.name "my-name"
+$ git config user.email "my-email@my-email-domain"
+
+# HEAD~N 은 알아서 커밋갯수
+$ git rebase -i HEAD~4
+# 변경할 커밋을 edit 으로 변경
+
+$ git commit --amend --author="my-name <my-email@my-email-domain>"
+$ git rebase --continue
+# 끝
+```
+
 #### merge conflict 가 났는데..
 
 * 너무 많이 달라서 merge 가 힘들다. 내 코드는 잘 안다. 

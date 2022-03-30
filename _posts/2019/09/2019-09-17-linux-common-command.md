@@ -504,3 +504,20 @@ idea.xdebug.key=-Xdebug
 
 ```
 찾았당 -> java.io.tmpdir=/var/folders/12/f2csmhbn7ll786vc8wvz26mw0000gn/T/
+
+## comm
+두 파일을 비교한다
+
+``` shell
+$ comm [option] [file1] [file2]
+# [option]
+# -1 두개를 비교하여 파일 1에만 있는 것은 출력하지 않음
+# -2 두개를 비교하여 파일 2에만 있는 것은 출력하지 않음
+# -3 두개를 비교하여 파일 1과 파일 2에 모두 존재하는 라인은 출력하지 않음
+````
+
+
+
+
+
+
