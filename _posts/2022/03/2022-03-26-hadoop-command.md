@@ -13,6 +13,7 @@ $ hdfs dfs -getfacl /data
 
 $ hadoop fs -copyFromLocal /home/user/hello /data/from-local/
 $ hadoop fs -rm /data/delete-target.txt
+$ hadoop fs -ls /data/script
 
 # oozie job kill, list
 $ hadoop job -kill $jobId

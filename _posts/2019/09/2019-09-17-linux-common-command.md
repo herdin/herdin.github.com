@@ -115,7 +115,7 @@ $ ps -ef | grep nginx
 
 ## port
 
-### open check -> netstat
+### netstat
 
 * options
   * `-t, --tcp`
@@ -125,7 +125,18 @@ $ ps -ef | grep nginx
   * `-p, --programs` display PID/Program name for sockets
   
 ``` shell
+# 열린 포트 확인
 $ netstat -tnlp
+```
+
+mac os 에서는 좀 다르다
+
+``` shell
+# 열린 포트 확인
+$ sudo lsof -PiTCP -sTCP:LISTEN
+
+# 열린 포트의 PID 확인
+$ sudo lsof -i :3000
 ```
 
 ### firewall 방화벽
@@ -516,6 +527,16 @@ $ comm [option] [file1] [file2]
 # -3 두개를 비교하여 파일 1과 파일 2에 모두 존재하는 라인은 출력하지 않음
 ````
 
+
+## scp
+ssh 기반의 secure copy 를 수행. 원격파일카피.
+
+``` shell
+# r option for directory
+scp -r <local-file-location> <remote-id>@<remote-host>:<remote-file-location>
+scp -r <remote-id>@<remote-host>:<remote-file-location> <local-file-location>
+scp -r epu@file.anmani.link:/home/remote-epu/tmp /Users/user/Downloads/tmp
+```
 
 
 

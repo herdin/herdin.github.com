@@ -150,6 +150,7 @@ $ curl http://localhost:8083/connectors
 ./kafka-console-consumer.sh --bootstrap-server=localhost:9092 --topic my-data-1 --from-beginning
 아이씨 docker 바깥에서 하니까 Error connecting to node my-kafka:9092 요지랄하네 젠장.
 아까 만들었던 docker image 를 사용하자.
+> docker-compose 파일에 kafka 의 설정 environment 중 KAFKA_ADVERTISED_HOST_NAME: localhost 로 변경하면 된다.
 
 docker run -d --rm -it \
 --name my-shell-for-kafka \

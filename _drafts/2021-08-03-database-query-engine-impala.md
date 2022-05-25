@@ -5,6 +5,11 @@ date: 2021-08-03
 tags: impala query-engine hadoop
 ---
 
+#### REFRESH, COMPUTE STATS, INVALIDATE METADATA 의 간단한 사용예.
+
+* REFRESH : 새로운 데이터가 추가되었을때, 새로 데이터가 추가된 block location 의 메타데이터를 즉시 재로드한다. (수행비용이 저렴하다)
+* COMPUTE STATS : 30% 이상의 데이터가 변경되었을때, 수행하는것을 추천한다. (왜?)
+* INVALIDATE METADATA : 보통 새로운 데이터 파일이 추가되었을때 수행한다. (수행비용이 비싸다)
 
 #### TO_TIMESTAMP(BIGINT unixtime) : TIMESTAMP, TO_TIMESTAMP(STRING date, STRING pattern) : TIMESTAMP
 Purpose: Converts an integer or string representing a date/time value into the corresponding TIMESTAMP value.

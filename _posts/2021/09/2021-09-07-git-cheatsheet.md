@@ -102,3 +102,9 @@ git commit --amend --author="my-name <my-email@domain.com>"
 # rebase continue 하면 끝
 git rebase --continue
 ```
+
+#### 다른 브랜치의 특정 커밋만 가져오고싶다.
+
+``` shell
+git cherry-pick <commit-hash>
+```
