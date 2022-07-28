@@ -11,6 +11,7 @@ hadoop 명령어 사용 기록
 
 $ hdfs dfs -getfacl /data
 
+
 $ hadoop fs -copyFromLocal /home/user/hello /data/from-local/
 $ hadoop fs -rm /data/delete-target.txt
 $ hadoop fs -ls /data/script
@@ -19,3 +20,6 @@ $ hadoop fs -ls /data/script
 $ hadoop job -kill $jobId
 $ hadoop job -list
 ```
+
+
+

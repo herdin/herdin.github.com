@@ -80,20 +80,38 @@ $ git status
 $ git stash push -u -m "my-first-stash"
 ```
 
-넣어 둔 것을 확인해보자
-
 ## `git stash list`
+
+stash list 를 확인한다
 
 ``` shell
 lg@HARM-LAPTOP MINGW64 /c/noneedinstall/PortableGit/localRepo/gitStudy (stash-test)
 $ git stash list
-stash@{0}: On stash-test: my-first-stash
+stash@{0}: On stash-test: my-first-stash2
+stash@{1}: On stash-test: my-first-stash1
+stash@{2}: On stash-test: my-first-stash0
 ```
 
-넣어 둔 것을 꺼내보자
+## `git stash show`
+
+stash 하나를 확인한다
+
+``` shell
+git stash show stash@{0}
+ .../a/a.java     | 14 +-------------
+ .../b/b.java   | 14 +-------------
+ .../r/r.xml    |  6 ++++++
+ 3 files changed, 8 insertions(+), 26 deletions(-)
+```
+
+뭐가 변경되었는지 확인하고 싶다면 `-p` 옵션을 사용한다. diff 처럼 나온다.
+
+``` shell
+git stash show -p stash@{0}
+```
 
 ## `git stash pop`
-마지막 stash 를 꺼내오고, stash list 에서 삭제한다.
+맨 위쪽의 stash 를 꺼내오고(stack 으로 쌓여있다), stash list 에서 삭제한다.
 
 ``` shell
 $ git stash pop
