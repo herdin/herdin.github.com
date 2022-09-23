@@ -10,8 +10,15 @@ tags: git cheatsheet
 * 너무 많이 달라서 merge 가 힘들다. 내 코드는 잘 안다. 
 * 그럼 그냥 상대방것으로 엎어치고 (override update (svn)) 그상태에서 수정을 하자
 ``` shell
+$ git checkout master
+$ git pull
+$ git checkout my-feature-1
+$ git rebase master
+# 여기서 문제 발생
+$ git checkout --ours <conflict-file-name>
 $ git checkout --theirs <conflict-file-name>
 ```
+* 여기서 중요한건 `--ours` 가 master 것으로 엎어치는것이고, `--theirs` 가 현재 브랜치인 my-feature-1 로 엎어치는것이다.
 
 #### a branch 에서 작업 중(commit 안침)인데, b branch 에서 다른 작업을 해야한다.
 
