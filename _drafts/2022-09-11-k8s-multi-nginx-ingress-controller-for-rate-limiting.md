@@ -93,14 +93,10 @@ kubectl apply -f 1-apps.yaml
 kubectl apply -f 2-ingress.yaml
 
 # dns 설정
-paul-test.linecorp-beta.com -> 10.128.169.62
-paul-test-api.linecorp-beta.com -> 10.128.169.62
+paul-test.linecorp-beta.com
+paul-test-api.linecorp-beta.com
 seiren-vks.anmani.link
 seiren-vks-api.anmani.link
-10.241.52.22
-10.241.52.223
-10.241.52.23
-
 
 curl http://paul-test-api.linecorp-beta.com
 
@@ -136,11 +132,9 @@ helm install web nginx-stable/nginx-ingress \
 --namespace paul-test-nginx-web
 
 # 모든 노드에서 확인
-curl http://10.241.52.22:30020
-curl http://10.241.52.223:30020
-curl http://10.241.52.23:30020
+curl http://{WORKER_NODE_IP}:30020
 # 워커가 아닌데서도 되네? - 아무튼
-curl http://10.241.42.5:30020
+curl http://{NODE_IP}:30020
 
 
 kubectl apply -f 1-apps.yaml

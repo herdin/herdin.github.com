@@ -9,16 +9,126 @@ tags: git cheatsheet
 
 * 너무 많이 달라서 merge 가 힘들다. 내 코드는 잘 안다. 
 * 그럼 그냥 상대방것으로 엎어치고 (override update (svn)) 그상태에서 수정을 하자
+* 여기서 중요한건 merge, rebase 할때 ours, theirs 의 의미가 달라진다.
+    * 현재 branch 가 HEAD 상태이고, master 를 대상으로 한다고 가정
+    * merge
+        * `checkout --ours` : branch 것을 사용
+        * `checkout --theirs` : master 것을 사용
+    * rebase
+        * `checkout --ours` : master 것을 사용
+        * `checkout --theirs` : branch 것을 사용
+
 ``` shell
+# master 최신화
 $ git checkout master
 $ git pull
+# my-feature-1 로 branch 변경
 $ git checkout my-feature-1
-$ git rebase master
 # 여기서 문제 발생
+$ git rebase master
+
+# 근데 머지 귀찮을때 아래와 같이 해결
 $ git checkout --ours <conflict-file-name>
 $ git checkout --theirs <conflict-file-name>
+
 ```
-* 여기서 중요한건 `--ours` 가 master 것으로 엎어치는것이고, `--theirs` 가 현재 브랜치인 my-feature-1 로 엎어치는것이다.
+
+##### example
+
+``` shell
+# 1. merge 할때
+# 2. rebase 할때
+$ git branch
+  master
+  test/checkout-ours-theirs-base # 이 브랜치와
+* test/checkout-ours-theirs-branch # 이 브랜치를 이용해서 테스트
+
+# base 브랜치의 code01
+$ git checkout test/checkout-ours-theirs-base
+$ cat code01
+development done!
+conflict target from base # 이 부분이 conflict 대상, 미리 커밋해놓았음
+
+# branch 브랜치의 code01
+$ git checkout test/checkout-ours-theirs-branch
+$ cat code01
+development done!
+conflict target from feature # 이 부분이 conflict 대상, 미리 커밋해놓았음
+
+# 1. branch 에서 base 를 머지
+$ git checkout test/checkout-ours-theirs-branch
+$ git merge test/checkout-ours-theirs-base
+Auto-merging code01
+CONFLICT (content): Merge conflict in code01
+Automatic merge failed; fix conflicts and then commit the result.
+
+# 당연히 conflict 발생
+$ cat code01
+development done!
+<<<<<<< HEAD
+conflict target from feature
+=======
+conflict target from base
+>>>>>>> test/checkout-ours-theirs-base
+
+# --ours 를 쓰면 (현재 branch)
+$ git checkout --ours code01
+Updated 1 path from the index
+
+$ cat code01
+development done!
+conflict target from feature # --ours = branch
+
+# --theirs 를 쓰면 (현재 branch)
+$ git checkout --theirs code01
+Updated 1 path from the index
+
+$ cat code01                  
+development done!
+conflict target from base # --theirs = base
+
+# merge 할때의 --ours, --theirs 는 생각대로다.
+# 초기화
+$ git reset --hard
+
+# 2. branch 에서 base 로 rebase
+$ git rebase test/checkout-ours-theirs-base
+Auto-merging code01
+CONFLICT (content): Merge conflict in code01
+error: could not apply eb10cf0... mod code01 from feature
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply eb10cf0... mod code01 from feature
+
+# 당연히 conflict 발생
+$ cat code01 
+development done!
+<<<<<<< HEAD
+conflict target from base
+=======
+conflict target from feature
+>>>>>>> eb10cf0 (mod code01 from feature)
+
+# --ours 를 쓰면 (현재 branch)
+git checkout --ours code01
+Updated 1 path from the index
+
+$ cat code01
+development done!
+conflict target from base # --ours = base merge 할때와 반대다!!!
+
+# --theirs 를 쓰면 (현재 branch)
+$ git checkout --theirs code01
+Updated 1 path from the index
+
+$ cat code01
+development done!
+conflict target from feature # --theirs = branch
+```
+
+
 
 #### a branch 에서 작업 중(commit 안침)인데, b branch 에서 다른 작업을 해야한다.
 
@@ -64,16 +174,6 @@ $ git stash show stash@{0}
 $ git stash show -u stash@{0}
 ```
 
-#### branch 가 시작된 commit 을 확인하고 싶다
-``` shell
-$ git show --summary `git merge-base <check branch> <parant branch of check branch>`
-```
-
-#### 현재 branch 와 다른 branch 와 달라진 파일목록만 보고싶다
-``` shell
-$ git diff --name-status <DIFF-TARGET-BRANCH>
-```
-
 #### 커밋을 했는데, user/email 이 잘못되어있다.
 
 혹시 push 까지 했으면, 아래 방법은 rebase 를 사용하는 방법이므로, git push -f 로 강제 push 를 해야한다.
@@ -95,8 +195,32 @@ git commit --amend --author="my-name <my-email@domain.com>"
 git rebase --continue
 ```
 
-#### 다른 브랜치의 특정 커밋만 가져오고싶다.
+#### cherry-pick : 다른 브랜치의 특정 커밋만 가져오고싶다.
 
 ``` shell
 git cherry-pick <commit-hash>
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### branch 가 시작된 commit 을 확인하고 싶다
+``` shell
+$ git show --summary `git merge-base <check branch> <parant branch of check branch>`
+```
+
+#### 현재 branch 와 다른 branch 와 달라진 파일목록만 보고싶다
+``` shell
+$ git diff --name-status <DIFF-TARGET-BRANCH>
+```
+
+
