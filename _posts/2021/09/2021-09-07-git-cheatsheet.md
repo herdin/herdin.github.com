@@ -5,7 +5,7 @@ date: 2021-09-07
 tags: git cheatsheet
 ---
 
-#### merge conflict 가 났는데..
+# merge conflict 가 났는데..
 
 * 너무 많이 달라서 merge 가 힘들다. 내 코드는 잘 안다. 
 * 그럼 그냥 상대방것으로 엎어치고 (override update (svn)) 그상태에서 수정을 하자
@@ -33,7 +33,7 @@ $ git checkout --theirs <conflict-file-name>
 
 ```
 
-##### example
+#### example
 
 ``` shell
 # 1. merge 할때
@@ -130,7 +130,7 @@ conflict target from feature # --theirs = branch
 
 
 
-#### a branch 에서 작업 중(commit 안침)인데, b branch 에서 다른 작업을 해야한다.
+# a branch 에서 작업 중(commit 안침)인데, b branch 에서 다른 작업을 해야한다.
 
 stash 에 untracked  까지 저장할 수 있다.
 ``` shell
@@ -162,7 +162,7 @@ $ git stash apply stash@{1}
 # 개인적으로는 apply 후 직접 drop 하는 걸 선호한다.
 ```
 
-#### stash show 를 할때는..
+# stash show 를 할때는..
 
 `-u|--include-untracked` 옵션을 사용했을때는 볼떄도 까먹지말고 사용해주자..
 
@@ -174,7 +174,7 @@ $ git stash show stash@{0}
 $ git stash show -u stash@{0}
 ```
 
-#### 커밋을 했는데, user/email 이 잘못되어있다.
+# 커밋을 했는데, user/email 이 잘못되어있다.
 
 혹시 push 까지 했으면, 아래 방법은 rebase 를 사용하는 방법이므로, git push -f 로 강제 push 를 해야한다.
 
@@ -195,7 +195,7 @@ git commit --amend --author="my-name <my-email@domain.com>"
 git rebase --continue
 ```
 
-#### cherry-pick : 다른 브랜치의 특정 커밋만 가져오고싶다.
+# cherry-pick : 다른 브랜치의 특정 커밋만 가져오고싶다.
 
 ``` shell
 git cherry-pick <commit-hash>
@@ -213,12 +213,12 @@ git cherry-pick <commit-hash>
 
 
 
-#### branch 가 시작된 commit 을 확인하고 싶다
+# branch 가 시작된 commit 을 확인하고 싶다
 ``` shell
 $ git show --summary `git merge-base <check branch> <parant branch of check branch>`
 ```
 
-#### 현재 branch 와 다른 branch 와 달라진 파일목록만 보고싶다
+# 현재 branch 와 다른 branch 와 달라진 파일목록만 보고싶다
 ``` shell
 $ git diff --name-status <DIFF-TARGET-BRANCH>
 ```
