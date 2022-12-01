@@ -220,6 +220,46 @@ $ echo "$(cat ~/deleteme/test.conf)"
 hello, config
 ```
 
+## set
+
+* -o pipefail 파이프 사용시 오류 코드(non-zero exit code) 승계
+* -e 오류가 발생하면 중단
+* -u 설정되지 않은 변수를 사용하려고 하면 종료
+* -x 실행되는 명령어와 인수들을 출력
+
+### set -o pipefail
+
+exit code 승계
+
+``` shell
+# 아래와 같은 test1.sh 을 실행한다고 하면,
+# /non/exsitent/file 가 없기 때문에 exit code 가 0 이 아니게되지만, 파이프 연산자에 의해 wc 가 정상 수행되면서 echo $? 에서 0 이 출력된다.
+cat /non/exsitent/file | wc
+echo $?
+
+# 하지만 아래와 같이 set -o pipefail 를 넣으면, exit code 가 승계되어 echo $? 에서 1 이 출력된다.
+set -o pipefail
+cat /non/exsitent/file | wc
+echo $?
+```
+
+### set -e
+
+오류가 발생하면 중단
+
+``` shell
+# 아래와 같은 test1.sh 를 실행하게되면, 중간에 오류가 나지만 hello, world 가 모두 출력 실행된다.
+echo hello
+cat asdfasdfasdf
+echo world
+
+# 하지만, set -e 를 함께 실행하면, hello 이후 오류가 나서 실행을 멈춘다.
+set -e
+echo hello
+cat asdfasdfasdf
+echo world
+```
+
 ## Process.
 
 ``` shell
@@ -391,6 +431,30 @@ $ less -N <FILE_NAME> # show line number
 * 입력받은 라인에서 중복을 제거
 * 곁에있는 라인에서 중복을 제거하므로, sort 다음에 쓰인다.
 
+## comm
+두 파일을 비교한다
+
+``` shell
+$ comm [option] [file1] [file2]
+# [option]
+# -1 두개를 비교하여 파일 1에만 있는 것은 출력하지 않음
+# -2 두개를 비교하여 파일 2에만 있는 것은 출력하지 않음
+# -3 두개를 비교하여 파일 1과 파일 2에 모두 존재하는 라인은 출력하지 않음
+````
+
+
+## scp
+ssh 기반의 secure copy 를 수행. 원격파일카피.
+
+``` shell
+# r option for directory
+scp -r <local-file-location> <remote-id>@<remote-host>:<remote-file-location>
+scp -r <remote-id>@<remote-host>:<remote-file-location> <local-file-location>
+scp -r epu@file.anmani.link:/home/remote-epu/tmp /Users/user/Downloads/tmp
+```
+
+
+
 
 ## SELinux
 
@@ -515,28 +579,6 @@ idea.xdebug.key=-Xdebug
 
 ```
 찾았당 -> java.io.tmpdir=/var/folders/12/f2csmhbn7ll786vc8wvz26mw0000gn/T/
-
-## comm
-두 파일을 비교한다
-
-``` shell
-$ comm [option] [file1] [file2]
-# [option]
-# -1 두개를 비교하여 파일 1에만 있는 것은 출력하지 않음
-# -2 두개를 비교하여 파일 2에만 있는 것은 출력하지 않음
-# -3 두개를 비교하여 파일 1과 파일 2에 모두 존재하는 라인은 출력하지 않음
-````
-
-
-## scp
-ssh 기반의 secure copy 를 수행. 원격파일카피.
-
-``` shell
-# r option for directory
-scp -r <local-file-location> <remote-id>@<remote-host>:<remote-file-location>
-scp -r <remote-id>@<remote-host>:<remote-file-location> <local-file-location>
-scp -r epu@file.anmani.link:/home/remote-epu/tmp /Users/user/Downloads/tmp
-```
 
 
 
