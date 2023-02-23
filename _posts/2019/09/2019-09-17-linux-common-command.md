@@ -520,7 +520,7 @@ $ sftp -P ${PORT_NUMBER} -oIdentityFile=/path/to/private/key user@hostname
 
 ## jdk 관련..
 
-jvm 에서 사용하는 `java.io.tmpdir` 가 어딘지 확인해보고싶었다.
+### jvm 에서 사용하는 `java.io.tmpdir` 가 어딘지 확인해보고싶었다.
 
 ``` shell
 # 먼저 java 프로그램을 찾아서
@@ -580,7 +580,8 @@ idea.xdebug.key=-Xdebug
 ```
 찾았당 -> java.io.tmpdir=/var/folders/12/f2csmhbn7ll786vc8wvz26mw0000gn/T/
 
+### jar 파일 내용을 확인해 보고싶다
 
-
-
-
+``` shell
+$ jar tf <JAR FILE NAME>
+```

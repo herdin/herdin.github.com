@@ -5,13 +5,15 @@ date: 2022-09-01
 tags: k8s
 ---
 
+* [kubectl command document](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run)
+
 ``` bash
 #
 $ kubectl config view
 $ kubectl config current-context
 
-$ kubectl create namespace ${new-namespace}
-$ kubectl delete namespaces ${new-namespace}
+$ kubectl create namespace ${new-target-namespace}
+$ kubectl delete namespaces ${delete-target-namespace}
 
 $ kubectl run paul-api-pod --image=harbor.linecorp.com/paul-test/ithaca/paul-api:v4 --namespace=paul-test
 $ kubectl delete pods --namespace=paul-test paul-api-pod
@@ -40,6 +42,7 @@ $ kubectl run -i --tty --rm debug --image=epubaal/alpine-curl:amd64 --restart=Ne
     - NodePort: 고정 포트 (NodePort)로 각 노드의 IP에 서비스를 노출시킨다. NodePort 서비스가 라우팅되는 ClusterIP 서비스가 자동으로 생성된다. <NodeIP>:<NodePort>를 요청하여, 클러스터 외부에서 NodePort 서비스에 접속할 수 있다.
     - LoadBalancer: 클라우드 공급자의 로드 밸런서를 사용하여 서비스를 외부에 노출시킨다. 외부 로드 밸런서가 라우팅되는 NodePort와 ClusterIP 서비스가 자동으로 생성된다.
     - ExternalName: 값과 함께 CNAME 레코드를 리턴하여, 서비스를 externalName 필드의 콘텐츠 (예:foo.bar.example.com)에 매핑한다. 어떤 종류의 프록시도 설정되어 있지 않다.
+    - Headless Service 란? https://kimjingo.tistory.com/151
 
 # DNS (서비스 및 파드용)
 - k8s 내부에서 서비스와 파드를 위한 DNS record

@@ -343,3 +343,4 @@ Spring Kafka 에서 consumer-group 에 consumer 가 추가되거나 삭제될 �
 - [Sring Kafka](https://docs.spring.io/spring-kafka/docs/current/reference/html/#committing-offsets)
 - [아파치 카프카란 무엇인가?](https://soft.plusblog.co.kr/14?category=792301)
 - [Kafka 운영자가 말하는 Kafka Consumer Group](https://www.popit.kr/kafka-consumer-group/)
+- [kafka 설정을 사용한 문제해결](https://saramin.github.io/2019-09-17-kafka/)

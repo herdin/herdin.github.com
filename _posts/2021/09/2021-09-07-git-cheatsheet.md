@@ -172,6 +172,9 @@ $ git stash show stash@{0}
 
 # 이것은 다르다.. -u|--include-untracked 옵션을 빼먹어서 untracked 파일을 못보고 날릴뻔했다 ㅠ,ㅠ
 $ git stash show -u stash@{0}
+
+# 이렇게 하면 diff 처럼 파일 내용을 보여준다
+$ git stash show -p stash@{0}
 ```
 
 # 커밋을 했는데, user/email 이 잘못되어있다.
@@ -190,6 +193,9 @@ git rebase -i HEAD~1
 
 # 그상태에서 커밋 author 를 고친다.
 git commit --amend --author="my-name <my-email@domain.com>"
+# 이렇게하면 메세지를 고친다
+git commit --amend -m "update what what what"
+
 
 # rebase continue 하면 끝
 git rebase --continue
@@ -201,7 +207,13 @@ git rebase --continue
 git cherry-pick <commit-hash>
 ```
 
+# git commit 상대참조 - ^, ~1, ...
 
+HEAD^, HEAD~1 이런식으로 많이 사용된다.
+
+HEAD^ : HEAD 전 커밋
+HEAD^^ : HEAD 의 전전 커밋
+HEAD~N : HEAD 의 N 번째 전 커밋
 
 
 

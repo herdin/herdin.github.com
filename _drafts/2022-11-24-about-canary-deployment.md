@@ -21,4 +21,4 @@ baseline
 
 https://hyperconnect.github.io/2020/08/19/microsrv-deploy-3.html
 https://learn.microsoft.com/ko-kr/azure/devops/pipelines/ecosystems/kubernetes/canary-demo?view=azure-devops&tabs=yaml
-
+https://kmaster.tistory.com/9
