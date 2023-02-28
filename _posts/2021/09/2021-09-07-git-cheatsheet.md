@@ -215,16 +215,6 @@ HEAD^ : HEAD 전 커밋
 HEAD^^ : HEAD 의 전전 커밋
 HEAD~N : HEAD 의 N 번째 전 커밋
 
-
-
-
-
-
-
-
-
-
-
 # branch 가 시작된 commit 을 확인하고 싶다
 ``` shell
 $ git show --summary `git merge-base <check branch> <parant branch of check branch>`
@@ -235,4 +225,19 @@ $ git show --summary `git merge-base <check branch> <parant branch of check bran
 $ git diff --name-status <DIFF-TARGET-BRANCH>
 ```
 
-
+# forked repository 를 origin repository 와 sync 를 맞추고 싶다
+``` shell
+# remote repository 확인
+$ git remote -v
+# origin remote respotiroy 을 upstream 이란 이름으로 추가
+$ git remote add upstream <REMOTE GIT REPOSITORY WEB URL | https://git..///.git>
+# upstream 으로부터 fetch 받는다
+$ git fetch upstream
+# 받아온 branch 들을 확인해본다. remotes/upstream/... 가 보인다
+$ git branch -a
+# master 를 upstream/master 와 맞춘다
+$ git checkout master
+$ git merge upstream/master
+# focked remote repository 로 push 한다. 끝.
+$ git push oirgin master
+```
