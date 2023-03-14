@@ -337,6 +337,16 @@ $ ln -sf
 
 - [temp](https://jhnyang.tistory.com/269)
 
+## grep
+``` shell
+$ grep [옵션][패턴][파일명]
+```
+## wc - word count?
+``` shell
+# -l : --lines
+$ wc -l
+```
+
 ## find
 
 ``` shell

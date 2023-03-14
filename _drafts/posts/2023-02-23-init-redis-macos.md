@@ -19,6 +19,31 @@ $ redis-cli -c -u redis://{USERNAME}:{PASSWORD}@{HOST}:{PORT}
 
 (예시)
 터미널> redis-cli -h 127.0.0.1 -p 6379 -a PassWord!
+
+# 접속후
+
+## cluster 정보
+cluster info
+
+SET [Key] [Value]
+GET [Key]
+# redis cloud service (saas?) 에 따라서 keys 를 기본으로 막았을 수도 있다.
+# 그때는 scan 을 사용해야하는데, scan 은 cluster 환경에 적합하지 않은듯. 한 node 에서만 작동한다.
+KEYS *
+DEL [Key]
+## 모든 데이터 지우기
+FLUSHALL
+
+
+GET TEST-INFO-123
+GET TEST-INFO-124
+GET TEST-INFO-125
+
+get TEST-INFO::0
+get TEST-INFO::1
+get TEST-INFO::1,2,3
+
+
 ```
 
 
