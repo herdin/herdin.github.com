@@ -6,6 +6,7 @@ tags: k8s
 ---
 
 * [kubectl command document](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run)
+* [Spring Boot 서비스를 위한 Kubernetes 설정](https://dev.to/airoasis/spring-boot-seobiseureul-wihan-kubernetes-seoljeong-3d72)
 
 ``` bash
 #

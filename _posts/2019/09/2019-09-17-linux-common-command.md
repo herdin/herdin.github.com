@@ -341,21 +341,34 @@ $ ln -sf
 ``` shell
 $ grep [옵션][패턴][파일명]
 ```
-## wc - word count?
-``` shell
-# -l : --lines
-$ wc -l
-```
-
-## find
-
+## [find](https://recipes4dev.tistory.com/156)
 ``` shell
 # 파일명으로 찾을 경우
 # find ${find-location} -name "${target-file-name}"
 $ find / -name hello
 ```
 
--[temp](https://recipes4dev.tistory.com/156)
+## wc - word count?
+``` shell
+# -l : lines
+# -c : bytes
+# -m : characters
+# -w : word
+$ wc -l
+$ echo "hello" | wc -m
+6
+```
+
+## cut
+문자열 자를때 사용
+``` shell
+# -b : byte
+# -c : character
+# -f : field
+# -d : delimeter (default tab)
+$ echo "hello" | cut -c1-4
+$ echo "hello\tworld" | cut -f 1
+```
 
 ### shellscript while
 

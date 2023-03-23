@@ -56,7 +56,9 @@ tags: ide writing
 * Optimize Import (임포트 정리)
 	- window : `Ctrl` + `Alt` + `O`
 	- mac os : `Ctrl` + `Alt` + `O`
-
+* Reformat File
+	- window : `Ctrl` + `Alt` + `L`
+	- mac os : `Command` + `Alt` + `L` 
 
 * Preferences
 	- window : 
