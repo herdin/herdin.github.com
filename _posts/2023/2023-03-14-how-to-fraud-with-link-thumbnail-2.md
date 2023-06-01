@@ -6,3 +6,4 @@ tags: fraud
 ---
 
 힝지야 당장 도우렴
+(+android spock 에서 수정)
