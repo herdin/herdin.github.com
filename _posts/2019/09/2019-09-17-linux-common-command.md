@@ -49,9 +49,6 @@ df -k
 #echo current path
 pwd
 
-#echo current date
-date
-
 history #사용한 명령어 히스토리
 ![line number] #히스토리의 해당 라인을 재실행
 
@@ -60,6 +57,9 @@ file -bi [CHECK_FILE_NAME] #파일의 캐릭터셋을 확인한다
 #-i, --mime                 output MIME type strings (--mime-type and --mime-encoding)
 
 ls #디렉토리 내용 확인
+
+lscpu # cpu info
+ulimit -n # open file number per core
 ```
 
 ## systemctl
@@ -72,6 +72,37 @@ systemctl try-restart SERVICE_NAME.service #restart service when service is acti
 systemctl reload SERVICE_NAME.service
 systemctl status SERVICE_NAME.service
 systemctl cat SERVICE_NAME.service #check script?
+# service list 확인
+systemctl list-units
+# service 자동 시작 확인/설정/해제
+systemctl is-enabled SERVICE_NAME.service
+systemctl enable SERVICE_NAME.service
+systemctl disable SERVICE_NAME.service
+
+```
+
+### service 만들기
+``` shell
+cd /etc/systemd/system
+sudo vim <YOUR-SERVICE-NAME>.service
+---
+[Unit]
+Description=<YOUR-SERVICE-DESCRIPTION>
+
+[Service]
+Type=simple
+User=<USER-NAME>
+Group=<USER-GROUP>
+ExecStart=<YOUR-SERVICE-EXECUTION-COMMAND>
+# ex : ExecStart=/bin/bash /home/irteam/actions-runner/run.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+---
+sudo systemctl start <YOUR-SERVICE-NAME>
+systemctl status <YOUR-SERVICE-NAME>
+sudo systemctl enable <YOUR-SERVICE-NAME>.service
 ```
 
 ## User
@@ -126,7 +157,7 @@ $ ps -ef | grep nginx
   
 ``` shell
 # 열린 포트 확인
-$ netstat -tnlp
+$ netstat -tunlp
 ```
 
 mac os 에서는 좀 다르다
@@ -144,6 +175,23 @@ $ sudo lsof -i :3000
 * centos6 이하에서는 `iptables` 사용
 * centos7 에서는 `firewall-cmd` 사용
 
+## date
+
+* format 은 같으나, date add/substract 옵션이 linux/macos 다르다
+
+``` shell
+# linux
+$ date
+$ date -d '9 hour' "+%Y-%m-%dT%H:%M:%S"
+$ date -d '9 hour ago' "+%Y-%m-%dT%H:%M:%S"
+## milli seconds
+$ date "+%s"
+
+# mac
+$ date
+$ date -v-9H "+%Y-%m-%dT%H:%M:%S"
+
+```
 ## 압축
 
 ``` shell
@@ -210,7 +258,7 @@ source ~/.bashrc #modified .bashrc file apply
 unalias vim_nginx_conf
 ```
 
-### 명령어의 결과를 명령어안에 넣기
+## 명령어의 결과를 명령어안에 넣기
 
 백팃 이나 `"$()"` 를 사용하면된다
 ``` shell

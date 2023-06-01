@@ -7,22 +7,110 @@ tags: k8s
 
 * [kubectl command document](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run)
 * [Spring Boot 서비스를 위한 Kubernetes 설정](https://dev.to/airoasis/spring-boot-seobiseureul-wihan-kubernetes-seoljeong-3d72)
+* [k8s doc cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+* [k8s doc userguide](https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_rollout/)
 
 ``` bash
-#
+###########################
+# config
+###########################
 $ kubectl config view
 $ kubectl config current-context
 
+###########################
+# kubectl edit resource
+###########################
+$ kubectl edit resources/<resouce-name>
+$ kubectl edit pods/<pod-name> --namespace=<namespace-name>
+$ kubectl edit poddisruptionbudgets/scdf-spring-cloud-dataflow-server --namespace=scdf
+
+###########################
+# namespace
+###########################
 $ kubectl create namespace ${new-target-namespace}
 $ kubectl delete namespaces ${delete-target-namespace}
 
-$ kubectl run paul-api-pod --image=harbor.linecorp.com/paul-test/ithaca/paul-api:v4 --namespace=paul-test
+###########################
+# node
+###########################
+# kubectl top - node/pod
+$ kubectl top node
+
+# kubectl decribe node
+$ kubectl describe node my-nodename
+
+# add label to node
+$ kubectl label nodes <your-node-name> <label-key>=<label-value>
+$ kubectl label nodes my-worker-node-8 disktype=ssd
+## add label to worker node
+$ kubectl label node <your-node-name> node-role.kubernetes.io/worker=worker
+
+# remove label to node
+$ kubectl label node <your-node-name> <labelname>-
+
+###########################
+# pod
+###########################
+# with service account
+###########################
+# k8s api service endpoint :
+# - KUBERNETES_SERVICE_HOST
+# - kubernetes.default
+# debug pod 만들어서 접속하기
+# image list : epubaal/alpine-curl:amd64, alicek106/ubuntu:curl
+$ kubectl run -i --tty --rm debug --image=alicek106/ubuntu:curl --restart=Never --namespace=paul-test bash
+# --overrides 를 사용하여 spec 을 변경할 수 있음
+kubectl run -i --tty --rm deleteme --image=curlimages/curl:8.00.1 --restart=Never --overrides='{ "spec": { "serviceAccount": "your-service-account" }  }'  --namespace=your-namespace /bin/sh
+# pod 내부에서
+TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+# 이런식으로 k8s api 호출 가능
+curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer ${TOKEN}" https://kubernetes.default/apis/batch/v1/namespaces/scdf/cronjobs
+curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer ${TOKEN}" https://kubernetes.default/apis
+
+# cluster admin role binding
+kubectl create clusterrolebinding default-cluster-admin --clusterrole cluster-admin --serviceaccount <NAMESPACE>:default
+
+
+# debug pod 삭제
 $ kubectl delete pods --namespace=paul-test paul-api-pod
 
-$ kubectl run -i --tty --rm debug --image=alicek106/ubuntu:curl --restart=Never bash
-$ kubectl run -i --tty --rm debug --image=epubaal/alpine-curl:amd64 --restart=Never /bin/sh
+# pod 확인, 내부로 접속
+kubectl get pods --namespace=sample
+kubectl exec -it --namespace=sample sample-deployment-5f9c696465-78dsx -- /bin/bash
 
+kubectl exec -it --namespace=sample-locust locust-79744cd46d-x8m6r -- /bin/bash
 
+# pod 내부에서 서비스 접근하기
+# resource-name.namespace.resource-type.dns(cluster.local)
+# pod) ip convert . to - : 172-11-22-33.my-namespace.pod.cluster.local
+# service) my-service.my-namespace.svc.cluster.local
+
+# apply with file
+kubectl apply -f <file_name>
+# delete with file
+kubectl delete -f <file_name>
+
+# check with kustomize
+kubectl kustomize <kustomization_directory>
+kubectl kustomize .
+
+# apply with kustomize
+# -k : --kustomize
+kubectl apply -k <kustomization_directory>
+
+# apply with kubtomize
+kubectl apply -k <kustomization_directory>
+kubectl apply -k .
+
+# poddisruptionbudgets
+## scdf pod disruption budgets check
+## pod 의 최소 유지를 보장해주는 리소스
+$ kubectl get poddisruptionbudgets --namespace=scdf scdf-spring-cloud-dataflow-server
+
+# deployments, daemonsets, statefulsets 에 사용할 수 있는 명령어
+# daemonsets pod restart
+kubectl rollout restart daemonsets/logsender-fluentd -n kube-system
+kubectl rollout status daemonsets/logsender-fluentd -n kube-system
 ```
 
 # 시크릿
@@ -36,6 +124,9 @@ $ kubectl run -i --tty --rm debug --image=epubaal/alpine-curl:amd64 --restart=Ne
 - livenessProbe : 실패시 재시작 정책 대상
 - readinessProbe : 실패시 서비스들이 엔드포인트에서 파드의 IP 제거
 - startupProbe : 실패시 재시작 정책 대상, 성공할때까지 다른 프로브들이 비활성화
+- pod 내부에서 k8s api 서버는 환경변수: KUBERNETES_SERVICE_HOST 또는 domain: kubernetes.default 로 접근할 수 있다.
+
+
 
 # 서비스
 - Type
@@ -64,8 +155,127 @@ $ kubectl run -i --tty --rm debug --image=epubaal/alpine-curl:amd64 --restart=Ne
 * 헤드리스 서비스에 selector 설정을 하면, api 를 통해서 확인할 수 있는 end point 가 만들어진다.
 * 서비스와 연결된 파드를 직접 가리키는 A 레코드도 만들어진다. selector 가 없으면 안만들어진다.
 * selector 가 없더라도 CNAME 레코드는 만들어진다.
+* 일반적인 서비스는 DNS 요청 시 서비스의 ip 를 응답하지만, 헤드리스 서비스는 연결된 pod 들의 ip 들을 응답한다.
+
+# 리소스 제한
+* [리소스 쿼터(ResourceQuota)](https://kubernetes.io/ko/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/)
+    * 네임스페이스 별 사용 리소스를 제한하는 방법
+* [레인지 리미트](https://kubernetes.io/ko/docs/concepts/policy/limit-range/)
+https://kubernetes.io/ko/docs/tasks/administer-cluster/manage-resources/cpu-constraint-namespace/
+https://itchain.wordpress.com/2018/05/16/kubernetes-resource-request-limit/
+
+
+# 파드 스케줄링
+파드가 특정 노드에 선점되기 위한 조건들
+* 볼륨 필터
+    * 파드가 생성하고자하는 디스크 볼륨에 대해서 노드가 지원하는지 확인
+    * Node Affinity 추가 이용
+* 리소스 필터
+    * cpu, memory, disk, port 등 노드 가용 확인
+* 토폴로지 필터
+    * Affinity
+        * Node Affinity
+            * 노드 셀렉터와 비슷하게 노드의 레이블을 기반으로 파드를 스케줄링
+            * requiredDuringSchedulingIgnoredDuringExecution 강제
+            * preferredDuringSchedulingIgnoredDuringExecution 반강제
+        * Pod Affinity
+    * Node selector
+    * Node taint 에 Pod 가 tolerate (내성이 있는지/참을 수 있는지)한지 확인
+
+라는데.. 블로그에서 영 못믿겠네
+https://malgogi-developer.tistory.com/32
+https://dev.to/airoasis/spring-boot-seobiseureul-wihan-kubernetes-seoljeong-3d72
+https://kubernetes.io/ko/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+
 
 
 # 참고
 - [서비스](https://kubernetes.io/ko/docs/concepts/services-networking/service/)
 - [서비스 및 파드용 DNS](https://kubernetes.io/ko/docs/concepts/services-networking/dns-pod-service/)
+- [[번역] 쿠버네티스에서 쉽게 저지르는 10가지 실수](https://coffeewhale.com/kubernetes/mistake/2020/11/29/mistake-10/)
+
+
+# playground - about resource quota
+``` shell
+
+kubectl create namespace test-resource
+
+cat << EOF > test-quota.yaml
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: ResourceQuota
+  metadata:
+    namespace: test-resource
+    name: pods-high
+  spec:
+    hard:
+      cpu: "1000"
+      memory: 200Gi
+      pods: "10"
+    scopeSelector:
+      matchExpressions:
+      - operator : In
+        scopeName: PriorityClass
+        values: ["high"]
+- apiVersion: v1
+  kind: ResourceQuota
+  metadata:
+    namespace: test-resource
+    name: pods-medium
+  spec:
+    hard:
+      cpu: "10"
+      memory: 20Gi
+      pods: "10"
+    scopeSelector:
+      matchExpressions:
+      - operator : In
+        scopeName: PriorityClass
+        values: ["medium"]
+- apiVersion: v1
+  kind: ResourceQuota
+  metadata:
+    namespace: test-resource
+    name: pods-low
+  spec:
+    hard:
+      cpu: "5"
+      memory: 10Gi
+      pods: "10"
+    scopeSelector:
+      matchExpressions:
+      - operator : In
+        scopeName: PriorityClass
+        values: ["low"]
+EOF
+kubectl create -f ./test-quota.yaml
+kubectl get quota --all-namespaces
+kubectl get quota --namespace=test-resource
+
+kubectl describe quota --namespace=test-resource
+
+cat << EOF > test-pod1.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: test-resource
+  name: high-priority
+spec:
+  containers:
+  - name: high-priority
+    image: ubuntu
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo hello; sleep 10;done"]
+    resources:
+      requests:
+        memory: "10Gi"
+        cpu: "500m"
+      limits:
+        memory: "10Gi"
+        cpu: "500m"
+  priorityClassName: pods-high
+EOF
+kubectl create -f ./test-pod1.yaml
+```

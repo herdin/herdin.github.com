@@ -14,12 +14,28 @@ tags: kafka console
 --bootstrap-server <SERVER_LIST:server-url-1:port,server-url-2:port,...> \
 
 ##########################
+# kafka-configs
+##########################
+# [broker config]https://godekdls.github.io/Apache%20Kafka/broker-configuration/#groupmaxsessiontimeoutms
+# [consumer config](https://godekdls.github.io/Apache%20Kafka/consumer-configuration/)
+./kafka-configs.sh \
+--bootstrap-server $BOOTSTRAP_SERVER \
+--entity-type brokers --all --describe
+
+--client-defaults \
+--broker-defaults \
+##########################
 # kafka-topics
 ##########################
 # topic list 확인
 ./kafka-topics.sh \
 --topic <TOPIC NAME, REG EXP 가능>
 --list
+
+# topic  확인
+./kafka-topics.sh \
+--topic <TOPIC NAME, REG EXP 가능>
+--describe
 
 ##########################
 # kafka-console-consumer
@@ -37,6 +53,9 @@ tags: kafka console
 ## 특정 파티션/오프셋 확인
 --partition 0 \
 --offset 127
+
+## 가져올 message 갯수
+--max-messages 10
 
 ##########################
 # kafka-consumer-groups
