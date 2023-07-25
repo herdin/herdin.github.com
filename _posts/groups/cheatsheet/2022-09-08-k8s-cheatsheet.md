@@ -2,7 +2,7 @@
 layout: post
 title: "k8s cheatsheet"
 date: 2022-09-01
-tags: k8s
+tags: k8s cheatsheet
 ---
 
 * [kubectl command document](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run)

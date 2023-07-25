@@ -175,6 +175,12 @@ $ sudo lsof -i :3000
 * centos6 이하에서는 `iptables` 사용
 * centos7 에서는 `firewall-cmd` 사용
 
+## 환경변수
+
+``` shell
+env
+export
+```
 ## date
 
 * format 은 같으나, date add/substract 옵션이 linux/macos 다르다
@@ -587,6 +593,10 @@ $ sftp -P 8888 id@1.22.333.444
 
 $ sftp -P ${PORT_NUMBER} -oIdentityFile=/path/to/private/key user@hostname
 
+# 접속 후
+ls
+pwd
+get <filename>
 ```
 
 ## jdk 관련..

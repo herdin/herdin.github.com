@@ -2,7 +2,7 @@
 layout: post
 title: "gradle cheatsheet"
 date: 2022-09-19
-tags: gradle
+tags: gradle cheatsheet
 ---
 
 ``` shell

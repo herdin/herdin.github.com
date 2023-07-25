@@ -76,5 +76,30 @@ do
 done
 ```
 
+## file 에 저장된 것을 line 별로 loop 돌고 싶다.
+
+``` shell
+# type 1
+while read line; do
+  echo "$line"
+done < peptides.txt
+
+# type 2 - recomment
+for line in `cat your-file-name`
+do
+  echo "line : $line"
+  curl -v --request GET --url https://your-target.com \
+  --data-raw '{
+	"api-data-arr": [{
+		"linenumber": 8080,
+		"linetext": "'$line'"
+	}]
+  }'
+done
+
+
+```
+
+
 참고
 - [Advanced Bash-Scripting Guide](https://tldp.org/LDP/abs/html/comparison-ops.html)

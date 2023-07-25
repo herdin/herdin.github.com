@@ -27,9 +27,13 @@ $ git checkout my-feature-1
 # 여기서 문제 발생
 $ git rebase master
 
-# 근데 머지 귀찮을때 아래와 같이 해결
+# 1. 근데 머지 귀찮을때 아래와 같이 해결
 $ git checkout --ours <conflict-file-name>
 $ git checkout --theirs <conflict-file-name>
+
+# 2. 직접 conflict 를 해결하고 
+$ git add/rm <conflict-file-name>
+$ git rebase --continue
 
 ```
 
@@ -241,3 +245,4 @@ $ git merge upstream/master
 # focked remote repository 로 push 한다. 끝.
 $ git push oirgin master
 ```
+

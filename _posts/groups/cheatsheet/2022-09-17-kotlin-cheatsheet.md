@@ -2,7 +2,7 @@
 layout: post
 title: "kotlin cheatsheet"
 date: 2022-09-17
-tags: kotlin
+tags: kotlin cheatsheet
 ---
 
 

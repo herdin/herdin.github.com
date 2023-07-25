@@ -105,6 +105,10 @@ tags: ide writing
 Command + Shift + A -> Edit Custom Properties
 apple.laf.useScreenMenuBar=false
 
+## 한글이 자꾸 씹힐때
+Command + Shift + P -> 표시언어구성 -> 한글(ko) 선택 -> 재시작
+
+
 참고
 - [IntelliJIDEA_ReferenceCard.pdf](https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf)
 - [IntelliJ & Code 내가 주로 쓰는 단축키 Shortcut](https://secondmemory.kr/567)

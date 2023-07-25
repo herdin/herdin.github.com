@@ -2,7 +2,7 @@
 layout: post
 title: "kafka console cheatsheet"
 date: 2022-12-26
-tags: kafka console
+tags: kafka console cheatsheet
 ---
 
 ```shell
