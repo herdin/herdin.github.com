@@ -246,3 +246,21 @@ $ git merge upstream/master
 $ git push oirgin master
 ```
 
+# tag 로 checkout 받기
+
+``` shell
+$ git checkout <TAG NAME>
+```
+
+# 이미 commit 한 파일을 파일은 지우지말고 ignore 처리하고싶다
+``` shell
+$ git rm --cached filename
+```
+
+# 삭제된 remote branch 가 로컬에서 보일때
+
+로컬의 remote branch 는 실제 remote branch 가 아니라 그저 레퍼런스일 뿐이므로 정리해주면된다.
+
+``` shell
+$ git remote prune origin
+```

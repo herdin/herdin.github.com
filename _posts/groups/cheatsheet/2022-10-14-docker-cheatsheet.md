@@ -24,6 +24,10 @@ tags: docker cheatsheet
 $ docker run -d -p 8081:8080 --name was01 was:0.1
 ```
 
+# [exec](https://docs.docker.com/engine/reference/commandline/exec/)
+``` shell
+$ docker exec -it <CONTAINER_ID> /bin/sh
+```
 
 # [build](https://docs.docker.com/engine/reference/commandline/build/)
 
@@ -95,7 +99,7 @@ docker rmi $(docker images --filter=reference='paul-test/*/nginx' -q)
 
 # etc
 
-```shell
+``` shell
 # docker login
 # 아무 파라미터가 없으면 dockerhub 로 로그인
 $ docker login <REPOSITORY_URL/IP> --username <USERNAME>
@@ -103,4 +107,16 @@ $ docker login <REPOSITORY_URL/IP> --username <USERNAME>
 # docker commit
 $ docker commit <CONTAINER ID/NAME> <NEW IMAGE NAME:TAG>
 # docker tag
+```
+
+
+# 이미지를 만들때
+
+``` shell
+$ docker run --name <CONTAINER_NAME> -it <REPOSITORY>/<IMAGE_NAME>:<IMAGE_VERSION> /bin/sh
+# docker 안에서 작업..
+$ docker commit <CONTAINER_NAME> <IMAGE_NAME>:<IMAGE_VERSION>
+$ docker login <REPOSITORY_URL> --username <USERNAME>
+$ docker tag <IMAGE_NAME>:<IMAGE_VERSION> <REPOSITORY_URL>/<IMAGE_NAME>:<IMAGE_VERSION>
+$ docker push <REPOSITORY_URL>/<IMAGE_NAME>:<IMAGE_VERSION>
 ```

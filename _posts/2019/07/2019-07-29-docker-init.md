@@ -79,8 +79,42 @@ ADD 보다 RUN 으로 작업을 할 경우, 더 명시적이고 이미지가 더
 - [Docker Tip #2: The Difference between COPY and ADD in a Dockerfile](https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile)
 - [[Docker] ADD vs COPY in Dockerfile](https://blog.leocat.kr/notes/2017/01/07/docker-add-vs-copy)
 
-#### CMD
-#### ENTRYPOINT
+#### CMD 와 ENTRYPOINT 의 차이점
+
+ENTRYPOINT 의 명령어는 변경되지 않는다.
+CMD 는 컨테이너 생성 시 명령어를 변경할 수 있다.
+
+``` shell
+# 아래와 같은 두 파일이 있을 경우,
+cat <<EOF > DockerfileCMD
+FROM alpine
+CMD ["echo", "hello, cmd"]
+EOF
+
+cat <<EOF > DockerfileENTRY
+FROM alpine
+ENTRYPOINT ["echo", "hello, entrypoint"]
+EOF
+
+# 이미지 생성
+$ docker build -t test:cmd -f DockerfileCMD .
+$ docker build -t test:entry -f DockerfileENTRY .
+
+# 실행
+$ docker run --name test-cmd test:cmd echo wow
+$ docker run --name test-entry test:entry echo wow
+# 재실행
+$ docker start test-cmd
+$ docker start test-entry
+
+$ docker logs test-cmd
+wow
+wow
+
+$ docker logs test-entry
+hello, entrypoint echo wow
+hello, entrypoint echo wow
+```
 
 
 ## docker image commit

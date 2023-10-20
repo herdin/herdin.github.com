@@ -5,6 +5,83 @@ date: 2021-12-14
 tags: kafka
 ---
 
+
+* [카프카 커넥트의 태스크 밸런싱 로직, DistributedHerder(양치기) 그리고 IncrementalCooperativeAssignor 내부 동작 소개](https://blog.voidmainvoid.net/473)
+주요 로직은 아래 코드로 갈음. 블로그에서 복붙.
+그런데 실제로는 아래와 같이 돌지 않는 것같다. 노는 노드들이 너무 많음..
+아.. 커넥터와 태스크를 동등하게 취급해서 동등하게 나눠주는걸까? 아래코드는 태스크만인데..
+``` java
+protected void assignTasks(List<WorkerLoad> workerAssignment, Collection<ConnectorTaskId> tasks) {
+    workerAssignment.sort(WorkerLoad.taskComparator());
+    WorkerLoad first = workerAssignment.get(0);
+
+    Iterator<ConnectorTaskId> load = tasks.iterator();
+    while (load.hasNext()) {
+        int firstLoad = first.tasksSize();
+        int upTo = IntStream.range(0, workerAssignment.size())
+                .filter(i -> workerAssignment.get(i).tasksSize() > firstLoad)
+                .findFirst()
+                .orElse(workerAssignment.size());
+        for (WorkerLoad worker : workerAssignment.subList(0, upTo)) {
+            ConnectorTaskId task = load.next();
+            log.debug("Assigning task {} to {}", task, worker.worker());
+            worker.assign(task);
+            if (!load.hasNext()) {
+                break;
+            }
+        }
+    }
+}
+```
+
+현재 사용 중인 버전 `{"version":"2.5.0.7.1.7.5-1","commit":"6900656b7ec422c0","kafka_cluster_id":"JowUcaIdSaeAuADuGukhYQ"}`
+
+* [Connect REST Interface](https://docs.confluent.io/platform/current/connect/references/restapi.html)
+* [Kafka Connect API 명령어 정리](https://dongjuppp.tistory.com/90)
+
+* [커넥터 리밸런싱이 잘안된다. 답변 없음](https://stackoverflow.com/questions/63348308/how-to-get-kafka-connect-to-balance-tasks-connectors-evenly)
+* [커넥터 워커가 추가/삭제 되었을때 리밸런싱이 작동했으면 좋겠다](https://forum.confluent.io/t/rebalancing-tasks-when-new-kafka-connect-is-started/876/3)
+
+* [connect.protocol 설정차이](https://www.slideshare.net/HostedbyConfluent/deep-dive-into-kafka-connect-protocol-with-catalin-pop)
+* [kafka connect config](https://docs.confluent.io/platform/current/installation/configuration/connect/index.html#connector-client-config-override-policy)
+
+Eager Protocol
+- Revoke all Connectors
+- Perform round-robin assignment
+- Send Connector assignment to queue
+- Workers pickup assignment
+- Start assigned connectors
+
+Compatible Protocol
+- Revoke connectors when the worker left the group or connector/task change
+- Generate connector assignment only for the revoked connectors
+- Send Connector assignment to queue
+- Workers pickup assignment
+- Start assigned connectors
+
+Sessioned Protocol
+- Setup Session key for encrypted authentication
+- Revoke connectors when the worker left the group or connector/task change
+- Generate connector assignment only for the revoked connectors
+- Send Connector assignment to queue
+- Workers pickup assignment
+- Start assigned connectors
+
+(Pro)Evenly distributed = Eager
+(Con)Uneven distributed = Compatible/Sessioned
+(Pro)Incremental rebalance = Compatible/Sessioned
+(Con)Not Secured = Eager/Compatible
+(Pro)Secured = Sessioned
+(Con)Stops all connectors = Eager
+
+
+* [Incremental Cooperative Rebalancing in Apache Kafka: Why Stop the World When You Can Change It?](https://www.confluent.io/blog/incremental-cooperative-rebalancing-in-kafka/?_ga=2.74764242.1102341778.1697548913-955538524.1697159805)
+* [위의 한글블로그](https://devidea.tistory.com/100)
+* [apache kafka repostiory](https://github.com/apache/kafka/blob/trunk/connect/runtime/src/main/java/org/apache/kafka/connect/runtime/distributed/IncrementalCooperativeConnectProtocol.java)
+
+아래는, 실습내용.
+---
+
 팀에서 사용하고 있는 kafka connect. 발 끝이라도 따라가봅시다!
 
 [사용한 kafka docker-compose file repository](https://github.com/wurstmeister/kafka-docker)
@@ -64,7 +141,7 @@ $ ./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 -
 
 이렇게 connect 를 실행 https://data-engineer-tech.tistory.com/34
 ``` shell
-$ bin/connect-distributed.sh config/connect-distributed.properties
+$ `bin/connect-distributed.sh config/connect-distributed.properties`
 ```
 
 잘 실행되었는지 확인, 무슨명령어인지는 몰라
@@ -168,8 +245,6 @@ docker exec -it <CONTAINER_ID> /bin/bash
 키야 ㅎ.ㅎ 키시시싯 내일해야지 키시시시싯
 
 ### file sink connect 구성
-
-
 
 connector plugins 확인
 $ curl http://localhost:8083/connector-plugins
