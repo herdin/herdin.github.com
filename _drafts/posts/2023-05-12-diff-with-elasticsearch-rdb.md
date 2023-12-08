@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "자꾸 까먹어서 적어놓는 elasticsearch 용어"
-date: 2022-05-12
+date: 2023-05-12
 tags: es
 ---
 

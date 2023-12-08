@@ -246,11 +246,25 @@ $ git merge upstream/master
 $ git push oirgin master
 ```
 
+# remote branch 를 checkout 받기
+``` shell
+$ git checkout -b <your-local-branch-name> origin/<remote-branch-name>
+```
 # tag 로 checkout 받기
 
 ``` shell
 $ git checkout <TAG NAME>
 ```
+
+# commit 으로 branch 따기
+``` shell
+# commit 을 확인하여 이동
+$ git checkout <commit-no>
+# branch 생성 및 이동
+$ git branch <your-branch-name>
+$ git checkout <your-branch-name>
+```
+
 
 # 이미 commit 한 파일을 파일은 지우지말고 ignore 처리하고싶다
 ``` shell

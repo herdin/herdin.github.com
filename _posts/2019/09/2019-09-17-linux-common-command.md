@@ -12,6 +12,8 @@ echo $USER #echo currernt user
 
 #os info
 uname -a
+# 위에 것으로 모를때. 대체로 모름
+cat /etc/*release*
 
 #os bit 1
 uname -m
@@ -374,13 +376,21 @@ $ ls -trl
 $ ls -trlh
 ```
 
+## df
+``` shell
+$ df -h
+```
+
 ## du
 disk usage
 
 ``` shell
 $ du -sh *
 $ du --summarize --human-readable *
+# 해당 위치에서 폴더별 크기를 보여준다
+$ du -smh * | sort -rh 
 ```
+* [참고](https://goateedev.tistory.com/181)
 
 ## ln
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "k8s resource 제한하기"
-date: 2022-03-31
+date: 2023-03-31
 tags: k8s
 ---
 

@@ -9,6 +9,7 @@ tags: k8s cheatsheet
 * [Spring Boot 서비스를 위한 Kubernetes 설정](https://dev.to/airoasis/spring-boot-seobiseureul-wihan-kubernetes-seoljeong-3d72)
 * [k8s doc cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 * [k8s doc userguide](https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_rollout/)
+* [k8s api](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#list-pod-v1-core)
 
 ``` bash
 ###########################
@@ -49,10 +50,16 @@ $ kubectl label node <your-node-name> node-role.kubernetes.io/worker=worker
 $ kubectl label node <your-node-name> <labelname>-
 
 ###########################
+# config map
+###########################
+$ kubectl create configmap NAME [--type=string] [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run]
+
+###########################
 # pod
 ###########################
 # with service account
 ###########################
+kubectl top pod <your-pod-name>
 # k8s api service endpoint :
 # - KUBERNETES_SERVICE_HOST
 # - kubernetes.default
@@ -70,12 +77,12 @@ curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Author
 # cluster admin role binding
 kubectl create clusterrolebinding default-cluster-admin --clusterrole cluster-admin --serviceaccount <NAMESPACE>:default
 
-
 # debug pod 삭제
 $ kubectl delete pods --namespace=paul-test paul-api-pod
 
 # pod 확인, 내부로 접속
 kubectl get pods --namespace=sample
+# Note: The double dash (--) separates the arguments you want to pass to the command from the kubectl arguments.
 kubectl exec -it --namespace=sample sample-deployment-5f9c696465-78dsx -- /bin/bash
 
 kubectl exec -it --namespace=sample-locust locust-79744cd46d-x8m6r -- /bin/bash
@@ -84,6 +91,13 @@ kubectl exec -it --namespace=sample-locust locust-79744cd46d-x8m6r -- /bin/bash
 # resource-name.namespace.resource-type.dns(cluster.local)
 # pod) ip convert . to - : 172-11-22-33.my-namespace.pod.cluster.local
 # service) my-service.my-namespace.svc.cluster.local
+
+# pod log 확인
+kubectl logs -f <POD_NAME>
+
+###########################
+# resource update
+###########################
 
 # apply with file
 kubectl apply -f <file_name>
@@ -111,6 +125,27 @@ $ kubectl get poddisruptionbudgets --namespace=scdf scdf-spring-cloud-dataflow-s
 # daemonsets pod restart
 kubectl rollout restart daemonsets/logsender-fluentd -n kube-system
 kubectl rollout status daemonsets/logsender-fluentd -n kube-system
+
+# Resource quotas
+kubectl get resourcequotas
+
+###########################
+# api
+###########################
+
+# check cluster
+kubectl config view -o jsonpath='{"Cluster name\tServer\n"}{range .clusters[*]}{.name}{"\t"}{.cluster.server}{"\n"}{end}'
+
+CLUSTER_NAME="some_server_name"
+
+APISERVER=$(kubectl config view -o jsonpath="{.clusters[?(@.name==\"$CLUSTER_NAME\")].cluster.server}")
+
+
+
+
+
+
+
 ```
 
 # 시크릿

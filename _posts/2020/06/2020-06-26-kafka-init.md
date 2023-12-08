@@ -50,6 +50,53 @@ zookeeper 없이는 기동하지 않는다.
 
 `consumer group` 이 나뉘어져 있다면, 위와 같이 같은 `topic` 을 다른 `consumer` 가 각각 가져갈 수 있다.
 
+
+## exactly once 란?
+
+producer event 생성 전략?
+- At most once
+  재시도 없음. 딱 한번만 produce 하도록 한다.
+- At least once
+  leader 가 follower 들에게 토픽을 잘 전송했는지 확인 
+  producer config
+    `acks=all` 로 설정
+- Exactly once
+  producer 가 event 를 중복생성하지 않는 것을 보장
+  broker 에게 producer id 를 전송하여 중복체크
+  producer config
+    `acks=all`
+    `enable.idempotence=true`
+
+관련 producer config
+* `acks`
+  * `0` :
+    producer 는 서버로부터 acknowledgment 를 기다리지 않는다. retries 의 효과가 없어진다.
+    서버로받는 offset 은 항상 -1 이되고, 잘 전송됐는지 보장하지 않는다.
+  * `1` :
+    leader 는 모든 follower 로부터 acknowledgment 를 기다리지 않는다.
+    leader 가 acknowledging 을 (producer) 에게 보내고 실패한 경우, follower 가 replicate 를 하지 못했다면 record 는 유실된다.
+  * `all`/`-1` (default) :
+    leader 가 모든 follower 로부터 acknowledgment 를 기다린다
+* `enable.idempotence`
+  * `true` (default) :
+    producer 가 stream 에 정확히 하나의 message 만을 쓰도록한다
+    `max.in.flight.requests.per.connection` <= 5
+    `retries` > 0
+    `acks` 는 all 로 해야함
+  * `false` :
+    producer 가 broker 실패에 재시도를 한다. 이때 중복 record 를 stream 에 쓴다.
+
+참고
+* [producer config](https://kafka.apache.org/documentation/#producerconfigs)
+
+
+
+
+
+
+
+
+
 ## <span id="practice">실습</span>
 
 #### docker-compose file

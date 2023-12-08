@@ -8,6 +8,18 @@ tags: linux yaml xml software
 ``` shell
 # 설치
 $ brew install yq
+
+$ cat <<EOF > just-test.xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<result>
+    <name>foo</name>
+    <desc>bar</desc>
+    <age>22</age>
+</result>
+EOF
+
+$ cat just-test.xml| yq '.'
+$ cat just-test.xml| yq --input-format xml '.'
 ```
 
 https://mikefarah.gitbook.io/yq/

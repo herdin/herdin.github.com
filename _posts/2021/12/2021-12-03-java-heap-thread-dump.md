@@ -33,6 +33,15 @@ $ jmap -dump:format=b,file=dump-20211202213000.hprof ${pid}
 
 leak report 받으니까 문제가 있는 class 를 바로 알려주던뎅 ㅠ,ㅠ?
 
+heap dump 파일이 클 경우, 파일이 안열린다. 설정 변경으로 해결
+```
+# ${MAT_HOME}/MemoryAnalyzer.ini
+-vmargs
+#-Xmx1024m
+-Xms6g
+-Xmx6g
+```
+
 ##### thread dump 를 받자
 
 ``` shell
@@ -42,3 +51,4 @@ $ jstack ${pid}
 
 참고
 - [스레드 덤프 분석하기](https://d2.naver.com/helloworld/10963)
+- [Thread dump와 Heap dump](https://sup2is.github.io/2020/10/29/thread-dump-and-heap-dump.html)
