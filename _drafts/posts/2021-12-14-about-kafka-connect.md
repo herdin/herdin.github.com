@@ -79,6 +79,11 @@ Sessioned Protocol
 * [위의 한글블로그](https://devidea.tistory.com/100)
 * [apache kafka repostiory](https://github.com/apache/kafka/blob/trunk/connect/runtime/src/main/java/org/apache/kafka/connect/runtime/distributed/IncrementalCooperativeConnectProtocol.java)
 
+* custom connector 개발을 위한 예제들
+  * [kafka repository](https://github.com/apache/kafka/tree/3.5/connect/file/src/main/java/org/apache/kafka/connect/file)
+* [mirror maker (connector)](https://github.com/apache/kafka/tree/3.5/connect/mirror)
+
+
 아래는, 실습내용.
 ---
 
