@@ -10,7 +10,9 @@ tags: git
 
 자세한 설명은 아래쪽에..
 
-## 1. 커밋을 합치고 싶다.
+
+
+## rebase 를 사용해서 커밋을 합치고(squash) 싶다.
 
 현재 상황 develop-temp branch 에서 작업중인데, 작업했던 것을 다 합치고 싶다.
 
@@ -111,7 +113,7 @@ git log --oneline -5
 fa30853 code01 dev..
 ```
 
-## 2. 커밋 메세지를 수정하고 싶다.
+## rebase 를 사용해 커밋 메세지를 수정하고 싶다.
 
 현재 상황.. done code01, add c, d, 1, 1, 2, 3 -> 이 커밋 내용을 심플하게 done! 으로 바꾸고싶다.
 
@@ -154,6 +156,7 @@ d34433f (HEAD -> develop-temp) done!
 fa30853 code01 dev..
 ```
 
+---
 
 # `rebase`
 ~~이미 커밋한 히스토리를 수정할 떄 사용한다.~~ 완전 잘못 이해했었음.
@@ -378,6 +381,26 @@ $ git log --oneline --graph
 # \-\-abort
 현재 rebase 상태를 취소한다.
 
+# conflict 가 났을때
 
-참고
+## 직접 수정하기
+
+``` shell
+# 직접 파일에가서 conflict 를 수정한뒤, status 로 conflict 파일을 확인하여 add 한다
+$ git status
+$ git add {conflict resolved file}
+$ git rebase --continue
+```
+
+## 그냥 내것으로 엎어치고 나몰라라 하기
+
+작성중..
+
+## 그냥 남에것으로 엎어치고 내가 다시 수정하기
+
+작성중..
+
+---
+
+# 참고
 - [3.6 Git 브랜치 - Rebase 하기](https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase-%ED%95%98%EA%B8%B0)

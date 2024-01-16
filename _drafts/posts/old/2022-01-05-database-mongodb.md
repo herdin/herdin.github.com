@@ -119,6 +119,12 @@ db.${collection}.createIndex(
     {}, -- options
     {}, -- commitQuorum
 )
+db.${collection}.createIndex({ category: 1 }) -- 단일 인덱스 category column 에 asc(1) index
+
+-- 복합 인덱스 category column 에 asc(1), score column 에 desc(-1) index
+-- 이런 경우에는 index 순서가 중요하다. score 하나로 검색할 경우 성능이 나오지않음. category 정렬안에서 score 가 정렬되기 때문
+db.${collection}.createIndex({ category: 1, score: -1 })
+
 db.${collection}.createIndex(
     -- keys
     {
@@ -145,9 +151,10 @@ db.${collection}.find(
 .sort(
     { score: { $meta: "textScore" } }
 )
--- explain
+-- explain : https://www.mongodb.com/docs/manual/reference/explain-results/
 db.${collection}.find().explain()
 db.${collection}.find().explain("executionStats").executionStats.executionTimeMillis
+
 -- hint 해당 조건으로 인덱스가 있는지? 확인? 이건 잘 안봄
 db.${collection}.find().hint({})
 -- 인덱스 사용 통계
@@ -164,6 +171,7 @@ db.${insertCollection}.insertMany(
 db.${collection}.find(
     {
         "_id.your.key.path": NumberLong("123")
+        -- "_id.your.key.path": 123 -- 그냥 이렇게 해도 된다
         "_id.your.oanother.key.path":  NumberLong("456")
     },
 )
