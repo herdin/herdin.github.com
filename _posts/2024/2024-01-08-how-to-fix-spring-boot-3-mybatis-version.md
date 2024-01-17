@@ -2,7 +2,7 @@
 layout: post
 title: "Invalid value type for attribute 'factoryBeanObjectType': java.lang.String"
 date: 2024-01-08
-tags: intellij springboot java mybatis shovel-knight 
+tags: intellij spring-boot java mybatis shovel-knight 
 ---
 
 spring boot 3 로 버전업
