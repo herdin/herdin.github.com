@@ -166,6 +166,8 @@ $ git stash apply stash@{1}
 # 개인적으로는 apply 후 직접 drop 하는 걸 선호한다.
 ```
 
+
+
 # stash show 를 할때는..
 
 `-u|--include-untracked` 옵션을 사용했을때는 볼떄도 까먹지말고 사용해주자..
@@ -180,6 +182,8 @@ $ git stash show -u stash@{0}
 # 이렇게 하면 diff 처럼 파일 내용을 보여준다
 $ git stash show -p stash@{0}
 ```
+
+
 
 # 커밋을 했는데, user/email 이 잘못되어있다.
 
@@ -205,11 +209,15 @@ git commit --amend -m "update what what what"
 git rebase --continue
 ```
 
+
+
 # cherry-pick : 다른 브랜치의 특정 커밋만 가져오고싶다.
 
 ``` shell
 git cherry-pick <commit-hash>
 ```
+
+
 
 # git commit 상대참조 - ^, ~1, ...
 
@@ -218,6 +226,8 @@ HEAD^, HEAD~1 이런식으로 많이 사용된다.
 HEAD^ : HEAD 전 커밋
 HEAD^^ : HEAD 의 전전 커밋
 HEAD~N : HEAD 의 N 번째 전 커밋
+
+
 
 # branch 가 시작된 commit 을 확인하고 싶다
 ``` shell
@@ -228,6 +238,8 @@ $ git show --summary `git merge-base <check branch> <parant branch of check bran
 ``` shell
 $ git diff --name-status <DIFF-TARGET-BRANCH>
 ```
+
+
 
 # forked repository 를 origin repository 와 sync 를 맞추고 싶다
 ``` shell
@@ -250,11 +262,15 @@ $ git push oirgin master
 ``` shell
 $ git checkout -b <your-local-branch-name> origin/<remote-branch-name>
 ```
-# tag 로 checkout 받기
 
+
+
+# tag 로 checkout 받기
 ``` shell
 $ git checkout <TAG NAME>
 ```
+
+
 
 # commit 으로 branch 따기
 ``` shell
@@ -266,10 +282,13 @@ $ git checkout <your-branch-name>
 ```
 
 
+
 # 이미 commit 한 파일을 파일은 지우지말고 ignore 처리하고싶다
 ``` shell
 $ git rm --cached filename
 ```
+
+
 
 # 삭제된 remote branch 가 로컬에서 보일때
 
