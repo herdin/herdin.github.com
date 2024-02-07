@@ -186,6 +186,16 @@ db.${collection}.find(
         },
     },
 )
+;
+-- select : $gt 사용, date time 인 경우
+db.${collection}.find(
+    {
+        "created": {
+            "$gte" : ISODate("2024-02-02T09:48:44.282Z")
+        }
+    }
+)
+;
 -- select join by aggregation
 db.${collection}.aggregate(
     -- left join 같은거
@@ -206,8 +216,9 @@ db.${collection}.aggregate(
         $count: "artist_nm"
     }
 )
+;
 -- aggregation 을 활용한 join delete
-db.test.aggregate(
+db.${collection}.aggregate(
     {
         $lookup: {
             from: "test2",
@@ -223,6 +234,25 @@ db.test.aggregate(
 ).forEach(function(doc) {
     db.test1.deleteMany({ "id": doc["id"]})
 })
+;
+-- update
+db.${collection}.update(
+    {}, -- query : find 의 query 와 동일
+    {}, -- update
+)
+;
+-- update : example
+db.${collection}.update(
+    {
+        "_id.someInnerId": 5,
+    },
+    {
+        $set: {
+            "age": 22
+        }
+    }
+)
+;
 ```
 
 참고

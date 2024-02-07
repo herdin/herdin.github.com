@@ -52,7 +52,12 @@ $ kubectl label node <your-node-name> <labelname>-
 ###########################
 # config map
 ###########################
-$ kubectl create configmap NAME [--type=string] [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run]
+$ kubectl create configmap <YOUR-CONFIG-MAP-NAME> [--type=string] [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run]
+
+###########################
+# secret
+###########################
+$ kubectl create secret generic <YOUR-SECRET-NAME> --from-file=<FILE-PATH-1> [--from-file=<FILE-PATH-1> ...]
 
 ###########################
 # pod
@@ -129,6 +134,7 @@ kubectl rollout status daemonsets/logsender-fluentd -n kube-system
 # Resource quotas
 kubectl get resourcequotas
 
+
 ###########################
 # api
 ###########################
@@ -141,7 +147,27 @@ CLUSTER_NAME="some_server_name"
 APISERVER=$(kubectl config view -o jsonpath="{.clusters[?(@.name==\"$CLUSTER_NAME\")].cluster.server}")
 
 
-
+# inline 으로 resource 생성하기 예시
+cat <<EOF | kubectl create -f -
+apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    name: tiller
+    namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+   name: tiller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: tiller
+  namespace: kube-system
+EOF
 
 
 

@@ -15,18 +15,23 @@ tags: java dump
 
 catalina log 에 OOM 이라고 뜬걸 안까봤었다.. ㅠ,ㅠ 아무튼
 
-##### java process id 확인
-
 ``` shell
+# java process id 확인
 $ ps -ef | grep tomcat
 # 또는
 $ ps -ef | grep java
-```
 
-##### heap dump 를 받자
-
-``` shell
+# heap dump 를 받자
 $ jmap -dump:format=b,file=dump-20211202213000.hprof ${pid}
+
+# thread dump 를 받자
+$ jstack ${pid}
+
+# heap memory 정보 확인
+$ jmap -heap ${pid}
+
+# dump classloader statistics
+$ jmap -clstats PID
 ```
 
 [MAT](https://www.eclipse.org/mat/) 로 분석하면 된다. 근데 분석을 어떻게할지 잘 모르겠당 ㅋ.ㅋ
@@ -40,12 +45,6 @@ heap dump 파일이 클 경우, 파일이 안열린다. 설정 변경으로 해�
 #-Xmx1024m
 -Xms6g
 -Xmx6g
-```
-
-##### thread dump 를 받자
-
-``` shell
-$ jstack ${pid}
 ```
 
 
