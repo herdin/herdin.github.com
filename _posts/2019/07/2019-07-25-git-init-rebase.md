@@ -392,13 +392,17 @@ $ git add {conflict resolved file}
 $ git rebase --continue
 ```
 
-## 그냥 내것으로 엎어치고 나몰라라 하기
+## 내것/남에것으로 엎어치기
 
-작성중..
+rebase conflict 가 나면, git status 를 했을 때, conflict 된 파일이 stage 에 들어가지 않게 된다.
 
-## 그냥 남에것으로 엎어치고 내가 다시 수정하기
+해당 파일을 수정하고 stage 로 넣은 뒤, 메세지에 나온대로 `git rebase --continue` 로 rebase 를 완료하면 된다.
 
-작성중..
+conflict 난 파일을 수정할 때,
+
+내가 branch 이고, master 를 기준으로 rebase 할때 참고
+* `git checkout --ours <FILE-NAME>` master 수정본을 사용하여 덮어쓰기
+* `git checkout --theirs <FILE-NAME>` branch 수정본을 사용하여 덮어쓰기
 
 ---
 

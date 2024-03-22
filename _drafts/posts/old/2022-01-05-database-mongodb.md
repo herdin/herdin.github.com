@@ -109,8 +109,6 @@ db.${collection}.createIndex(
 -- 생성된 index 확인
 db.${collection}.getIndexes()
 db.${collection}.dropIndex(document)
-
-
 -- index 삭제
 db.${collection}.dropIndex() -- _id index 빼고 모두 삭제
 -- text search 를 위한 index 생성
@@ -120,7 +118,6 @@ db.${collection}.createIndex(
     {}, -- commitQuorum
 )
 db.${collection}.createIndex({ category: 1 }) -- 단일 인덱스 category column 에 asc(1) index
-
 -- 복합 인덱스 category column 에 asc(1), score column 에 desc(-1) index
 -- 이런 경우에는 index 순서가 중요하다. score 하나로 검색할 경우 성능이 나오지않음. category 정렬안에서 score 가 정렬되기 때문
 db.${collection}.createIndex({ category: 1, score: -1 })
@@ -143,7 +140,15 @@ db.${collection}.createIndex(
 
     }
 );
+-- #####################################
+-- select : db.collection.find( <query>, <filter>, <options> )
+-- #####################################
+-- select insert
+db.${insertCollection}.insertMany(
+    db.${selectCollection}.aggregate([{ $sample: { size: 5000 } }]).toArray()
+)
 ;
+-- select : text search
 db.${collection}.find(
     { $text: { $search: "${search target text}" } },
     { score: { $meta: "textScore" } }
@@ -157,16 +162,6 @@ db.${collection}.find().explain("executionStats").executionStats.executionTimeMi
 
 -- hint 해당 조건으로 인덱스가 있는지? 확인? 이건 잘 안봄
 db.${collection}.find().hint({})
--- 인덱스 사용 통계
-db.${collection}.aggregate( [ { $indexStats: { } } ] )
-;
--- #####################################
--- select : db.collection.find( <query>, <filter>, <options> )
--- #####################################
--- select insert
-db.${insertCollection}.insertMany(
-    db.${selectCollection}.aggregate([{ $sample: { size: 5000 } }]).toArray()
-)
 -- select : column name 만 사용
 db.${collection}.find(
     {
@@ -196,6 +191,9 @@ db.${collection}.find(
     }
 )
 ;
+-- 인덱스 사용 통계
+db.${collection}.aggregate( [ { $indexStats: { } } ] )
+;
 -- select join by aggregation
 db.${collection}.aggregate(
     -- left join 같은거
@@ -217,6 +215,25 @@ db.${collection}.aggregate(
     }
 )
 ;
+-- #####################################
+-- aggregate : db.collection.aggregate( <pipeline: array>, <options: document> )
+-- pipeline 은 aggregate stage 들로 구성된다. : https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/
+-- stage 안에서 사용할 수 있는 operator 들 : https://www.mongodb.com/docs/manual/reference/operator/aggregation/add/
+-- #####################################
+-- created : 2024-02-18T17:32:46.069Z 이런 필드가 있다면 zone 을 변경해서 보기위해 아래와 같이 할 수 있다.
+db.artistGroupInfo.aggregate(
+    {
+        -- stage
+        $addFields: {
+            createdKST: {
+                -- operator
+                $add: [ "$created", 9*60*60*1000 ]
+            }
+        }
+    }
+)
+;
+
 -- aggregation 을 활용한 join delete
 db.${collection}.aggregate(
     {
@@ -253,6 +270,11 @@ db.${collection}.update(
     }
 )
 ;
+-- #####################################
+-- mapReduce : db.collection.mapReduce( .. )
+-- Performs map-reduce aggregation for large data sets.
+-- 이런게 있는데 나중에 알아보장
+-- #####################################
 ```
 
 참고

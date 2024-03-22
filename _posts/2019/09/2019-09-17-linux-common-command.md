@@ -559,6 +559,18 @@ chcon [OPTION] [CONTEXT FILE] #change context
 #-R : recursive
 ```
 
+## package management
+
+``` shell
+# RHEL/CentOS
+$ yum install package_name
+# Ubuntu
+$ apt install package_name
+# Alpine
+$ apk add package_name
+```
+
+
 ## yum
 레드햇 계열의 리눅스 배포판에서 사용하는 프로그램(패키지) 설치 관리 도구
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "k8s cheatsheet"
+title: "k8s cheatsheet (all)"
 date: 2022-09-01
 tags: k8s cheatsheet
 ---
@@ -59,6 +59,11 @@ $ kubectl create configmap <YOUR-CONFIG-MAP-NAME> [--type=string] [--from-file=[
 ###########################
 $ kubectl create secret generic <YOUR-SECRET-NAME> --from-file=<FILE-PATH-1> [--from-file=<FILE-PATH-1> ...]
 
+# secret file 확인
+# 일단 직접 base64 encoding 된 string 을 복사한다
+$ echo "encoded-string" | base64 --decode
+
+
 ###########################
 # pod
 ###########################
@@ -99,6 +104,9 @@ kubectl exec -it --namespace=sample-locust locust-79744cd46d-x8m6r -- /bin/bash
 
 # pod log 확인
 kubectl logs -f <POD_NAME>
+
+# 이전 pod log 확인
+kubectl logs <POD_NAME> --previous
 
 ###########################
 # resource update
@@ -168,11 +176,16 @@ subjects:
   name: tiller
   namespace: kube-system
 EOF
-
-
-
-
 ```
+
+
+
+
+
+
+
+
+
 
 # 시크릿
 - 시크릿의 종류

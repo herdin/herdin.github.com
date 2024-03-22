@@ -120,3 +120,64 @@ $ docker login <REPOSITORY_URL> --username <USERNAME>
 $ docker tag <IMAGE_NAME>:<IMAGE_VERSION> <REPOSITORY_URL>/<IMAGE_NAME>:<IMAGE_VERSION>
 $ docker push <REPOSITORY_URL>/<IMAGE_NAME>:<IMAGE_VERSION>
 ```
+
+# test container image
+``` shell
+##################################
+# ghcr.io/subicura/echo:v1
+##################################
+$ docker run -d --name echo-subicura echo -p 3000:3000 ghcr.io/subicura/echo:v1
+$ curl http://localhost:3000?foo=bar
+version: v1
+hostname: 604ff4895d4b
+headers:
+  host: localhost:3000
+  user-agent: curl/8.1.2
+  accept: '*/*'
+query:
+  foo: bar
+
+##################################
+# ealen/echo-server:0.9.2
+##################################
+$ docker run --name echo-ealen -d -p 3000:80 ealen/echo-server:0.9.2
+$ curl "http://localhost:3000/hello/world?foo=bar" | jq
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   502  100   502    0     0  54737      0 --:--:-- --:--:-- --:--:-- 83666
+{
+  "host": {
+    "hostname": "localhost",
+    "ip": "::ffff:192.168.65.1",
+    "ips": []
+  },
+  "http": {
+    "method": "GET",
+    "baseUrl": "",
+    "originalUrl": "/hello/world?foo=bar",
+    "protocol": "http"
+  },
+  "request": {
+    "params": {
+      "0": "/hello/world"
+    },
+    "query": {
+      "foo": "bar"
+    },
+    "cookies": {},
+    "body": {},
+    "headers": {
+      "host": "localhost:3000",
+      "user-agent": "curl/8.1.2",
+      "accept": "*/*"
+    }
+  },
+  "environment": {
+    "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "HOSTNAME": "5de522b720ea",
+    "NODE_VERSION": "20.11.0",
+    "YARN_VERSION": "1.22.19",
+    "HOME": "/root"
+  }
+}
+```

@@ -283,7 +283,7 @@ $ git checkout <your-branch-name>
 
 
 
-# 이미 commit 한 파일을 파일은 지우지말고 ignore 처리하고싶다
+# 이미 commit 한 파일을 파일은 지우지말고 ignore 처리하고 싶다
 ``` shell
 $ git rm --cached filename
 ```
@@ -296,4 +296,10 @@ $ git rm --cached filename
 
 ``` shell
 $ git remote prune origin
+```
+
+# 방금 전 commit 메세지만 수정하고 싶다.
+
+``` shell
+$ git commit --amend
 ```
