@@ -5,6 +5,9 @@ date: 2021-09-07
 tags: git cheatsheet
 ---
 
+# HEAD~{n}
+head 를 포함한 n 개의 커밋
+
 # merge conflict 가 났는데..
 
 * 너무 많이 달라서 merge 가 힘들다. 내 코드는 잘 안다. 
@@ -302,4 +305,49 @@ $ git remote prune origin
 
 ``` shell
 $ git commit --amend
+```
+
+# 여러개 commit 을 revert 하고 싶다.
+``` shell
+$ git revert [되돌리고싶은 commit(revert 에 포함되지 않음)]..[되돌리고싶은 마지막(최신) commit(revert 에 포함)]
+```
+
+
+# master merge 했는데 (merge commit 있음) revert 하고싶다.
+
+``` shell
+# 상황설명
+# git log 를 통해 merge commit 을 확인하면 아래와 같은 모습이다.
+commit 6d3494eaf33fdcef67ea4a8ee751080e3ab28dd9
+Merge: 9c77d97 232f601
+Author: epu baal
+Date:   Thu Apr 25 18:48:18 2024 +0900
+
+    Merge pull request #296 from feature/bbb
+    
+    add feature bbb
+
+# git log --oneline --graph 의 모습
+*   6d3494e Merge pull request #296 from feature/bbb
+|\  
+| * 232f601 fix typo
+| * e3b00e0 fix lint
+| * a509245 add feature bbb
+|/  
+*   9c77d97 (feature/aaa) Merge pull request #295 from other/feature/aaa
+
+# merge commit = 6d3494e
+# graph 상의 두개의 라인이 merge commit 의 git log 에 있는 merge 내용이다.
+# merge commit 을 옵션 없이 revert 할때는 -m 옵션을 주라는 오류가 나온다.
+# -m 옵션에 들어갈 commit 이 9c77d97 232f601 두개의 라인중 하나를 고르라는 뜻임
+# -m parent-number
+# --mainline parent-number
+# feature/aaa 의 내용을 전부 revert 하고 싶으므로 9c77d97 라인을 인 1번을 고르면된다.
+# 번호의 순서는 commit 의 merge 의 순서대로인듯하다
+$ git revert 6d3494e -m 1
+```
+
+# commit 에서부터 branch 를 따고싶다.
+``` shell
+$ git checkout -b <NEW-BRANCH-NAME> <TARGET-COMMIT-HASH>
 ```

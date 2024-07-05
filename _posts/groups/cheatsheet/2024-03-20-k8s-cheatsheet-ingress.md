@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "k8s cheatsheet (ingress)"
-date: 2022-09-01
+date: 2024-03-20
 tags: k8s cheatsheet ingress
 ---
 

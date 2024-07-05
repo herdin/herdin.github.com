@@ -50,7 +50,8 @@ jq-1.5
 
 
 ### file : jsondata : 예제를 위한 데이터
-``` json
+``` shell
+cat << EOL > test.json
 {
   "data": {
     "app_id": "123",
@@ -79,6 +80,7 @@ jq-1.5
     ]
   }
 }
+EOL
 ```
 
 ### Identity `.`
@@ -300,8 +302,12 @@ $ cat jsondata | jq '.data.scopes' | jq '[.[0], .[1], .[2], .[]]'
 이 함수는 aws cli 를 사용하면서 알게 되었는데, tag 의 key, value 가 특정 값인 id 를 뽑을 때 사용했다.
 ``` shell
 $ jq '.Reservations[].Instances[] | select(.Tags[]?.Key == "Name" and .Tags[]?.Value == "ec2-docker-postgresql") | .InstanceId'
+$ jq '.[] | select(.name =="search-my-name")'
+$ cat test.json | jq '.data.types[] | select (.name == "GUEST")'
+$ jq '.[] | select(.bucket_name == "my-bucket") | .object_info.Key | select(.[length-3:] != "png")'
 ```
 
 출처
 - [jq Manual (development version)](https://stedolan.github.io/jq/manual/)
 - [커맨드라인 JSON 프로세서 jq](https://www.44bits.io/ko/post/cli_json_processor_jq_basic_syntax)
+- [jq play](https://jqplay.org/?q=.%5B%5D+%7C+select%28.id+%3D%3D+%22second%22%29&j=%5B%7B%22id%22%3A+%22first%22%2C+%22val%22%3A+1%7D%2C+%7B%22id%22%3A+%22second%22%2C+%22val%22%3A+2%7D%5D)

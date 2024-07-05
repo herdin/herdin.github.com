@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "k8s pod disruption budgets (PDB)"
-date: 2024-03-2
+date: 2024-03-22
 tags: 
 ---
 

@@ -32,10 +32,16 @@ tags: kafka console cheatsheet
 --topic <TOPIC NAME, REG EXP 가능>
 --list
 
+# topic 만들기
+./kafka-topics.sh \
+--topic <TOPIC NAME> \
+--create --partitions 3 --replication-factor 1
+
 # topic  확인
 ./kafka-topics.sh \
 --topic <TOPIC NAME, REG EXP 가능>
 --describe
+
 
 ##########################
 # kafka-console-consumer

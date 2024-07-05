@@ -19,9 +19,12 @@ tags: docker cheatsheet
 #--cap-add : Add Linux capabilities
 #--rm : Automatically remove the container when it exits
 #-it : allocate pseudo-TTY
+#-v, --volume : volume (mount) hostPath:containerPath
 
-# ex)
+# ex1) was container run
 $ docker run -d -p 8081:8080 --name was01 was:0.1
+# ex2) one-time test container run and shell-in
+$ docker run --rm -it ghcr.io/subicura/echo:v1
 ```
 
 # [exec](https://docs.docker.com/engine/reference/commandline/exec/)
@@ -95,6 +98,8 @@ paul-test/nginx/nginx v22
 
 # 이렇게 한다.
 docker rmi $(docker images --filter=reference='paul-test/*/nginx' -q)
+
+docker images --filter "dangling=true" -q --no-trunc
 ```
 
 # etc
