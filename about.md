@@ -20,7 +20,9 @@ console.log(new Page().getCompiledTime());
 
 ``` shell
 * ...
-* 2021.07.19. --ENTER NAVER, LINE MUSIC DEV.
+* 2024.08.01. --ENTER LINE Plus, Music Engineering.
+* 2024.07.31. --LEAVE NAVER.
+* 2021.07.19. --ENTER NAVER, LINE MUSIC Server.
 * 2021.07.16. --LEAVE LG CNS, TMONEY 2nd. SM.
 * 2016.07.25. --ENTER TMONEY 2nd. SM.
 |
