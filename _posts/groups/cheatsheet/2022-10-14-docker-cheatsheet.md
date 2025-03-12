@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "docker cheat cheet"
+title: "docker/nerdctl cheat cheet"
 date: 2022-10-14
 tags: docker cheatsheet
 ---
@@ -25,6 +25,9 @@ tags: docker cheatsheet
 $ docker run -d -p 8081:8080 --name was01 was:0.1
 # ex2) one-time test container run and shell-in
 $ docker run --rm -it ghcr.io/subicura/echo:v1
+# ex2) one-time test container run and shell-in with /bin/sh
+$ docker run --rm --name test -it ghcr.io/subicura/echo:v1 /bin/sh
+
 ```
 
 # [exec](https://docs.docker.com/engine/reference/commandline/exec/)

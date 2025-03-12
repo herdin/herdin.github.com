@@ -30,7 +30,8 @@ docker 의 Images, containers, volumes, or customized configuration files 들이
 ```
 /var/lib/docker
 ```
-# docker image build
+
+## docker image build
 `docker file` 로 `docker images` 를 만든다.
 
 ```  shell
@@ -46,9 +47,7 @@ $ docker build -t was:0.1 .
 $ docker build -t was:0.2 -f DockerfileForWas02 .
 ```
 
-## Dockerfile
-
-##### Dockerfile example
+## Dockerfile example
 ```
 FROM alpine:3.10
 
@@ -61,25 +60,23 @@ COPY ./build/libs/GradleSpringBootMybatis-1.0-SNAPSHOT.jar /msa
 
 CMD ["java", "-jar", "/msa/GradleSpringBootMybatis-1.0-SNAPSHOT.jar"]
 ```
-#### FROM
-도커 파일을 만들 베이스이미지를 지정한다.
-#### LABEL
-#### RUN
-#### ADD
-#### COPY
-##### ADD 와 COPY 의 차이점
-* URL을 복사할 source로 사용할 수 있다. remote에 있는 파일을 받아서 복사하게 된다.
-* source 파일이 gzip과 같이 일반적으로 잘 알려진 압축형태인 경우, 압축을 풀어준다.
-* 압축된 remote 파일인 경우, 압축을 풀어주지는 않는다.
+* FROM: 도커 파일을 만들 베이스이미지를 지정한다.
+* LABEL
+* RUN
+* ADD
+* COPY
+* ADD 와 COPY 의 차이점
+    * URL을 복사할 source로 사용할 수 있다. remote에 있는 파일을 받아서 복사하게 된다.
+    * source 파일이 gzip과 같이 일반적으로 잘 알려진 압축형태인 경우, 압축을 풀어준다.
+    * 압축된 remote 파일인 경우, 압축을 풀어주지는 않는다.
+    * ADD 보다 RUN 으로 작업을 할 경우, 더 명시적이고 이미지가 더 작아진다고한다.
+    > ADD 대신 COPY 와 RUN 을 사용하자.
 
-ADD 보다 RUN 으로 작업을 할 경우, 더 명시적이고 이미지가 더 작아진다고한다.
-> ADD 대신 COPY 와 RUN 을 사용하자.
+* 출처
+    - [Docker Tip #2: The Difference between COPY and ADD in a Dockerfile](https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile)
+    - [[Docker] ADD vs COPY in Dockerfile](https://blog.leocat.kr/notes/2017/01/07/docker-add-vs-copy)
 
-출처
-- [Docker Tip #2: The Difference between COPY and ADD in a Dockerfile](https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile)
-- [[Docker] ADD vs COPY in Dockerfile](https://blog.leocat.kr/notes/2017/01/07/docker-add-vs-copy)
-
-#### CMD 와 ENTRYPOINT 의 차이점
+## CMD 와 ENTRYPOINT 의 차이점
 
 ENTRYPOINT 의 명령어는 변경되지 않는다.
 CMD 는 컨테이너 생성 시 명령어를 변경할 수 있다.
@@ -219,5 +216,33 @@ docker volume rm $(docker volume ls -f dangling=true -q) #remove dangling volume
 docker volume prune #remove dangling volume
 ```
 
-참고
+
+
+## docker daemon config
+
+* docker 는 container 에서 stdout 으로 나오는 출력을 특정 위치 `/var/lib/docker/containers/{containerID}` 에 파일로 쌓는다
+* 기본으로 logrotate 를 하지 않는다!
+* 기본 config 위치: `/etc/docker/daemon.json`
+* 다른 config 위치를 사용하고싶다면 dockerd 명령어로 --config-file 옵션을 줘야하는듯?
+
+``` bash
+# validate config file
+$ dockerd --validate --config-file=/tmp/valid-config.json
+
+
+$ cat <<EOF > daemon.json
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "1m",
+    "max-file": "3"
+  }
+}
+EOF
+
+```
+
+## 참고
 - [만들면서 이해하는 도커(Docker) 이미지의 구조](https://www.44bits.io/ko/post/how-docker-image-work)
+- [Configure the default logging driver](https://docs.docker.com/engine/logging/configure/#configure-the-default-logging-driver)
+- [Daemon configuration file](https://docs.docker.com/reference/cli/dockerd/#daemon-configuration-file)

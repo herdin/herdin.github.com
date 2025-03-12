@@ -2,7 +2,7 @@
 layout: post
 title: "k8s node maintenance"
 date: 2024-05-21
-tags: k8s
+tags: k8s maintenance
 ---
 
 > k8s 에 대한 오해

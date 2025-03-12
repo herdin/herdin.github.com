@@ -14,6 +14,7 @@ Cross-Cutting Concern(횡단 관심사) 를 코드에서 분리함으로써 모�
   - 여러 클래스의 종단 관심사(cross cut)를 모듈화 한것
   - 여러 객체에 공통적으로 적용할 공통 관심사
   - 로깅을 남긴다던지, 알람을 보낸다던지...
+  - Pointcut + Advice
 - Joinpoint
   - Advice가 적용 가능한 지점들, Point cut 의 후보들
   - Advice 를 Target Object 에 Weaving 하는 지점
@@ -34,6 +35,12 @@ Cross-Cutting Concern(횡단 관심사) 를 코드에서 분리함으로써 모�
 - Weaving
   - Advice 를 Target Object 에 적용하는 것.
   - compile time, load time, run time, 다양한 시점에 적용할 수 있지만, Spring AOP 는 run time 에 적용한다.
+  - 종류
+    - Compile Time Weaving(CTW)
+    - Runtime Weaving(RTW) 스프링의 방식
+    - Load Time Weaving(LTW)
+    - Post-Compile Weaving
+    - [종류 정리](https://velog.io/@dnjwm8612/AOP-Weaving-Proxy)
 
 ### 사용 annotation 목록
 - `@Around` - Joinpoint 앞과 뒤에서 실행

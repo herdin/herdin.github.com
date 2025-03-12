@@ -2,7 +2,7 @@
 layout: post
 title: "k8s pod disruption budgets (PDB)"
 date: 2024-03-22
-tags: 
+tags: k8s resource
 ---
 
 파드의 중단에는 자발적 중단과 비자발적 중단이 있음.

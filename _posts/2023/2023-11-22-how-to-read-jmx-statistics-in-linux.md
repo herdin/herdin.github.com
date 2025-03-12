@@ -8,9 +8,11 @@ tags: jmx java
 ``` shell
 # jar 다운로드
 $ wget https://github.com/jiaqi/jmxterm/releases/download/v1.0.1/jmxterm-1.0.1-uber.jar
+$ wget https://github.com/jiaqi/jmxterm/releases/download/v1.0.2/jmxterm-1.0.2-uber.jar
 
 # java 가 있어야함
 $ java -jar jmxterm-1.0.1-uber.jar
+$ java -jar jmxterm-1.0.2-uber.jar
 
 # jmx port open
 $>open localhost:1101

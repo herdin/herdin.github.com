@@ -20,6 +20,7 @@ EOF
 
 $ cat just-test.xml| yq '.'
 $ cat just-test.xml| yq --input-format xml '.'
+$ cat just-test.xml| yq -px '.'
 ```
 
 https://mikefarah.gitbook.io/yq/

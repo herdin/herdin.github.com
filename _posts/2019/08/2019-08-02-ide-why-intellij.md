@@ -27,7 +27,7 @@ tags: ide writing
 - Debugging 이 더 쉬운 것 같다.
   - 그냥 Debugger 를 사용하다 보니까 그런건지도 모르겠다.
 
-자주쓰는 단축키
+# 자주쓰는 단축키
 * 프로젝트 뷰 (프로젝트 파일을 계층적으로 볼 수 있는 좌측 화면)
 	- window : `Alt` + `1`
 	- mac os : `Command` + `1`
@@ -96,10 +96,6 @@ tags: ide writing
 ⭢ : 화살표 오른쪽
 ⭡ : 화살표 위
 ⭣ : 화살표 아래
-
-
-
-
 
 ## 뭐야 메뉴가 왜 없어졌어?
 Command + Shift + A -> Edit Custom Properties

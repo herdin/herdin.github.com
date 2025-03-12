@@ -14,6 +14,12 @@ tags: kafka console cheatsheet
 --bootstrap-server <SERVER_LIST:server-url-1:port,server-url-2:port,...> \
 
 ##########################
+# kafka broker
+##########################
+./kafka-broker-api-versions.sh \
+--bootstrap-server $BOOTSTRAP_SERVER
+
+##########################
 # kafka-configs
 ##########################
 # [broker config]https://godekdls.github.io/Apache%20Kafka/broker-configuration/#groupmaxsessiontimeoutms

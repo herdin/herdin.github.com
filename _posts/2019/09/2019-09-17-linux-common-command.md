@@ -10,10 +10,14 @@ tags: linux command centos
 ``` shell
 echo $USER #echo currernt user
 
-#os info
+# os info
 uname -a
 # 위에 것으로 모를때. 대체로 모름
 cat /etc/*release*
+cat /etc/os-release
+
+#os kernal version
+uname -r
 
 #os bit 1
 uname -m
@@ -35,18 +39,6 @@ free
 
 #--human-readable
 free -h
-
-#disk free
-df
-
-#--human-readable
-df -h
-
-#--inodes
-df -i
-
-#--block-size=1K
-df -k
 
 #echo current path
 pwd
@@ -138,6 +130,12 @@ chown [OPTION] [OWNER:GROUP] [FILE]
 chmod [OPTION] [PERMISSION] [FILE]
 #-c : show change file
 #-R : recursive work
+# u = owner
+# g = group
+# o = other
+# +, -, =
+# r, w, x
+chmod u=rwx,g=rx,o=rx ./token.txt
 ```
 
 ## process
@@ -150,15 +148,17 @@ $ ps -ef | grep nginx
 
 ### netstat
 
-* options
-  * `-t, --tcp`
-  * `-u, --udp`
-  * `-n, --numeric`
-  * `-l, --listening`
-  * `-p, --programs` display PID/Program name for sockets
-  
 ``` shell
-# 열린 포트 확인
+# options
+# -l	Listening 중인 socket을 표시합니다.
+# -p	socket을 사용하는 pid와 program 이름을 보여줍니다.
+# -n	주소등을 number로 표시합니다(ex localhost를 127.0.0.1 로 표현)
+# -i	interface의 정보를 보여줍니다.
+# -t	tcp 사용 socket을 보여줍니다.
+# -u	udp 사용 socket을 보여줍니다.
+# -r	routing table을 보여줍니다.
+# -a	listening과 non-listening 상태 모두를 보여줍니다.
+# -c	매 초마다 명령을 계속적으로 실행합니다.
 $ netstat -tunlp
 ```
 
@@ -166,7 +166,7 @@ mac os 에서는 좀 다르다
 
 ``` shell
 # 열린 포트 확인
-$ sudo lsof -PiTCP -sTCP:LISTEN
+$ sudo  
 
 # 열린 포트의 PID 확인
 $ sudo lsof -i :3000
@@ -183,11 +183,22 @@ $ sudo lsof -i :3000
 env
 export
 ```
+
 ## date
 
 * format 은 같으나, date add/substract 옵션이 linux/macos 다르다
 
 ``` shell
+# %Y : year
+# %m : month
+# %d : day
+# %H : 24h
+# %I : 12h
+# %M : minute
+# %S : second
+# %p : AM/PM
+# %s : timestamp
+
 # linux
 $ date
 $ date -d '9 hour' "+%Y-%m-%dT%H:%M:%S"
@@ -280,6 +291,7 @@ hello, config
 
 * -o pipefail 파이프 사용시 오류 코드(non-zero exit code) 승계
 * -e 오류가 발생하면 중단
+* +e 오류가 발생해도 진행
 * -u 설정되지 않은 변수를 사용하려고 하면 종료
 * -x 실행되는 명령어와 인수들을 출력
 
@@ -372,25 +384,48 @@ kill -9 ${PID} 를 사용하면 안되는 이유.
 디렉토리 목록 출력
 
 ``` shell
+# 시간순 정렬, 오름차순
 $ ls -trl 
 $ ls -trlh
+# 파일크기 정렬, 오름차순
+$ ls -Srlh
 ```
 
-## df
+## df : disk free
 ``` shell
+#--human-readable
 $ df -h
+#--inodes
+$ df -i
+#--block-size=1K
+$ df -k
 ```
 
-## du
-disk usage
+## du : disk usage
 
 ``` shell
 $ du -sh *
 $ du --summarize --human-readable *
 # 해당 위치에서 폴더별 크기를 보여준다
 $ du -smh * | sort -rh 
+$ du -smh {location}
 ```
 * [참고](https://goateedev.tistory.com/181)
+
+## file shrink
+
+disk 가 full 났을때 파일 처리
+
+``` shell
+# 파일에 권한이 있다면 바로 실행
+tail -n 100 access.log > access.log
+# 파일에 권한이 없는 경우
+sudo bash -c "tail -n 100 access.log > access.log"
+
+# 또는 truncate 사용
+```
+
+
 
 ## ln
 
@@ -499,14 +534,15 @@ $ more <FILE_NAME>
 ``` shell
 $ less <FILE_NAME>
 $ less -N <FILE_NAME> # show line number
+
+# 화살표키 위아래로 한줄씩이동
+# space, f 로 한페이지 아래로 이동
+# b 으로 한페이지 위로 이동
+# G 로 끝으로 이동
+# more 와 유사하게 `/` 로 검색
+# q 로 종료
 ```
 
-- 화살표키 위아래로 한줄씩이동
-- `space`, `f` 로 한페이지 아래로 이동
-- b 으로 한페이지 위로 이동
-- `G` 로 끝으로 이동
-- more 와 유사하게 `/` 로 검색
-- `q` 로 종료
 
 ## tr
 * 입력받은문자에서 특정문자를 자르거나 변경할때
@@ -527,11 +563,11 @@ $ comm [option] [file1] [file2]
 # -1 두개를 비교하여 파일 1에만 있는 것은 출력하지 않음
 # -2 두개를 비교하여 파일 2에만 있는 것은 출력하지 않음
 # -3 두개를 비교하여 파일 1과 파일 2에 모두 존재하는 라인은 출력하지 않음
-````
+
+```
 
 
-## scp
-ssh 기반의 secure copy 를 수행. 원격파일카피.
+## scp : ssh 기반의 secure copy 를 수행. 원격파일카피.
 
 ``` shell
 # r option for directory
@@ -540,6 +576,21 @@ scp -r <remote-id>@<remote-host>:<remote-file-location> <local-file-location>
 scp -r epu@file.anmani.link:/home/remote-epu/tmp /Users/user/Downloads/tmp
 ```
 
+
+
+## crontab
+
+``` shell 
+# 확인
+crontab -l
+# 편집
+crontab -e
+# 삭제
+crontab -r
+# *        *　　　   　*　　 　　　*　 　 　　*
+# 분(0-59)　시간(0-23) 일(1-31) 월(1-12) 요일(0-7,[0,7:일요일])
+```
+* [참고](https://jdm.kr/blog/2)
 
 
 
@@ -568,6 +619,11 @@ $ yum install package_name
 $ apt install package_name
 # Alpine
 $ apk add package_name
+# Debian
+$ apk install package_name
+# apt update && apt install -y procps
+# apt update && apt install -y vim
+# apt update && apt install -y sudo
 ```
 
 
@@ -687,4 +743,13 @@ idea.xdebug.key=-Xdebug
 
 ``` shell
 $ jar tf <JAR FILE NAME>
+```
+
+## openssl
+
+``` shell
+# host:port 로 유효기간 확인
+openssl s_client -connect <HOST>:<PORT> -showcerts | openssl x509 -enddate
+# 인증서 file 유효기간 확인
+openssl x509 -in <CERT-FILE> -noout -dates
 ```

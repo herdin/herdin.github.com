@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "python  cheatsheet"
+title: "python cheatsheet"
 date: 2024-07-19
 tags: python cheatsheet
 ---

@@ -5,8 +5,13 @@ date: 2021-09-07
 tags: git cheatsheet
 ---
 
-# HEAD~{n}
-head 를 포함한 n 개의 커밋
+# git commit 상대참조 - ^, ~1, ...
+
+HEAD^, HEAD~1 이런식으로 많이 사용된다.
+
+HEAD^ : HEAD 전 커밋
+HEAD^^ : HEAD 의 전전 커밋
+HEAD~N : HEAD 를 포함한 n 개의 커밋
 
 # merge conflict 가 났는데..
 
@@ -14,6 +19,7 @@ head 를 포함한 n 개의 커밋
 * 그럼 그냥 상대방것으로 엎어치고 (override update (svn)) 그상태에서 수정을 하자
 * 여기서 중요한건 merge, rebase 할때 ours, theirs 의 의미가 달라진다.
     * 현재 branch 가 HEAD 상태이고, master 를 대상으로 한다고 가정
+    * 어떤 것이든 HEAD 가 가리키는 것이 ours 라고한다.
     * merge
         * `checkout --ours` : branch 것을 사용
         * `checkout --theirs` : master 것을 사용
@@ -40,7 +46,7 @@ $ git rebase --continue
 
 ```
 
-#### example
+## example
 
 ``` shell
 # 1. merge 할때
@@ -135,11 +141,11 @@ development done!
 conflict target from feature # --theirs = branch
 ```
 
+# git stash
 
-
-# a branch 에서 작업 중(commit 안침)인데, b branch 에서 다른 작업을 해야한다.
-
+a branch 에서 작업 중(commit 안침)인데, b branch 에서 다른 작업을 해야한다.
 stash 에 untracked  까지 저장할 수 있다.
+
 ``` shell
 # -u|--include-untracked : untracked 한 파일까지포함. branch 를 바꿀땐 안해도된다.
 # -m|--message
@@ -171,7 +177,7 @@ $ git stash apply stash@{1}
 
 
 
-# stash show 를 할때는..
+## stash show 를 할때는..
 
 `-u|--include-untracked` 옵션을 사용했을때는 볼떄도 까먹지말고 사용해주자..
 
@@ -186,9 +192,9 @@ $ git stash show -u stash@{0}
 $ git stash show -p stash@{0}
 ```
 
+# commit
 
-
-# 커밋을 했는데, user/email 이 잘못되어있다.
+## commit 을 했는데, user/email 이 잘못되어있다.
 
 혹시 push 까지 했으면, 아래 방법은 rebase 를 사용하는 방법이므로, git push -f 로 강제 push 를 해야한다.
 
@@ -212,7 +218,11 @@ git commit --amend -m "update what what what"
 git rebase --continue
 ```
 
+## commit 을 했는데 comment 를 고치고 싶다
 
+``` shell
+git commit --amend
+```
 
 # cherry-pick : 다른 브랜치의 특정 커밋만 가져오고싶다.
 
@@ -220,15 +230,6 @@ git rebase --continue
 git cherry-pick <commit-hash>
 ```
 
-
-
-# git commit 상대참조 - ^, ~1, ...
-
-HEAD^, HEAD~1 이런식으로 많이 사용된다.
-
-HEAD^ : HEAD 전 커밋
-HEAD^^ : HEAD 의 전전 커밋
-HEAD~N : HEAD 의 N 번째 전 커밋
 
 
 
@@ -261,27 +262,40 @@ $ git merge upstream/master
 $ git push oirgin master
 ```
 
-# remote branch 를 checkout 받기
+# checkout 
+
+## remote branch 를 checkout 받기
 ``` shell
 $ git checkout -b <your-local-branch-name> origin/<remote-branch-name>
 ```
 
 
-
-# tag 로 checkout 받기
+## tag 로 checkout 받기
 ``` shell
+# local tag
 $ git checkout <TAG NAME>
+
+# remote tag
+## fetch all remote tag
+$ git fetch origin --tags
+## fetch specific remote tag
+$ git fetch origin refs/tags/<specific-tag>
+## then checkout tag
+$ git checkout tags/<specific-tag>
+## or checkout as branch
+$ git checkout tags/<specific-tag> -b <specific-branch>
+
 ```
 
-
-
-# commit 으로 branch 따기
+## commit 으로 checkout, branch 따기
 ``` shell
 # commit 을 확인하여 이동
 $ git checkout <commit-no>
 # branch 생성 및 이동
 $ git branch <your-branch-name>
 $ git checkout <your-branch-name>
+# 또는 한방에 
+$ git branch -b <your-branch-name>
 ```
 
 
@@ -292,8 +306,15 @@ $ git rm --cached filename
 ```
 
 
+# remote branch
 
-# 삭제된 remote branch 가 로컬에서 보일때
+## origin 을 변경하고싶다
+``` shell
+git remote remove origin
+git remote add origin <new repository git url>
+```
+
+## 삭제된 remote branch 가 로컬에서 보일때
 
 로컬의 remote branch 는 실제 remote branch 가 아니라 그저 레퍼런스일 뿐이므로 정리해주면된다.
 
@@ -301,6 +322,13 @@ $ git rm --cached filename
 $ git remote prune origin
 ```
 
+# 방금 전 commit 만 취소하고 싶다.
+``` shell
+# 방금 commit 이 취소되고 staging 상태로 남아있는다
+$ git reset --soft HEAD~1
+# 방금 commit 이 취소되고 working? 상태로 간다 --mixed 가 기본 옵션
+$ git reset --mixed HEAD~1
+```
 # 방금 전 commit 메세지만 수정하고 싶다.
 
 ``` shell
