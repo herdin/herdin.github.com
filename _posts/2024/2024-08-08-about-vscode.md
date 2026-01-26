@@ -13,11 +13,13 @@ tags: texteditor ide
 # 자주쓰는 단축키
 * [shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
 * file search
-	- mac os : `command` + `p`
+	- mac os: `command` + `p`
 * teminal 열기
-	- mac os : `command` + `j`
+	- mac os: `command` + `j`
 * 열모드
-	- mac os : `alt` + `shift` + 마우스드래그
+	- mac os: `alt` + `shift` + 마우스드래그
+* 이전 코드로 이동
+	- mac os: `control` + `-`
 
 # 참고
 - [vscode 탐색기, 트리뷰 간격 조절](https://thenicesj.tistory.com/35)

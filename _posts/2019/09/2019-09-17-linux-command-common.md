@@ -142,6 +142,8 @@ chmod u=rwx,g=rx,o=rx ./token.txt
 
 ``` shell
 $ ps -ef | grep nginx
+# 시작시간을 길게 보고싶을때
+$ ps -eo pid,lstart,cmd
 ```
 
 ## port
@@ -389,7 +391,7 @@ $ ls -trl
 $ ls -trlh
 # 파일크기 정렬, 오름차순
 $ ls -Srlh
-```
+````
 
 ## df : disk free
 ``` shell
@@ -404,13 +406,20 @@ $ df -k
 ## du : disk usage
 
 ``` shell
+# du --summarize --human-readable *
 $ du -sh *
-$ du --summarize --human-readable *
 # 해당 위치에서 폴더별 크기를 보여준다
 $ du -smh * | sort -rh 
 $ du -smh {location}
 ```
 * [참고](https://goateedev.tistory.com/181)
+
+## lsblk: list block devices
+
+``` shell
+# disk, partition, lvm 등과 같이 저장공간에 대한 MountPoint 확인
+lsblk -l
+```
 
 ## file shrink
 
@@ -445,6 +454,36 @@ $ grep [옵션][패턴][파일명]
 # 파일명으로 찾을 경우
 # find ${find-location} -name "${target-file-name}"
 $ find / -name hello
+
+# 디렉토리만 찾기
+$ find -type d
+# 파일만 찾기
+$ find -type f
+
+# mtime
+# |---24h---|---24h---|---24h---|---24h---|---24h---|---24h---|---current---|
+# | -mtime +3         | -mtime 3| -mtime -3                   |
+# n * 24 시간
+# -mtime +3 4일(96시간)전보다 오래됨
+# -mtime 3  4일(96시간)전에서 3일(72시간)전까지
+# -mtime -3 3일(72시간)전보다 새로움
+
+# 생성일 기준 3일 초과한 파일 찾기 (1적게줘야함)
+$ find -mtime +2
+# 생성일 기준 5일 초과 6일 미만 파일 찾기
+find -mtime +4 -mtime -6 -type d | xargs ls -ald
+
+# 찾기+삭제
+$ find 폴더 -name 파일명 -mtime +일수 -delete
+$ find 폴더 -name 파일명 -mtime +일수 -exec rm -f {} \;
+$ find 폴더 -name 파일명 -mtime +일수 | xargs rm -f
+$ find -mtime +2 -delete
+
+# 찾기 + 옮기기
+$ ls | grep {찾을파일명} | xargs -I {} mv {} {옮겨야할경로}
+$ ls | grep dec | xargs -I {} mv {} ./out
+
+
 ```
 
 ## wc - word count?
@@ -534,6 +573,7 @@ $ more <FILE_NAME>
 ``` shell
 $ less <FILE_NAME>
 $ less -N <FILE_NAME> # show line number
+$ less +G <FILE_NAME> # start with file end
 
 # 화살표키 위아래로 한줄씩이동
 # space, f 로 한페이지 아래로 이동
@@ -675,6 +715,8 @@ $ sftp -P ${PORT_NUMBER} -oIdentityFile=/path/to/private/key user@hostname
 ls
 pwd
 get <filename>
+# 현재 폴더의 모든 파일 다운로드
+mget *
 ```
 
 ## jdk 관련..

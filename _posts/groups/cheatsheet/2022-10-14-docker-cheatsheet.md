@@ -115,6 +115,9 @@ $ docker login <REPOSITORY_URL/IP> --username <USERNAME>
 # docker commit
 $ docker commit <CONTAINER ID/NAME> <NEW IMAGE NAME:TAG>
 # docker tag
+
+# docker stats 컨테이너 리소스 사용량 확인
+$ docker stats
 ```
 
 

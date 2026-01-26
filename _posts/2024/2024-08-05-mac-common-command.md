@@ -24,5 +24,7 @@ dscacheutil -flushcache
 # ? 이건 뭘까?
 sudo /usr/local/bin/jamf recon
 
-
+# date add hour
+date -v +1H
+date -v +15H
 ```

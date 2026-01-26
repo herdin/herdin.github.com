@@ -20,6 +20,9 @@ HEAD~N : HEAD 를 포함한 n 개의 커밋
 * 여기서 중요한건 merge, rebase 할때 ours, theirs 의 의미가 달라진다.
     * 현재 branch 가 HEAD 상태이고, master 를 대상으로 한다고 가정
     * 어떤 것이든 HEAD 가 가리키는 것이 ours 라고한다.
+        * 이래도 좀 헷갈리는데, my branch 에서 merge/rebase 를 한다고 치자.
+            merge 는 target branch 를 my branch 로 가져오는 것이기 때문에 HEAD 가 변경되지 않는다
+            rebase 는 rebase 를 하기위해 HEAD 가 target branch 로 변경이 된다 그래서 target branch 가 HEAD 로 된다
     * merge
         * `checkout --ours` : branch 것을 사용
         * `checkout --theirs` : master 것을 사용
@@ -155,8 +158,16 @@ $ git stash push -u -m "식별 가능한 메세지"
 # stash 에 저장하고 나면 깨끗해진다.
 
 $ git status
-현재 브랜치 feature-a
-커밋할 사항 없음, 작업 폴더 깨끗함
+# 현재 브랜치 feature-a
+# 커밋할 사항 없음, 작업 폴더 깨끗함
+
+$ git stash pop
+$ git stash list
+$ git stash 
+# stash file list
+$ git stash show stash@{0}
+# manual 에서 못찾겠는데 -p 옵션을 주면 파일 diff 를 보여준다
+$ git stash show -p stash@{0}
 ```
 
 작업이 끝나서 다시 a branch 로 와서 작업했던 내용을 꺼내고싶다면..
@@ -172,7 +183,7 @@ $ git stash apply stash@{1}
 
 # apply 는 pop 과 달리 stash list 를 비우지않는다.
 # pop 은 stash@{0} (맨위쪽) stash 를 적용(apply)하고 삭제(drop)한다
-# 개인적으로는 apply 후 직접 drop 하는 걸 선호한다.
+# 개인적으로는 apply 후 직접 drop 하는 걸 선호한다고 써놨지만 실제론 push/pop 만 한다.
 ```
 
 

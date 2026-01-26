@@ -31,6 +31,16 @@ docker 의 Images, containers, volumes, or customized configuration files 들이
 /var/lib/docker
 ```
 
+## docker compoenent
+* colima: 고수준 도구 (사용자 환경)
+* rancher desktop: 고수준 도구 (사용자 환경)
+* dockerd: 저수준 컴포넌트 (백엔드 데몬)
+* containerd: 저수준 컴포넌트 (컨테이너 런타임)
+* docker cli -> dockerd -> containerd
+* mac 은 linux kernal 이 없으므로 dockerd 를 띄우기위한 vm 이 필요함. 이 작업을 colima, rancher desktop 이 해줌.
+* brew install docker 에서 깔리는건 docker-cli 
+
+
 ## docker image build
 `docker file` 로 `docker images` 를 만든다.
 

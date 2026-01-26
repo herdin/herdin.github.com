@@ -9,6 +9,7 @@ tags: linux yaml xml software
 # 설치
 $ brew install yq
 
+# input-format xml
 $ cat <<EOF > just-test.xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <result>
@@ -20,7 +21,12 @@ EOF
 
 $ cat just-test.xml| yq '.'
 $ cat just-test.xml| yq --input-format xml '.'
+$ cat just-test.xml| yq -p=xml '.'
 $ cat just-test.xml| yq -px '.'
+
+# output format json
+$ cat just-test.xml| yq -p=xml -o json '.'
+$ cat just-test.xml| yq -p=xml -j '.'
 ```
 
 https://mikefarah.gitbook.io/yq/
